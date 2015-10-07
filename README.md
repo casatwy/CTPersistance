@@ -245,6 +245,9 @@ put a record list to insert and will return the last insert row id as result.
     NSLog(@"%@"m lastInsertRowId);
 ```
 
+---
+
+
 `- (NSObject <CTPersistanceRecordProtocol> *)insertRecord:(NSObject <CTPersistanceRecordProtocol> *)record error:(NSError **)error;`
 
 **Description**
