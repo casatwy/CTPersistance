@@ -13,7 +13,7 @@
 @implementation CTPersistanceRecord
 
 #pragma mark - CTPersistanceRecordProtocol
-- (NSDictionary *)dictionaryRepresentationWithColumnInfo:(NSDictionary *)columnInfo
+- (NSDictionary *)dictionaryRepresentationWithColumnInfo:(NSDictionary *)columnInfo tableName:(NSString *)tableName
 {
     unsigned int count = 0;
     objc_property_t *properties = class_copyPropertyList([self class], &count);

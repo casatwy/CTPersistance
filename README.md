@@ -2,6 +2,10 @@
 
 `CTPersistance` can be used as a `Model Layer` in iOS App development, maybe can used for MacOSX develop, but I'm not tested yet.
 
+#Install (Cocoapods)
+
+`pod 'CTPersistance'`
+
 #Features
 
 1. Insert, Delete, Update, Read
