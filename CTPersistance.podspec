@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CTPersistance"
-  s.version      = "0.0.5"
+  s.version      = "0.0.6"
   s.summary      = "Objective-C Model Layer with SQLite."
 
   s.description  = <<-DESC
@@ -85,7 +85,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "CTPersistance/**/*.{h,m}"
+  s.source_files  = "CTPersistance/CTPersistance/**/*.{h,m}"
 
   # s.public_header_files = "Classes/**/*.h"
 
