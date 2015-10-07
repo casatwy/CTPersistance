@@ -91,11 +91,9 @@
                 migratorClass = NSClassFromString(migartorClassName);
             }
         }];
-        if (migratorClass == NULL) {
-            NSException *exception = [NSException exceptionWithName:@"Create Migrator Error" reason:[NSString stringWithFormat:@"Can't find DatabaseName[%@] matches in PListFile[%@] which content is :\n %@ \n", self.databaseName, persistanceConfigurationPlistPath, persistanceConfigurationPlist] userInfo:nil];
-            @throw exception;
+        if (migratorClass != NULL) {
+            _migrator = [[migratorClass alloc] init];
         }
-        _migrator = [[migratorClass alloc] init];
     }
     return _migrator;
 }

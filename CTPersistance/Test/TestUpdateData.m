@@ -33,6 +33,13 @@
         NSException *exception = [[NSException alloc] init];
         @throw exception;
     }
+    
+    /* 3002 */
+    NSDictionary *keyvalueList = @{@"migration1_0":@"this is migration"};
+    NSString *whereCondition = @":primaryKey > 0";
+    NSString *primaryKey = [table primaryKeyName];
+    NSDictionary *whereConditionParams = NSDictionaryOfVariableBindings(primaryKey);
+    [table updateKeyValueList:keyvalueList whereCondition:whereCondition whereConditionParams:whereConditionParams error:&error];
 }
 
 @end
