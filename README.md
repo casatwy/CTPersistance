@@ -129,7 +129,9 @@ go to `Build Phases` and add `sqlite3` into your library list.
 NOTICE:
 
 you can `only` use **initWithQueryCommand:** to create a table in migration step object
+
 and `DO NOT` use **initWithQueryCommand:** to create table outside the migration step object
+
 in other situation, **init** is the only method for you to create a table.
 
 ```
