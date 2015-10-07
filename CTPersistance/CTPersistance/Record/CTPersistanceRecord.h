@@ -6,7 +6,6 @@
 //  Copyright © 2015年 casa. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "CTPersistanceRecordProtocol.h"
 
 @interface CTPersistanceRecord : NSObject <CTPersistanceRecordProtocol>

@@ -9,7 +9,7 @@
 #ifndef CTPersistanceConfiguration_h
 #define CTPersistanceConfiguration_h
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 static NSString * kCTPersistanceErrorDomain = @"kCTPersistanceErrorDomain";
 

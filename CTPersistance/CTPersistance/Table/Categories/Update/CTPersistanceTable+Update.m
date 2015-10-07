@@ -8,6 +8,7 @@
 
 #import "CTPersistanceTable+Update.h"
 #import "CTPersistanceQueryCommand+DataManipulations.h"
+#import <UIKit/UIKit.h>
 
 @implementation CTPersistanceTable (Update)
 

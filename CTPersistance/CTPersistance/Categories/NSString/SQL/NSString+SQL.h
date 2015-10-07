@@ -6,7 +6,7 @@
 //  Copyright © 2015年 casa. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 @interface NSString (SQL)
 

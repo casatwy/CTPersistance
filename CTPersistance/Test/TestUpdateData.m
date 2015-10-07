@@ -9,6 +9,7 @@
 #import "TestUpdateData.h"
 #import "CTPersistance.h"
 #import "TestTable.h"
+#import <UIKit/UIKit.h>
 
 @implementation TestUpdateData
 

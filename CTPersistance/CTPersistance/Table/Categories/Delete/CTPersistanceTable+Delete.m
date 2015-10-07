@@ -8,6 +8,7 @@
 
 #import "CTPersistanceTable+Delete.h"
 #import "NSString+SQL.h"
+#import <UIKit/UIKit.h>
 
 @implementation CTPersistanceTable (Delete)
 

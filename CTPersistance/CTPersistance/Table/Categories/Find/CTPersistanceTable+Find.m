@@ -10,6 +10,7 @@
 #import "NSString+SQL.h"
 #import "CTPersistanceQueryCommand+ReadMethods.h"
 #import "NSArray+CTPersistanceRecordTransform.h"
+#import <UIKit/UIKit.h>
 
 @implementation CTPersistanceTable (Find)
 

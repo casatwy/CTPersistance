@@ -9,6 +9,8 @@
 #ifndef CTPersistanceRecordProtocol_h
 #define CTPersistanceRecordProtocol_h
 
+#import <Foundation/Foundation.h>
+
 @protocol CTPersistanceRecordProtocol <NSObject>
 
 @required
