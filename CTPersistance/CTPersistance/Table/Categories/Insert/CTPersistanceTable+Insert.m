@@ -25,7 +25,7 @@
     NSMutableArray *insertList = [[NSMutableArray alloc] init];
     [recordList enumerateObjectsUsingBlock:^(NSObject <CTPersistanceRecordProtocol> * _Nonnull record, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([self.child isCorrectToInsertRecord:record]) {
-            [insertList addObject:[record dictionaryRepresentation]];
+            [insertList addObject:[record dictionaryRepresentationWithColumnInfo:[self.child columnInfo]]];
         }
     }];
     
@@ -35,7 +35,7 @@
 - (NSObject<CTPersistanceRecordProtocol> *)insertRecord:(NSObject <CTPersistanceRecordProtocol> *)record error:(NSError *__autoreleasing *)error
 {
     if (record && [self.child isCorrectToInsertRecord:record]) {
-        NSNumber *rowId = [[self.queryCommand insertTable:[self.child tableName] withDataList:@[[record dictionaryRepresentation]]] executeWithError:error];
+        NSNumber *rowId = [[self.queryCommand insertTable:[self.child tableName] withDataList:@[[record dictionaryRepresentationWithColumnInfo:[self.child columnInfo]]]] executeWithError:error];
         [record setPersistanceValue:rowId forKey:[self.child primaryKeyName]];
     }
     return record;

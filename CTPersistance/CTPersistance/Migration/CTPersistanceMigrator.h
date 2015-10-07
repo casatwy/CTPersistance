@@ -13,12 +13,6 @@
 #import "CTPersistanceQueryCommand+ReadMethods.h"
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"
 
-@protocol CTPersistanceMigrationCenter <NSObject>
-
-+(instancetype)sharedInstance;
-
-@end
-
 @protocol CTPersistanceMigrationStep <NSObject>
 
 - (void)goUpWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError **)error;

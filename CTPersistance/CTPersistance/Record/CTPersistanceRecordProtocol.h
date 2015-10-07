@@ -14,7 +14,7 @@
 @protocol CTPersistanceRecordProtocol <NSObject>
 
 @required
-- (NSDictionary *)dictionaryRepresentation;
+- (NSDictionary *)dictionaryRepresentationWithColumnInfo:(NSDictionary *)columnInfo;
 - (void)objectRepresentationWithDictionary:(NSDictionary *)dictionary;
 - (void)setPersistanceValue:(id)value forKey:(NSString *)key;
 

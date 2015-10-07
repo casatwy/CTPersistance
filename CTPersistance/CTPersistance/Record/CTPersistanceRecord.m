@@ -13,35 +13,30 @@
 @implementation CTPersistanceRecord
 
 #pragma mark - CTPersistanceRecordProtocol
-- (NSDictionary *)dictionaryRepresentation
+- (NSDictionary *)dictionaryRepresentationWithColumnInfo:(NSDictionary *)columnInfo
 {
     unsigned int count = 0;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
     
-    NSMutableDictionary *dictionaryRepresentation = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *propertyList = [[NSMutableDictionary alloc] init];
     while (count --> 0) {
         NSString *key = [NSString stringWithUTF8String:property_getName(properties[count])];
-        if ([key isEqualToString:@"debugDescription"]) {
-            continue;
-        }
-        if ([key isEqualToString:@"description"]) {
-            continue;
-        }
-        if ([key isEqualToString:@"superclass"]) {
-            continue;
-        }
-        if ([key isEqualToString:@"hash"]) {
-            continue;
-        }
-        
         id value = [self valueForKey:key];
         if (value == nil) {
-            dictionaryRepresentation[key] = [NSNull null];
+            propertyList[key] = [NSNull null];
         } else {
-            dictionaryRepresentation[key] = value;
+            propertyList[key] = value;
         }
     }
     free(properties);
+    
+    NSMutableDictionary *dictionaryRepresentation = [[NSMutableDictionary alloc] init];
+    [columnInfo enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull columnName, NSString * _Nonnull columnDescription, BOOL * _Nonnull stop) {
+        if (propertyList[columnName]) {
+            dictionaryRepresentation[columnName] = propertyList[columnName];
+        }
+    }];
+    
     return dictionaryRepresentation;
 }
 
