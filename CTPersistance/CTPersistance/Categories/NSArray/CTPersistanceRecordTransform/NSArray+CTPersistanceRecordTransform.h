@@ -10,6 +10,13 @@
 
 @interface NSArray (CTPersistanceRecordTransform)
 
+/**
+ *  Transform items in Array to the Object by classType, the classType must confirms to <CTPersistanceRecordProtocol>, if the classType is not confirmed to <CTPersistanceRecordProtocol>, this method will return an empty array, not nil.
+ *
+ *  @param classType the class that result Object is
+ *
+ *  @return return the list of transformed objects
+ */
 - (NSArray *)transformSQLItemsToClass:(Class)classType;
 
 @end

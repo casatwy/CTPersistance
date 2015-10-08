@@ -10,6 +10,16 @@
 
 @interface NSString (ReqularExpression)
 
+/**
+ *  check whether the string is match to regularExpressionPattern.
+ *  the match option is NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators | NSRegularExpressionUseUnixLineSeparators | NSRegularExpressionAnchorsMatchLines
+ *
+ *  @param regularExpressionPattern regular express pattern
+ *
+ *  @return return YES if matches, NO if not.
+ *
+ *  @see NSRegularExpression
+ */
 - (BOOL)isMatchWithRegularExpression:(NSString *)regularExpressionPattern;
 
 @end
