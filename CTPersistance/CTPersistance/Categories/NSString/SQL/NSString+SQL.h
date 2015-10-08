@@ -37,7 +37,7 @@
 - (NSString *)safeSQLMetaString;
 
 /**
- *  put params in String.
+ *  put params in String. The key in String should start with (:), and the key in Params don't start with (:), this method will add (:) before matching.
  
  Example:
     NSString *string = @"hello :something";
@@ -45,7 +45,8 @@
         @"something":@"world"
     };
     NSString *newString = [string stringWithSQLParams:params];
-    NSLog
+    NSLog(@"%@", newString); // hello world
+ 
  *
  *  @param params params in String to replace
  *

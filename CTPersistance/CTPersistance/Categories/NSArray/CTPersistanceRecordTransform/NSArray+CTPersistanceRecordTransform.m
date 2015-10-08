@@ -7,7 +7,6 @@
 //
 
 #import "NSArray+CTPersistanceRecordTransform.h"
-#import "CTPersistanceRecord.h"
 
 @implementation NSArray (CTPersistanceRecordTransform)
 
@@ -16,7 +15,7 @@
     NSMutableArray *recordList = [[NSMutableArray alloc] init];
     if ([self count] > 0) {
         [self enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull recordInfo, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSObject <CTPersistanceRecordProtocol> *record = [[classType alloc] init];
+            id <CTPersistanceRecordProtocol> record = [[classType alloc] init];
             if ([record respondsToSelector:@selector(objectRepresentationWithDictionary:)]) {
                 [record objectRepresentationWithDictionary:recordInfo];
                 [recordList addObject:record];
