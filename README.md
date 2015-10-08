@@ -231,7 +231,7 @@ you can try migration now!
 
 ## INSERT
 
-`- (NSNumber *)insertRecordList:(NSArray <NSObject <CTPersistanceRecordProtocol> *> *)recordList error:(NSError **)error;`
+##### - (NSNumber *)insertRecordList:(NSArray <NSObject <CTPersistanceRecordProtocol> *> *)recordList error:(NSError **)error;
 
 **Description**
 
