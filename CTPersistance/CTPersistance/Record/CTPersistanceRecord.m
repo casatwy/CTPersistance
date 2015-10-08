@@ -61,4 +61,25 @@
     }
 }
 
+- (NSObject<CTPersistanceRecordProtocol> *)mergeRecord:(NSObject<CTPersistanceRecordProtocol> *)record shouldOverride:(BOOL)shouldOverride
+{
+    if ([self respondsToSelector:@selector(availableKeyList)]) {
+        NSArray *availableKeyList = [self availableKeyList];
+        [availableKeyList enumerateObjectsUsingBlock:^(NSString * _Nonnull key, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([record respondsToSelector:NSSelectorFromString(key)]) {
+                id recordValue = [record valueForKey:key];
+                if (shouldOverride) {
+                    [self setValue:recordValue forKey:key];
+                } else {
+                    id selfValue = [self valueForKey:key];
+                    if (selfValue == nil) {
+                        [self setValue:recordValue forKey:key];
+                    }
+                }
+            }
+        }];
+    }
+    return self;
+}
+
 @end

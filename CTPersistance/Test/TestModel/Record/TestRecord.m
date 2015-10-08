@@ -10,4 +10,10 @@
 
 @implementation TestRecord
 
+#pragma mark - CTPersistanceRecordProtocol
+- (NSArray *)availableKeyList
+{
+    return @[@"primaryKey", @"age", @"name"];
+}
+
 @end

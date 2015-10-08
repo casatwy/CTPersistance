@@ -12,6 +12,7 @@
 #import "TestFetchData.h"
 #import "TestDeleteData.h"
 #import "TestUpdateData.h"
+#import "TestCaseRecord.h"
 
 int main(int argc, char * argv[]) {
     TestInsertData *testInsertData = [[TestInsertData alloc] init];
@@ -25,4 +26,7 @@ int main(int argc, char * argv[]) {
     
     TestDeleteData *testDeleteData = [[TestDeleteData alloc] init];
     [testDeleteData test];
+    
+    TestCaseRecord *testCaseRecord = [[TestCaseRecord alloc] init];
+    [testCaseRecord test];
 }

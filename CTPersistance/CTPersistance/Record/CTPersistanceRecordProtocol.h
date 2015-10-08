@@ -17,6 +17,10 @@
 - (NSDictionary *)dictionaryRepresentationWithColumnInfo:(NSDictionary *)columnInfo tableName:(NSString *)tableName;
 - (void)objectRepresentationWithDictionary:(NSDictionary *)dictionary;
 - (void)setPersistanceValue:(id)value forKey:(NSString *)key;
+- (NSObject <CTPersistanceRecordProtocol> *)mergeRecord:(NSObject <CTPersistanceRecordProtocol> *)record shouldOverride:(BOOL)shouldOverride;
+
+@optional
+- (NSArray *)availableKeyList;
 
 @end
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A2D96891BC6A80F0038CC7D /* TestCaseRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2D96881BC6A80F0038CC7D /* TestCaseRecord.m */; settings = {ASSET_TAGS = (); }; };
 		4A925B991BC2DFC500CC3244 /* CTPersistanceTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925B981BC2DFC500CC3244 /* CTPersistanceTable.m */; settings = {ASSET_TAGS = (); }; };
 		4A925BA51BC2EDB500CC3244 /* CTPersistanceTable+Delete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BA41BC2EDB500CC3244 /* CTPersistanceTable+Delete.m */; settings = {ASSET_TAGS = (); }; };
 		4A925BA81BC2EDC300CC3244 /* CTPersistanceTable+Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BA71BC2EDC300CC3244 /* CTPersistanceTable+Find.m */; settings = {ASSET_TAGS = (); }; };
@@ -41,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A2D96871BC6A80F0038CC7D /* TestCaseRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCaseRecord.h; sourceTree = "<group>"; };
+		4A2D96881BC6A80F0038CC7D /* TestCaseRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCaseRecord.m; sourceTree = "<group>"; };
 		4A925B911BC2AD1A00CC3244 /* CTPersistanceMarcos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPersistanceMarcos.h; sourceTree = "<group>"; };
 		4A925B971BC2DFC500CC3244 /* CTPersistanceTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceTable.h; sourceTree = "<group>"; };
 		4A925B981BC2DFC500CC3244 /* CTPersistanceTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTable.m; sourceTree = "<group>"; };
@@ -420,6 +423,8 @@
 				4A925BD31BC3E87600CC3244 /* TestFetchData.m */,
 				4A925BD51BC3E88C00CC3244 /* TestDeleteData.h */,
 				4A925BD61BC3E88C00CC3244 /* TestDeleteData.m */,
+				4A2D96871BC6A80F0038CC7D /* TestCaseRecord.h */,
+				4A2D96881BC6A80F0038CC7D /* TestCaseRecord.m */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -561,6 +566,7 @@
 				4AF066271BC217280042288C /* CTPersistanceDataBase.m in Sources */,
 				4AF066291BC217280042288C /* CTPersistanceMigrator.m in Sources */,
 				4A925BC21BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.m in Sources */,
+				4A2D96891BC6A80F0038CC7D /* TestCaseRecord.m in Sources */,
 				4AF066381BC276C40042288C /* CTPersistanceQueryCommand.m in Sources */,
 				4A925BB91BC39CCD00CC3244 /* CTPersistanceCriteria.m in Sources */,
 				4AF0664C1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */,
