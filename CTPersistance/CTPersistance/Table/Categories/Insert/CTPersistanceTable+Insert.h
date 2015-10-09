@@ -11,7 +11,24 @@
 
 @interface CTPersistanceTable (Insert)
 
+/**
+ *  insert a list of record
+ *
+ *  @param recordList the list of record to insert
+ *  @param error      error if fails
+ *
+ *  @return return the last insert row primary key
+ */
 - (NSNumber *)insertRecordList:(NSArray <NSObject <CTPersistanceRecordProtocol> *> *)recordList error:(NSError **)error;
+
+/**
+ *  insert a record
+ *
+ *  @param record the record to insert
+ *  @param error  error if fails
+ *
+ *  @return return the primary key
+ */
 - (NSObject <CTPersistanceRecordProtocol> *)insertRecord:(NSObject <CTPersistanceRecordProtocol> *)record error:(NSError **)error;
 
 @end

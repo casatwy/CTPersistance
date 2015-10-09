@@ -40,7 +40,7 @@
  *  put params in String. The key in String should start with (:), and the key in Params don't start with (:), this method will add (:) before matching.
  
  Example:
-    NSString *string = @"hello :something";
+    NSString *string = @"hello :something"; // the key in string must start wich colon
     NSDictionary *params = @{
         @"something":@"world"
     };

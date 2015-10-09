@@ -11,6 +11,9 @@
 
 @class CTPersistanceQueryCommand;
 
+/**
+ *  the protocol which every table should confirm.
+ */
 @protocol CTPersistanceTableProtocol <NSObject>
 @required
 - (NSString *)databaseName;
