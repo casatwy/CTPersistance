@@ -29,15 +29,17 @@
 - (void)deleteRecordList:(NSArray <NSObject<CTPersistanceRecordProtocol> *> *)recordList error:(NSError **)error;
 
 /**
- *  delete with condition.
-    the "where condition" is a string which will be used in SQL WHERE clause. Can bind params if you have words start with colon.
- 
- Example for whereCondition and conditionParams:
-    NSString *whereCondition = @"hello = :something"; // the key in string must start wich colon
-    NSDictionary *conditionParams = @{
-        @"something":@"world"
-    };
-    // the where string will be "hello = world"
+ *  delete with condition. The "where condition" is a string which will be used in SQL WHERE clause. Can bind params if you have words start with colon.
+ *
+ *  Example for whereCondition and conditionParams:
+ *
+ *      NSString *whereCondition = @"hello = :something"; // the key in string must start wich colon
+ *
+ *      NSDictionary *conditionParams = @{
+ *
+ *          @"something":@"world"
+ *
+ *      };// the where string will be "hello = world"
  *
  *  @param whereCondition  the string for WHERE clause
  *  @param conditionParams the params to bind in to where condition

@@ -15,7 +15,7 @@
  *
  *  @return return the encoded string.
  *
- *  @see safeSQLDecode:
+ *  @see safeSQLDecode
  */
 - (NSString *)safeSQLEncode;
 
@@ -24,8 +24,8 @@
  *
  *  @return return the decoded string.
  *
- *  @see safeSQLDecode:
- *  @see safeSQLMetaString:
+ *  @see safeSQLDecode
+ *  @see safeSQLMetaString
  */
 - (NSString *)safeSQLDecode;
 
@@ -38,15 +38,15 @@
 
 /**
  *  put params in String. The key in String should start with (:), and the key in Params don't start with (:), this method will add (:) before matching.
- 
- Example:
-    NSString *string = @"hello :something"; // the key in string must start wich colon
-    NSDictionary *params = @{
-        @"something":@"world"
-    };
-    NSString *newString = [string stringWithSQLParams:params];
-    NSLog(@"%@", newString); // hello world
- 
+ *
+ *  Example:
+ *
+ *  NSString *string = @"hello :something"; // the key in string must start wich colon
+ *  NSDictionary *params = @{
+ *      @"something":@"world"
+ *  };
+ *  NSString *newString = [string stringWithSQLParams:params];
+ *  NSLog(@"%@", newString); // hello world
  *
  *  @param params params in String to replace
  *

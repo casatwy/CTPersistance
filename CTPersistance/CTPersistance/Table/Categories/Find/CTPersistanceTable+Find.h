@@ -57,8 +57,7 @@
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error;
 
 /**
- *  find first row in record list with where condition.  @see - (void)deleteWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error: for how to use where condition.
-    first row means the first record of fetched record list, not the first record in table.
+ *  find first row in record list with where condition.  @see - (void)deleteWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error: for how to use where condition. First row means the first record of fetched record list, not the first record in table.
  *
  *  @param condition       condition used in WHERE clause
  *  @param conditionParams params to bind into whereCondition
@@ -71,7 +70,8 @@
 
 /**
  *  find first record with sqlString. sqlString can be bind with params like where condition. @see - (void)deleteWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error: for how to use where condition.
-    first row means the first record of fetched record list, not the first record in table.
+ *
+ *  First row means the first record of fetched record list, not the first record in table.
  *
  *  @param sqlString the sqlString to find
  *  @param params    the params to bind into sqlString
