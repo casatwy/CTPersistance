@@ -28,7 +28,7 @@
 - (void)updateRecordList:(NSArray <NSObject <CTPersistanceRecordProtocol> *> *)recordList error:(NSError **)error;
 
 /**
- *  update value for key which the row matches whereCondition, @see - (void)deleteWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error:
+ *  update value for key which the row matches whereCondition, @see deleteWithWhereCondition:conditionParams:error:
  *
  *  @param value                the value to update
  *  @param key                  the key of the column to update
@@ -39,7 +39,7 @@
 - (void)updateValue:(id)value forKey:(NSString *)key whereCondition:(NSString *)whereCondition whereConditionParams:(NSDictionary *)whereConditionParams error:(NSError **)error;
 
 /**
- *  update keys and values of rows matches whereCondition, @see - (void)deleteWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error:
+ *  update keys and values of rows matches whereCondition, @see deleteWithWhereCondition:conditionParams:error:
  *
  *  @param keyValueList         key-values to update
  *  @param whereCondition       where contidition

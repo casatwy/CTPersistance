@@ -8,9 +8,21 @@
 
 #import "CTPersistanceRecord.h"
 
+/**
+ *  this record is used for Migration
+ *
+ *  You should never use or create this object
+ */
 @interface CTPersistanceVersionRecord : CTPersistanceRecord
 
+/**
+ *  primary key of record in database
+ */
 @property (nonatomic, copy) NSNumber *identifier;
+
+/**
+ *  version key of record in database
+ */
 @property (nonatomic, copy) NSString *databaseVersion;
 
 @end

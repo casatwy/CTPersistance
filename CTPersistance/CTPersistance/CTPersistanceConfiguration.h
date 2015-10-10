@@ -13,9 +13,21 @@
 
 static NSString * kCTPersistanceErrorDomain = @"kCTPersistanceErrorDomain";
 
-typedef NS_ENUM (NSUInteger, CTPersistanceErrorCode) {
+/**
+ *  error code in CTPersistance
+ */
+typedef NS_ENUM(NSUInteger, CTPersistanceErrorCode){
+    /**
+     *  failed to open database file
+     */
     CTPersistanceErrorCodeOpenError,
+    /**
+     *  failed to create database file
+     */
     CTPersistanceErrorCodeCreateError,
+    /**
+     *  failed to execute SQL
+     */
     CTPersistanceErrorCodeQueryStringError,
 };
 

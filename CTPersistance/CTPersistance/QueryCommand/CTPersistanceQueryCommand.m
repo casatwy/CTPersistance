@@ -74,7 +74,7 @@
     return @(rowid);
 }
 
-- (NSArray *)fetchWithError:(NSError *__autoreleasing *)error
+- (NSArray <NSDictionary *> *)fetchWithError:(NSError *__autoreleasing *)error
 {
     NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
     sqlite3_stmt *statement;
