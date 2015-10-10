@@ -76,7 +76,7 @@
  *
  *  @return return YES for 'should perform migration', NO for 'don't perform migration'
  *
- *  @warn you should never call this method
+ *  @warning you should never call this method
  *
  */
 - (BOOL)databaseShouldMigrate:(CTPersistanceDataBase *)database;
@@ -88,7 +88,7 @@
  *
  *  @param database CTPersistanceDataBase instance
  *
- *  @warn you should never call this method
+ *  @warning you should never call this method
  *
  */
 - (void)databasePerformMigrate:(CTPersistanceDataBase *)database;
@@ -100,7 +100,7 @@
  *
  *  @param database CTPersistanceDataBase instance
  *
- *  @warn you should never call this method
+ *  @warning you should never call this method
  *
  */
 - (void)createVersionTableWithDatabase:(CTPersistanceDataBase *)database;

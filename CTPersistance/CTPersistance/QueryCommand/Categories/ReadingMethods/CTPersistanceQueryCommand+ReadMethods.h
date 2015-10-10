@@ -43,7 +43,7 @@
  *
  *  @return return CTPersistanceQueryCommand
  *
- *  @warn You should never use this method directly, use insert methods in CTPersistanceTable instead
+ *  @warning You should never use this method directly, use insert methods in CTPersistanceTable instead
  *
  */
 - (CTPersistanceQueryCommand *)where:(NSString *)condition params:(NSDictionary *)params;
@@ -58,7 +58,7 @@
  *
  *  @return return CTPersistanceQueryCommand
  *
- *  @warn You should never use this method directly, use insert methods in CTPersistanceTable instead
+ *  @warning You should never use this method directly, use insert methods in CTPersistanceTable instead
  *
  */
 - (CTPersistanceQueryCommand *)orderBy:(NSString *)orderBy isDESC:(BOOL)isDESC;
@@ -72,7 +72,7 @@
  *
  *  @return return CTPersistanceQueryCommand
  *
- *  @warn You should never use this method directly, use insert methods in CTPersistanceTable instead
+ *  @warning You should never use this method directly, use insert methods in CTPersistanceTable instead
  *
  */
 - (CTPersistanceQueryCommand *)limit:(NSInteger)limit;
@@ -86,7 +86,7 @@
  *
  *  @return return CTPersistanceQueryCommand
  *
- *  @warn You should never use this method directly, use insert methods in CTPersistanceTable instead
+ *  @warning You should never use this method directly, use insert methods in CTPersistanceTable instead
  *
  */
 - (CTPersistanceQueryCommand *)offset:(NSInteger)offset;
@@ -101,7 +101,7 @@
  *
  *  @return return CTPersistanceQueryCommand
  *
- *  @warn You should never use this method directly, use insert methods in CTPersistanceTable instead
+ *  @warning You should never use this method directly, use insert methods in CTPersistanceTable instead
  *
  */
 - (CTPersistanceQueryCommand *)limit:(NSInteger)limit offset:(NSInteger)offset;

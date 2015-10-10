@@ -12,7 +12,7 @@
 /**
  *  CTPersistanceQueryCommand is a SQL builder for CTPersistance
  *
- *  @warn you should never create your own instance of CTPersistanceQueryCommand
+ *  @warning you should never create your own instance of CTPersistanceQueryCommand
  *
  */
 @interface CTPersistanceQueryCommand : NSObject
@@ -34,7 +34,7 @@
  *
  *  @return return CTPersistanceQueryCommand
  *
- *  @warn You should never use this method directly, use insert methods in CTPersistanceTable instead
+ *  @warning You should never use this method directly, use insert methods in CTPersistanceTable instead
  *
  */
 - (instancetype)initWithDatabaseName:(NSString *)databaseName;
@@ -46,7 +46,7 @@
  *
  *  @return return CTPersistanceQueryCommand
  *
- *  @warn You should never use this method directly, use insert methods in CTPersistanceTable instead
+ *  @warning You should never use this method directly, use insert methods in CTPersistanceTable instead
  *
  */
 - (instancetype)initWithDatabase:(CTPersistanceDataBase *)database;

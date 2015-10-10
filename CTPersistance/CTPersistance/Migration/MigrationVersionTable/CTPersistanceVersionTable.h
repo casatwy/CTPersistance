@@ -21,7 +21,7 @@
  *
  *  @return return CTPersistanceVersionTable
  *
- *  @warn You should never use or create this table.
+ *  @warning You should never use or create this table.
  *
  */
 - (instancetype)initWithDatabase:(CTPersistanceDataBase *)database;

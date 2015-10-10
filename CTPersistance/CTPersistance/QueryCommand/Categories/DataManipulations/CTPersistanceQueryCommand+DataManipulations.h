@@ -20,7 +20,7 @@
  *
  *  @return return CTPersistanceQueryCommand
  *
- *  @warn You should never use this method directly, use insert methods in CTPersistanceTable instead
+ *  @warning You should never use this method directly, use insert methods in CTPersistanceTable instead
  *
  */
 - (CTPersistanceQueryCommand *)insertTable:(NSString *)tableName withDataList:(NSArray *)dataList;
@@ -37,7 +37,7 @@
  *
  *  @return return CTPersistanceQueryCommand
  *
- *  @warn You should never use this method directly, use insert methods in CTPersistanceTable instead
+ *  @warning You should never use this method directly, use insert methods in CTPersistanceTable instead
  *
  */
 - (CTPersistanceQueryCommand *)updateTable:(NSString *)tableName withData:(NSDictionary *)data condition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams;
@@ -53,7 +53,7 @@
  *
  *  @return return CTPersistanceQueryCommand
  *
- *  @warn You should never use this method directly, use insert methods in CTPersistanceTable instead
+ *  @warning You should never use this method directly, use insert methods in CTPersistanceTable instead
  *
  */
 - (CTPersistanceQueryCommand *)deleteTable:(NSString *)tableName withCondition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams;

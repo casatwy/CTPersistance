@@ -14,7 +14,7 @@
 /**
  *  CTPersistanceTable will transform the fetched data into an object. The object must confirms to this protocol, that means every object who confirms to this protocol can be the record of CTPersistanceTable
  *
- *  @warn the name of key must as same as the name of column in table.
+ *  @warning the name of key must as same as the name of column in table.
  */
 @protocol CTPersistanceRecordProtocol <NSObject>
 
