@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
                     A Model Layer for SQLite which written with Objective-C.
                    DESC
 
-  s.homepage     = "http://casatwy.com"
+  s.homepage     = "http://persistance.casatwy.com/"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
