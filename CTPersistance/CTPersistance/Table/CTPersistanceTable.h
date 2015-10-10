@@ -88,6 +88,12 @@
 - (BOOL)isCorrectToUpdateRecord:(NSObject <CTPersistanceRecordProtocol> *)record;
 @end
 
+/**
+ *  CTPersistanceTable is used to operate records.
+ *
+ *  You should create your own table object for every table in data base which must extends from CTPersitanceTable and must confirms to <CTPersistanceTableProtocol>
+ *
+ */
 @interface CTPersistanceTable : NSObject
 
 /**

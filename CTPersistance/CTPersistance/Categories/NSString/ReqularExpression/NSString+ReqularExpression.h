@@ -8,17 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  category for Regular Expression
+ */
 @interface NSString (ReqularExpression)
 
 /**
- *  check whether the string is match to regularExpressionPattern.
+ *  check whether the string is match to regularExpressionPattern with NSRegularExpress
+ *
  *  the match option is NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators | NSRegularExpressionUseUnixLineSeparators | NSRegularExpressionAnchorsMatchLines
  *
  *  @param regularExpressionPattern regular express pattern
  *
  *  @return return YES if matches, NO if not.
  *
- *  @see NSRegularExpression
  */
 - (BOOL)isMatchWithRegularExpression:(NSString *)regularExpressionPattern;
 

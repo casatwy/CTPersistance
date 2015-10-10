@@ -52,7 +52,7 @@
  *
  *  @return return the record list
  *
- *  @see CTCriteria
+ *  @see CTPersistanceCriteria
  */
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error;
 
@@ -88,7 +88,7 @@
  *  @param error    error if fails
  *
  *  @return return the first row
- *  @see CTCriteria
+ *  @see CTPersistanceCriteria
  */
 - (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error;
 
@@ -122,7 +122,7 @@
  *  @param error    error if fails
  *
  *  @return return count of records matches to criteria.
- *  @see CTCriteria
+ *  @see CTPersistanceCriteria
  */
 - (NSNumber *)countWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error;
 

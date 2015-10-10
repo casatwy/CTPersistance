@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  category for SQL
+ */
 @interface NSString (SQL)
 
 /**
@@ -37,18 +40,18 @@
 - (NSString *)safeSQLMetaString;
 
 /**
- *  put params in String. The key in String should start with (:), and the key in Params don't start with (:), this method will add (:) before matching.
+ *  put params in string. The key in string should start with colon, and the key in Params don't. this method will add colon before matching.
  *
  *  Example:
  *
- *  NSString *string = @"hello :something"; // the key in string must start wich colon
+ *  NSString *foo = @"hello :bar"; // the key in string must start wich colon
  *  NSDictionary *params = @{
- *      @"something":@"world"
+ *      @"bar":@"world" // don't put colon in key
  *  };
- *  NSString *newString = [string stringWithSQLParams:params];
- *  NSLog(@"%@", newString); // hello world
  *
- *  @param params params in String to replace
+ *  will generate @"hello world"
+ *
+ *  @param params params in string to replace
  *
  *  @return return a string.
  */

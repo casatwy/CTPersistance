@@ -9,6 +9,9 @@
 #import "CTPersistanceTable.h"
 #import "CTPersistanceDataBase.h"
 
+/**
+ *  the version table used for migration. you should never use or create or extend this class.
+ */
 @interface CTPersistanceVersionTable : CTPersistanceTable <CTPersistanceTableProtocol>
 
 /**

@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "CTPersistanceRecord.h"
 
+/**
+ *  category to transform items to object
+ */
 @interface NSArray (CTPersistanceRecordTransform)
 
 /**

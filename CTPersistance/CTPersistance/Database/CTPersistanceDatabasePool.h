@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "CTPersistanceDataBase.h"
 
+/**
+ *  the database pool in CTPersistance
+ *
+ *  you should never create this object on your own
+ */
 @interface CTPersistanceDatabasePool : NSObject
 
 /**
