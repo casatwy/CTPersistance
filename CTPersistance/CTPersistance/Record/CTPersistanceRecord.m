@@ -69,11 +69,11 @@
             if ([record respondsToSelector:NSSelectorFromString(key)]) {
                 id recordValue = [record valueForKey:key];
                 if (shouldOverride) {
-                    [self setValue:recordValue forKey:key];
+                    [self setPersistanceValue:recordValue forKey:key];
                 } else {
                     id selfValue = [self valueForKey:key];
                     if (selfValue == nil) {
-                        [self setValue:recordValue forKey:key];
+                        [self setPersistanceValue:recordValue forKey:key];
                     }
                 }
             }

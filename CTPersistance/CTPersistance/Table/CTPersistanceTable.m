@@ -25,7 +25,7 @@
 {
     self = [super init];
     if (self && [self conformsToProtocol:@protocol(CTPersistanceTableProtocol)]) {
-        self.child = (id<CTPersistanceTableProtocol>)self;
+        self.child = (CTPersistanceTable <CTPersistanceTableProtocol> *)self;
     } else {
         NSException *exception = [NSException exceptionWithName:@"CTPersistanceTable init error" reason:@"the child class must conforms to protocol: <CTPersistanceTableProtocol>" userInfo:nil];
         @throw exception;
