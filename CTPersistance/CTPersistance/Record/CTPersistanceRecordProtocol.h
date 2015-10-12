@@ -25,8 +25,7 @@
 /**
  *  transform record into dictionary based with column infomation and table name
  *
- *  @param columnInfo the column infomation of table
- *  @param tableName  the name of table
+ *  @param table   the instance of CTPersistanceTable
  *
  *  @return return the dicitonary of record data.
  */

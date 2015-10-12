@@ -22,7 +22,7 @@
  *  @param error      error if fails
  *
  *  @return return YES if success
- 
+ *
  *  @warning if the record list is nil or empty, this method will return YES and error is nil.
  */
 - (BOOL)insertRecordList:(NSArray <NSObject <CTPersistanceRecordProtocol> *> *)recordList error:(NSError **)error;
