@@ -63,9 +63,9 @@
  *
  *  @param error error if fails
  *
- *  @return return last insert row id
+ *  @return return execute result
  */
-- (NSNumber *)executeWithError:(NSError **)error;
+- (BOOL)executeWithError:(NSError **)error;
 
 /**
  *  fetch data with sqlString

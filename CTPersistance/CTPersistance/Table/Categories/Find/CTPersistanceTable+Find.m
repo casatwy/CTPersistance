@@ -11,6 +11,7 @@
 #import "CTPersistanceQueryCommand+ReadMethods.h"
 #import "NSArray+CTPersistanceRecordTransform.h"
 #import <UIKit/UIKit.h>
+#import "CTPersistanceConfiguration.h"
 
 @implementation CTPersistanceTable (Find)
 
@@ -103,6 +104,16 @@
 - (NSObject <CTPersistanceRecordProtocol> *)findWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error
 {
     NSString *primaryKeyName = [self.child primaryKeyName];
+    
+    if (primaryKeyName == nil || primaryKeyValue == nil) {
+        if (error) {
+            *error = [NSError errorWithDomain:kCTPersistanceErrorDomain
+                                         code:CTPersistanceErrorCodeQueryStringError
+                                     userInfo:@{NSLocalizedDescriptionKey:@"primaryKeyValue or primaryKeyValue is nil"}];
+        }
+        return nil;
+    }
+    
     CTPersistanceCriteria *criteria = [[CTPersistanceCriteria alloc] init];
     criteria.whereCondition = @":primaryKeyName = :primaryKeyValue";
     criteria.whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyName, primaryKeyValue);

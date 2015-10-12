@@ -30,13 +30,16 @@ typedef NS_ENUM(NSUInteger, CTPersistanceErrorCode){
      */
     CTPersistanceErrorCodeQueryStringError,
     /**
-     *  there is no change for INSERT or UPDATE
+     *  record is not available to INSERT
      */
-    CTPersistanceErrorCodeQueryStringNoChanges,
+    CTPersistanceErrorCodeRecordNotAvailableToInsert,
+    /**
+     *  record is not available to UPDATE
+     */
+    CTPersistanceErrorCodeRecordNotAvailableToUpdate,
 };
 
-static NSString * kCTPersistanceErrorUserinfoKeyExecutedSQL = @"Executed SQL: ";
-static NSString * kCTPersistanceErrorUserinfoKeyDescription = @"Description: ";
+static NSString * kCTPersistanceErrorUserinfoKeyErrorRecord = @"kCTPersistanceErrorUserinfoKeyErrorRecord";
 
 static NSString * kCTPersistanceVersionTableName = @"kCTPersistanceVersionTableName";
 static NSString * kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";

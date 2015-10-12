@@ -22,8 +22,9 @@
     TestRecord *record = [[TestRecord alloc] init];
     record.age = @(1);
     record.name = @"1";
-    record = (TestRecord *)[table insertRecord:record error:&error];
-    if ([record.primaryKey integerValue] > 0 || error != nil) {
+    record.tomas = @"1";
+    [table insertRecord:record error:&error];
+    if ([record.primaryKey integerValue] > 0) {
         NSLog(@"1001 success");
     } else {
         NSException *exception = [[NSException alloc] init];
@@ -33,8 +34,8 @@
     /* test 1002 */
     error = nil;
     record = [[TestRecord alloc] init];
-    record = (TestRecord *)[table insertRecord:record error:&error];
-    if ([record.primaryKey integerValue] > 0 || error != nil) {
+    [table insertRecord:record error:&error];
+    if (error) {
         NSLog(@"1002 success");
     } else {
         NSException *exception = [[NSException alloc] init];
@@ -43,8 +44,8 @@
     
     /* test 1003 */
     error = nil;
-    record = (TestRecord *)[table insertRecord:nil error:&error];
-    if ([record.primaryKey integerValue] > 0 || error != nil) {
+    [table insertRecord:nil error:&error];
+    if (error) {
         NSException *exception = [[NSException alloc] init];
         @throw exception;
     } else {
@@ -59,10 +60,11 @@
         record = [[TestRecord alloc] init];
         record.age = @(count);
         record.name = [NSString stringWithFormat:@"%ld", count];
+        record.tomas = record.name;
         [recordList addObject:record];
     }
-    NSNumber *lastInsertRowId = [table insertRecordList:recordList error:&error];
-    if ([lastInsertRowId integerValue] > 0 || error != nil) {
+    [table insertRecordList:recordList error:&error];
+    if (error == nil) {
         NSLog(@"1004 success");
     } else {
         NSException *exception = [[NSException alloc] init];
@@ -71,12 +73,24 @@
     
     /* test 1005 */
     error = nil;
-    lastInsertRowId = [table insertRecordList:nil error:&error];
-    if ([lastInsertRowId integerValue] > 0 || error != nil) {
+    [table insertRecordList:nil error:&error];
+    if (error) {
         NSException *exception = [[NSException alloc] init];
         @throw exception;
     } else {
         NSLog(@"1005 success");
+    }
+    
+    /* test 1006 */
+    record = [[TestRecord alloc] init];
+    record.age = @(1);
+    record.name = @"1";
+    [table insertRecord:record error:&error];
+    if (error != nil) {
+        NSLog(@"1006 success");
+    } else {
+        NSException *exception = [[NSException alloc] init];
+        @throw exception;
     }
 }
 

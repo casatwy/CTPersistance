@@ -14,21 +14,33 @@
 /**
  *  insert a list of record
  *
+ *  the record failed to insert will be included into error's userinfo, which key is kCTPersistanceErrorUserinfoKeyErrorRecord
+ *
+ *  if the record list is nil or empty, this method will return YES and error is nil.
+ *
  *  @param recordList the list of record to insert
  *  @param error      error if fails
  *
- *  @return return the last insert row primary key
+ *  @return return YES if success
+ 
+ *  @warning if the record list is nil or empty, this method will return YES and error is nil.
  */
-- (NSNumber *)insertRecordList:(NSArray <NSObject <CTPersistanceRecordProtocol> *> *)recordList error:(NSError **)error;
+- (BOOL)insertRecordList:(NSArray <NSObject <CTPersistanceRecordProtocol> *> *)recordList error:(NSError **)error;
 
 /**
  *  insert a record
  *
+ *  the record failed to insert will be included into error's userinfo, which key is kCTPersistanceErrorUserinfoKeyErrorRecord
+ *
+ *  if the record to insert is nil, this method will return YES and error is nil.
+ *
  *  @param record the record to insert
  *  @param error  error if fails
  *
- *  @return return the primary key
+ *  @return return YES if success
+ *
+ *  @warning if the record is nil or empty, this method will return YES and error is nil.
  */
-- (NSObject <CTPersistanceRecordProtocol> *)insertRecord:(NSObject <CTPersistanceRecordProtocol> *)record error:(NSError **)error;
+- (BOOL)insertRecord:(NSObject <CTPersistanceRecordProtocol> *)record error:(NSError **)error;
 
 @end

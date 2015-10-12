@@ -22,7 +22,8 @@
     TestRecord *record = [[TestRecord alloc] init];
     record.age = @(1024);
     record.name = @"casa";
-    record = (TestRecord *)[table insertRecord:record error:&error];
+    record.tomas = @"casa";
+    [table insertRecord:record error:&error];
     error = nil;
     record.age = @(2048);
     [table updateRecord:record error:&error];
@@ -41,6 +42,16 @@
     NSString *primaryKey = [table primaryKeyName];
     NSDictionary *whereConditionParams = NSDictionaryOfVariableBindings(primaryKey);
     [table updateKeyValueList:keyvalueList whereCondition:whereCondition whereConditionParams:whereConditionParams error:&error];
+    
+    /* test 3003 */
+    error = nil;
+    record = (TestRecord *)[table findWithPrimaryKey:nil error:&error];
+    if (error) {
+        NSLog(@"3001 success");
+    } else {
+        NSException *exception = [[NSException alloc] init];
+        @throw exception;
+    }
 }
 
 @end

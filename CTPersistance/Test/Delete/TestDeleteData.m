@@ -39,6 +39,7 @@
     
     while (count --> 0) {
         record = [[TestRecord alloc] init];
+        record.tomas = @"1";
         [table insertRecord:record error:&error];
         [primaryKeyList addObject:[record.primaryKey copy]];
     }

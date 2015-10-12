@@ -13,7 +13,7 @@
 		4A7A7F641BCBD92400A480C7 /* TestCaseRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F5C1BCBD92400A480C7 /* TestCaseRecord.m */; settings = {ASSET_TAGS = (); }; };
 		4A7A7F651BCBD92400A480C7 /* TestUpdateData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F601BCBD92400A480C7 /* TestUpdateData.m */; settings = {ASSET_TAGS = (); }; };
 		4A7A7F681BCBD94700A480C7 /* TestCaseTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F671BCBD94700A480C7 /* TestCaseTransaction.m */; settings = {ASSET_TAGS = (); }; };
-		4A7A7F6C1BCBDB2800A480C7 /* CTPersistanceTable+Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F6B1BCBDB2800A480C7 /* CTPersistanceTable+Transaction.m */; settings = {ASSET_TAGS = (); }; };
+		4A7A7F741BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F731BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.m */; settings = {ASSET_TAGS = (); }; };
 		4A925B991BC2DFC500CC3244 /* CTPersistanceTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925B981BC2DFC500CC3244 /* CTPersistanceTable.m */; settings = {ASSET_TAGS = (); }; };
 		4A925BA51BC2EDB500CC3244 /* CTPersistanceTable+Delete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BA41BC2EDB500CC3244 /* CTPersistanceTable+Delete.m */; settings = {ASSET_TAGS = (); }; };
 		4A925BA81BC2EDC300CC3244 /* CTPersistanceTable+Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BA71BC2EDC300CC3244 /* CTPersistanceTable+Find.m */; settings = {ASSET_TAGS = (); }; };
@@ -56,8 +56,8 @@
 		4A7A7F601BCBD92400A480C7 /* TestUpdateData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUpdateData.m; sourceTree = "<group>"; };
 		4A7A7F661BCBD94700A480C7 /* TestCaseTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCaseTransaction.h; sourceTree = "<group>"; };
 		4A7A7F671BCBD94700A480C7 /* TestCaseTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCaseTransaction.m; sourceTree = "<group>"; };
-		4A7A7F6A1BCBDB2800A480C7 /* CTPersistanceTable+Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceTable+Transaction.h"; sourceTree = "<group>"; };
-		4A7A7F6B1BCBDB2800A480C7 /* CTPersistanceTable+Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceTable+Transaction.m"; sourceTree = "<group>"; };
+		4A7A7F721BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceQueryCommand+Status.h"; sourceTree = "<group>"; };
+		4A7A7F731BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceQueryCommand+Status.m"; sourceTree = "<group>"; };
 		4A925B911BC2AD1A00CC3244 /* CTPersistanceMarcos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPersistanceMarcos.h; sourceTree = "<group>"; };
 		4A925B971BC2DFC500CC3244 /* CTPersistanceTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceTable.h; sourceTree = "<group>"; };
 		4A925B981BC2DFC500CC3244 /* CTPersistanceTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTable.m; sourceTree = "<group>"; };
@@ -183,13 +183,13 @@
 			path = Update;
 			sourceTree = "<group>";
 		};
-		4A7A7F691BCBDAFF00A480C7 /* Transaction */ = {
+		4A7A7F711BCC047E00A480C7 /* StatusMethods */ = {
 			isa = PBXGroup;
 			children = (
-				4A7A7F6A1BCBDB2800A480C7 /* CTPersistanceTable+Transaction.h */,
-				4A7A7F6B1BCBDB2800A480C7 /* CTPersistanceTable+Transaction.m */,
+				4A7A7F721BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.h */,
+				4A7A7F731BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.m */,
 			);
-			path = Transaction;
+			path = StatusMethods;
 			sourceTree = "<group>";
 		};
 		4A925B871BC295C600CC3244 /* Categories */ = {
@@ -223,7 +223,6 @@
 		4A925B9E1BC2ED3A00CC3244 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				4A7A7F691BCBDAFF00A480C7 /* Transaction */,
 				4A925B9F1BC2ED5F00CC3244 /* Delete */,
 				4A925BA01BC2ED5F00CC3244 /* Find */,
 				4A925BA11BC2ED5F00CC3244 /* Insert */,
@@ -508,6 +507,7 @@
 		4AF066391BC27F8B0042288C /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				4A7A7F711BCC047E00A480C7 /* StatusMethods */,
 				4AF066491BC2821B0042288C /* SchemaManipulations */,
 				4AF0663D1BC2819D0042288C /* DataManipulations */,
 				4AF0663E1BC2819D0042288C /* ReadingMethods */,
@@ -634,9 +634,9 @@
 				4A925BC21BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.m in Sources */,
 				4AF066381BC276C40042288C /* CTPersistanceQueryCommand.m in Sources */,
 				4A925BB91BC39CCD00CC3244 /* CTPersistanceCriteria.m in Sources */,
-				4A7A7F6C1BCBDB2800A480C7 /* CTPersistanceTable+Transaction.m in Sources */,
 				4AF0664C1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */,
 				4A925BCA1BC3E83D00CC3244 /* TestRecord.m in Sources */,
+				4A7A7F741BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.m in Sources */,
 				4A9E4FE31BC4C3F60009E111 /* NSString+ReqularExpression.m in Sources */,
 				4A9E4FF41BC4CFA00009E111 /* CTPersistanceVersionRecord.m in Sources */,
 				4A7A7F611BCBD92400A480C7 /* TestDeleteData.m in Sources */,

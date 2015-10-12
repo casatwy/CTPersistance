@@ -40,18 +40,16 @@
                                      SQLITE_OPEN_SHAREDCACHE,
                                      NULL);
 
-        if (result != SQLITE_OK) {
-            if (error) {
-                CTPersistanceErrorCode errorCode = CTPersistanceErrorCodeOpenError;
-                NSString *sqliteErrorString = [NSString stringWithCString:sqlite3_errmsg(self.database) encoding:NSUTF8StringEncoding];
-                NSString *errorString = [NSString stringWithFormat:@"open database at %@ failed with error:\n %@", self.databaseFilePath, sqliteErrorString];
-                if (isFileExists == NO) {
-                    errorCode = CTPersistanceErrorCodeCreateError;
-                    errorString = [NSString stringWithFormat:@"create database at %@ failed with error:\n %@", self.databaseFilePath, [NSString stringWithCString:sqlite3_errmsg(self.database) encoding:NSUTF8StringEncoding]];
-                }
-                
-                *error = [NSError errorWithDomain:kCTPersistanceErrorDomain code:errorCode userInfo:@{NSLocalizedDescriptionKey:errorString}];
+        if (result != SQLITE_OK && error) {
+            CTPersistanceErrorCode errorCode = CTPersistanceErrorCodeOpenError;
+            NSString *sqliteErrorString = [NSString stringWithCString:sqlite3_errmsg(self.database) encoding:NSUTF8StringEncoding];
+            NSString *errorString = [NSString stringWithFormat:@"open database at %@ failed with error:\n %@", self.databaseFilePath, sqliteErrorString];
+            if (isFileExists == NO) {
+                errorCode = CTPersistanceErrorCodeCreateError;
+                errorString = [NSString stringWithFormat:@"create database at %@ failed with error:\n %@", self.databaseFilePath, [NSString stringWithCString:sqlite3_errmsg(self.database) encoding:NSUTF8StringEncoding]];
             }
+            
+            *error = [NSError errorWithDomain:kCTPersistanceErrorDomain code:errorCode userInfo:@{NSLocalizedDescriptionKey:errorString}];
             return nil;
         }
         
