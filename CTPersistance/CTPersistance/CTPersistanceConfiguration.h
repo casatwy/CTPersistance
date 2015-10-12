@@ -29,7 +29,14 @@ typedef NS_ENUM(NSUInteger, CTPersistanceErrorCode){
      *  failed to execute SQL
      */
     CTPersistanceErrorCodeQueryStringError,
+    /**
+     *  there is no change for INSERT or UPDATE
+     */
+    CTPersistanceErrorCodeQueryStringNoChanges,
 };
+
+static NSString * kCTPersistanceErrorUserinfoKeyExecutedSQL = @"Executed SQL: ";
+static NSString * kCTPersistanceErrorUserinfoKeyDescription = @"Description: ";
 
 static NSString * kCTPersistanceVersionTableName = @"kCTPersistanceVersionTableName";
 static NSString * kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";

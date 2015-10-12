@@ -26,6 +26,7 @@
 #import "CTPersistanceTable+Delete.h"
 #import "CTPersistanceTable+Insert.h"
 #import "CTPersistanceTable+Update.h"
+#import "CTPersistanceTable+Transaction.h"
 
 #import "CTPersistanceQueryCommand.h"
 #import "CTPersistanceQueryCommand+ReadMethods.h"

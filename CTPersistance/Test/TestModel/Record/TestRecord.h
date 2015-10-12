@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSNumber *primaryKey;
 @property (nonatomic, strong) NSNumber *age;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *tomas;
 
 @end

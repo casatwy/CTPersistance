@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A2D96891BC6A80F0038CC7D /* TestCaseRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2D96881BC6A80F0038CC7D /* TestCaseRecord.m */; settings = {ASSET_TAGS = (); }; };
+		4A7A7F611BCBD92400A480C7 /* TestDeleteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F531BCBD92400A480C7 /* TestDeleteData.m */; settings = {ASSET_TAGS = (); }; };
+		4A7A7F621BCBD92400A480C7 /* TestFetchData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F561BCBD92400A480C7 /* TestFetchData.m */; settings = {ASSET_TAGS = (); }; };
+		4A7A7F631BCBD92400A480C7 /* TestInsertData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F591BCBD92400A480C7 /* TestInsertData.m */; settings = {ASSET_TAGS = (); }; };
+		4A7A7F641BCBD92400A480C7 /* TestCaseRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F5C1BCBD92400A480C7 /* TestCaseRecord.m */; settings = {ASSET_TAGS = (); }; };
+		4A7A7F651BCBD92400A480C7 /* TestUpdateData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F601BCBD92400A480C7 /* TestUpdateData.m */; settings = {ASSET_TAGS = (); }; };
+		4A7A7F681BCBD94700A480C7 /* TestCaseTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F671BCBD94700A480C7 /* TestCaseTransaction.m */; settings = {ASSET_TAGS = (); }; };
+		4A7A7F6C1BCBDB2800A480C7 /* CTPersistanceTable+Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F6B1BCBDB2800A480C7 /* CTPersistanceTable+Transaction.m */; settings = {ASSET_TAGS = (); }; };
 		4A925B991BC2DFC500CC3244 /* CTPersistanceTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925B981BC2DFC500CC3244 /* CTPersistanceTable.m */; settings = {ASSET_TAGS = (); }; };
 		4A925BA51BC2EDB500CC3244 /* CTPersistanceTable+Delete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BA41BC2EDB500CC3244 /* CTPersistanceTable+Delete.m */; settings = {ASSET_TAGS = (); }; };
 		4A925BA81BC2EDC300CC3244 /* CTPersistanceTable+Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BA71BC2EDC300CC3244 /* CTPersistanceTable+Find.m */; settings = {ASSET_TAGS = (); }; };
@@ -19,10 +25,6 @@
 		4A925BC21BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BC11BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.m */; settings = {ASSET_TAGS = (); }; };
 		4A925BCA1BC3E83D00CC3244 /* TestRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BC61BC3E83D00CC3244 /* TestRecord.m */; settings = {ASSET_TAGS = (); }; };
 		4A925BCB1BC3E83D00CC3244 /* TestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BC91BC3E83D00CC3244 /* TestTable.m */; settings = {ASSET_TAGS = (); }; };
-		4A925BCE1BC3E85500CC3244 /* TestInsertData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BCD1BC3E85500CC3244 /* TestInsertData.m */; settings = {ASSET_TAGS = (); }; };
-		4A925BD11BC3E86800CC3244 /* TestUpdateData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BD01BC3E86800CC3244 /* TestUpdateData.m */; settings = {ASSET_TAGS = (); }; };
-		4A925BD41BC3E87600CC3244 /* TestFetchData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BD31BC3E87600CC3244 /* TestFetchData.m */; settings = {ASSET_TAGS = (); }; };
-		4A925BD71BC3E88C00CC3244 /* TestDeleteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BD61BC3E88C00CC3244 /* TestDeleteData.m */; settings = {ASSET_TAGS = (); }; };
 		4A9E4FE31BC4C3F60009E111 /* NSString+ReqularExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E4FE21BC4C3F60009E111 /* NSString+ReqularExpression.m */; settings = {ASSET_TAGS = (); }; };
 		4A9E4FE51BC4C76D0009E111 /* CTPersistanceConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A9E4FE41BC4C76D0009E111 /* CTPersistanceConfiguration.plist */; settings = {ASSET_TAGS = (); }; };
 		4A9E4FE91BC4CCB90009E111 /* TestMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E4FE81BC4CCB90009E111 /* TestMigrator.m */; settings = {ASSET_TAGS = (); }; };
@@ -42,8 +44,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4A2D96871BC6A80F0038CC7D /* TestCaseRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCaseRecord.h; sourceTree = "<group>"; };
-		4A2D96881BC6A80F0038CC7D /* TestCaseRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCaseRecord.m; sourceTree = "<group>"; };
+		4A7A7F521BCBD92400A480C7 /* TestDeleteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDeleteData.h; sourceTree = "<group>"; };
+		4A7A7F531BCBD92400A480C7 /* TestDeleteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDeleteData.m; sourceTree = "<group>"; };
+		4A7A7F551BCBD92400A480C7 /* TestFetchData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFetchData.h; sourceTree = "<group>"; };
+		4A7A7F561BCBD92400A480C7 /* TestFetchData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFetchData.m; sourceTree = "<group>"; };
+		4A7A7F581BCBD92400A480C7 /* TestInsertData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestInsertData.h; sourceTree = "<group>"; };
+		4A7A7F591BCBD92400A480C7 /* TestInsertData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestInsertData.m; sourceTree = "<group>"; };
+		4A7A7F5B1BCBD92400A480C7 /* TestCaseRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCaseRecord.h; sourceTree = "<group>"; };
+		4A7A7F5C1BCBD92400A480C7 /* TestCaseRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCaseRecord.m; sourceTree = "<group>"; };
+		4A7A7F5F1BCBD92400A480C7 /* TestUpdateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUpdateData.h; sourceTree = "<group>"; };
+		4A7A7F601BCBD92400A480C7 /* TestUpdateData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUpdateData.m; sourceTree = "<group>"; };
+		4A7A7F661BCBD94700A480C7 /* TestCaseTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCaseTransaction.h; sourceTree = "<group>"; };
+		4A7A7F671BCBD94700A480C7 /* TestCaseTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCaseTransaction.m; sourceTree = "<group>"; };
+		4A7A7F6A1BCBDB2800A480C7 /* CTPersistanceTable+Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceTable+Transaction.h"; sourceTree = "<group>"; };
+		4A7A7F6B1BCBDB2800A480C7 /* CTPersistanceTable+Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceTable+Transaction.m"; sourceTree = "<group>"; };
 		4A925B911BC2AD1A00CC3244 /* CTPersistanceMarcos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPersistanceMarcos.h; sourceTree = "<group>"; };
 		4A925B971BC2DFC500CC3244 /* CTPersistanceTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceTable.h; sourceTree = "<group>"; };
 		4A925B981BC2DFC500CC3244 /* CTPersistanceTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTable.m; sourceTree = "<group>"; };
@@ -67,14 +81,6 @@
 		4A925BC61BC3E83D00CC3244 /* TestRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecord.m; sourceTree = "<group>"; };
 		4A925BC81BC3E83D00CC3244 /* TestTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTable.h; sourceTree = "<group>"; };
 		4A925BC91BC3E83D00CC3244 /* TestTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTable.m; sourceTree = "<group>"; };
-		4A925BCC1BC3E85500CC3244 /* TestInsertData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestInsertData.h; sourceTree = "<group>"; };
-		4A925BCD1BC3E85500CC3244 /* TestInsertData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestInsertData.m; sourceTree = "<group>"; };
-		4A925BCF1BC3E86800CC3244 /* TestUpdateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUpdateData.h; sourceTree = "<group>"; };
-		4A925BD01BC3E86800CC3244 /* TestUpdateData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUpdateData.m; sourceTree = "<group>"; };
-		4A925BD21BC3E87600CC3244 /* TestFetchData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFetchData.h; sourceTree = "<group>"; };
-		4A925BD31BC3E87600CC3244 /* TestFetchData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFetchData.m; sourceTree = "<group>"; };
-		4A925BD51BC3E88C00CC3244 /* TestDeleteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDeleteData.h; sourceTree = "<group>"; };
-		4A925BD61BC3E88C00CC3244 /* TestDeleteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDeleteData.m; sourceTree = "<group>"; };
 		4A925BD81BC4016A00CC3244 /* CTPersistanceRecordProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPersistanceRecordProtocol.h; sourceTree = "<group>"; };
 		4A9E4FE11BC4C3F60009E111 /* NSString+ReqularExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ReqularExpression.h"; sourceTree = "<group>"; };
 		4A9E4FE21BC4C3F60009E111 /* NSString+ReqularExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ReqularExpression.m"; sourceTree = "<group>"; };
@@ -123,6 +129,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A7A7F511BCBD92400A480C7 /* Delete */ = {
+			isa = PBXGroup;
+			children = (
+				4A7A7F521BCBD92400A480C7 /* TestDeleteData.h */,
+				4A7A7F531BCBD92400A480C7 /* TestDeleteData.m */,
+			);
+			path = Delete;
+			sourceTree = "<group>";
+		};
+		4A7A7F541BCBD92400A480C7 /* Fetch */ = {
+			isa = PBXGroup;
+			children = (
+				4A7A7F551BCBD92400A480C7 /* TestFetchData.h */,
+				4A7A7F561BCBD92400A480C7 /* TestFetchData.m */,
+			);
+			path = Fetch;
+			sourceTree = "<group>";
+		};
+		4A7A7F571BCBD92400A480C7 /* Insert */ = {
+			isa = PBXGroup;
+			children = (
+				4A7A7F581BCBD92400A480C7 /* TestInsertData.h */,
+				4A7A7F591BCBD92400A480C7 /* TestInsertData.m */,
+			);
+			path = Insert;
+			sourceTree = "<group>";
+		};
+		4A7A7F5A1BCBD92400A480C7 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				4A7A7F5B1BCBD92400A480C7 /* TestCaseRecord.h */,
+				4A7A7F5C1BCBD92400A480C7 /* TestCaseRecord.m */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		4A7A7F5D1BCBD92400A480C7 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				4A7A7F661BCBD94700A480C7 /* TestCaseTransaction.h */,
+				4A7A7F671BCBD94700A480C7 /* TestCaseTransaction.m */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		4A7A7F5E1BCBD92400A480C7 /* Update */ = {
+			isa = PBXGroup;
+			children = (
+				4A7A7F5F1BCBD92400A480C7 /* TestUpdateData.h */,
+				4A7A7F601BCBD92400A480C7 /* TestUpdateData.m */,
+			);
+			path = Update;
+			sourceTree = "<group>";
+		};
+		4A7A7F691BCBDAFF00A480C7 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				4A7A7F6A1BCBDB2800A480C7 /* CTPersistanceTable+Transaction.h */,
+				4A7A7F6B1BCBDB2800A480C7 /* CTPersistanceTable+Transaction.m */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
 		4A925B871BC295C600CC3244 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +223,7 @@
 		4A925B9E1BC2ED3A00CC3244 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				4A7A7F691BCBDAFF00A480C7 /* Transaction */,
 				4A925B9F1BC2ED5F00CC3244 /* Delete */,
 				4A925BA01BC2ED5F00CC3244 /* Find */,
 				4A925BA11BC2ED5F00CC3244 /* Insert */,
@@ -415,16 +485,12 @@
 			isa = PBXGroup;
 			children = (
 				4A925BC31BC3E83D00CC3244 /* TestModel */,
-				4A925BCC1BC3E85500CC3244 /* TestInsertData.h */,
-				4A925BCD1BC3E85500CC3244 /* TestInsertData.m */,
-				4A925BCF1BC3E86800CC3244 /* TestUpdateData.h */,
-				4A925BD01BC3E86800CC3244 /* TestUpdateData.m */,
-				4A925BD21BC3E87600CC3244 /* TestFetchData.h */,
-				4A925BD31BC3E87600CC3244 /* TestFetchData.m */,
-				4A925BD51BC3E88C00CC3244 /* TestDeleteData.h */,
-				4A925BD61BC3E88C00CC3244 /* TestDeleteData.m */,
-				4A2D96871BC6A80F0038CC7D /* TestCaseRecord.h */,
-				4A2D96881BC6A80F0038CC7D /* TestCaseRecord.m */,
+				4A7A7F5E1BCBD92400A480C7 /* Update */,
+				4A7A7F511BCBD92400A480C7 /* Delete */,
+				4A7A7F541BCBD92400A480C7 /* Fetch */,
+				4A7A7F571BCBD92400A480C7 /* Insert */,
+				4A7A7F5A1BCBD92400A480C7 /* Record */,
+				4A7A7F5D1BCBD92400A480C7 /* Transaction */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -549,30 +615,32 @@
 				4AF066421BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.m in Sources */,
 				4A9E4FF11BC4CF770009E111 /* CTPersistanceVersionTable.m in Sources */,
 				4A925BA51BC2EDB500CC3244 /* CTPersistanceTable+Delete.m in Sources */,
-				4A925BCE1BC3E85500CC3244 /* TestInsertData.m in Sources */,
 				4A925BB51BC38F5000CC3244 /* CTPersistanceRecord.m in Sources */,
-				4A925BD41BC3E87600CC3244 /* TestFetchData.m in Sources */,
 				4A925B991BC2DFC500CC3244 /* CTPersistanceTable.m in Sources */,
 				4A925BAB1BC2EDCE00CC3244 /* CTPersistanceTable+Insert.m in Sources */,
 				4AF066281BC217280042288C /* CTPersistanceDatabasePool.m in Sources */,
 				4A9E4FE91BC4CCB90009E111 /* TestMigrator.m in Sources */,
-				4A925BD11BC3E86800CC3244 /* TestUpdateData.m in Sources */,
 				4AD2D65C1BBFCD5E00E1F37D /* main.m in Sources */,
 				4A925BA81BC2EDC300CC3244 /* CTPersistanceTable+Find.m in Sources */,
+				4A7A7F621BCBD92400A480C7 /* TestFetchData.m in Sources */,
+				4A7A7F641BCBD92400A480C7 /* TestCaseRecord.m in Sources */,
 				4A925BBD1BC3A0C500CC3244 /* NSString+SQL.m in Sources */,
-				4A925BD71BC3E88C00CC3244 /* TestDeleteData.m in Sources */,
 				4A9E50001BC4DA980009E111 /* MigrationStep2_0.m in Sources */,
 				4A925BCB1BC3E83D00CC3244 /* TestTable.m in Sources */,
 				4AF066271BC217280042288C /* CTPersistanceDataBase.m in Sources */,
+				4A7A7F651BCBD92400A480C7 /* TestUpdateData.m in Sources */,
 				4AF066291BC217280042288C /* CTPersistanceMigrator.m in Sources */,
+				4A7A7F631BCBD92400A480C7 /* TestInsertData.m in Sources */,
 				4A925BC21BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.m in Sources */,
-				4A2D96891BC6A80F0038CC7D /* TestCaseRecord.m in Sources */,
 				4AF066381BC276C40042288C /* CTPersistanceQueryCommand.m in Sources */,
 				4A925BB91BC39CCD00CC3244 /* CTPersistanceCriteria.m in Sources */,
+				4A7A7F6C1BCBDB2800A480C7 /* CTPersistanceTable+Transaction.m in Sources */,
 				4AF0664C1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */,
 				4A925BCA1BC3E83D00CC3244 /* TestRecord.m in Sources */,
 				4A9E4FE31BC4C3F60009E111 /* NSString+ReqularExpression.m in Sources */,
 				4A9E4FF41BC4CFA00009E111 /* CTPersistanceVersionRecord.m in Sources */,
+				4A7A7F611BCBD92400A480C7 /* TestDeleteData.m in Sources */,
+				4A7A7F681BCBD94700A480C7 /* TestCaseTransaction.m in Sources */,
 				4A925BAE1BC2EDDA00CC3244 /* CTPersistanceTable+Update.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -59,6 +59,11 @@
 
 - (NSNumber *)executeWithError:(NSError *__autoreleasing *)error
 {
+    BOOL isInsertOrUpdate = NO;
+    if ([self.sqlString containsString:@"INSERT"] || [self.sqlString containsString:@"UPDATE"]) {
+        isInsertOrUpdate = YES;
+    }
+    
     sqlite3_stmt *statement;
     const char *query = [[NSString stringWithFormat:@"%@;", self.sqlString] UTF8String];
     NSLog(@"\n\n\n\n\n=========================\n\nCTPersistance SQL String is:\n%@\n\n=========================\n\n\n\n\n", [NSString stringWithCString:query encoding:NSUTF8StringEncoding]);
@@ -69,6 +74,15 @@
         *error = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", self.sqlString, [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]]}];
     }
     sqlite3_finalize(statement);
+    
+    if (isInsertOrUpdate && sqlite3_changes(self.database.database)) {
+        *error = [NSError errorWithDomain:kCTPersistanceErrorDomain
+                                     code:CTPersistanceErrorCodeQueryStringNoChanges
+                                 userInfo:@{
+                                            NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n\nExecuted SQL is:\n[ %@ ]\n\nthis INSERT/UPDATE SQL makes no change in database\n\n\n\n", self.sqlString],
+                                            }];
+        return nil;
+    }
     
     sqlite3_int64 rowid = sqlite3_last_insert_rowid(self.database.database);
     return @(rowid);

@@ -28,6 +28,7 @@
              @"primaryKey":@"INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL",
              @"name":@"TEXT",
              @"age":@"INTEGER",
+             @"tomas":@"TEXT NOT NULL"
              };
 }
 
