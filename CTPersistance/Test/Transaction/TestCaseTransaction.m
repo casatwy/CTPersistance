@@ -21,7 +21,7 @@
     TestTable *table = [[TestTable alloc] init];
     
     NSMutableArray *recordList = [[NSMutableArray alloc] init];
-    NSInteger count = 5;
+    NSInteger count = 3;
     while (count --> 0) {
         TestRecord *record = [[TestRecord alloc] init];
         record.name = [NSString stringWithFormat:@"%ld", (long)count];
@@ -37,7 +37,7 @@
         [table insertRecord:record error:&error];
         if (record.primaryKey == nil) {
             NSLog(@"error is %@", error);
-            [table transactionRollback];
+//            [table transactionRollback];
             *stop = YES;
         }
     }];

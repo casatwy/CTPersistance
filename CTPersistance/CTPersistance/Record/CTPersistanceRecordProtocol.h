@@ -11,6 +11,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class CTPersistanceTable;
+@protocol CTPersistanceTableProtocol;
+
 /**
  *  CTPersistanceTable will transform the fetched data into an object. The object must confirms to this protocol, that means every object who confirms to this protocol can be the record of CTPersistanceTable
  *
@@ -27,7 +30,7 @@
  *
  *  @return return the dicitonary of record data.
  */
-- (NSDictionary *)dictionaryRepresentationWithColumnInfo:(NSDictionary *)columnInfo tableName:(NSString *)tableName;
+- (NSDictionary *)dictionaryRepresentationWithTable:(CTPersistanceTable <CTPersistanceTableProtocol> *)table;
 
 /**
  *  config your record with dictionary.

@@ -14,7 +14,7 @@
 
 - (void)updateRecord:(NSObject <CTPersistanceRecordProtocol> *)record error:(NSError **)error
 {
-    [self updateKeyValueList:[record dictionaryRepresentationWithColumnInfo:[self.child columnInfo] tableName:[self.child tableName]] primaryKeyValue:[record valueForKey:[self.child primaryKeyName]] error:error];
+    [self updateKeyValueList:[record dictionaryRepresentationWithTable:self.child] primaryKeyValue:[record valueForKey:[self.child primaryKeyName]] error:error];
 }
 
 - (void)updateRecordList:(NSArray <NSObject <CTPersistanceRecordProtocol> *> *)recordList error:(NSError **)error

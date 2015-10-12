@@ -71,16 +71,22 @@
     
     if (sqlite3_step(statement) == SQLITE_ERROR) {
         const char *errorMsg = sqlite3_errmsg(self.database.database);
-        *error = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", self.sqlString, [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]]}];
+        NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", self.sqlString, [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]]}];
+        if (error) {
+            *error = generatedError;
+        }
     }
     sqlite3_finalize(statement);
     
-    if (isInsertOrUpdate && sqlite3_changes(self.database.database)) {
-        *error = [NSError errorWithDomain:kCTPersistanceErrorDomain
+    if (isInsertOrUpdate && sqlite3_changes(self.database.database) ) {
+        NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain
                                      code:CTPersistanceErrorCodeQueryStringNoChanges
                                  userInfo:@{
                                             NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n\nExecuted SQL is:\n[ %@ ]\n\nthis INSERT/UPDATE SQL makes no change in database\n\n\n\n", self.sqlString],
                                             }];
+        if (error) {
+            *error = generatedError;
+        }
         return nil;
     }
     

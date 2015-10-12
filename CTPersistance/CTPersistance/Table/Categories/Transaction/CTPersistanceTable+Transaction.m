@@ -18,7 +18,7 @@
     [self.queryCommand.sqlString appendString:@"BEGIN transaction;"];
     [self.queryCommand executeWithError:&error];
     if (error) {
-        NSLog(@"error");
+        NSLog(@"error is %@", error);
     }
 }
 
@@ -29,7 +29,7 @@
     [self.queryCommand.sqlString appendString:@"COMMIT transaction;"];
     [self.queryCommand executeWithError:&error];
     if (error) {
-        NSLog(@"error");
+        NSLog(@"error is %@", error);
     }
 }
 
@@ -40,7 +40,7 @@
     [self.queryCommand.sqlString appendString:@"ROLLBACK transaction;"];
     [self.queryCommand executeWithError:&error];
     if (error) {
-        NSLog(@"error");
+        NSLog(@"error is %@", error);
     }
 }
 

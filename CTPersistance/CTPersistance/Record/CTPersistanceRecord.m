@@ -9,11 +9,12 @@
 #import "CTPersistanceRecord.h"
 #import "objc/runtime.h"
 #import "NSString+SQL.h"
+#import "CTPersistanceTable.h"
 
 @implementation CTPersistanceRecord
 
 #pragma mark - CTPersistanceRecordProtocol
-- (NSDictionary *)dictionaryRepresentationWithColumnInfo:(NSDictionary *)columnInfo tableName:(NSString *)tableName
+- (NSDictionary *)dictionaryRepresentationWithTable:(CTPersistanceTable<CTPersistanceTableProtocol> *)table
 {
     unsigned int count = 0;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
@@ -31,7 +32,7 @@
     free(properties);
     
     NSMutableDictionary *dictionaryRepresentation = [[NSMutableDictionary alloc] init];
-    [columnInfo enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull columnName, NSString * _Nonnull columnDescription, BOOL * _Nonnull stop) {
+    [table.columnInfo enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull columnName, NSString * _Nonnull columnDescription, BOOL * _Nonnull stop) {
         if (propertyList[columnName]) {
             dictionaryRepresentation[columnName] = propertyList[columnName];
         }
