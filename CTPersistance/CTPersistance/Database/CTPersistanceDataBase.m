@@ -50,6 +50,7 @@
             }
             
             *error = [NSError errorWithDomain:kCTPersistanceErrorDomain code:errorCode userInfo:@{NSLocalizedDescriptionKey:errorString}];
+            [self closeDatabase];
             return nil;
         }
         

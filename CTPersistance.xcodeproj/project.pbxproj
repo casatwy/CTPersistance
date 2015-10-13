@@ -33,6 +33,7 @@
 		4A9E4FFD1BC4DA850009E111 /* MigrationStep1_0.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E4FFB1BC4DA850009E111 /* MigrationStep1_0.m */; settings = {ASSET_TAGS = (); }; };
 		4A9E50001BC4DA980009E111 /* MigrationStep2_0.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E4FFF1BC4DA980009E111 /* MigrationStep2_0.m */; settings = {ASSET_TAGS = (); }; };
 		4AD2D65C1BBFCD5E00E1F37D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD2D65B1BBFCD5E00E1F37D /* main.m */; };
+		4ADCE5BA1BCD462000E54458 /* CTPersistanceTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCE5B91BCD462000E54458 /* CTPersistanceTransaction.m */; settings = {ASSET_TAGS = (); }; };
 		4AF066171BC189A70042288C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF066161BC189A70042288C /* libsqlite3.tbd */; };
 		4AF066271BC217280042288C /* CTPersistanceDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066211BC217280042288C /* CTPersistanceDataBase.m */; settings = {ASSET_TAGS = (); }; };
 		4AF066281BC217280042288C /* CTPersistanceDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066231BC217280042288C /* CTPersistanceDatabasePool.m */; settings = {ASSET_TAGS = (); }; };
@@ -98,6 +99,8 @@
 		4AD2D6571BBFCD5E00E1F37D /* CTPersistance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CTPersistance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD2D65B1BBFCD5E00E1F37D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4AD2D66B1BBFCD5E00E1F37D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4ADCE5B81BCD462000E54458 /* CTPersistanceTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceTransaction.h; sourceTree = "<group>"; };
+		4ADCE5B91BCD462000E54458 /* CTPersistanceTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTransaction.m; sourceTree = "<group>"; };
 		4AF066111BC00D020042288C /* CTPersistance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPersistance.h; sourceTree = "<group>"; };
 		4AF066121BC00E660042288C /* CTPersistanceConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPersistanceConfiguration.h; sourceTree = "<group>"; };
 		4AF066161BC189A70042288C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -445,6 +448,7 @@
 		4AD2D6711BBFCD7200E1F37D /* CTPersistance */ = {
 			isa = PBXGroup;
 			children = (
+				4ADCE5B71BCD460A00E54458 /* Transaction */,
 				4A925B871BC295C600CC3244 /* Categories */,
 				4AF0661F1BC217280042288C /* Database */,
 				4A925B961BC2DFC500CC3244 /* Table */,
@@ -457,6 +461,15 @@
 				4A925B911BC2AD1A00CC3244 /* CTPersistanceMarcos.h */,
 			);
 			path = CTPersistance;
+			sourceTree = "<group>";
+		};
+		4ADCE5B71BCD460A00E54458 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				4ADCE5B81BCD462000E54458 /* CTPersistanceTransaction.h */,
+				4ADCE5B91BCD462000E54458 /* CTPersistanceTransaction.m */,
+			);
+			path = Transaction;
 			sourceTree = "<group>";
 		};
 		4AF0661F1BC217280042288C /* Database */ = {
@@ -615,6 +628,7 @@
 				4AF066421BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.m in Sources */,
 				4A9E4FF11BC4CF770009E111 /* CTPersistanceVersionTable.m in Sources */,
 				4A925BA51BC2EDB500CC3244 /* CTPersistanceTable+Delete.m in Sources */,
+				4ADCE5BA1BCD462000E54458 /* CTPersistanceTransaction.m in Sources */,
 				4A925BB51BC38F5000CC3244 /* CTPersistanceRecord.m in Sources */,
 				4A925B991BC2DFC500CC3244 /* CTPersistanceTable.m in Sources */,
 				4A925BAB1BC2EDCE00CC3244 /* CTPersistanceTable+Insert.m in Sources */,
