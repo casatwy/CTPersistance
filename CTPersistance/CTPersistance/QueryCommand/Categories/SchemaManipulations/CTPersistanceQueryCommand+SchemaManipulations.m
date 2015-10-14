@@ -25,8 +25,8 @@
     NSMutableArray *columnList = [[NSMutableArray alloc] init];
     
     [columnInfo enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull columnName, NSString * _Nonnull columnDescription, BOOL * _Nonnull stop) {
-        NSString *safeColumnName = [columnName safeSQLMetaString];
-        NSString *safeDescription = [columnDescription safeSQLMetaString];
+        NSString *safeColumnName = columnName;
+        NSString *safeDescription = columnDescription;
         
         if (CTPersistance_isEmptyString(safeDescription)) {
             [columnList addObject:[NSString stringWithFormat:@"`%@`", safeColumnName]];
