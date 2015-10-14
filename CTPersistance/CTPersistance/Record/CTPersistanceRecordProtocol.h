@@ -43,8 +43,10 @@
  *
  *  @param value the value in fetched data
  *  @param key   the key in fetched data
+ *
+ *  @return return YES if success.
  */
-- (void)setPersistanceValue:(id)value forKey:(NSString *)key;
+- (BOOL)setPersistanceValue:(id)value forKey:(NSString *)key;
 
 /**
  *  merge record

@@ -37,6 +37,10 @@ typedef NS_ENUM(NSUInteger, CTPersistanceErrorCode){
      *  record is not available to UPDATE
      */
     CTPersistanceErrorCodeRecordNotAvailableToUpdate,
+    /**
+     *  failed to set key for value in record
+     */
+    CTPersistanceErrorCodeFailedToSetKeyForValue,
 };
 
 static NSString * kCTPersistanceErrorUserinfoKeyErrorRecord = @"kCTPersistanceErrorUserinfoKeyErrorRecord";
