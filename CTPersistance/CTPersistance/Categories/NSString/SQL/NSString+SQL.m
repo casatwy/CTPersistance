@@ -27,7 +27,7 @@
 
 - (NSString *)safeSQLMetaString
 {
-    NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@"- \"'`~!@#$%^&*()+=<>,.;:[]{}\\|"];
+    NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@"'`"];
     return [[self componentsSeparatedByCharactersInSet:charSet] componentsJoinedByString:@""];
 }
 
