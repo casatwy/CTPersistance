@@ -38,13 +38,7 @@
         NSString *alterKey = [NSString stringWithFormat:@":%@", key];
         if ([value isKindOfClass:[NSString class]]) {
             value = [value safeSQLEncode];
-            NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@"- \"`~!@#$%^&*()+=<>,.;:[]{}\\|"];
-            NSRange range = [value rangeOfCharacterFromSet:charSet];
-            if (range.location == NSNotFound) {
-                [string replaceOccurrencesOfString:alterKey withString:[NSString stringWithFormat:@"%@", value] options:0 range:NSMakeRange(0, string.length)];
-            } else {
-                [string replaceOccurrencesOfString:alterKey withString:[NSString stringWithFormat:@"'%@'", value] options:0 range:NSMakeRange(0, string.length)];
-            }
+            [string replaceOccurrencesOfString:alterKey withString:[NSString stringWithFormat:@"'%@'", value] options:0 range:NSMakeRange(0, string.length)];
         } else {
             [string replaceOccurrencesOfString:alterKey withString:[NSString stringWithFormat:@"%@", value] options:0 range:NSMakeRange(0, string.length)];
         }
