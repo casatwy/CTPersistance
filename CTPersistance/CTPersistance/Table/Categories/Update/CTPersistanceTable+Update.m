@@ -42,9 +42,8 @@
 - (void)updateValue:(id)value forKey:(NSString *)key primaryKeyValue:(NSNumber *)primaryKeyValue error:(NSError **)error
 {
     if (key && value) {
-        NSString *primaryKeyName = [self.child primaryKeyName];
-        NSString *whereCondition = @":primaryKeyName = :primaryKeyValue";
-        NSDictionary *whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyName, primaryKeyValue);
+        NSString *whereCondition = [NSString stringWithFormat:@"%@ = :primaryKeyValue", [self.child primaryKeyName]];
+        NSDictionary *whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyValue);
         [self updateKeyValueList:@{key:value} whereCondition:whereCondition whereConditionParams:whereConditionParams error:error];
     }
 }
@@ -52,28 +51,25 @@
 - (void)updateValue:(id)value forKey:(NSString *)key primaryKeyValueList:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error
 {
     if (key && value) {
-        NSString *primaryKeyName = [self.child primaryKeyName];
         NSString *primaryKeyValueListString = [primaryKeyValueList componentsJoinedByString:@","];
-        NSString *whereCondition = @":primaryKeyName IN (:primaryKeyValueListString)";
-        NSDictionary *whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyName, primaryKeyValueListString);
+        NSString *whereCondition = [NSString stringWithFormat:@"%@ IN (:primaryKeyValueListString)", [self.child primaryKeyName]];
+        NSDictionary *whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyValueListString);
         [self updateKeyValueList:@{key:value} whereCondition:whereCondition whereConditionParams:whereConditionParams error:error];
     }
 }
 
 - (void)updateKeyValueList:(NSDictionary *)keyValueList primaryKeyValue:(NSNumber *)primaryKeyValue error:(NSError **)error
 {
-    NSString *primaryKeyName = [self.child primaryKeyName];
-    NSString *whereCondition = @":primaryKeyName = :primaryKeyValue";
-    NSDictionary *whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyName, primaryKeyValue);
+    NSString *whereCondition = [NSString stringWithFormat:@"%@ = :primaryKeyValue", [self.child primaryKeyName]];
+    NSDictionary *whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyValue);
     [self updateKeyValueList:keyValueList whereCondition:whereCondition whereConditionParams:whereConditionParams error:error];
 }
 
 - (void)updateKeyValueList:(NSDictionary *)keyValueList primaryKeyValueList:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error
 {
-        NSString *primaryKeyName = [self.child primaryKeyName];
         NSString *primaryKeyValueListString = [primaryKeyValueList componentsJoinedByString:@","];
-        NSString *whereCondition = @":primaryKeyName IN (:primaryKeyValueListString)";
-        NSDictionary *whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyName, primaryKeyValueListString);
+        NSString *whereCondition = [NSString stringWithFormat:@"%@ IN (:primaryKeyValueListString)", [self.child primaryKeyName]];
+        NSDictionary *whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyValueListString);
     [self updateKeyValueList:keyValueList whereCondition:whereCondition whereConditionParams:whereConditionParams error:error];
 }
 

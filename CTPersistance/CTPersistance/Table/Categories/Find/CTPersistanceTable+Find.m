@@ -103,9 +103,7 @@
 
 - (NSObject <CTPersistanceRecordProtocol> *)findWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error
 {
-    NSString *primaryKeyName = [self.child primaryKeyName];
-    
-    if (primaryKeyName == nil || primaryKeyValue == nil) {
+    if (primaryKeyValue == nil) {
         if (error) {
             *error = [NSError errorWithDomain:kCTPersistanceErrorDomain
                                          code:CTPersistanceErrorCodeQueryStringError
@@ -115,18 +113,17 @@
     }
     
     CTPersistanceCriteria *criteria = [[CTPersistanceCriteria alloc] init];
-    criteria.whereCondition = @":primaryKeyName = :primaryKeyValue";
-    criteria.whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyName, primaryKeyValue);
+    criteria.whereCondition = [NSString stringWithFormat:@"%@ = :primaryKeyValue", [self.child primaryKeyName]];
+    criteria.whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyValue);
     return [self findFirstRowWithCriteria:criteria error:error];
 }
 
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithPrimaryKey:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error
 {
-    NSString *primaryKeyName = [self.child primaryKeyName];
     NSString *primaryKeyValueListString = [primaryKeyValueList componentsJoinedByString:@","];
     CTPersistanceCriteria *criteria = [[CTPersistanceCriteria alloc] init];
-    criteria.whereCondition = @":primaryKeyName IN (:primaryKeyValueListString)";
-    criteria.whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyName, primaryKeyValueListString);
+    criteria.whereCondition = [NSString stringWithFormat:@"%@ IN (:primaryKeyValueListString)", [self.child primaryKeyName]];
+    criteria.whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyValueListString);
     return [self findAllWithCriteria:criteria error:error];
 }
 
