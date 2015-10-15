@@ -15,6 +15,7 @@
 #import "CTPersistanceDatabasePool.h"
 #import "CTPersistanceMigrator.h"
 #import "CTPersistanceCriteria.h"
+#import "CTPersistanceTransaction.h"
 
 #import "CTPersistanceDataBase.h"
 

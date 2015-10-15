@@ -52,7 +52,9 @@
 {
     sqlite3_stmt *statement;
     const char *query = [[NSString stringWithFormat:@"%@;", self.sqlString] UTF8String];
+#ifdef DEBUG
     NSLog(@"\n\n\n\n\n=========================\n\nCTPersistance SQL String is:\n%@\n\n=========================\n\n\n\n\n", [NSString stringWithCString:query encoding:NSUTF8StringEncoding]);
+#endif
     sqlite3_prepare_v2(self.database.database, query, -1, &statement, NULL);
     int count = sqlite3_data_count(statement);
     sqlite3_finalize(statement);
@@ -65,7 +67,9 @@
     
     sqlite3_stmt *statement;
     const char *query = [[NSString stringWithFormat:@"%@;", self.sqlString] UTF8String];
+#ifdef DEBUG
     NSLog(@"\n\n\n\n\n=========================\n\nCTPersistance SQL String is:\n%@\n\n=========================\n\n\n\n\n", [NSString stringWithCString:query encoding:NSUTF8StringEncoding]);
+#endif
     sqlite3_prepare_v2(self.database.database, query, -1, &statement, NULL);
     
     if (sqlite3_step(statement) == SQLITE_ERROR && error) {
@@ -84,7 +88,9 @@
     NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
     sqlite3_stmt *statement;
     const char *query = [[NSString stringWithFormat:@"%@;", self.sqlString] UTF8String];
+#ifdef DEBUG
     NSLog(@"\n\n\n\n\n=========================\n\nCTPersistance SQL String is:\n%@\n\n=========================\n\n\n\n\n", [NSString stringWithCString:query encoding:NSUTF8StringEncoding]);
+#endif
     int returnCode = sqlite3_prepare_v2(self.database.database, query, -1, &statement, NULL);
     
     if (returnCode == SQLITE_ERROR && error) {

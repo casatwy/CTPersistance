@@ -12,7 +12,7 @@ Persistence, Persistance, lol.
 
 1. Insert, Delete, Update, Read
 2. support database migration
-3. transaction (future)
+3. transaction
 
 # Prerequisition
 
@@ -226,3 +226,25 @@ the value is the name of the class name of the migrator.
 ### Done!
 
 you can try migration now!
+
+# Quick Try (Transaction)
+
+```
+
+TestTable *testTable = [[TestTable alloc] init];
+[CTPersistanceTransaction performTranscationWithBlock:^(BOOL *shouldRollback) {
+
+        NSUInteger count = 10000;
+        while (count --> 0) {
+            TestRecord *record = [[TestRecord alloc] init];
+            record.age = @(count);
+            record.name = @"casa";
+            record.tomas = @"casa";
+            [testTable insertRecord:record error:NULL];
+        }
+
+        *shouldRollback = NO;
+
+    } queryCommand:testTable.queryCommand lockType:CTPersistanceTransactionLockTypeDefault];
+
+```

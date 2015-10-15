@@ -47,6 +47,10 @@
         [queryCommand resetQueryCommand];
         [queryCommand.sqlString appendString:@"ROLLBACK TRANSACTION"];
         [queryCommand executeWithError:NULL];
+    } else {
+        [queryCommand resetQueryCommand];
+        [queryCommand.sqlString appendString:@"COMMIT TRANSACTION"];
+        [queryCommand executeWithError:NULL];
     }
 }
 
