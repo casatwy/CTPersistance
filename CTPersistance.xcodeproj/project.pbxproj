@@ -41,6 +41,7 @@
 		4AF066421BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066401BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.m */; settings = {ASSET_TAGS = (); }; };
 		4AF066451BC281F00042288C /* CTPersistanceQueryCommand+DataManipulations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066441BC281F00042288C /* CTPersistanceQueryCommand+DataManipulations.m */; settings = {ASSET_TAGS = (); }; };
 		4AF0664C1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0664B1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m */; settings = {ASSET_TAGS = (); }; };
+		4AFEFD0B1BCFE8B900751D82 /* TestCaseWhereCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFEFD0A1BCFE8B900751D82 /* TestCaseWhereCondition.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +116,8 @@
 		4AF066441BC281F00042288C /* CTPersistanceQueryCommand+DataManipulations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceQueryCommand+DataManipulations.m"; sourceTree = "<group>"; };
 		4AF0664A1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceQueryCommand+SchemaManipulations.h"; sourceTree = "<group>"; };
 		4AF0664B1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceQueryCommand+SchemaManipulations.m"; sourceTree = "<group>"; };
+		4AFEFD091BCFE8B900751D82 /* TestCaseWhereCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCaseWhereCondition.h; sourceTree = "<group>"; };
+		4AFEFD0A1BCFE8B900751D82 /* TestCaseWhereCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCaseWhereCondition.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -483,6 +486,7 @@
 		4AF0662E1BC21EF80042288C /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				4AFEFD081BCFE8A300751D82 /* WhereCondition */,
 				4A925BC31BC3E83D00CC3244 /* TestModel */,
 				4A7A7F5E1BCBD92400A480C7 /* Update */,
 				4A7A7F511BCBD92400A480C7 /* Delete */,
@@ -540,6 +544,15 @@
 				4AF0664B1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m */,
 			);
 			path = SchemaManipulations;
+			sourceTree = "<group>";
+		};
+		4AFEFD081BCFE8A300751D82 /* WhereCondition */ = {
+			isa = PBXGroup;
+			children = (
+				4AFEFD091BCFE8B900751D82 /* TestCaseWhereCondition.h */,
+				4AFEFD0A1BCFE8B900751D82 /* TestCaseWhereCondition.m */,
+			);
+			path = WhereCondition;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -610,6 +623,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AFEFD0B1BCFE8B900751D82 /* TestCaseWhereCondition.m in Sources */,
 				4A9E4FFD1BC4DA850009E111 /* MigrationStep1_0.m in Sources */,
 				4AF066451BC281F00042288C /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,
 				4AF066421BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.m in Sources */,
