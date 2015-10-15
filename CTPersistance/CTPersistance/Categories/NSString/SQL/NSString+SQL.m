@@ -33,17 +33,26 @@
 
 - (NSString *)stringWithSQLParams:(NSDictionary *)params
 {
-    NSMutableString *string = [self mutableCopy];
-    [params enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull value, BOOL * _Nonnull stop) {
-        NSString *alterKey = [NSString stringWithFormat:@":%@", key];
-        if ([value isKindOfClass:[NSString class]]) {
-            value = [value safeSQLEncode];
-            [string replaceOccurrencesOfString:alterKey withString:[NSString stringWithFormat:@"'%@'", value] options:0 range:NSMakeRange(0, string.length)];
-        } else {
-            [string replaceOccurrencesOfString:alterKey withString:[NSString stringWithFormat:@"%@", value] options:0 range:NSMakeRange(0, string.length)];
+    NSMutableArray *keyList = [[NSMutableArray alloc] init];
+    
+    NSRegularExpression *expression = [NSRegularExpression regularExpressionWithPattern:@":[\\w]*" options:0 error:NULL];
+    NSArray *list = [expression matchesInString:self options:0 range:NSMakeRange(0, self.length)];
+    
+    [list enumerateObjectsUsingBlock:^(NSTextCheckingResult * _Nonnull checkResult, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *subString = [self substringWithRange:checkResult.range];
+        [keyList addObject:[subString substringWithRange:NSMakeRange(1, subString.length-1)]];
+    }];
+    
+    NSMutableString *resultString = [self mutableCopy];
+    [keyList enumerateObjectsUsingBlock:^(NSString * _Nonnull key, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (params[key]) {
+            NSRegularExpression *expressionForReplace = [NSRegularExpression regularExpressionWithPattern:[NSString stringWithFormat:@":%@\\b", key] options:0 error:NULL];
+            NSString *value = [NSString stringWithFormat:@"%@", params[key]];
+            [expressionForReplace replaceMatchesInString:resultString options:0 range:NSMakeRange(0, resultString.length) withTemplate:value];
         }
     }];
-    return [string copy];
+    
+    return resultString;
 }
 
 @end

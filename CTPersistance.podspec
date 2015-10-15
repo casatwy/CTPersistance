@@ -16,14 +16,14 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CTPersistance"
-  s.version      = "0.1.8"
+  s.version      = "0.1.10"
   s.summary      = "Objective-C Model Layer with SQLite."
 
   s.description  = <<-DESC
                     A Model Layer for SQLite which written with Objective-C.
                    DESC
 
-  s.homepage     = "http://persistance.casatwy.com/"
+  s.homepage     = "https://github.com/casatwy/CTPersistance"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
