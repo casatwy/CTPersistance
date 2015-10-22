@@ -10,7 +10,21 @@
 
 @interface CTPersistanceAsyncExecutor : NSObject
 
+/**
+ *  you should always use shared instance to perform asynchronize action
+ *
+ *  @return return the shared instance
+ */
 + (instancetype)sharedInstance;
+
+/**
+ *  perform aync action.
+ *
+ *  you must always create CTPersistanceTable in action block, do not use outside table instance in this block.
+ *
+ *  @param action              the action block to be performed
+ *  @param shouldWaitUntilDone if YES, this method will not end until action block has finished.
+ */
 - (void)performAsyncAction:(void (^)(void))action shouldWaitUntilDone:(BOOL)shouldWaitUntilDone;
 
 @end
