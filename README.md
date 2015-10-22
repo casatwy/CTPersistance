@@ -248,3 +248,32 @@ TestTable *testTable = [[TestTable alloc] init];
     } queryCommand:testTable.queryCommand lockType:CTPersistanceTransactionLockTypeDefault];
 
 ```
+
+# Quick Try (Multi-thread)
+
+see also TestCaseAsync.m
+
+NOTICE: You should always create a new table in the async block.
+
+```
+    [[CTPersistanceAsyncExecutor sharedInstance] performAsyncAction:^{
+        NSUInteger count = 500;
+        NSError *error = nil;
+
+        // always create table which you want to manipulate data in asyn block!!!
+        TestTable *testTable = [[TestTable alloc] init];
+
+        while (count --> 0) {
+            TestRecord *record = [[TestRecord alloc] init];
+            record.age = @(count);
+            record.name = @"name";
+            record.tomas = @"tomas";
+            [testTable insertRecord:record error:&error];
+            if (error) {
+                NSLog(@"error is %@", error);
+                NSException *exception = [[NSException alloc] init];
+                @throw exception;
+            }
+        }
+    } shouldWaitUntilDone:NO];
+```
