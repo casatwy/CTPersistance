@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A1F7DC31BD1CB8400A7C2C4 /* CTPersistanceAsyncAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1F7DC21BD1CB8400A7C2C4 /* CTPersistanceAsyncAction.m */; settings = {ASSET_TAGS = (); }; };
 		4A7A7F611BCBD92400A480C7 /* TestDeleteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F531BCBD92400A480C7 /* TestDeleteData.m */; settings = {ASSET_TAGS = (); }; };
 		4A7A7F621BCBD92400A480C7 /* TestFetchData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F561BCBD92400A480C7 /* TestFetchData.m */; settings = {ASSET_TAGS = (); }; };
 		4A7A7F631BCBD92400A480C7 /* TestInsertData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F591BCBD92400A480C7 /* TestInsertData.m */; settings = {ASSET_TAGS = (); }; };
@@ -46,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A1F7DC11BD1CB8400A7C2C4 /* CTPersistanceAsyncAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceAsyncAction.h; sourceTree = "<group>"; };
+		4A1F7DC21BD1CB8400A7C2C4 /* CTPersistanceAsyncAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceAsyncAction.m; sourceTree = "<group>"; };
 		4A7A7F521BCBD92400A480C7 /* TestDeleteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDeleteData.h; sourceTree = "<group>"; };
 		4A7A7F531BCBD92400A480C7 /* TestDeleteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDeleteData.m; sourceTree = "<group>"; };
 		4A7A7F551BCBD92400A480C7 /* TestFetchData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFetchData.h; sourceTree = "<group>"; };
@@ -135,6 +138,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A1F7DC01BD147D200A7C2C4 /* Async */ = {
+			isa = PBXGroup;
+			children = (
+				4A1F7DC11BD1CB8400A7C2C4 /* CTPersistanceAsyncAction.h */,
+				4A1F7DC21BD1CB8400A7C2C4 /* CTPersistanceAsyncAction.m */,
+			);
+			path = Async;
+			sourceTree = "<group>";
+		};
 		4A7A7F511BCBD92400A480C7 /* Delete */ = {
 			isa = PBXGroup;
 			children = (
@@ -451,6 +463,7 @@
 		4AD2D6711BBFCD7200E1F37D /* CTPersistance */ = {
 			isa = PBXGroup;
 			children = (
+				4A1F7DC01BD147D200A7C2C4 /* Async */,
 				4ADCE5B71BCD460A00E54458 /* Transaction */,
 				4A925B871BC295C600CC3244 /* Categories */,
 				4AF0661F1BC217280042288C /* Database */,
@@ -661,6 +674,7 @@
 				4A7A7F631BCBD92400A480C7 /* TestInsertData.m in Sources */,
 				4A925BC21BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.m in Sources */,
 				4AF066381BC276C40042288C /* CTPersistanceQueryCommand.m in Sources */,
+				4A1F7DC31BD1CB8400A7C2C4 /* CTPersistanceAsyncAction.m in Sources */,
 				4A925BB91BC39CCD00CC3244 /* CTPersistanceCriteria.m in Sources */,
 				4AF0664C1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */,
 				4A925BCA1BC3E83D00CC3244 /* TestRecord.m in Sources */,
