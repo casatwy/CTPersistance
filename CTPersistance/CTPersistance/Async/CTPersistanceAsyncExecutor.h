@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  aysnc action executor for multi-thread
+ */
 @interface CTPersistanceAsyncExecutor : NSObject
 
 /**

@@ -104,7 +104,6 @@
  *
  *  @param whereCondition  condition used in WHERE clause
  *  @param conditionParams params ro bind into whereCondition
- *  @param isDistinct      if YES, will use 'SELECT DISTINCT' clause
  *  @param error           error if fails
  *
  *  @return return record count of record list with matches where condition.
