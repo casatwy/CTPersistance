@@ -63,7 +63,7 @@
  *
  *  @param error error if fails
  *
- *  @return return execute result
+ *  @return return NO if fails, and YES for success
  */
 - (BOOL)executeWithError:(NSError **)error;
 
@@ -81,8 +81,8 @@
  *
  *  @param error error if fails
  *
- *  @return return count
+ *  @return return count, return -1 if fails
  */
-- (NSNumber *)countWithError:(NSError **)error;
+//- (NSNumber *)countWithError:(NSError **)error;
 
 @end

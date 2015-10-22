@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CTPersistanceAsyncAction : NSObject
+@interface CTPersistanceAsyncExecutor : NSObject
+
++ (instancetype)sharedInstance;
+- (void)performAsyncAction:(void (^)(void))action shouldWaitUntilDone:(BOOL)shouldWaitUntilDone;
 
 @end

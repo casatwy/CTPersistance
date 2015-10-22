@@ -93,6 +93,13 @@
 - (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error;
 
 /**
+ *  return total record count in this table
+ *
+ *  @return return total record count in this table
+ */
+- (NSNumber *)countTotalRecord;
+
+/**
  *  record count of record list with matches where condition. @see deleteWithWhereCondition:conditionParams:error: for how to use where condition.
  *
  *  @param whereCondition  condition used in WHERE clause
@@ -102,7 +109,7 @@
  *
  *  @return return record count of record list with matches where condition.
  */
-- (NSNumber *)countWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams isDistinct:(BOOL)isDistinct error:(NSError **)error;
+- (NSNumber *)countWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error;
 
 /**
  *  return count of record list by SQL. sqlString can be bind with params like where condition. @see deleteWithWhereCondition:conditionParams:error: for how to use where condition.
@@ -111,20 +118,9 @@
  *  @param params    the params to bind into sqlString
  *  @param error     error if fails
  *
- *  @return return count of record list by SQL.
+ *  @return return a dictionary which contains count column.
  */
-- (NSNumber *)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error;
-
-/**
- *  return count of records matches to criteria.
- *
- *  @param criteria criteria to count
- *  @param error    error if fails
- *
- *  @return return count of records matches to criteria.
- *  @see CTPersistanceCriteria
- */
-- (NSNumber *)countWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error;
+- (NSDictionary *)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error;
 
 /**
  *  find a record with primary key.
