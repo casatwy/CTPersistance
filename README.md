@@ -14,6 +14,7 @@ Persistence, Persistance, lol.
 2. support database migration
 3. transaction
 4. multi-thread
+5. use SQL directly with CTPersistanceTable instance
 
 # Prerequisition
 
