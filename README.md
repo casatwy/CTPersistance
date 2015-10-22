@@ -13,6 +13,7 @@ Persistence, Persistance, lol.
 1. Insert, Delete, Update, Read
 2. support database migration
 3. transaction
+4. multi-thread
 
 # Prerequisition
 
