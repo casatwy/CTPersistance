@@ -46,6 +46,21 @@
     return self;
 }
 
+#pragma mark - public methods
+- (BOOL)executeSQL:(NSString *)sqlString error:(NSError *__autoreleasing *)error
+{
+    [self.queryCommand resetQueryCommand];
+    [self.queryCommand.sqlString appendString:sqlString];
+    return [self.queryCommand executeWithError:error];
+}
+
+- (NSArray *)fetchWithSQL:(NSString *)sqlString error:(NSError *__autoreleasing *)error
+{
+    [self.queryCommand resetQueryCommand];
+    [self.queryCommand.sqlString appendString:sqlString];
+    return [self.queryCommand fetchWithError:error];
+}
+
 #pragma mark - method to override
 - (BOOL)isCorrectToInsertRecord:(NSObject <CTPersistanceRecordProtocol> *)record;
 {

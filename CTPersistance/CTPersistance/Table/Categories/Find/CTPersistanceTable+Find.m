@@ -79,26 +79,29 @@
     return [[[self.queryCommand fetchWithError:error] transformSQLItemsToClass:[self.child recordClass]] firstObject];
 }
 
-- (NSNumber *)countWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams isDistinct:(BOOL)isDistinct error:(NSError **)error
+- (NSNumber *)countTotalRecord
 {
-    CTPersistanceCriteria *criteria = [[CTPersistanceCriteria alloc] init];
-    criteria.isDistinct = isDistinct;
-    criteria.whereCondition = whereCondition;
-    criteria.whereConditionParams = conditionParams;
-    return [self countWithCriteria:criteria error:error];
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT COUNT(*) as count FROM %@", self.child.tableName];
+    NSDictionary *countResult = [self countWithSQL:sqlString params:nil error:NULL];
+    return countResult[@"count"];
 }
 
-- (NSNumber *)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
+- (NSNumber *)countWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error
+{
+    NSString *sqlString = @"SELECT COUNT(*) AS count FROM :tableName WHERE :whereString;";
+    NSString *whereString = [whereCondition stringWithSQLParams:conditionParams];
+    NSString *tableName = self.child.tableName;
+    NSDictionary *params = NSDictionaryOfVariableBindings(whereString, tableName);
+    NSDictionary *countResult = [self countWithSQL:sqlString params:params error:NULL];
+    return countResult[@"count"];
+}
+
+- (NSDictionary *)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
 {
     NSString *finalString = [sqlString stringWithSQLParams:params];
     [self.queryCommand resetQueryCommand];
     [self.queryCommand.sqlString appendString:finalString];
-    return [self.queryCommand countWithError:error];
-}
-
-- (NSNumber *)countWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error
-{
-    return [[criteria applyToSelectQueryCommand:self.queryCommand tableName:[self.child tableName]] countWithError:error];
+    return [[self.queryCommand fetchWithError:NULL] firstObject];
 }
 
 - (NSObject <CTPersistanceRecordProtocol> *)findWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error

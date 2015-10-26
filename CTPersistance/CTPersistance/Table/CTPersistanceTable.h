@@ -117,4 +117,24 @@
  */
 @property (nonatomic, strong, readonly) CTPersistanceQueryCommand *queryCommand;
 
+/**
+ *  execute sql in database of this table.
+ *
+ *  @param sqlString the sql string to be executed
+ *  @param error     error if fails
+ *
+ *  @return return NO if fails
+ */
+- (BOOL)executeSQL:(NSString *)sqlString error:(NSError **)error;
+
+/**
+ *  fetch data with sql in database of this table
+ *
+ *  @param sqlString the sql string to fetch
+ *  @param error     error if fails
+ *
+ *  @return return NO if fails
+ */
+- (NSArray *)fetchWithSQL:(NSString *)sqlString error:(NSError **)error;
+
 @end
