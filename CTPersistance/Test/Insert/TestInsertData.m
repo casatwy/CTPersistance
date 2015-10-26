@@ -36,10 +36,10 @@
     record = [[TestRecord alloc] init];
     [table insertRecord:record error:&error];
     if (error) {
-        NSLog(@"1002 success");
-    } else {
         NSException *exception = [[NSException alloc] init];
         @throw exception;
+    } else {
+        NSLog(@"1002 success");
     }
     
     /* test 1003 */
@@ -59,7 +59,7 @@
     while (count --> 0) {
         record = [[TestRecord alloc] init];
         record.age = @(count);
-        record.name = [NSString stringWithFormat:@"%ld", count];
+        record.name = [NSString stringWithFormat:@"%ld", (unsigned long)count];
         record.tomas = record.name;
         [recordList addObject:record];
     }
@@ -82,11 +82,12 @@
     }
     
     /* test 1006 */
+    error = nil;
     record = [[TestRecord alloc] init];
     record.age = @(1);
     record.name = @"1";
     [table insertRecord:record error:&error];
-    if (error != nil) {
+    if (error == nil) {
         NSLog(@"1006 success");
     } else {
         NSException *exception = [[NSException alloc] init];
