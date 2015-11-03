@@ -48,6 +48,7 @@
 
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error
 {
+    [self.queryCommand resetQueryCommand];
     [criteria applyToSelectQueryCommand:self.queryCommand tableName:[self.child tableName]];
     NSArray *fetchedResult = [self.queryCommand fetchWithError:error];
     return [fetchedResult transformSQLItemsToClass:[self.child recordClass]];
@@ -65,6 +66,7 @@
 
 - (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error
 {
+    [self.queryCommand resetQueryCommand];
     criteria.limit = 1;
     return [[[[criteria applyToSelectQueryCommand:self.queryCommand tableName:[self.child tableName]] fetchWithError:error] transformSQLItemsToClass:[self.child recordClass]] firstObject];
 }
@@ -98,6 +100,7 @@
 
 - (NSDictionary *)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
 {
+    [self.queryCommand resetQueryCommand];
     NSString *finalString = [sqlString stringWithSQLParams:params];
     [self.queryCommand resetQueryCommand];
     [self.queryCommand.sqlString appendString:finalString];
