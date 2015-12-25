@@ -7,11 +7,15 @@
 //
 
 #import "CTPersistanceTable+Find.h"
-#import "NSString+SQL.h"
-#import "CTPersistanceQueryCommand+ReadMethods.h"
-#import "NSArray+CTPersistanceRecordTransform.h"
-#import <UIKit/UIKit.h>
+
 #import "CTPersistanceConfiguration.h"
+#import <UIKit/UIKit.h>
+
+#import "NSString+SQL.h"
+#import "NSArray+CTPersistanceRecordTransform.h"
+
+#import "CTPersistanceQueryCommand+SchemaManipulations.h"
+#import "CTPersistanceQueryCommand+ReadMethods.h"
 
 @implementation CTPersistanceTable (Find)
 
@@ -40,17 +44,17 @@
         return @[];
     }
     NSString *finalString = [sqlString stringWithSQLParams:params];
-    [self.queryCommand resetQueryCommand];
-    [self.queryCommand.sqlString appendString:finalString];
-    NSArray *fetchedResult = [self.queryCommand fetchWithError:error];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    [queryCommand.sqlString appendString:finalString];
+    NSArray *fetchedResult = [queryCommand fetchWithError:error];
     return [fetchedResult transformSQLItemsToClass:[self.child recordClass]];
 }
 
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error
 {
-    [self.queryCommand resetQueryCommand];
-    [criteria applyToSelectQueryCommand:self.queryCommand tableName:[self.child tableName]];
-    NSArray *fetchedResult = [self.queryCommand fetchWithError:error];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    [criteria applyToSelectQueryCommand:queryCommand tableName:[self.child tableName]];
+    NSArray *fetchedResult = [queryCommand fetchWithError:error];
     return [fetchedResult transformSQLItemsToClass:[self.child recordClass]];
 }
 
@@ -66,19 +70,19 @@
 
 - (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error
 {
-    [self.queryCommand resetQueryCommand];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     criteria.limit = 1;
-    return [[[[criteria applyToSelectQueryCommand:self.queryCommand tableName:[self.child tableName]] fetchWithError:error] transformSQLItemsToClass:[self.child recordClass]] firstObject];
+    return [[[[criteria applyToSelectQueryCommand:queryCommand tableName:[self.child tableName]] fetchWithError:error] transformSQLItemsToClass:[self.child recordClass]] firstObject];
 }
 
 - (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
 {
     NSString *finalString = [sqlString stringWithSQLParams:params];
-    [self.queryCommand resetQueryCommand];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     finalString = [finalString stringByReplacingOccurrencesOfString:@";" withString:@""];
-    [self.queryCommand.sqlString appendFormat:@"%@ ", finalString];
-    [self.queryCommand limit:1];
-    return [[[self.queryCommand fetchWithError:error] transformSQLItemsToClass:[self.child recordClass]] firstObject];
+    [queryCommand.sqlString appendFormat:@"%@ ", finalString];
+    [queryCommand limit:1];
+    return [[[queryCommand fetchWithError:error] transformSQLItemsToClass:[self.child recordClass]] firstObject];
 }
 
 - (NSNumber *)countTotalRecord
@@ -100,11 +104,10 @@
 
 - (NSDictionary *)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
 {
-    [self.queryCommand resetQueryCommand];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     NSString *finalString = [sqlString stringWithSQLParams:params];
-    [self.queryCommand resetQueryCommand];
-    [self.queryCommand.sqlString appendString:finalString];
-    return [[self.queryCommand fetchWithError:NULL] firstObject];
+    [queryCommand.sqlString appendString:finalString];
+    return [[queryCommand fetchWithError:NULL] firstObject];
 }
 
 - (NSObject <CTPersistanceRecordProtocol> *)findWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error

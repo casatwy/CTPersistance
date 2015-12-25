@@ -56,10 +56,10 @@
         
         if (isFileExists == NO) {
             [self.migrator createVersionTableWithDatabase:self];
-        } else {
-            if ([self.migrator databaseShouldMigrate:self]) {
-                [self.migrator databasePerformMigrate:self];
-            }
+        }
+        
+        if ([self.migrator databaseShouldMigrate:self]) {
+            [self.migrator databasePerformMigrate:self];
         }
     }
     return self;

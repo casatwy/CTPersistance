@@ -8,6 +8,7 @@
 
 #import "CTPersistanceTable+Update.h"
 #import "CTPersistanceQueryCommand+DataManipulations.h"
+#import "CTPersistanceQueryCommand+SchemaManipulations.h"
 #import <UIKit/UIKit.h>
 
 @implementation CTPersistanceTable (Update)
@@ -36,7 +37,8 @@
 
 - (void)updateKeyValueList:(NSDictionary *)keyValueList whereCondition:(NSString *)whereCondition whereConditionParams:(NSDictionary *)whereConditionParams error:(NSError **)error
 {
-    [[self.queryCommand updateTable:[self.child tableName] withData:keyValueList condition:whereCondition conditionParams:whereConditionParams] executeWithError:error];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    [[queryCommand updateTable:[self.child tableName] withData:keyValueList condition:whereCondition conditionParams:whereConditionParams] executeWithError:error];
 }
 
 - (void)updateValue:(id)value forKey:(NSString *)key primaryKeyValue:(NSNumber *)primaryKeyValue error:(NSError **)error

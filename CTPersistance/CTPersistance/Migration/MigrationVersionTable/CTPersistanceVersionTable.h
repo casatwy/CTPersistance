@@ -26,4 +26,9 @@
  */
 - (instancetype)initWithDatabase:(CTPersistanceDataBase *)database;
 
++ (NSString *)tableName;
++ (NSDictionary *)columnInfo;
++ (NSString *)primaryKeyName;
++ (Class)recordClass;
+
 @end

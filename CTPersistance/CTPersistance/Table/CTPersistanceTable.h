@@ -103,7 +103,7 @@
  *
  *  @return return instance of CTPersistanceTable
  */
-- (instancetype)initWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand;
+//- (instancetype)initWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand;
 
 /**
  *  the child is just the same as self. just to make sure your own CTPersistance table is confirm to <CTPersistanceTableProtocol>
@@ -115,7 +115,7 @@
  *
  *  @see CTPersistanceQueryCommand
  */
-@property (nonatomic, strong, readonly) CTPersistanceQueryCommand *queryCommand;
+//@property (nonatomic, strong, readonly) CTPersistanceQueryCommand *queryCommand;
 
 /**
  *  execute sql in database of this table.

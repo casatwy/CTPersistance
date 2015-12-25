@@ -14,7 +14,7 @@
 @interface CTPersistanceTable ()
 
 @property (nonatomic, weak) id<CTPersistanceTableProtocol> child;
-@property (nonatomic, strong, readwrite) CTPersistanceQueryCommand *queryCommand;
+//@property (nonatomic, strong, readwrite) CTPersistanceQueryCommand *queryCommand;
 
 @end
 
@@ -26,6 +26,13 @@
     self = [super init];
     if (self && [self conformsToProtocol:@protocol(CTPersistanceTableProtocol)]) {
         self.child = (CTPersistanceTable <CTPersistanceTableProtocol> *)self;
+        
+        NSError *error = nil;
+        CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:self.child.databaseName];
+        [[queryCommand createTable:self.child.tableName columnInfo:self.child.columnInfo] executeWithError:&error];
+        if (error) {
+            NSLog(@"Error at [%s]:[%d]:%@", __FILE__, __LINE__, error);
+        }
     } else {
         NSException *exception = [NSException exceptionWithName:@"CTPersistanceTable init error" reason:@"the child class must conforms to protocol: <CTPersistanceTableProtocol>" userInfo:nil];
         @throw exception;
@@ -34,31 +41,19 @@
     return self;
 }
 
-- (instancetype)initWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand
-{
-    self = [self init];
-    if (self) {
-        self.queryCommand = queryCommand;
-        if ([self.child respondsToSelector:@selector(modifyDatabaseName:)]) {
-            [self.child modifyDatabaseName:queryCommand.database.databaseName];
-        }
-    }
-    return self;
-}
-
 #pragma mark - public methods
 - (BOOL)executeSQL:(NSString *)sqlString error:(NSError *__autoreleasing *)error
 {
-    [self.queryCommand resetQueryCommand];
-    [self.queryCommand.sqlString appendString:sqlString];
-    return [self.queryCommand executeWithError:error];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    [queryCommand.sqlString appendString:sqlString];
+    return [queryCommand executeWithError:error];
 }
 
 - (NSArray *)fetchWithSQL:(NSString *)sqlString error:(NSError *__autoreleasing *)error
 {
-    [self.queryCommand resetQueryCommand];
-    [self.queryCommand.sqlString appendString:sqlString];
-    return [self.queryCommand fetchWithError:error];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    [queryCommand.sqlString appendString:sqlString];
+    return [queryCommand fetchWithError:error];
 }
 
 #pragma mark - method to override
@@ -70,16 +65,6 @@
 - (BOOL)isCorrectToUpdateRecord:(NSObject <CTPersistanceRecordProtocol> *)record;
 {
     return YES;
-}
-
-#pragma mark - getters and setters
-- (CTPersistanceQueryCommand *)queryCommand
-{
-    if (_queryCommand == nil) {
-        _queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
-        [[_queryCommand createTable:[self.child tableName] columnInfo:[self.child columnInfo]] executeWithError:NULL];
-    }
-    return _queryCommand;
 }
 
 @end

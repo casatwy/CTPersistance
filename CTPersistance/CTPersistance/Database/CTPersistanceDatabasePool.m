@@ -41,7 +41,13 @@
     }
     
     if (self.databaseList[databaseName] == nil) {
-        self.databaseList[databaseName] = [[CTPersistanceDataBase alloc] initWithDatabaseName:databaseName error:NULL];
+        NSError *error = nil;
+        CTPersistanceDataBase *databaseInstance = [[CTPersistanceDataBase alloc] initWithDatabaseName:databaseName error:&error];
+        if (error) {
+            NSLog(@"Error at %s:[%d]:%@", __FILE__, __LINE__, error);
+        } else {
+            self.databaseList[databaseName] = databaseInstance;
+        }
     }
     
     return self.databaseList[databaseName];

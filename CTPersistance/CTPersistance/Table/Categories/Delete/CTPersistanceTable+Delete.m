@@ -8,6 +8,7 @@
 
 #import "CTPersistanceTable+Delete.h"
 #import "NSString+SQL.h"
+#import "CTPersistanceQueryCommand+SchemaManipulations.h"
 #import <UIKit/UIKit.h>
 
 @implementation CTPersistanceTable (Delete)
@@ -39,15 +40,16 @@
 
 - (void)deleteWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error
 {
-    [[criteria applyToDeleteQueryCommand:self.queryCommand tableName:[self.child tableName]] executeWithError:error];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    [[criteria applyToDeleteQueryCommand:queryCommand tableName:[self.child tableName]] executeWithError:error];
 }
 
 - (void)deleteWithSql:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
 {
     NSString *finalSql = [sqlString stringWithSQLParams:params];
-    [self.queryCommand resetQueryCommand];
-    [self.queryCommand.sqlString appendString:finalSql];
-    [self.queryCommand executeWithError:error];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    [queryCommand.sqlString appendString:finalSql];
+    [queryCommand executeWithError:error];
 }
 
 - (void)deleteWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error

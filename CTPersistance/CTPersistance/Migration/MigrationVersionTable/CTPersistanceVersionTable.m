@@ -38,10 +38,15 @@
 #pragma mark - CTPersistanceTableProtocol
 - (NSString *)tableName
 {
+    return [CTPersistanceVersionTable tableName];
+}
+
++ (NSString *)tableName
+{
     return kCTPersistanceVersionTableName;
 }
 
-- (NSDictionary *)columnInfo
++ (NSDictionary *)columnInfo
 {
     return @{
              @"identifier":@"INTEGER PRIMARY KEY AUTOINCREMENT",
@@ -49,15 +54,31 @@
              };
 }
 
-- (NSString *)primaryKeyName
+- (NSDictionary *)columnInfo
+{
+    return [CTPersistanceVersionTable columnInfo];
+}
+
++ (NSString *)primaryKeyName
 {
     return @"identifier";
 }
 
+- (NSString *)primaryKeyName
+{
+    return [CTPersistanceVersionTable primaryKeyName];
+}
+
 - (Class)recordClass
+{
+    return [CTPersistanceVersionTable recordClass];
+}
+
++ (Class)recordClass
 {
     return [CTPersistanceVersionRecord class];
 }
+
 
 #pragma mark - getters and setters
 - (CTPersistanceQueryCommand *)queryCommand

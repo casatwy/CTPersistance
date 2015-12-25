@@ -14,8 +14,8 @@
 
 - (void)goUpWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError *__autoreleasing *)error
 {
-    TestTable *table = [[TestTable alloc] initWithQueryCommand:queryCommand];
-    [[queryCommand addColumn:@"migration1_0" columnInfo:@"TEXT" tableName:table.tableName] executeWithError:error];
+    TestTable *testTable = [[TestTable alloc] init];
+    [[queryCommand addColumn:@"migration1_0" columnInfo:@"TEXT" tableName:testTable.tableName] executeWithError:error];
 }
 
 - (void)goDownWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError *__autoreleasing *)error

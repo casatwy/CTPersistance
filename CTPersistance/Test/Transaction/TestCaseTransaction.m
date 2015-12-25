@@ -18,6 +18,7 @@
 - (void)test
 {
     TestTable *testTable = [[TestTable alloc] init];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:testTable.databaseName];
     
     NSLog(@"transaction start1");
     [CTPersistanceTransaction performTranscationWithBlock:^(BOOL *shouldRollback) {
@@ -30,7 +31,7 @@
             [testTable insertRecord:record error:NULL];
         }
         *shouldRollback = YES;
-    } queryCommand:testTable.queryCommand lockType:CTPersistanceTransactionLockTypeDefault];
+    } queryCommand:queryCommand lockType:CTPersistanceTransactionLockTypeDefault];
     NSLog(@"transaction end1");
     
     NSLog(@"transaction start2");
@@ -44,7 +45,7 @@
             [testTable insertRecord:record error:NULL];
         }
         *shouldRollback = NO;
-    } queryCommand:testTable.queryCommand lockType:CTPersistanceTransactionLockTypeDefault];
+    } queryCommand:queryCommand lockType:CTPersistanceTransactionLockTypeDefault];
     NSLog(@"transaction end2");
     
     [testTable deleteWithWhereCondition:@"primaryKey > 1000" conditionParams:nil error:NULL];

@@ -18,6 +18,7 @@
 
 #import "objc/runtime.h"
 #import <sqlite3.h>
+#import <UIKit/UIKit.h>
 
 @implementation CTPersistanceTable (Insert)
 
@@ -42,8 +43,9 @@
     }];
     
     if (isSuccess) {
-        if ([[self.queryCommand insertTable:[self.child tableName] withDataList:insertList] executeWithError:error]) {
-            NSInteger changedRowsCount = [[self.queryCommand rowsChanged] integerValue];
+        CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+        if ([[queryCommand insertTable:[self.child tableName] withDataList:insertList] executeWithError:error]) {
+            NSInteger changedRowsCount = [[queryCommand rowsChanged] integerValue];
             if (changedRowsCount != [insertList count]) {
                 isSuccess = NO;
                 if (error) {
@@ -73,15 +75,16 @@
     
     if (record) {
         if ([self.child isCorrectToInsertRecord:record]) {
-            if ([[self.queryCommand insertTable:[self.child tableName] withDataList:@[[record dictionaryRepresentationWithTable:self.child]]] executeWithError:error]) {
-                if ([[self.queryCommand rowsChanged] integerValue] > 0) {
-                    if (![record setPersistanceValue:[self.queryCommand lastInsertRowId] forKey:[self.child primaryKeyName]]) {
+            CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+            if ([[queryCommand insertTable:[self.child tableName] withDataList:@[[record dictionaryRepresentationWithTable:self.child]]] executeWithError:error]) {
+                if ([[queryCommand rowsChanged] integerValue] > 0) {
+                    if (![record setPersistanceValue:[queryCommand lastInsertRowId] forKey:[self.child primaryKeyName]]) {
                         isSuccessed = NO;
                         if (error) {
                             *error = [NSError errorWithDomain:kCTPersistanceErrorDomain
                                                          code:CTPersistanceErrorCodeFailedToSetKeyForValue
                                                      userInfo:@{
-                                                                NSLocalizedDescriptionKey:[NSString stringWithFormat:@"failed to set value[%@] with key[%@] in record[%@]", [self.child primaryKeyName], [self.queryCommand lastInsertRowId], record]
+                                                                NSLocalizedDescriptionKey:[NSString stringWithFormat:@"failed to set value[%@] with key[%@] in record[%@]", [self.child primaryKeyName], [queryCommand lastInsertRowId], record]
                                                                 }];
                         }
                     }
