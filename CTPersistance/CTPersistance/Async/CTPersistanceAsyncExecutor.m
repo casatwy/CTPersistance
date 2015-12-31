@@ -29,7 +29,7 @@
 
 - (void)performAsyncAction:(void (^)(void))action shouldWaitUntilDone:(BOOL)shouldWaitUntilDone
 {
-    __block BOOL shouldWait = shouldWaitUntilDone;
+    __block volatile BOOL shouldWait = shouldWaitUntilDone;
     
     NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
         action();
