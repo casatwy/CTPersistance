@@ -1,5 +1,7 @@
 Persistence, Persistance, lol.
 
+2016-02-27: I'm still maintaining this pod~
+
 #CTPersistance
 
 `CTPersistance` can be used as a `Model Layer` in iOS App development, maybe can used for MacOSX develop, but I'm not tested yet. See [CTPersistance Reference](http://persistance.casatwy.com) for more infomation.
