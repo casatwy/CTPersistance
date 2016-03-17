@@ -6,6 +6,8 @@ Persistence, Persistance, lol.
 
 `CTPersistance` can be used as a `Model Layer` in iOS App development, maybe can used for MacOSX develop, but I'm not tested yet. See [CTPersistance Reference](http://persistance.casatwy.com) for more infomation.
 
+### Notice
+
 Any object who confirms to `<CTPersistanceRecordProtocol>` can be a record and can be accepted by `CTPersistance`, even your customized UIView. see [issue 21](https://github.com/casatwy/CTPersistance/issues/21)
 
 #Install (CocoaPods)
