@@ -29,6 +29,9 @@ go to `Build Phases` and add `sqlite3` into your library list.
 #Quick Try (Insert, Delete, Update, Read)
 
 ### 1. create `TestRecord` which extends from `CTPersistanceRecord`, and add the column property:
+
+##### Notice: Any object who confirms to `<CTPersistanceRecordProtocol>` can be a record and can be accepted by `CTPersistance`, even your customized UIView. see [issue 21](https://github.com/casatwy/CTPersistance/issues/21). Thus, you can handle any type of object with this protocol. In this demo we extends `CTPersistanceRecord` for convenience.
+
 ```
 @interface TestRecord : CTPersistanceRecord
 
