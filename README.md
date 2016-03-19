@@ -8,7 +8,7 @@ Persistence, Persistance, lol.
 
 ### Notice
 
-Any object who confirms to `<CTPersistanceRecordProtocol>` can be a record and can be accepted by `CTPersistance`, even your customized UIView. see [issue 21](https://github.com/casatwy/CTPersistance/issues/21)
+Any object who conforms to `<CTPersistanceRecordProtocol>` can be a record and can be accepted by `CTPersistance`, even your customized UIView. see [issue 21](https://github.com/casatwy/CTPersistance/issues/21)
 
 #Install (CocoaPods)
 
@@ -30,7 +30,7 @@ go to `Build Phases` and add `sqlite3` into your library list.
 
 ### 1. create `TestRecord` which extends from `CTPersistanceRecord`, and add the column property:
 
-##### Notice: Any object who confirms to `<CTPersistanceRecordProtocol>` can be a record and can be accepted by `CTPersistance`, even your customized UIView. see [issue 21](https://github.com/casatwy/CTPersistance/issues/21). Thus, you can handle any type of object with this protocol. In this demo we extends `CTPersistanceRecord` for convenience.
+##### Notice: Any object who conforms to `<CTPersistanceRecordProtocol>` can be a record and can be accepted by `CTPersistance`, even your customized UIView. see [issue 21](https://github.com/casatwy/CTPersistance/issues/21). Thus, you can handle any type of object with this protocol. In this demo we extends `CTPersistanceRecord` for convenience.
 
 ```
 @interface TestRecord : CTPersistanceRecord
@@ -41,7 +41,7 @@ go to `Build Phases` and add `sqlite3` into your library list.
 @end
 ```
 
-### 2. create `TestTable` which extends from `CTPersistanceTable`, and confirms to `CTPersistanceTableProtocol` like this:
+### 2. create `TestTable` which extends from `CTPersistanceTable`, and conforms to `CTPersistanceTableProtocol` like this:
 ```
 #import "CTPersistance.h"
 
