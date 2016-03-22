@@ -15,7 +15,7 @@
 @interface CTPersistanceCriteria : NSObject
 
 /**
- *  the table or table list which connected with comma(,) to be select.
+ *  the column or column list which connected with comma(,) to be select.
  */
 @property (nonatomic, copy) NSString *select;
 
