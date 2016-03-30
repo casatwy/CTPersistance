@@ -1,6 +1,6 @@
 Persistence, Persistance, lol.
 
-2016-03-20: I'm still maintaining this pod~ Welcome issues and PRs, and I'm glad to hear you are using this pod in your project.
+2016-03-30: I'm still maintaining this pod~ Welcome issues and PRs, and I'm glad to hear you are using this pod in your project.
 
 #CTPersistance
 
