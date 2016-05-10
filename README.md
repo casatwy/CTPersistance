@@ -147,11 +147,7 @@ go to `Build Phases` and add `sqlite3` into your library list.
 
 NOTICE:
 
-you can `only` use **initWithQueryCommand:** to create a table in migration step object
-
-and `DO NOT` use **initWithQueryCommand:** to create table outside the migration step object
-
-in other situation, **init** is the only method for you to create a table.
+you can `only` use **CTPersistanceQueryCommand** to do your migration job, and `DO NOT` use **CTPersistanceTable**
 
 ```
 #import "MigrationStep1_0.h"
@@ -162,17 +158,7 @@ in other situation, **init** is the only method for you to create a table.
 
 - (void)goUpWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError *__autoreleasing *)error
 {
-    TestTable *table = [[TestTable alloc] initWithQueryCommand:queryCommand];
-    [[queryCommand addColumn:@"migration1_0" columnInfo:@"TEXT" tableName:table.tableName] executeWithError:error];
-    if (*error) {
-        return;
-    }
-
-    NSDictionary *keyvalueList = @{@"migration1_0":@"this is migration"};
-    NSString *whereCondition = @":primaryKey > 0";
-    NSString *primaryKey = [table primaryKeyName];
-    NSDictionary *whereConditionParams = NSDictionaryOfVariableBindings(primaryKey);
-    [table updateKeyValueList:keyvalueList whereCondition:whereCondition whereConditionParams:whereConditionParams error:error];
+    [queryCommand dropTable:@"user"];
 }
 
 - (void)goDownWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError *__autoreleasing *)error
