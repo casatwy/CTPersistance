@@ -132,6 +132,10 @@ go to `Build Phases` and add `sqlite3` into your library list.
 
 #Quick Try (Migration)
 
+NOTICE:
+
+you can `only` use **CTPersistanceQueryCommand** to do your migration job, and `DO NOT` use **CTPersistanceTable**
+
 ### 1. create migration step object which confirm to `<CTPersistanceMigrationStep>`
 
 ```
