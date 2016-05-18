@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CTPersistance"
-  s.version      = "1.1.7"
+  s.version      = "1.1.8"
   s.summary      = "Objective-C Model Layer with SQLite."
 
   s.description  = <<-DESC
@@ -113,7 +113,7 @@ Pod::Spec.new do |s|
   s.framework  = "UIKit"
   # s.frameworks = "SomeFramework", "AnotherFramework"
 
-  s.library   = "sqlite3"
+  s.ios.library   = "sqlite3"
   # s.libraries = "iconv", "xml2"
 
 
