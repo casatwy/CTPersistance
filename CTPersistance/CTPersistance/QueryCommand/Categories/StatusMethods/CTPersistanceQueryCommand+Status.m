@@ -7,7 +7,7 @@
 //
 
 #import "CTPersistanceQueryCommand+Status.h"
-#import <sqlite3.h>
+#import "sqlite3.h"
 
 @implementation CTPersistanceQueryCommand (Status)
 

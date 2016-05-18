@@ -17,7 +17,7 @@
 #import "CTPersistanceQueryCommand+Status.h"
 
 #import "objc/runtime.h"
-#import <sqlite3.h>
+#import "sqlite3.h"
 #import <UIKit/UIKit.h>
 
 @implementation CTPersistanceTable (Insert)
