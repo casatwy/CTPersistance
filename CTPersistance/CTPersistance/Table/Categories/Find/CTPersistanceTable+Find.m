@@ -144,7 +144,7 @@
         criteria.whereConditionParams = NSDictionaryOfVariableBindings(value);
         return [self findAllWithCriteria:criteria error:error];
     }
-    return nil;
+    return @[];
 }
 
 @end
