@@ -47,7 +47,7 @@
     if (condition == nil) {
         return self;
     }
-    
+
     NSString *whereString = [condition stringWithSQLParams:params];
     [self.sqlString appendFormat:@"WHERE %@ ", whereString];
     

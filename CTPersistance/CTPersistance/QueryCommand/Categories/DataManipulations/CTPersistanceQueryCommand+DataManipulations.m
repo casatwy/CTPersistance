@@ -58,8 +58,7 @@
     [self resetQueryCommand];
     
     NSString *safeTableName = [tableName safeSQLMetaString];
-    NSString *trimmedCondition = [condition safeSQLMetaString];
-    if (CTPersistance_isEmptyString(safeTableName) || CTPersistance_isEmptyString(trimmedCondition) || data == nil){
+    if (CTPersistance_isEmptyString(safeTableName) || data == nil){
         return self;
     }
 
@@ -79,7 +78,8 @@
 
     [self.sqlString appendFormat:@"UPDATE `%@` SET %@ ", safeTableName, valueString];
 
-    return [self where:condition params:conditionParams];
+    NSString *trimmedCondition = [condition safeSQLMetaString];
+    return [self where:trimmedCondition params:conditionParams];
 }
 
 - (CTPersistanceQueryCommand *)deleteTable:(NSString *)tableName withCondition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams
@@ -87,14 +87,14 @@
     [self resetQueryCommand];
     
     NSString *safeTableName = [tableName safeSQLMetaString];
-    NSString *trimmedCondition = [condition safeSQLMetaString];
-    
-    if (CTPersistance_isEmptyString(safeTableName) || CTPersistance_isEmptyString(trimmedCondition)) {
+
+    if (CTPersistance_isEmptyString(safeTableName)) {
         return self;
     }
     
     [self.sqlString appendFormat:@"DELETE FROM `%@` ", safeTableName];
-    
+
+    NSString *trimmedCondition = [condition safeSQLMetaString];
     return [self where:trimmedCondition params:conditionParams];
 }
 
