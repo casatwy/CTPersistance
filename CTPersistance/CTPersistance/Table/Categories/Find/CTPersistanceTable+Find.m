@@ -136,4 +136,15 @@
     return [self findAllWithCriteria:criteria error:error];
 }
 
+- (NSArray<NSObject<CTPersistanceRecordProtocol> *> *)findAllWithKeyName:(NSString *)keyname value:(id)value error:(NSError *__autoreleasing *)error
+{
+    if (keyname && value) {
+        CTPersistanceCriteria *criteria = [[CTPersistanceCriteria alloc] init];
+        criteria.whereCondition = [NSString stringWithFormat:@"%@ = :value", keyname];
+        criteria.whereConditionParams = NSDictionaryOfVariableBindings(value);
+        return [self findAllWithCriteria:criteria error:error];
+    }
+    return nil;
+}
+
 @end

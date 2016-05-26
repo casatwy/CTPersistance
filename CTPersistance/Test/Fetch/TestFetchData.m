@@ -311,10 +311,20 @@
     sqlString = @"SELECT * FROM test WHERE age > 10 and age < 20;";
     record = (TestRecord *)[table findFirstRowWithSQL:sqlString params:nil error:&error];
     if (error == nil) {
-        NSLog(@"success");
+        NSLog(@"2020 success");
     } else {
         NSException *exception = [[NSException alloc] init];
         @throw exception;
+    }
+
+    /* test 2021 */
+    error = nil;
+    NSArray *recordList = [table findAllWithKeyName:@"name" value:@"1" error:&error];
+    if (recordList.count == 0) {
+        NSException *exception = [[NSException alloc] init];
+        @throw exception;
+    } else {
+        NSLog(@"2021 success");
     }
     
     NSLog(@"End Fetch Test");

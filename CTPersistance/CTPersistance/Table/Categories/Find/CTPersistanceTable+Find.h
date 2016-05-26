@@ -141,5 +141,16 @@
  */
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithPrimaryKey:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error;
 
+/**
+ *  find all keyname's value equal to value
+ *
+ *  @param keyname key name
+ *  @param value   value of key name
+ *  @param error   error if fails
+ *
+ *  @return return a list of record
+ */
+- (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithKeyName:(NSString *)keyname value:(id)value error:(NSError **)error;
+
 
 @end
