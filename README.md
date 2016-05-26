@@ -1,6 +1,6 @@
 Persistence, Persistance, lol.
 
-2016-05-10: I'm still maintaining this pod~ Welcome issues and PRs, and I'm glad to hear you are using this pod in your project.
+2016-05-26: I'm still maintaining this pod~ Welcome issues and PRs, and I'm glad to hear you are using this pod in your project.
 
 define the marco `CTPersistanceShowSQLLog` to show SQL log.
 
