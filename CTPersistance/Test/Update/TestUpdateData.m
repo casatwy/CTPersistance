@@ -47,7 +47,18 @@
     error = nil;
     record = (TestRecord *)[table findWithPrimaryKey:nil error:&error];
     if (error) {
-        NSLog(@"3001 success");
+        NSLog(@"3003 success");
+    } else {
+        NSException *exception = [[NSException alloc] init];
+        @throw exception;
+    }
+
+    /* test 3004 */
+    error = nil;
+    [table updateValue:@"cary" forKey:@"name" whereKey:[table primaryKeyName] inList:@[@(1), @(2), @(3)] error:&error];
+    record = (TestRecord *)[table findWithPrimaryKey:@(1) error:&error];
+    if ([record.name isEqualToString:@"cary"]) {
+        NSLog(@"3004 success");
     } else {
         NSException *exception = [[NSException alloc] init];
         @throw exception;

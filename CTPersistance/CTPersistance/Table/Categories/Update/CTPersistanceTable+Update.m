@@ -60,6 +60,16 @@
     }
 }
 
+- (void)updateValue:(id)value forKey:(NSString *)key whereKey:(NSString *)wherekey inList:(NSArray *)keyList error:(NSError *__autoreleasing *)error
+{
+    if (key && value && wherekey && keyList.count > 0) {
+        NSString *keyListString = [keyList componentsJoinedByString:@","];
+        NSString *whereCondition = [NSString stringWithFormat:@"%@ IN (:keyListString)", wherekey];
+        NSDictionary *whereConditionParams = NSDictionaryOfVariableBindings(keyListString);
+        [self updateKeyValueList:@{key:value} whereCondition:whereCondition whereConditionParams:whereConditionParams error:error];
+    }
+}
+
 - (void)updateKeyValueList:(NSDictionary *)keyValueList primaryKeyValue:(NSNumber *)primaryKeyValue error:(NSError **)error
 {
     NSString *whereCondition = [NSString stringWithFormat:@"%@ = :primaryKeyValue", [self.child primaryKeyName]];
