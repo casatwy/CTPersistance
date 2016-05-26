@@ -113,14 +113,14 @@
             switch (type) {
                 case SQLITE_INTEGER:
                 {
-                    int value = sqlite3_column_int(statement, i);
-                    [result setObject:[NSNumber numberWithInt:value] forKey:columnName];
+                    int64_t value = sqlite3_column_int64(statement, i);
+                    [result setObject:@(value) forKey:columnName];
                     break;
                 }
                 case SQLITE_FLOAT:
                 {
-                    float value = sqlite3_column_double(statement, i);
-                    [result setObject:[NSNumber numberWithFloat:value] forKey:columnName];
+                    double value = sqlite3_column_double(statement, i);
+                    [result setObject:@(value) forKey:columnName];
                     break;
                 }
                 case SQLITE_TEXT:
