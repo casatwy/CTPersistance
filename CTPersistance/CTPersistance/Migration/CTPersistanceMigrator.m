@@ -9,10 +9,7 @@
 #import "CTPersistanceMigrator.h"
 
 #import "CTPersistanceQueryCommand.h"
-
-#import "CTPersistanceTable+Insert.h"
-#import "CTPersistanceTable+Find.h"
-#import "CTPersistanceTable+Update.h"
+#import "CTPersistanceQueryCommand+ReadMethods.h"
 
 #import "CTPersistanceVersionRecord.h"
 #import "CTPersistanceVersionTable.h"
@@ -25,6 +22,7 @@
 
 @property (nonatomic, weak) id<CTPersistanceMigratorProtocol> child;
 @property (nonatomic, weak) CTPersistanceDataBase *database;
+@property (nonatomic, assign, readwrite) BOOL isMigrating;
 
 @end
 
@@ -48,13 +46,14 @@
 {
     self.database = database;
     
-    CTPersistanceVersionRecord *record = [[CTPersistanceVersionRecord alloc] init];
-    record.databaseVersion = [[self.child migrationVersionList] lastObject];
-    
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:database];
     [[queryCommand createTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo]] executeWithError:NULL];
     [queryCommand resetQueryCommand];
-    [[queryCommand insertTable:[CTPersistanceVersionTable tableName] withDataList:@[@{@"databaseVersion":record.databaseVersion}]] executeWithError:NULL];
+    NSArray *result = [[[queryCommand countAll] from:[CTPersistanceVersionTable tableName]] fetchWithError:NULL];
+    if ([[result firstObject][@"COUNT(*)"] integerValue] == 0) {
+        [queryCommand resetQueryCommand];
+        [[queryCommand insertTable:[CTPersistanceVersionTable tableName] withDataList:@[@{@"databaseVersion":[[self.child migrationVersionList] firstObject]}]] executeWithError:NULL];
+    }
 }
 
 - (BOOL)databaseShouldMigrate:(CTPersistanceDataBase *)database

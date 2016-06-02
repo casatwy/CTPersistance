@@ -43,7 +43,10 @@
     }];
     
     if (isSuccess) {
-        CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+        CTPersistanceQueryCommand *queryCommand = self.queryCommand;
+        if (self.isFromMigration == NO) {
+            queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+        }
         if ([[queryCommand insertTable:[self.child tableName] withDataList:insertList] executeWithError:error]) {
             NSInteger changedRowsCount = [[queryCommand rowsChanged] integerValue];
             if (changedRowsCount != [insertList count]) {
@@ -75,7 +78,10 @@
     
     if (record) {
         if ([self.child isCorrectToInsertRecord:record]) {
-            CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+            CTPersistanceQueryCommand *queryCommand = self.queryCommand;
+            if (self.isFromMigration == NO) {
+                queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+            }
             if ([[queryCommand insertTable:[self.child tableName] withDataList:@[[record dictionaryRepresentationWithTable:self.child]]] executeWithError:error]) {
                 if ([[queryCommand rowsChanged] integerValue] > 0) {
                     if (![record setPersistanceValue:[queryCommand lastInsertRowId] forKey:[self.child primaryKeyName]]) {

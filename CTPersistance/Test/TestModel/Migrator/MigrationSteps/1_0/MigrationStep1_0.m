@@ -7,6 +7,7 @@
 //
 
 #import "MigrationStep1_0.h"
+#import "CTPersistanceTable+Find.h"
 
 #import "TestTable.h"
 
@@ -14,8 +15,9 @@
 
 - (void)goUpWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError *__autoreleasing *)error
 {
-    TestTable *testTable = [[TestTable alloc] init];
+    TestTable *testTable = [[TestTable alloc] initWithQueryCommand:queryCommand];
     [[queryCommand addColumn:@"migration1_0" columnInfo:@"TEXT" tableName:testTable.tableName] executeWithError:error];
+    [testTable findWithPrimaryKey:@(1) error:NULL];
 }
 
 - (void)goDownWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError *__autoreleasing *)error

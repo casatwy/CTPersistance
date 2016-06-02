@@ -67,6 +67,8 @@
  */
 @interface CTPersistanceMigrator : NSObject
 
+@property (nonatomic, assign, readonly) BOOL isMigrating;
+
 /**
  *  return whether should perform migration.
  *

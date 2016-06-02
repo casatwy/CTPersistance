@@ -54,10 +54,10 @@
             return nil;
         }
         
-        if (isFileExists == NO) {
+        if (self.migrator) {
             [self.migrator createVersionTableWithDatabase:self];
         }
-        
+
         if ([self.migrator databaseShouldMigrate:self]) {
             [self.migrator databasePerformMigrate:self];
         }

@@ -40,14 +40,20 @@
 
 - (void)deleteWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error
 {
-    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
+    if (self.isFromMigration == NO) {
+        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    }
     [[criteria applyToDeleteQueryCommand:queryCommand tableName:[self.child tableName]] executeWithError:error];
 }
 
 - (void)deleteWithSql:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
 {
     NSString *finalSql = [sqlString stringWithSQLParams:params];
-    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
+    if (self.isFromMigration == NO) {
+        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    }
     [queryCommand.sqlString appendString:finalSql];
     [queryCommand executeWithError:error];
 }

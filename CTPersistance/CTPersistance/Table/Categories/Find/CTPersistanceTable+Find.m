@@ -44,7 +44,10 @@
         return @[];
     }
     NSString *finalString = [sqlString stringWithSQLParams:params];
-    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
+    if (self.isFromMigration == NO) {
+        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    }
     [queryCommand.sqlString appendString:finalString];
     NSArray *fetchedResult = [queryCommand fetchWithError:error];
     return [fetchedResult transformSQLItemsToClass:[self.child recordClass]];
@@ -52,7 +55,10 @@
 
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error
 {
-    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
+    if (self.isFromMigration == NO) {
+        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    }
     [criteria applyToSelectQueryCommand:queryCommand tableName:[self.child tableName]];
     NSArray *fetchedResult = [queryCommand fetchWithError:error];
     return [fetchedResult transformSQLItemsToClass:[self.child recordClass]];
@@ -70,7 +76,10 @@
 
 - (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error
 {
-    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
+    if (self.isFromMigration == NO) {
+        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    }
     criteria.limit = 1;
     return [[[[criteria applyToSelectQueryCommand:queryCommand tableName:[self.child tableName]] fetchWithError:error] transformSQLItemsToClass:[self.child recordClass]] firstObject];
 }
@@ -78,7 +87,10 @@
 - (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
 {
     NSString *finalString = [sqlString stringWithSQLParams:params];
-    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
+    if (self.isFromMigration == NO) {
+        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    }
     finalString = [finalString stringByReplacingOccurrencesOfString:@";" withString:@""];
     [queryCommand.sqlString appendFormat:@"%@ ", finalString];
     [queryCommand limit:1];
@@ -104,7 +116,10 @@
 
 - (NSDictionary *)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
 {
-    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
+    if (self.isFromMigration == NO) {
+        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    }
     NSString *finalString = [sqlString stringWithSQLParams:params];
     [queryCommand.sqlString appendString:finalString];
     return [[queryCommand fetchWithError:NULL] firstObject];

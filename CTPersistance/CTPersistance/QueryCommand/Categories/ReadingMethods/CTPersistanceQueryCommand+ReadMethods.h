@@ -106,4 +106,11 @@
  */
 - (CTPersistanceQueryCommand *)limit:(NSInteger)limit offset:(NSInteger)offset;
 
+/**
+ *  count all recordsi
+ *
+ *  @return count number
+ */
+- (CTPersistanceQueryCommand *)countAll;
+
 @end

@@ -91,4 +91,10 @@
     return [[self limit:limit] offset:offset];
 }
 
+- (CTPersistanceQueryCommand *)countAll
+{
+    [self.sqlString appendFormat:@"SELECT COUNT(*) "];
+    return self;
+}
+
 @end

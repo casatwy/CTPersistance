@@ -101,6 +101,9 @@
  */
 @property (nonatomic, weak, readonly) CTPersistanceTable <CTPersistanceTableProtocol> *child;
 
+@property (nonatomic, assign, readonly) BOOL isFromMigration;
+@property (nonatomic, strong, readonly) CTPersistanceQueryCommand *queryCommand;
+
 /**
  *  execute sql in database of this table.
  *
@@ -120,5 +123,14 @@
  *  @return return NO if fails
  */
 - (NSArray *)fetchWithSQL:(NSString *)sqlString error:(NSError **)error;
+
+/**
+ *  used only in Migration
+ *
+ *  @param queryCommand queryCommand
+ *
+ *  @return return table
+ */
+- (instancetype)initWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand;
 
 @end
