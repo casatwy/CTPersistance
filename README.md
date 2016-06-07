@@ -34,7 +34,7 @@ go to `Build Phases` and add `sqlite3` into your library list.
 
 ##### Notice: Any object who conforms to `<CTPersistanceRecordProtocol>` can be a record and can be accepted by `CTPersistance`, even your customized UIView. see [issue 21](https://github.com/casatwy/CTPersistance/issues/21). Thus, you can handle any type of object with this protocol. In this demo we extends `CTPersistanceRecord` for convenience.
 
-```
+```objective-c
 @interface TestRecord : CTPersistanceRecord
 
 @property (nonatomic, copy) NSNumber *identifier;
@@ -44,7 +44,7 @@ go to `Build Phases` and add `sqlite3` into your library list.
 ```
 
 ### 2. create `TestTable` which extends from `CTPersistanceTable`, and conforms to `CTPersistanceTableProtocol` like this:
-```
+```objective-c
 #import "CTPersistance.h"
 
 @interface TestTable : CTPersistanceTable <CTPersistanceTableProtocol>
@@ -54,7 +54,7 @@ go to `Build Phases` and add `sqlite3` into your library list.
 ```
 
 ### 3. implement <CTPersistanceTableProtocol> in your `TestTable`
-```
+```objective-c
 @implementation TestTable
 
 #pragma mark - CTPersistanceTableProtocol
@@ -91,7 +91,7 @@ go to `Build Phases` and add `sqlite3` into your library list.
 
 ### 4. Ta Da.. let's play. `CTPersistance` will create database and table for you.
 
-```
+```objective-c
 #import "ViewController.h"
 
 #import "TestTable.h"
@@ -129,8 +129,9 @@ go to `Build Phases` and add `sqlite3` into your library list.
 
 @end
 ```
+# Try
 
-#Quick Try (Migration)
+## Quick Try (Migration)
 
 NOTICE:
 
@@ -138,7 +139,7 @@ you can `only` use **CTPersistanceQueryCommand** to do your migration job, and `
 
 ### 1. create migration step object which confirm to `<CTPersistanceMigrationStep>`
 
-```
+```objective-c
 #import <Foundation/Foundation.h>
 #import "CTPersistanceMigrator.h"
 
@@ -153,7 +154,7 @@ NOTICE:
 
 you can `only` use **CTPersistanceQueryCommand** to do your migration job, and `DO NOT` use **CTPersistanceTable**
 
-```
+```objective-c
 #import "MigrationStep1_0.h"
 
 #import "TestTable.h"
@@ -175,7 +176,7 @@ you can `only` use **CTPersistanceQueryCommand** to do your migration job, and `
 
 ### 3. create the migrator which extends from `CTPersistanceMigrator` and confirm to `<CTPersistanceMigratorProtocol>`
 
-```
+```objective-c
 #import "CTPersistanceMigrator.h"
 
 @interface TestMigrator : CTPersistanceMigrator <CTPersistanceMigratorProtocol>
@@ -187,7 +188,7 @@ you can `only` use **CTPersistanceQueryCommand** to do your migration job, and `
 
 import the step object you just created, and put them into `migrationStepDictionary`, `migrationVersionList` is the order to migrate steps, the version list must start with `kCTPersistanceInitVersion`.
 
-```
+```objective-c
 #import "TestMigrator.h"
 
 #import "CTPersistanceConfiguration.h"
@@ -230,10 +231,9 @@ the value is the name of the class name of the migrator.
 
 you can try migration now!
 
-# Quick Try (Transaction)
+## Quick Try (Transaction)
 
-```
-
+```objective-c
 TestTable *testTable = [[TestTable alloc] init];
 [CTPersistanceTransaction performTranscationWithBlock:^(BOOL *shouldRollback) {
 
@@ -252,13 +252,13 @@ TestTable *testTable = [[TestTable alloc] init];
 
 ```
 
-# Quick Try (Multi-thread)
+## Quick Try (Multi-thread)
 
 see also TestCaseAsync.m
 
 NOTICE: You should always create a new table in the async block.
 
-```
+```objective-c
     [[CTPersistanceAsyncExecutor sharedInstance] performAsyncAction:^{
         NSUInteger count = 500;
         NSError *error = nil;
@@ -279,4 +279,36 @@ NOTICE: You should always create a new table in the async block.
             }
         }
     } shouldWaitUntilDone:NO];
+```
+# Use with Virtual Record
+
+```bash
+                 -------------------------------------------
+                 |                                         |
+                 |  LogicA     LogicB            LogicC    |    ------------------------------->    View Layer
+                 |     \         /                 |       |
+                 -------\-------/------------------|--------
+                         \     /                   |
+                          \   / Virtual            | Virtual
+                           \ /  Record             | Record
+                            |                      |
+                 -----------|----------------------|--------
+                 |          |                      |       |
+  Strong Logics  |     DataCenterA            DataCenterB  |
+                 |        /   \                    |       |
+-----------------|-------/-----\-------------------|-------|    Data Logic Layer   ---
+                 |      /       \                  |       |                         |
+   Weak Logics   | Table1       Table2           Table     |                         |
+                 |      \       /                  |       |                         |
+                 --------\-----/-------------------|--------                         |
+                          \   /                    |                                 |--> Data Persistance Layer
+                           \ / Query Command       | Query Command                   |
+                            |                      |                                 |
+                 -----------|----------------------|--------                         |
+                 |          |                      |       |                         |
+                 |          |                      |       |                         |
+                 |      DatabaseA              DatabaseB   |  Data Operation Layer ---
+                 |                                         |
+                 |             Database Pool               |
+                 -------------------------------------------
 ```
