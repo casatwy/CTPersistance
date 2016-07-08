@@ -13,16 +13,15 @@
 - (NSString *)safeSQLEncode
 {
     NSString *safeSQL = [self copy];
-    safeSQL = [safeSQL stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"];
+    safeSQL = [safeSQL stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
     safeSQL = [safeSQL stringByReplacingOccurrencesOfString:@";" withString:@""];
     return safeSQL;
 }
 
 - (NSString *)safeSQLDecode
 {
-    NSString *safeSQL = [self copy];
-    safeSQL = [safeSQL stringByReplacingOccurrencesOfString:@"\\'" withString:@"'"];
-    return safeSQL;
+    // do nothing
+    return self;
 }
 
 - (NSString *)safeSQLMetaString

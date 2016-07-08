@@ -92,6 +92,22 @@
         NSException *exception = [[NSException alloc] init];
         @throw exception;
     }
+    
+    /* test 1007*/
+    error = nil;
+    record = [[TestRecord alloc] init];
+    record.age = @(1);
+    record.name = @"I'm";
+    record.tomas = @"tomas";
+    [table insertRecord:record error:&error];
+    if (error == nil) {
+        NSLog(@"1007 success");
+        record = (TestRecord *)[table findWithPrimaryKey:record.primaryKey error:&error];
+        NSLog(@"%@", [record dictionaryRepresentationWithTable:table]);
+    } else {
+        NSException *exception = [[NSException alloc] init];
+        @throw exception;
+    }
 }
 
 @end
