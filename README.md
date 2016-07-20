@@ -58,7 +58,11 @@ go to `Build Phases` and add `sqlite3` into your library list.
 #pragma mark - CTPersistanceTableProtocol
 - (NSString *)databaseName
 {
-    return @"TestDataBase.sqlite";
+    //you can use like:
+    return @"testdatabase.sqlite";
+    
+    //Or
+    //return @"User/Shopping/testdatabase.sqlite";
 }
 
 - (NSString *)tableName

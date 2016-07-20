@@ -30,7 +30,13 @@
         self.databaseName = databaseName;
         self.databaseFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:databaseName];
 
-        BOOL isFileExists = [[NSFileManager defaultManager] fileExistsAtPath:self.databaseFilePath];
+        NSString *checkFilePath = [self.databaseFilePath stringByDeletingLastPathComponent];
+        NSFileManager *defaultFileManager = [NSFileManager defaultManager];
+        if (![defaultFileManager fileExistsAtPath:checkFilePath]) {
+            [defaultFileManager createDirectoryAtPath:checkFilePath withIntermediateDirectories:YES attributes:nil error:nil];
+        }
+        
+        BOOL isFileExists = [defaultFileManager fileExistsAtPath:self.databaseFilePath];
 
         const char *path = [self.databaseFilePath UTF8String];
         int result = sqlite3_open_v2(path, &_database,
