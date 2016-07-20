@@ -19,7 +19,7 @@
 
 - (NSString *)databaseName
 {
-    //you can you like:
+    //you can use like:
     return @"testdatabase.sqlite";
     
     //Or
