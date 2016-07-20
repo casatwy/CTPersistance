@@ -19,7 +19,12 @@
 
 - (NSString *)databaseName
 {
+    //you can you like:
     return @"testdatabase.sqlite";
+    
+    //Or
+    //return @"User/Shopping/testdatabase.sqlite";
+    
 }
 
 - (NSDictionary *)columnInfo
