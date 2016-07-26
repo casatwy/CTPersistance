@@ -8,6 +8,8 @@
 
 import Foundation
 import CTFramework
+import CTFrameworkTest
 
+TestInsertData().test()
 
 
