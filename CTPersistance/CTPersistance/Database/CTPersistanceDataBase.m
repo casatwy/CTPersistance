@@ -10,10 +10,10 @@
 #import "CTPersistanceConfiguration.h"
 #import "CTPersistanceMigrator.h"
 #import "NSString+ReqularExpression.h"
-
+#import <sqlite3.h>
 @interface CTPersistanceDataBase ()
 
-@property (nonatomic, assign) sqlite3 *database;
+@property (nonatomic, assign) void *database;
 @property (nonatomic, copy) NSString *databaseName;
 @property (nonatomic, copy) NSString *databaseFilePath;
 @property (nonatomic, strong) CTPersistanceMigrator *migrator;
@@ -39,7 +39,7 @@
         BOOL isFileExists = [defaultFileManager fileExistsAtPath:self.databaseFilePath];
 
         const char *path = [self.databaseFilePath UTF8String];
-        int result = sqlite3_open_v2(path, &_database,
+        int result = sqlite3_open_v2(path, (sqlite3**)&_database,
                                      SQLITE_OPEN_CREATE |
                                      SQLITE_OPEN_READWRITE |
                                      SQLITE_OPEN_FULLMUTEX |
