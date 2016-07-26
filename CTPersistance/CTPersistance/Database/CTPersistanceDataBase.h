@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <sqlite3.h>
+
 
 /**
  *  CTPersistanceDataBase is a wrapper of sqlite3 database
@@ -15,9 +15,9 @@
 @interface CTPersistanceDataBase : NSObject
 
 /**
- *  the database used for SQLite library
+ *  the database used for SQLite library,'sqlite3' pointer
  */
-@property (nonatomic, assign, readonly) sqlite3 *database;
+@property (nonatomic, assign, readonly) void *database;
 
 /**
  *  name of database file.

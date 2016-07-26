@@ -10,7 +10,7 @@
 #import "CTPersistanceDataBase.h"
 #import "CTPersistanceDatabasePool.h"
 #import "CTPersistanceConfiguration.h"
-
+#import <sqlite3.h>
 @interface CTPersistanceQueryCommand ()
 
 @property (nonatomic, weak) CTPersistanceDataBase *database;
