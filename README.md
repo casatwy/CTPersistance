@@ -4,6 +4,8 @@ define the marco `CTPersistanceShowSQLLog` to show SQL log.
 
 #CTPersistance
 
+[![Join the chat at https://gitter.im/casatwy/CTPersistance](https://badges.gitter.im/casatwy/CTPersistance.svg)](https://gitter.im/casatwy/CTPersistance?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 `CTPersistance` can be used as a `Model Layer` in iOS App development, maybe can used for MacOSX develop, but I'm not tested yet. See [CTPersistance Reference](http://persistance.casatwy.com) for more infomation.
 
 ### Notice
