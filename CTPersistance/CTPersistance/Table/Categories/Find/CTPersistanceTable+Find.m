@@ -154,6 +154,9 @@
 - (NSArray<NSObject<CTPersistanceRecordProtocol> *> *)findAllWithKeyName:(NSString *)keyname value:(id)value error:(NSError *__autoreleasing *)error
 {
     if (keyname && value) {
+        if ([value isKindOfClass:[NSString class]] && [value containsString:@"-"]) {
+            value = [NSString stringWithFormat:@"'%@'", value];
+        }
         CTPersistanceCriteria *criteria = [[CTPersistanceCriteria alloc] init];
         criteria.whereCondition = [NSString stringWithFormat:@"%@ = :value", keyname];
         criteria.whereConditionParams = NSDictionaryOfVariableBindings(value);
