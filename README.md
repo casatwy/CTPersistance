@@ -332,7 +332,7 @@ NOTICE: You should always create a new table in the async block.
 
 # Log
 
-2016-07-09: fixed bug [#37](https://github.com/casatwy/CTPersistance/issues/37)
+2016-08-11: fixed bug [#37](https://github.com/casatwy/CTPersistance/issues/37)
 
 2016-07-27: merged Pull Request [#35](https://github.com/casatwy/CTPersistance/pull/35)
 
