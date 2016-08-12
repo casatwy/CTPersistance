@@ -47,6 +47,9 @@
         if (params[key]) {
             NSRegularExpression *expressionForReplace = [NSRegularExpression regularExpressionWithPattern:[NSString stringWithFormat:@":%@\\b", key] options:0 error:NULL];
             NSString *value = [NSString stringWithFormat:@"%@", params[key]];
+            if ([params[key] isKindOfClass:[NSString class]] && [keyList containsObject:params[key]] == NO && [key isEqualToString:@"primaryKeyValueListString"] == NO) {
+                value = [NSString stringWithFormat:@"'%@'", params[key]];
+            }
             [expressionForReplace replaceMatchesInString:resultString options:0 range:NSMakeRange(0, resultString.length) withTemplate:value];
         }
     }];

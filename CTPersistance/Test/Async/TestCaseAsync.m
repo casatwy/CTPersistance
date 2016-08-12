@@ -16,7 +16,7 @@
 - (void)test
 {
     
-    /* test 6001 */
+    /* test 7001 */
     [[CTPersistanceAsyncExecutor sharedInstance] performAsyncAction:^{
         NSUInteger count = 500;
         NSError *error = nil;
@@ -60,10 +60,10 @@
         NSException *exception = [[NSException alloc] init];
         @throw exception;
     } else {
-        NSLog(@"6001 success");
+        NSLog(@"7001 success");
     }
     
-    /* test 6002 */
+    /* test 7002 */
     __block BOOL isFinished = NO;
     [[CTPersistanceAsyncExecutor sharedInstance] performAsyncAction:^{
         NSUInteger count = 500;
@@ -78,7 +78,7 @@
     } shouldWaitUntilDone:YES];
     
     if (isFinished) {
-        NSLog(@"6002 success");
+        NSLog(@"7002 success");
     } else {
         NSException *exception = [[NSException alloc] init];
         @throw exception;

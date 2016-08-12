@@ -125,6 +125,23 @@
         NSException *exception = [[NSException alloc] init];
         @throw exception;
     }
+
+    /* test 1009 */
+    error = nil;
+    record = [[TestRecord alloc] init];
+    record.age = @(1);
+    record.name = @"I'm";
+    record.tomas = @"123.456.789";
+    [table insertRecord:record error:&error];
+    if (error == nil) {
+        record = (TestRecord *)[[table findAllWithKeyName:@"tomas" value:@"123.456.789" error:&error] firstObject];
+        if ([record.tomas isEqualToString:@"123.456.789"]) {
+            NSLog(@"1009 success");
+        }
+    } else {
+        NSException *exception = [[NSException alloc] init];
+        @throw exception;
+    }
 }
 
 @end

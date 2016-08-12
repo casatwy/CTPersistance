@@ -34,6 +34,7 @@
     }
     
     /* 4002 */
+    error = nil;
     NSMutableArray *primaryKeyList = [[NSMutableArray alloc] init];
     NSUInteger count = 10;
     
@@ -41,6 +42,11 @@
         record = [[TestRecord alloc] init];
         record.tomas = @"1";
         [table insertRecord:record error:&error];
+        if (error) {
+            NSLog(@"%@", error);
+            NSException *exception = [[NSException alloc] init];
+            @throw exception;
+        }
         [primaryKeyList addObject:[record.primaryKey copy]];
     }
     
