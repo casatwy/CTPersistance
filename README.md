@@ -251,9 +251,11 @@ you can try migration now!
 ## Quick Try (Transaction)
 
 ```objective-c
-TestTable *testTable = [[TestTable alloc] init];
-[CTPersistanceTransaction performTranscationWithBlock:^(BOOL *shouldRollback) {
 
+    TestTable *testTable = [[TestTable alloc] init];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:testTable.databaseName];
+            
+    [CTPersistanceTransaction performTranscationWithBlock:^(BOOL *shouldRollback) {
         NSUInteger count = 10000;
         while (count --> 0) {
             TestRecord *record = [[TestRecord alloc] init];
@@ -262,11 +264,8 @@ TestTable *testTable = [[TestTable alloc] init];
             record.tomas = @"casa";
             [testTable insertRecord:record error:NULL];
         }
-
-        *shouldRollback = NO;
-
-    } queryCommand:testTable.queryCommand lockType:CTPersistanceTransactionLockTypeDefault];
-
+        *shouldRollback = YES;
+    } queryCommand:queryCommand lockType:CTPersistanceTransactionLockTypeDefault];
 ```
 
 ## Quick Try (Multi-thread)
