@@ -19,6 +19,7 @@
     NSString *value = @"world";
     
     /* test 6001 */
+    whereCondition = @"':key' = ':value'";
     NSString *result = [whereCondition stringWithSQLParams:NSDictionaryOfVariableBindings(key, value)];
     if ([result isEqualToString:@"'hello' = 'world'"]) {
         NSLog(@"6001 success");
@@ -28,7 +29,7 @@
     }
     
     /* test 6002 */
-    whereCondition = @":key = :keyvalue";
+    whereCondition = @"':key' = :keyvalue";
     result = [whereCondition stringWithSQLParams:NSDictionaryOfVariableBindings(key)];
     if ([result isEqualToString:@"'hello' = :keyvalue"]) {
         NSLog(@"6002 success");
@@ -38,7 +39,7 @@
     }
     
     /* test 6003 */
-    whereCondition = @":key = :key_value";
+    whereCondition = @"':key' = ':key_value'";
     NSString *key_value = @"world";
     result = [whereCondition stringWithSQLParams:NSDictionaryOfVariableBindings(key, key_value)];
     if ([result isEqualToString:@"'hello' = 'world'"]) {
@@ -49,7 +50,7 @@
     }
     
     /* test 6004 */
-    whereCondition = @":key = :key_value";
+    whereCondition = @"':key' = :key_value";
     key = @"world";
     result = [whereCondition stringWithSQLParams:NSDictionaryOfVariableBindings(key)];
     if ([result isEqualToString:@"'world' = :key_value"]) {
@@ -80,7 +81,7 @@
     }
     
     /* test 6007 */
-    whereCondition = @":key = :key_value :key :key :k :key_value";
+    whereCondition = @"':key' = :key_value ':key' ':key' :k :key_value";
     key = @"casa";
     result = [whereCondition stringWithSQLParams:NSDictionaryOfVariableBindings(key)];
     if ([result isEqualToString:@"'casa' = :key_value 'casa' 'casa' :k :key_value"]) {
@@ -91,7 +92,7 @@
     }
     
     /* test 6008 */
-    whereCondition = @":key=:keyvalue";
+    whereCondition = @"':key'=':keyvalue'";
     key = @"hello";
     NSString *keyvalue = @"world";
     result = [whereCondition stringWithSQLParams:NSDictionaryOfVariableBindings(key, keyvalue)];
