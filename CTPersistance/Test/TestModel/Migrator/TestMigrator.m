@@ -19,13 +19,15 @@
 {
     return @{
              @"1.0":[MigrationStep1_0 class],
-             @"2.0":[MigrationStep2_0 class]
+//             @"2.0":[MigrationStep2_0 class]
              };
 }
 
 - (NSArray *)migrationVersionList
 {
-    return @[kCTPersistanceInitVersion, @"1.0", @"2.0"];
+//    return @[kCTPersistanceInitVersion];
+    return @[kCTPersistanceInitVersion, @"1.0"];
+//    return @[kCTPersistanceInitVersion, @"1.0", @"2.0"];
 }
 
 @end

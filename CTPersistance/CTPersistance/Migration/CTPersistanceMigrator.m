@@ -52,7 +52,7 @@
     NSArray *result = [[[queryCommand countAll] from:[CTPersistanceVersionTable tableName]] fetchWithError:NULL];
     if ([[result firstObject][@"COUNT(*)"] integerValue] == 0) {
         [queryCommand resetQueryCommand];
-        [[queryCommand insertTable:[CTPersistanceVersionTable tableName] withDataList:@[@{@"databaseVersion":[[self.child migrationVersionList] firstObject]}]] executeWithError:NULL];
+        [[queryCommand insertTable:[CTPersistanceVersionTable tableName] withDataList:@[@{@"databaseVersion":[[self.child migrationVersionList] lastObject]}]] executeWithError:NULL];
     }
 }
 
