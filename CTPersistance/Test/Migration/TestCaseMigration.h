@@ -10,7 +10,7 @@
 
 @interface TestCaseMigration : NSObject
 
-@property (nonatomic, assign) NSInteger currentVersion;
+@property (nonatomic, assign) NSInteger migrateTargetVersion;
 
 + (instancetype)sharedInstance;
 

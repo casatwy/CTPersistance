@@ -22,18 +22,18 @@
 {
     NSDictionary *result = @{};
     
-    if ([TestCaseMigration sharedInstance].currentVersion == 1) {
+    if ([TestCaseMigration sharedInstance].migrateTargetVersion == 1) {
         result = @{@"1.0":[MigrationStep1_0 class]};
     }
     
-    if ([TestCaseMigration sharedInstance].currentVersion == 2) {
+    if ([TestCaseMigration sharedInstance].migrateTargetVersion == 2) {
         result = @{
                    @"1.0":[MigrationStep1_0 class],
                    @"2.0":[MigrationStep2_0 class],
                    };
     }
     
-    if ([TestCaseMigration sharedInstance].currentVersion == 3) {
+    if ([TestCaseMigration sharedInstance].migrateTargetVersion == 3) {
         result = @{
                    @"1.0":[MigrationStep1_0 class],
                    @"2.0":[MigrationStep2_0 class],
@@ -41,7 +41,7 @@
                    };
     }
     
-    if ([TestCaseMigration sharedInstance].currentVersion == 4) {
+    if ([TestCaseMigration sharedInstance].migrateTargetVersion == 4) {
         result = @{
                    @"1.0":[MigrationStep1_0 class],
                    @"2.0":[MigrationStep2_0 class],
@@ -56,19 +56,19 @@
 {
     NSArray *result = @[kCTPersistanceInitVersion];
 
-    if ([TestCaseMigration sharedInstance].currentVersion == 1) {
+    if ([TestCaseMigration sharedInstance].migrateTargetVersion == 1) {
         result = @[kCTPersistanceInitVersion, @"1.0"];
     }
 
-    if ([TestCaseMigration sharedInstance].currentVersion == 2) {
+    if ([TestCaseMigration sharedInstance].migrateTargetVersion == 2) {
         result = @[kCTPersistanceInitVersion, @"1.0", @"2.0"];
     }
 
-    if ([TestCaseMigration sharedInstance].currentVersion == 3) {
+    if ([TestCaseMigration sharedInstance].migrateTargetVersion == 3) {
         result = @[kCTPersistanceInitVersion, @"1.0", @"2.0", @"3.0"];
     }
 
-    if ([TestCaseMigration sharedInstance].currentVersion == 4) {
+    if ([TestCaseMigration sharedInstance].migrateTargetVersion == 4) {
         result = @[kCTPersistanceInitVersion, @"1.0", @"2.0", @"3.0", @"4.0"];
     }
 

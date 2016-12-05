@@ -156,7 +156,7 @@
 
 - (void)prepareFor1To2
 {
-    self.currentVersion = 2;
+    self.migrateTargetVersion = 2;
     NSString *originFilePath = [[NSBundle mainBundle] pathForResource:@"testdatabase_1" ofType:@"sqlite"];
     NSString *targetFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"testdatabase.sqlite"];
     NSError *error = nil;
@@ -169,7 +169,7 @@
 
 - (void)prepareFor1To3
 {
-    self.currentVersion = 3;
+    self.migrateTargetVersion = 3;
     NSString *originFilePath = [[NSBundle mainBundle] pathForResource:@"testdatabase_1" ofType:@"sqlite"];
     NSString *targetFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"testdatabase.sqlite"];
     NSError *error = nil;
@@ -182,7 +182,7 @@
 
 - (void)prepareFor1To4
 {
-    self.currentVersion = 4;
+    self.migrateTargetVersion = 4;
     NSString *originFilePath = [[NSBundle mainBundle] pathForResource:@"testdatabase_1" ofType:@"sqlite"];
     NSString *targetFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"testdatabase.sqlite"];
     NSError *error = nil;
@@ -195,7 +195,7 @@
 
 - (void)prepareFor2To3
 {
-    self.currentVersion = 3;
+    self.migrateTargetVersion = 3;
     NSString *originFilePath = [[NSBundle mainBundle] pathForResource:@"testdatabase_2" ofType:@"sqlite"];
     NSString *targetFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"testdatabase.sqlite"];
     NSError *error = nil;
@@ -208,7 +208,7 @@
 
 - (void)prepareFor2To4
 {
-    self.currentVersion = 4;
+    self.migrateTargetVersion = 4;
     NSString *originFilePath = [[NSBundle mainBundle] pathForResource:@"testdatabase_2" ofType:@"sqlite"];
     NSString *targetFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"testdatabase.sqlite"];
     NSError *error = nil;
@@ -221,7 +221,7 @@
 
 - (void)prepareFor3To4
 {
-    self.currentVersion = 4;
+    self.migrateTargetVersion = 4;
     NSString *originFilePath = [[NSBundle mainBundle] pathForResource:@"testdatabase_3" ofType:@"sqlite"];
     NSString *targetFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"testdatabase.sqlite"];
     NSError *error = nil;
@@ -234,7 +234,7 @@
 
 - (void)prepareFor4To4
 {
-    self.currentVersion = 4;
+    self.migrateTargetVersion = 4;
     NSString *originFilePath = [[NSBundle mainBundle] pathForResource:@"testdatabase_4" ofType:@"sqlite"];
     NSString *targetFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"testdatabase.sqlite"];
     NSError *error = nil;
