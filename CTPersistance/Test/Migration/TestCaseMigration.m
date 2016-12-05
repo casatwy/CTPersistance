@@ -36,6 +36,20 @@
     [self clean];
 }
 
+- (void)testMigrateFromVersionOriginToVersion4
+{
+    [self clean];
+    [self prepareForOriginTo4];
+    TestTable *table = [[TestTable alloc] init];
+    NSError *error = nil;
+    NSString *sql = [NSString stringWithFormat:@"PRAGMA table_info(%@);", table.tableName];
+    NSArray *result = [table fetchWithSQL:sql error:&error];
+    if (result.count != 4) {
+        @throw [[NSException alloc] init];
+    }
+    [self clean];
+}
+
 - (void)testMigrateFromVersion1ToVersion2
 {
     [self clean];
@@ -152,6 +166,12 @@
 - (void)prepareForNoneDataBase
 {
     [self clean];
+}
+
+- (void)prepareForOriginTo4
+{
+    [self clean];
+    self.migrateTargetVersion = 4;
 }
 
 - (void)prepareFor1To2

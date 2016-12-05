@@ -15,6 +15,7 @@
 + (instancetype)sharedInstance;
 
 - (void)testMigrateFromNoneDataBase;
+- (void)testMigrateFromVersionOriginToVersion4;
 - (void)testMigrateFromVersion1ToVersion2;
 - (void)testMigrateFromVersion1ToVersion3;
 - (void)testMigrateFromVersion1ToVersion4;

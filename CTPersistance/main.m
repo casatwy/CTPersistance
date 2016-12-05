@@ -19,6 +19,7 @@
 #import "TestCaseMigration.h"
 
 int main(int argc, char * argv[]) {
+    
     TestInsertData *testInsertData = [[TestInsertData alloc] init];
     [testInsertData test];
     
@@ -45,6 +46,7 @@ int main(int argc, char * argv[]) {
     
     TestCaseMigration *migration = [TestCaseMigration sharedInstance];
     [migration testMigrateFromNoneDataBase];
+    [migration testMigrateFromVersionOriginToVersion4];
     [migration testMigrateFromVersion1ToVersion2];
     [migration testMigrateFromVersion1ToVersion3];
     [migration testMigrateFromVersion1ToVersion4];
