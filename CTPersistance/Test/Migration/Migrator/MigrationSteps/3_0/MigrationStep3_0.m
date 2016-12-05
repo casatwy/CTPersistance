@@ -1,21 +1,21 @@
 //
-//  MigrationStep2_0.m
+//  MigrationStep3_0.m
 //  CTPersistance
 //
-//  Created by casa on 15/10/7.
-//  Copyright © 2015年 casa. All rights reserved.
+//  Created by casa on 2016/12/5.
+//  Copyright © 2016年 casa. All rights reserved.
 //
 
-#import "MigrationStep2_0.h"
-
+#import "MigrationStep3_0.h"
 #import "TestTable.h"
 
-@implementation MigrationStep2_0
+@implementation MigrationStep3_0
 
+#pragma mark - CTPersistanceMigrationStep
 - (void)goUpWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError *__autoreleasing *)error
 {
     TestTable *table = [[TestTable alloc] initWithQueryCommand:queryCommand];
-    [[queryCommand addColumn:@"migration2_0" columnInfo:@"TEXT" tableName:table.tableName] executeWithError:error];
+    [[queryCommand addColumn:@"migration3_0" columnInfo:@"TEXT" tableName:table.tableName] executeWithError:error];
 }
 
 - (void)goDownWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError *__autoreleasing *)error

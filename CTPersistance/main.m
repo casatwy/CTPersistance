@@ -16,6 +16,7 @@
 #import "TestCaseTransaction.h"
 #import "TestCaseWhereCondition.h"
 #import "TestCaseAsync.h"
+#import "TestCaseMigration.h"
 
 int main(int argc, char * argv[]) {
     TestInsertData *testInsertData = [[TestInsertData alloc] init];
@@ -41,4 +42,14 @@ int main(int argc, char * argv[]) {
     
     TestCaseAsync *async = [[TestCaseAsync alloc] init];
     [async test];
+    
+    TestCaseMigration *migration = [TestCaseMigration sharedInstance];
+    [migration testMigrateFromNoneDataBase];
+    [migration testMigrateFromVersion1ToVersion2];
+    [migration testMigrateFromVersion1ToVersion3];
+    [migration testMigrateFromVersion1ToVersion4];
+    [migration testMigrateFromVersion2ToVersion3];
+    [migration testMigrateFromVersion2ToVersion4];
+    [migration testMigrateFromVersion3ToVersion4];
+    [migration testMigrateFromVersion4ToVersion4];
 }
