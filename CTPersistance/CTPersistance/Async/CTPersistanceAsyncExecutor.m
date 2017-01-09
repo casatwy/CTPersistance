@@ -27,6 +27,15 @@
     return executor;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self operationQueue];
+    }
+    return self;
+}
+
 - (void)performAsyncAction:(void (^)(void))action shouldWaitUntilDone:(BOOL)shouldWaitUntilDone
 {
     __block volatile BOOL shouldWait = shouldWaitUntilDone;
