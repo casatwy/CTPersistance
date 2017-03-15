@@ -1006,12 +1006,15 @@
 					};
 					720523311D473D30001EDBD2 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0820;
 					};
 					7205234A1D473D8A001EDBD2 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0820;
 					};
 					721CEE7A1D47497800EBE9CC = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -1311,6 +1314,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = welkiner.SwiftDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1324,6 +1328,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = welkiner.SwiftDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1345,6 +1350,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1368,6 +1374,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = welkiner.CTFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1392,6 +1399,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1415,6 +1423,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = welkiner.CTFrameworkTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
