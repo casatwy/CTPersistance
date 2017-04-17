@@ -102,9 +102,7 @@
                 NSNumber *primaryKeyValue = latestRecord[@"identifier"];
                  NSDictionary *whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyValue);
                 [[queryCommand updateTable:[CTPersistanceVersionTable tableName] withData:latestRecord condition:[NSString stringWithFormat:@"%@ = :primaryKeyValue", [CTPersistanceVersionTable primaryKeyName]] conditionParams:whereConditionParams] executeWithError:&error];
-                
-                NSLog(@"error at CTPersistanceMigrator:%d:%@", __LINE__, error);
-                
+                                
                 if (error) {
                     NSLog(@"error at CTPersistanceMigrator:%d:%@", __LINE__, error);
                 }
