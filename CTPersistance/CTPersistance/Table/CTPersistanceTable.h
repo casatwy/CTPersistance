@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CTPersistanceRecord.h"
+#import "CTPersistanceColumn.h"
 
 @class CTPersistanceQueryCommand;
 
@@ -35,7 +36,7 @@
  *
  *  @return return the column info of your table
  */
-- (NSDictionary *)columnInfo;
+- (NSArray <Class <CTPersistanceColumDescription>> *)columnInfo;
 
 /**
  *  the Class of the record.

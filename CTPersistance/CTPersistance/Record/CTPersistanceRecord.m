@@ -32,12 +32,12 @@
     free(properties);
     
     NSMutableDictionary *dictionaryRepresentation = [[NSMutableDictionary alloc] init];
-    [table.columnInfo enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull columnName, NSString * _Nonnull columnDescription, BOOL * _Nonnull stop) {
-        if (propertyList[columnName]) {
-            dictionaryRepresentation[columnName] = propertyList[columnName];
-        }
-    }];
-    
+//    [table.columnInfo enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull columnName, NSString * _Nonnull columnDescription, BOOL * _Nonnull stop) {
+//        if (propertyList[columnName]) {
+//            dictionaryRepresentation[columnName] = propertyList[columnName];
+//        }
+//    }];
+
     return dictionaryRepresentation;
 }
 

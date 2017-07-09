@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4A1F7DC31BD1CB8400A7C2C4 /* CTPersistanceAsyncExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1F7DC21BD1CB8400A7C2C4 /* CTPersistanceAsyncExecutor.m */; };
+		4A571C911F128B10004DEB79 /* TestTableColumnTomas.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A571C901F128B10004DEB79 /* TestTableColumnTomas.m */; };
+		4A571C941F128BAA004DEB79 /* CTPersistanceColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A571C931F128BAA004DEB79 /* CTPersistanceColumn.m */; };
+		4A571C971F128D59004DEB79 /* TestTableColumnAge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A571C961F128D59004DEB79 /* TestTableColumnAge.m */; };
+		4A571C9A1F128D66004DEB79 /* TestTableColumnName.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A571C991F128D66004DEB79 /* TestTableColumnName.m */; };
+		4A571C9D1F128D73004DEB79 /* TestTableColumnPrimaryKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A571C9C1F128D73004DEB79 /* TestTableColumnPrimaryKey.m */; };
 		4A5DD9361BD90A1400934C27 /* TestCaseAsync.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5DD9351BD90A1400934C27 /* TestCaseAsync.m */; };
 		4A7A7F611BCBD92400A480C7 /* TestDeleteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F531BCBD92400A480C7 /* TestDeleteData.m */; };
 		4A7A7F621BCBD92400A480C7 /* TestFetchData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F561BCBD92400A480C7 /* TestFetchData.m */; };
@@ -178,6 +183,16 @@
 /* Begin PBXFileReference section */
 		4A1F7DC11BD1CB8400A7C2C4 /* CTPersistanceAsyncExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceAsyncExecutor.h; sourceTree = "<group>"; };
 		4A1F7DC21BD1CB8400A7C2C4 /* CTPersistanceAsyncExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceAsyncExecutor.m; sourceTree = "<group>"; };
+		4A571C8F1F128B10004DEB79 /* TestTableColumnTomas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableColumnTomas.h; sourceTree = "<group>"; };
+		4A571C901F128B10004DEB79 /* TestTableColumnTomas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableColumnTomas.m; sourceTree = "<group>"; };
+		4A571C921F128BAA004DEB79 /* CTPersistanceColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceColumn.h; sourceTree = "<group>"; };
+		4A571C931F128BAA004DEB79 /* CTPersistanceColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceColumn.m; sourceTree = "<group>"; };
+		4A571C951F128D59004DEB79 /* TestTableColumnAge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableColumnAge.h; sourceTree = "<group>"; };
+		4A571C961F128D59004DEB79 /* TestTableColumnAge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableColumnAge.m; sourceTree = "<group>"; };
+		4A571C981F128D66004DEB79 /* TestTableColumnName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableColumnName.h; sourceTree = "<group>"; };
+		4A571C991F128D66004DEB79 /* TestTableColumnName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableColumnName.m; sourceTree = "<group>"; };
+		4A571C9B1F128D73004DEB79 /* TestTableColumnPrimaryKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableColumnPrimaryKey.h; sourceTree = "<group>"; };
+		4A571C9C1F128D73004DEB79 /* TestTableColumnPrimaryKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableColumnPrimaryKey.m; sourceTree = "<group>"; };
 		4A5DD9341BD90A1400934C27 /* TestCaseAsync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCaseAsync.h; sourceTree = "<group>"; };
 		4A5DD9351BD90A1400934C27 /* TestCaseAsync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCaseAsync.m; sourceTree = "<group>"; };
 		4A7A7F521BCBD92400A480C7 /* TestDeleteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDeleteData.h; sourceTree = "<group>"; };
@@ -321,6 +336,62 @@
 				4A1F7DC21BD1CB8400A7C2C4 /* CTPersistanceAsyncExecutor.m */,
 			);
 			path = Async;
+			sourceTree = "<group>";
+		};
+		4A571C861F12888D004DEB79 /* Column */ = {
+			isa = PBXGroup;
+			children = (
+				4A571C921F128BAA004DEB79 /* CTPersistanceColumn.h */,
+				4A571C931F128BAA004DEB79 /* CTPersistanceColumn.m */,
+			);
+			path = Column;
+			sourceTree = "<group>";
+		};
+		4A571C8A1F128AC6004DEB79 /* Columns */ = {
+			isa = PBXGroup;
+			children = (
+				4A571C8B1F128AEF004DEB79 /* Tomas */,
+				4A571C8C1F128AEF004DEB79 /* Age */,
+				4A571C8D1F128AEF004DEB79 /* Name */,
+				4A571C8E1F128AEF004DEB79 /* PrimaryKey */,
+			);
+			path = Columns;
+			sourceTree = "<group>";
+		};
+		4A571C8B1F128AEF004DEB79 /* Tomas */ = {
+			isa = PBXGroup;
+			children = (
+				4A571C8F1F128B10004DEB79 /* TestTableColumnTomas.h */,
+				4A571C901F128B10004DEB79 /* TestTableColumnTomas.m */,
+			);
+			path = Tomas;
+			sourceTree = "<group>";
+		};
+		4A571C8C1F128AEF004DEB79 /* Age */ = {
+			isa = PBXGroup;
+			children = (
+				4A571C951F128D59004DEB79 /* TestTableColumnAge.h */,
+				4A571C961F128D59004DEB79 /* TestTableColumnAge.m */,
+			);
+			path = Age;
+			sourceTree = "<group>";
+		};
+		4A571C8D1F128AEF004DEB79 /* Name */ = {
+			isa = PBXGroup;
+			children = (
+				4A571C981F128D66004DEB79 /* TestTableColumnName.h */,
+				4A571C991F128D66004DEB79 /* TestTableColumnName.m */,
+			);
+			path = Name;
+			sourceTree = "<group>";
+		};
+		4A571C8E1F128AEF004DEB79 /* PrimaryKey */ = {
+			isa = PBXGroup;
+			children = (
+				4A571C9B1F128D73004DEB79 /* TestTableColumnPrimaryKey.h */,
+				4A571C9C1F128D73004DEB79 /* TestTableColumnPrimaryKey.m */,
+			);
+			path = PrimaryKey;
 			sourceTree = "<group>";
 		};
 		4A5DD9331BD909F100934C27 /* Async */ = {
@@ -536,6 +607,7 @@
 		4A925BC71BC3E83D00CC3244 /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				4A571C8A1F128AC6004DEB79 /* Columns */,
 				4A925BC81BC3E83D00CC3244 /* TestTable.h */,
 				4A925BC91BC3E83D00CC3244 /* TestTable.m */,
 			);
@@ -712,6 +784,7 @@
 		4AD2D6711BBFCD7200E1F37D /* CTPersistance */ = {
 			isa = PBXGroup;
 			children = (
+				4A571C861F12888D004DEB79 /* Column */,
 				4A1F7DC01BD147D200A7C2C4 /* Async */,
 				4ADCE5B71BCD460A00E54458 /* Transaction */,
 				4A925B871BC295C600CC3244 /* Categories */,
@@ -1085,11 +1158,13 @@
 				4AFEFD0B1BCFE8B900751D82 /* TestCaseWhereCondition.m in Sources */,
 				4AF066451BC281F00042288C /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,
 				4AF066421BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.m in Sources */,
+				4A571C911F128B10004DEB79 /* TestTableColumnTomas.m in Sources */,
 				4A9E4FF11BC4CF770009E111 /* CTPersistanceVersionTable.m in Sources */,
 				4A925BA51BC2EDB500CC3244 /* CTPersistanceTable+Delete.m in Sources */,
 				4ADCE5BA1BCD462000E54458 /* CTPersistanceTransaction.m in Sources */,
 				4AC9243B1DF5A41A0024FE6F /* MigrationStep2_0.m in Sources */,
 				4A925BB51BC38F5000CC3244 /* CTPersistanceRecord.m in Sources */,
+				4A571C9D1F128D73004DEB79 /* TestTableColumnPrimaryKey.m in Sources */,
 				4A925B991BC2DFC500CC3244 /* CTPersistanceTable.m in Sources */,
 				4A925BAB1BC2EDCE00CC3244 /* CTPersistanceTable+Insert.m in Sources */,
 				4AF066281BC217280042288C /* CTPersistanceDatabasePool.m in Sources */,
@@ -1099,6 +1174,7 @@
 				4A925BA81BC2EDC300CC3244 /* CTPersistanceTable+Find.m in Sources */,
 				4AC924411DF5A48D0024FE6F /* MigrationStep3_0.m in Sources */,
 				4A7A7F621BCBD92400A480C7 /* TestFetchData.m in Sources */,
+				4A571C9A1F128D66004DEB79 /* TestTableColumnName.m in Sources */,
 				4A7A7F641BCBD92400A480C7 /* TestCaseRecord.m in Sources */,
 				4AC9242F1DF5A1D40024FE6F /* TestCaseMigration.m in Sources */,
 				4A925BBD1BC3A0C500CC3244 /* NSString+SQL.m in Sources */,
@@ -1115,12 +1191,14 @@
 				4AC9243A1DF5A41A0024FE6F /* MigrationStep1_0.m in Sources */,
 				4AF0664C1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */,
 				4A925BCA1BC3E83D00CC3244 /* TestRecord.m in Sources */,
+				4A571C971F128D59004DEB79 /* TestTableColumnAge.m in Sources */,
 				4A7A7F741BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.m in Sources */,
 				4A9E4FE31BC4C3F60009E111 /* NSString+ReqularExpression.m in Sources */,
 				4A9E4FF41BC4CFA00009E111 /* CTPersistanceVersionRecord.m in Sources */,
 				4A7A7F611BCBD92400A480C7 /* TestDeleteData.m in Sources */,
 				4A7A7F681BCBD94700A480C7 /* TestCaseTransaction.m in Sources */,
 				4A925BAE1BC2EDDA00CC3244 /* CTPersistanceTable+Update.m in Sources */,
+				4A571C941F128BAA004DEB79 /* CTPersistanceColumn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

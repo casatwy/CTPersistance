@@ -9,6 +9,8 @@
 #import "TestTable.h"
 #import "CTPersistanceTable+Insert.h"
 
+#import "TestTableColumnTomas.h"
+
 @implementation TestTable
 
 #pragma mark - CTPersistanceTableProtocol
