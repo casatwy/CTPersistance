@@ -10,10 +10,29 @@
 
 @implementation TestTableColumnPrimaryKey
 
-+ (NSString *)columName;
-+ (NSString *)columType;
-+ (BOOL)isPrimaryKey;
-+ (BOOL)isAutoIncrement;
-+ (BOOL)isNOTNULL;
++ (NSString *)columnName
+{
+    return @"primaryKey";
+}
+
++ (NSString *)columnType
+{
+    return CTPersistanceColumnTypeInteger;
+}
+
++ (BOOL)isPrimaryKey
+{
+    return YES;
+}
+
++ (BOOL)isAutoIncrement
+{
+    return YES;
+}
+
++ (BOOL)isNOTNULL
+{
+    return YES;
+}
 
 @end

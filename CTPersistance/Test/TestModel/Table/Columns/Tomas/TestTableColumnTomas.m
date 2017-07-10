@@ -10,12 +10,12 @@
 
 @implementation TestTableColumnTomas
 
-+ (NSString *)columName
++ (NSString *)columnName
 {
     return @"tomas";
 }
 
-+ (NSString *)columType
++ (NSString *)columnType
 {
     return CTPersistanceColumnTypeText;
 }

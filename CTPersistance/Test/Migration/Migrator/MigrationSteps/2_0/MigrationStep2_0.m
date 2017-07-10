@@ -13,8 +13,6 @@
 
 - (void)goUpWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError *__autoreleasing *)error
 {
-    TestTable *table = [[TestTable alloc] initWithQueryCommand:queryCommand];
-    [[queryCommand addColumn:@"migration2_0" columnInfo:@"TEXT" tableName:table.tableName] executeWithError:error];
 }
 
 - (void)goDownWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError *__autoreleasing *)error

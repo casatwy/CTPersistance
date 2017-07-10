@@ -10,12 +10,12 @@
 
 @implementation TestTableColumnAge
 
-+ (NSString *)columName
++ (NSString *)columnName
 {
     return @"name";
 }
 
-+ (NSString *)columType
++ (NSString *)columnType
 {
     return CTPersistanceColumnTypeText;
 }

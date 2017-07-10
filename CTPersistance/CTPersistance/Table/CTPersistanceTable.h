@@ -36,7 +36,7 @@
  *
  *  @return return the column info of your table
  */
-- (NSArray <Class <CTPersistanceColumDescription>> *)columnInfo;
+- (NSArray <Class <CTPersistanceColumnDescription>> *)columnInfo;
 
 /**
  *  the Class of the record.

@@ -10,6 +10,9 @@
 #import "CTPersistanceTable+Insert.h"
 
 #import "TestTableColumnTomas.h"
+#import "TestTableColumnAge.h"
+#import "TestTableColumnName.h"
+#import "TestTableColumnPrimaryKey.h"
 
 @implementation TestTable
 
@@ -29,14 +32,14 @@
     
 }
 
-- (NSDictionary *)columnInfo
+- (NSArray<Class<CTPersistanceColumnDescription>> *)columnInfo
 {
-    return @{
-             @"primaryKey":@"INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL",
-             @"name":@"TEXT",
-             @"age":@"INTEGER",
-             @"tomas":@"TEXT NOT NULL"
-             };
+    return @[
+             [TestTableColumnTomas class],
+             [TestTableColumnPrimaryKey class],
+             [TestTableColumnAge class],
+             [TestTableColumnName class],
+             ];
 }
 
 - (Class)recordClass

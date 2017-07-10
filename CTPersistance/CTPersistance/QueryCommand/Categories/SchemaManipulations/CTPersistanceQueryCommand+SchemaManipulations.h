@@ -7,6 +7,7 @@
 //
 
 #import "CTPersistanceQueryCommand.h"
+#import "CTPersistanceColumn.h"
 
 @interface CTPersistanceQueryCommand (SchemaManipulations)
 
@@ -18,7 +19,7 @@
  *
  *  @return return CTPersistanceQueryCommand
  */
-- (CTPersistanceQueryCommand *)createTable:(NSString *)tableName columnInfo:(NSDictionary *)columnInfo;
+- (CTPersistanceQueryCommand *)createTable:(NSString *)tableName columnInfo:(NSArray <Class <CTPersistanceColumnDescription>> *)columnInfo;
 
 /**
  *  drop table with table name
@@ -38,7 +39,7 @@
  *
  *  @return return CTPersistanceQueryCommnad
  */
-- (CTPersistanceQueryCommand *)addColumn:(NSString *)columnName columnInfo:(NSString *)columnInfo tableName:(NSString *)tableName;
+- (CTPersistanceQueryCommand *)addColumn:(Class <CTPersistanceColumnDescription>)columnInfo tableName:(NSString *)tableName;
 
 /**
  *  create Index for table with indexed column list and condition with condition params.

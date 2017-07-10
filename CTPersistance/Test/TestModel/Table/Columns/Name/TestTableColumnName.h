@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "CTPersistanceColumn.h"
 
-@interface TestTableColumnName : NSObject <CTPersistanceColumDescription>
+@interface TestTableColumnName : NSObject <CTPersistanceColumnDescription>
 
 @end
