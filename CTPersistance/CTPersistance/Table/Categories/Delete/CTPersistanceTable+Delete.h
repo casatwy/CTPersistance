@@ -73,4 +73,6 @@
  */
 - (void)deleteWithPrimaryKeyList:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error;
 
+- (void)truncate;
+
 @end

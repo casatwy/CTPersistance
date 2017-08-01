@@ -33,6 +33,7 @@
 
 - (void)tearDown {
     [super tearDown];
+    [self.testTable truncate];
 }
 
 - (void)testUpdateRecord

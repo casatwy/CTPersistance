@@ -113,4 +113,13 @@
     return self;
 }
 
+- (CTPersistanceQueryCommand *)truncateTable:(NSString *)tableName
+{
+    NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM `%@`;", tableName];
+    sqlite3_stmt *statement = nil;
+    sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
+    self.statement = statement;
+    return self;
+}
+
 @end

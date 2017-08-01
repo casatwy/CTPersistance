@@ -26,6 +26,7 @@
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+    [self.testTable truncate];
 }
 
 - (void)testInsertSpecialCharRecord
@@ -36,6 +37,7 @@
     NSError *error = nil;
     [self.testTable insertRecord:record error:&error];
     XCTAssertNil(error);
+    XCTAssertNotNil([self.testTable findWithPrimaryKey:record.primaryKey error:NULL]);
 }
 
 - (void)testInsertNULLTextRecord
@@ -46,6 +48,7 @@
     NSError *error = nil;
     [self.testTable insertRecord:record error:&error];
     XCTAssertNil(error);
+    XCTAssertNotNil([self.testTable findWithPrimaryKey:record.primaryKey error:NULL]);
 }
 
 - (void)testInsertZeroRecord
@@ -56,6 +59,7 @@
     NSError *error = nil;
     [self.testTable insertRecord:record error:&error];
     XCTAssertNil(error);
+    XCTAssertNotNil([self.testTable findWithPrimaryKey:record.primaryKey error:NULL]);
 }
 
 - (void)testInsertDoubleTypeRecord
@@ -66,6 +70,7 @@
     NSError *error = nil;
     [self.testTable insertRecord:record error:&error];
     XCTAssertNil(error);
+    XCTAssertNotNil([self.testTable findWithPrimaryKey:record.primaryKey error:NULL]);
 }
 
 - (void)testInsertBlobTypeRecord
@@ -76,6 +81,7 @@
     NSError *error = nil;
     [self.testTable insertRecord:record error:&error];
     XCTAssertNil(error);
+    XCTAssertNotNil([self.testTable findWithPrimaryKey:record.primaryKey error:NULL]);
 }
 
 - (void)testInsertImageDataTypeRecord
@@ -88,6 +94,7 @@
     NSError *error = nil;
     [self.testTable insertRecord:record error:&error];
     XCTAssertNil(error);
+    XCTAssertNotNil([self.testTable findWithPrimaryKey:record.primaryKey error:NULL]);
 }
 
 - (void)testInsertRecordList
@@ -102,6 +109,8 @@
     
     NSError *error = nil;
     [self.testTable insertRecordList:recordList error:&error];
+
+    
     XCTAssertNil(error);
 }
 

@@ -101,4 +101,13 @@
     }
 }
 
+- (void)truncate
+{
+    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
+    if (self.isFromMigration == NO) {
+        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    }
+    [[queryCommand truncateTable:self.child.tableName] executeWithError:NULL];
+}
+
 @end
