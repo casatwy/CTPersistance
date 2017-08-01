@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CTPersistanceDataBase.h"
+#import <sqlite3.h>
 
 /**
  *  CTPersistanceQueryCommand is a SQL builder for CTPersistance
@@ -17,10 +18,16 @@
  */
 @interface CTPersistanceQueryCommand : NSObject
 
+#warning todo delete sqlstring
 /**
  *  the current generated SQL string
  */
-@property (nonatomic, strong, readonly) NSMutableString *sqlString;
+@property (nonatomic, strong, readonly) NSMutableString *sqlString; 
+
+/*
+ * the statement of current SQL
+ */
+@property (nonatomic, unsafe_unretained) sqlite3_stmt *statement;
 
 /**
  *  related CTPersistanceDataBase
@@ -50,13 +57,6 @@
  *
  */
 - (instancetype)initWithDatabase:(CTPersistanceDataBase *)database;
-
-/**
- *  clean SQL string.
- *
- *  @return return CTPersistanceQueryCommand
- */
-- (CTPersistanceQueryCommand *)resetQueryCommand;
 
 /**
  *  execute SQL with sqlString

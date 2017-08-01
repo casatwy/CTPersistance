@@ -7,924 +7,528 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A1F7DC31BD1CB8400A7C2C4 /* CTPersistanceAsyncExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1F7DC21BD1CB8400A7C2C4 /* CTPersistanceAsyncExecutor.m */; };
-		4A5DD9361BD90A1400934C27 /* TestCaseAsync.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5DD9351BD90A1400934C27 /* TestCaseAsync.m */; };
-		4A7A7F611BCBD92400A480C7 /* TestDeleteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F531BCBD92400A480C7 /* TestDeleteData.m */; };
-		4A7A7F621BCBD92400A480C7 /* TestFetchData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F561BCBD92400A480C7 /* TestFetchData.m */; };
-		4A7A7F631BCBD92400A480C7 /* TestInsertData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F591BCBD92400A480C7 /* TestInsertData.m */; };
-		4A7A7F641BCBD92400A480C7 /* TestCaseRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F5C1BCBD92400A480C7 /* TestCaseRecord.m */; };
-		4A7A7F651BCBD92400A480C7 /* TestUpdateData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F601BCBD92400A480C7 /* TestUpdateData.m */; };
-		4A7A7F681BCBD94700A480C7 /* TestCaseTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F671BCBD94700A480C7 /* TestCaseTransaction.m */; };
-		4A7A7F741BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F731BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.m */; };
-		4A925B991BC2DFC500CC3244 /* CTPersistanceTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925B981BC2DFC500CC3244 /* CTPersistanceTable.m */; };
-		4A925BA51BC2EDB500CC3244 /* CTPersistanceTable+Delete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BA41BC2EDB500CC3244 /* CTPersistanceTable+Delete.m */; };
-		4A925BA81BC2EDC300CC3244 /* CTPersistanceTable+Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BA71BC2EDC300CC3244 /* CTPersistanceTable+Find.m */; };
-		4A925BAB1BC2EDCE00CC3244 /* CTPersistanceTable+Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BAA1BC2EDCE00CC3244 /* CTPersistanceTable+Insert.m */; };
-		4A925BAE1BC2EDDA00CC3244 /* CTPersistanceTable+Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BAD1BC2EDDA00CC3244 /* CTPersistanceTable+Update.m */; };
-		4A925BB51BC38F5000CC3244 /* CTPersistanceRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BB41BC38F5000CC3244 /* CTPersistanceRecord.m */; };
-		4A925BB91BC39CCD00CC3244 /* CTPersistanceCriteria.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BB81BC39CCD00CC3244 /* CTPersistanceCriteria.m */; };
-		4A925BBD1BC3A0C500CC3244 /* NSString+SQL.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BBC1BC3A0C500CC3244 /* NSString+SQL.m */; };
-		4A925BC21BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BC11BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.m */; };
-		4A925BCA1BC3E83D00CC3244 /* TestRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BC61BC3E83D00CC3244 /* TestRecord.m */; };
-		4A925BCB1BC3E83D00CC3244 /* TestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BC91BC3E83D00CC3244 /* TestTable.m */; };
-		4A9E4FE31BC4C3F60009E111 /* NSString+ReqularExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E4FE21BC4C3F60009E111 /* NSString+ReqularExpression.m */; };
-		4A9E4FE51BC4C76D0009E111 /* CTPersistanceConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A9E4FE41BC4C76D0009E111 /* CTPersistanceConfiguration.plist */; };
-		4A9E4FF11BC4CF770009E111 /* CTPersistanceVersionTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E4FEF1BC4CF770009E111 /* CTPersistanceVersionTable.m */; };
-		4A9E4FF41BC4CFA00009E111 /* CTPersistanceVersionRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E4FF31BC4CFA00009E111 /* CTPersistanceVersionRecord.m */; };
-		4AC9242F1DF5A1D40024FE6F /* TestCaseMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC9242E1DF5A1D40024FE6F /* TestCaseMigration.m */; };
-		4AC9243A1DF5A41A0024FE6F /* MigrationStep1_0.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC924341DF5A41A0024FE6F /* MigrationStep1_0.m */; };
-		4AC9243B1DF5A41A0024FE6F /* MigrationStep2_0.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC924371DF5A41A0024FE6F /* MigrationStep2_0.m */; };
-		4AC9243C1DF5A41A0024FE6F /* TestMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC924391DF5A41A0024FE6F /* TestMigrator.m */; };
-		4AC924411DF5A48D0024FE6F /* MigrationStep3_0.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC924401DF5A48D0024FE6F /* MigrationStep3_0.m */; };
-		4AC924441DF5A49B0024FE6F /* MigrationStep4_0.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC924431DF5A49B0024FE6F /* MigrationStep4_0.m */; };
-		4AC924471DF5AD1E0024FE6F /* testdatabase_origin.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4AC924461DF5AD180024FE6F /* testdatabase_origin.sqlite */; };
-		4AC9244C1DF5B52F0024FE6F /* testdatabase_1.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4AC924481DF5B52F0024FE6F /* testdatabase_1.sqlite */; };
-		4AC9244D1DF5B52F0024FE6F /* testdatabase_2.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4AC924491DF5B52F0024FE6F /* testdatabase_2.sqlite */; };
-		4AC9244E1DF5B52F0024FE6F /* testdatabase_3.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4AC9244A1DF5B52F0024FE6F /* testdatabase_3.sqlite */; };
-		4AC9244F1DF5B52F0024FE6F /* testdatabase_4.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4AC9244B1DF5B52F0024FE6F /* testdatabase_4.sqlite */; };
-		4AD2D65C1BBFCD5E00E1F37D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD2D65B1BBFCD5E00E1F37D /* main.m */; };
-		4ADCE5BA1BCD462000E54458 /* CTPersistanceTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCE5B91BCD462000E54458 /* CTPersistanceTransaction.m */; };
-		4AF066171BC189A70042288C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF066161BC189A70042288C /* libsqlite3.tbd */; };
-		4AF066271BC217280042288C /* CTPersistanceDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066211BC217280042288C /* CTPersistanceDataBase.m */; };
-		4AF066281BC217280042288C /* CTPersistanceDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066231BC217280042288C /* CTPersistanceDatabasePool.m */; };
-		4AF066291BC217280042288C /* CTPersistanceMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066261BC217280042288C /* CTPersistanceMigrator.m */; };
-		4AF066381BC276C40042288C /* CTPersistanceQueryCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066371BC276C40042288C /* CTPersistanceQueryCommand.m */; };
-		4AF066421BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066401BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.m */; };
-		4AF066451BC281F00042288C /* CTPersistanceQueryCommand+DataManipulations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066441BC281F00042288C /* CTPersistanceQueryCommand+DataManipulations.m */; };
-		4AF0664C1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0664B1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m */; };
-		4AFEFD0B1BCFE8B900751D82 /* TestCaseWhereCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFEFD0A1BCFE8B900751D82 /* TestCaseWhereCondition.m */; };
-		720523451D473D3F001EDBD2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720523441D473D3F001EDBD2 /* main.swift */; };
-		7205234E1D473D8A001EDBD2 /* CTFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 7205234D1D473D8A001EDBD2 /* CTFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		720523521D473D8A001EDBD2 /* CTFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7205234B1D473D8A001EDBD2 /* CTFramework.framework */; };
-		720523531D473D8A001EDBD2 /* CTFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7205234B1D473D8A001EDBD2 /* CTFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		720523591D473DB2001EDBD2 /* CTPersistanceAsyncExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1F7DC21BD1CB8400A7C2C4 /* CTPersistanceAsyncExecutor.m */; };
-		7205235B1D473DB2001EDBD2 /* CTPersistanceTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADCE5B91BCD462000E54458 /* CTPersistanceTransaction.m */; };
-		7205235D1D473DB2001EDBD2 /* NSArray+CTPersistanceRecordTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BC11BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.m */; };
-		7205235F1D473DB2001EDBD2 /* NSString+ReqularExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E4FE21BC4C3F60009E111 /* NSString+ReqularExpression.m */; };
-		720523611D473DB2001EDBD2 /* NSString+SQL.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BBC1BC3A0C500CC3244 /* NSString+SQL.m */; };
-		720523631D473DB2001EDBD2 /* CTPersistanceDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066211BC217280042288C /* CTPersistanceDataBase.m */; };
-		720523651D473DB2001EDBD2 /* CTPersistanceDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066231BC217280042288C /* CTPersistanceDatabasePool.m */; };
-		720523671D473DB2001EDBD2 /* CTPersistanceTable+Delete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BA41BC2EDB500CC3244 /* CTPersistanceTable+Delete.m */; };
-		720523691D473DB2001EDBD2 /* CTPersistanceTable+Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BA71BC2EDC300CC3244 /* CTPersistanceTable+Find.m */; };
-		7205236B1D473DB2001EDBD2 /* CTPersistanceTable+Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BAA1BC2EDCE00CC3244 /* CTPersistanceTable+Insert.m */; };
-		7205236D1D473DB2001EDBD2 /* CTPersistanceTable+Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BAD1BC2EDDA00CC3244 /* CTPersistanceTable+Update.m */; };
-		7205236F1D473DB2001EDBD2 /* CTPersistanceTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925B981BC2DFC500CC3244 /* CTPersistanceTable.m */; };
-		720523721D473DB2001EDBD2 /* CTPersistanceRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BB41BC38F5000CC3244 /* CTPersistanceRecord.m */; };
-		720523741D473DB2001EDBD2 /* CTPersistanceQueryCommand+Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F731BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.m */; };
-		720523761D473DB2001EDBD2 /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0664B1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m */; };
-		720523781D473DB2001EDBD2 /* CTPersistanceQueryCommand+DataManipulations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066441BC281F00042288C /* CTPersistanceQueryCommand+DataManipulations.m */; };
-		7205237A1D473DB2001EDBD2 /* CTPersistanceQueryCommand+ReadMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066401BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.m */; };
-		7205237C1D473DB2001EDBD2 /* CTPersistanceQueryCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066371BC276C40042288C /* CTPersistanceQueryCommand.m */; };
-		7205237E1D473DB2001EDBD2 /* CTPersistanceVersionRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E4FF31BC4CFA00009E111 /* CTPersistanceVersionRecord.m */; };
-		720523801D473DB2001EDBD2 /* CTPersistanceVersionTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E4FEF1BC4CF770009E111 /* CTPersistanceVersionTable.m */; };
-		720523821D473DB2001EDBD2 /* CTPersistanceMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF066261BC217280042288C /* CTPersistanceMigrator.m */; };
-		720523841D473DB2001EDBD2 /* CTPersistanceCriteria.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BB81BC39CCD00CC3244 /* CTPersistanceCriteria.m */; };
-		720523881D473DCE001EDBD2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF066161BC189A70042288C /* libsqlite3.tbd */; };
-		720523891D473E66001EDBD2 /* CTPersistanceAsyncExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A1F7DC11BD1CB8400A7C2C4 /* CTPersistanceAsyncExecutor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7205238A1D473E66001EDBD2 /* CTPersistanceTransaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 4ADCE5B81BCD462000E54458 /* CTPersistanceTransaction.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7205238B1D473E66001EDBD2 /* NSArray+CTPersistanceRecordTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A925BC01BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7205238C1D473E66001EDBD2 /* NSString+ReqularExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A9E4FE11BC4C3F60009E111 /* NSString+ReqularExpression.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7205238D1D473E66001EDBD2 /* NSString+SQL.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A925BBB1BC3A0C500CC3244 /* NSString+SQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7205238E1D473E66001EDBD2 /* CTPersistanceDataBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AF066201BC217280042288C /* CTPersistanceDataBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7205238F1D473E66001EDBD2 /* CTPersistanceDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AF066221BC217280042288C /* CTPersistanceDatabasePool.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		720523901D473E66001EDBD2 /* CTPersistanceTable+Delete.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A925BA31BC2EDB500CC3244 /* CTPersistanceTable+Delete.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		720523911D473E66001EDBD2 /* CTPersistanceTable+Find.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A925BA61BC2EDC300CC3244 /* CTPersistanceTable+Find.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		720523921D473E66001EDBD2 /* CTPersistanceTable+Insert.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A925BA91BC2EDCE00CC3244 /* CTPersistanceTable+Insert.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		720523931D473E66001EDBD2 /* CTPersistanceTable+Update.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A925BAC1BC2EDDA00CC3244 /* CTPersistanceTable+Update.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		720523941D473E66001EDBD2 /* CTPersistanceTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A925B971BC2DFC500CC3244 /* CTPersistanceTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		720523951D473E66001EDBD2 /* CTPersistanceRecordProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A925BD81BC4016A00CC3244 /* CTPersistanceRecordProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		720523961D473E66001EDBD2 /* CTPersistanceRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A925BB31BC38F5000CC3244 /* CTPersistanceRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		720523971D473E66001EDBD2 /* CTPersistanceQueryCommand+Status.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A7A7F721BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		720523981D473E66001EDBD2 /* CTPersistanceQueryCommand+SchemaManipulations.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AF0664A1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		720523991D473E66001EDBD2 /* CTPersistanceQueryCommand+DataManipulations.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AF066431BC281F00042288C /* CTPersistanceQueryCommand+DataManipulations.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7205239A1D473E66001EDBD2 /* CTPersistanceQueryCommand+ReadMethods.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AF0663F1BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7205239B1D473E66001EDBD2 /* CTPersistanceQueryCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AF066361BC276C40042288C /* CTPersistanceQueryCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7205239C1D473E66001EDBD2 /* CTPersistanceVersionRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A9E4FF21BC4CFA00009E111 /* CTPersistanceVersionRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7205239D1D473E66001EDBD2 /* CTPersistanceVersionTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A9E4FEE1BC4CF770009E111 /* CTPersistanceVersionTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7205239E1D473E66001EDBD2 /* CTPersistanceMigrator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AF066251BC217280042288C /* CTPersistanceMigrator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7205239F1D473E66001EDBD2 /* CTPersistanceCriteria.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A925BB71BC39CCD00CC3244 /* CTPersistanceCriteria.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		720523A01D473E66001EDBD2 /* CTPersistance.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AF066111BC00D020042288C /* CTPersistance.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		720523A11D473E66001EDBD2 /* CTPersistanceConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AF066121BC00E660042288C /* CTPersistanceConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		720523A21D473E66001EDBD2 /* CTPersistanceMarcos.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A925B911BC2AD1A00CC3244 /* CTPersistanceMarcos.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		721CEE7E1D47497800EBE9CC /* CTFrameworkTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 721CEE7D1D47497800EBE9CC /* CTFrameworkTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		721CEE821D47497800EBE9CC /* CTFrameworkTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721CEE7B1D47497800EBE9CC /* CTFrameworkTest.framework */; };
-		721CEE831D47497800EBE9CC /* CTFrameworkTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 721CEE7B1D47497800EBE9CC /* CTFrameworkTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		721CEE871D474D1300EBE9CC /* CTFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7205234B1D473D8A001EDBD2 /* CTFramework.framework */; };
-		721CEE881D474D3400EBE9CC /* TestCaseAsync.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5DD9351BD90A1400934C27 /* TestCaseAsync.m */; };
-		721CEE891D474D3400EBE9CC /* TestCaseWhereCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFEFD0A1BCFE8B900751D82 /* TestCaseWhereCondition.m */; };
-		721CEE8D1D474D3400EBE9CC /* TestRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BC61BC3E83D00CC3244 /* TestRecord.m */; };
-		721CEE8E1D474D3400EBE9CC /* TestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A925BC91BC3E83D00CC3244 /* TestTable.m */; };
-		721CEE8F1D474D3400EBE9CC /* TestUpdateData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F601BCBD92400A480C7 /* TestUpdateData.m */; };
-		721CEE901D474D3400EBE9CC /* TestDeleteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F531BCBD92400A480C7 /* TestDeleteData.m */; };
-		721CEE911D474D3400EBE9CC /* TestFetchData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F561BCBD92400A480C7 /* TestFetchData.m */; };
-		721CEE921D474D3400EBE9CC /* TestInsertData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F591BCBD92400A480C7 /* TestInsertData.m */; };
-		721CEE931D474D3400EBE9CC /* TestCaseRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F5C1BCBD92400A480C7 /* TestCaseRecord.m */; };
-		721CEE941D474D3400EBE9CC /* TestCaseTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A7F671BCBD94700A480C7 /* TestCaseTransaction.m */; };
-		721CEE951D474D5800EBE9CC /* TestCaseAsync.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A5DD9341BD90A1400934C27 /* TestCaseAsync.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		721CEE961D474D5800EBE9CC /* TestCaseWhereCondition.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AFEFD091BCFE8B900751D82 /* TestCaseWhereCondition.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		721CEE9A1D474D5800EBE9CC /* TestRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A925BC51BC3E83D00CC3244 /* TestRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		721CEE9B1D474D5800EBE9CC /* TestTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A925BC81BC3E83D00CC3244 /* TestTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		721CEE9C1D474D5800EBE9CC /* TestUpdateData.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A7A7F5F1BCBD92400A480C7 /* TestUpdateData.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		721CEE9D1D474D5800EBE9CC /* TestDeleteData.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A7A7F521BCBD92400A480C7 /* TestDeleteData.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		721CEE9E1D474D5800EBE9CC /* TestFetchData.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A7A7F551BCBD92400A480C7 /* TestFetchData.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		721CEE9F1D474D5800EBE9CC /* TestInsertData.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A7A7F581BCBD92400A480C7 /* TestInsertData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		721CEEA01D474D5800EBE9CC /* TestCaseRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A7A7F5B1BCBD92400A480C7 /* TestCaseRecord.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		721CEEA11D474D5800EBE9CC /* TestCaseTransaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A7A7F661BCBD94700A480C7 /* TestCaseTransaction.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		721CEEA21D474D7C00EBE9CC /* CTPersistanceConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A9E4FE41BC4C76D0009E111 /* CTPersistanceConfiguration.plist */; };
+		4A0E002A1F2C384E00E6A4DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00291F2C384E00E6A4DA /* main.m */; };
+		4A0E002D1F2C384E00E6A4DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E002C1F2C384E00E6A4DA /* AppDelegate.m */; };
+		4A0E00301F2C384E00E6A4DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E002F1F2C384E00E6A4DA /* ViewController.m */; };
+		4A0E00331F2C384E00E6A4DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E00311F2C384E00E6A4DA /* Main.storyboard */; };
+		4A0E00351F2C384E00E6A4DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E00341F2C384E00E6A4DA /* Assets.xcassets */; };
+		4A0E00381F2C384E00E6A4DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E00361F2C384E00E6A4DA /* LaunchScreen.storyboard */; };
+		4A0E004F1F2C388200E6A4DA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A0E004E1F2C388200E6A4DA /* libsqlite3.tbd */; };
+		4A0E009B1F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00531F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.m */; };
+		4A0E009C1F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00581F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m */; };
+		4A0E009D1F2CBD6300E6A4DA /* NSString+ReqularExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E005C1F2CBD6300E6A4DA /* NSString+ReqularExpression.m */; };
+		4A0E009F1F2CBD6300E6A4DA /* CTPersistanceCriteria.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00621F2CBD6300E6A4DA /* CTPersistanceCriteria.m */; };
+		4A0E00A01F2CBD6300E6A4DA /* CTPersistanceDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00681F2CBD6300E6A4DA /* CTPersistanceDataBase.m */; };
+		4A0E00A11F2CBD6300E6A4DA /* CTPersistanceDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E006A1F2CBD6300E6A4DA /* CTPersistanceDatabasePool.m */; };
+		4A0E00A21F2CBD6300E6A4DA /* CTPersistanceMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E006D1F2CBD6300E6A4DA /* CTPersistanceMigrator.m */; };
+		4A0E00A31F2CBD6300E6A4DA /* CTPersistanceVersionTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00701F2CBD6300E6A4DA /* CTPersistanceVersionTable.m */; };
+		4A0E00A41F2CBD6300E6A4DA /* CTPersistanceVersionRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00731F2CBD6300E6A4DA /* CTPersistanceVersionRecord.m */; };
+		4A0E00A51F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00781F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.m */; };
+		4A0E00A61F2CBD6300E6A4DA /* CTPersistanceQueryCommand+ReadMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E007B1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+ReadMethods.m */; };
+		4A0E00A71F2CBD6300E6A4DA /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E007E1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+SchemaManipulations.m */; };
+		4A0E00A81F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00811F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.m */; };
+		4A0E00A91F2CBD6300E6A4DA /* CTPersistanceQueryCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00831F2CBD6300E6A4DA /* CTPersistanceQueryCommand.m */; };
+		4A0E00AA1F2CBD6300E6A4DA /* CTPersistanceRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00861F2CBD6300E6A4DA /* CTPersistanceRecord.m */; };
+		4A0E00AB1F2CBD6300E6A4DA /* CTPersistanceTable+Delete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E008C1F2CBD6300E6A4DA /* CTPersistanceTable+Delete.m */; };
+		4A0E00AC1F2CBD6300E6A4DA /* CTPersistanceTable+Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E008F1F2CBD6300E6A4DA /* CTPersistanceTable+Find.m */; };
+		4A0E00AD1F2CBD6300E6A4DA /* CTPersistanceTable+Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00921F2CBD6300E6A4DA /* CTPersistanceTable+Insert.m */; };
+		4A0E00AE1F2CBD6300E6A4DA /* CTPersistanceTable+Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00951F2CBD6300E6A4DA /* CTPersistanceTable+Update.m */; };
+		4A0E00AF1F2CBD6300E6A4DA /* CTPersistanceTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00971F2CBD6300E6A4DA /* CTPersistanceTable.m */; };
+		4A0E00B01F2CBD6300E6A4DA /* CTPersistanceTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E009A1F2CBD6300E6A4DA /* CTPersistanceTransaction.m */; };
+		4A0E00B41F2CBDBD00E6A4DA /* CTPersistanceTestInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00B31F2CBDBD00E6A4DA /* CTPersistanceTestInsert.m */; };
+		4A0E00BF1F2CC25A00E6A4DA /* TestRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00BA1F2CC25A00E6A4DA /* TestRecord.m */; };
+		4A0E00C01F2CC25A00E6A4DA /* TestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00BE1F2CC25A00E6A4DA /* TestTable.m */; };
+		4A0E00C61F2D84FB00E6A4DA /* NSMutableArray+CTPersistanceBindValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00C51F2D84FB00E6A4DA /* NSMutableArray+CTPersistanceBindValue.m */; };
+		4A0E00C81F2DAB5000E6A4DA /* TestRecord.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0E00C71F2DAB5000E6A4DA /* TestRecord.png */; };
+		4A0E00CA1F2DBBB400E6A4DA /* CTPersistanceTestUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00C91F2DBBB400E6A4DA /* CTPersistanceTestUpdate.m */; };
+		4A51505D1F2F2402004BA79C /* CTPersistanceTestDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A51505C1F2F2402004BA79C /* CTPersistanceTestDelete.m */; };
+		4AB165E81F302AA60043E6A2 /* CTPersistanceTestFind.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		720523501D473D8A001EDBD2 /* PBXContainerItemProxy */ = {
+		4A0E003F1F2C384E00E6A4DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4AD2D64F1BBFCD5E00E1F37D /* Project object */;
+			containerPortal = 4A0E001D1F2C384E00E6A4DA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7205234A1D473D8A001EDBD2;
-			remoteInfo = CTFramework;
-		};
-		721CEE801D47497800EBE9CC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4AD2D64F1BBFCD5E00E1F37D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 721CEE7A1D47497800EBE9CC;
-			remoteInfo = CTFrameworkTest;
+			remoteGlobalIDString = 4A0E00241F2C384E00E6A4DA;
+			remoteInfo = CTPersistance;
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		720523571D473D8A001EDBD2 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				721CEE831D47497800EBE9CC /* CTFrameworkTest.framework in Embed Frameworks */,
-				720523531D473D8A001EDBD2 /* CTFramework.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		720523B61D4743A2001EDBD2 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		4A1F7DC11BD1CB8400A7C2C4 /* CTPersistanceAsyncExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceAsyncExecutor.h; sourceTree = "<group>"; };
-		4A1F7DC21BD1CB8400A7C2C4 /* CTPersistanceAsyncExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceAsyncExecutor.m; sourceTree = "<group>"; };
-		4A5DD9341BD90A1400934C27 /* TestCaseAsync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCaseAsync.h; sourceTree = "<group>"; };
-		4A5DD9351BD90A1400934C27 /* TestCaseAsync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCaseAsync.m; sourceTree = "<group>"; };
-		4A7A7F521BCBD92400A480C7 /* TestDeleteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDeleteData.h; sourceTree = "<group>"; };
-		4A7A7F531BCBD92400A480C7 /* TestDeleteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDeleteData.m; sourceTree = "<group>"; };
-		4A7A7F551BCBD92400A480C7 /* TestFetchData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFetchData.h; sourceTree = "<group>"; };
-		4A7A7F561BCBD92400A480C7 /* TestFetchData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFetchData.m; sourceTree = "<group>"; };
-		4A7A7F581BCBD92400A480C7 /* TestInsertData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestInsertData.h; sourceTree = "<group>"; };
-		4A7A7F591BCBD92400A480C7 /* TestInsertData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestInsertData.m; sourceTree = "<group>"; };
-		4A7A7F5B1BCBD92400A480C7 /* TestCaseRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCaseRecord.h; sourceTree = "<group>"; };
-		4A7A7F5C1BCBD92400A480C7 /* TestCaseRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCaseRecord.m; sourceTree = "<group>"; };
-		4A7A7F5F1BCBD92400A480C7 /* TestUpdateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUpdateData.h; sourceTree = "<group>"; };
-		4A7A7F601BCBD92400A480C7 /* TestUpdateData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUpdateData.m; sourceTree = "<group>"; };
-		4A7A7F661BCBD94700A480C7 /* TestCaseTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCaseTransaction.h; sourceTree = "<group>"; };
-		4A7A7F671BCBD94700A480C7 /* TestCaseTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCaseTransaction.m; sourceTree = "<group>"; };
-		4A7A7F721BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceQueryCommand+Status.h"; sourceTree = "<group>"; };
-		4A7A7F731BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceQueryCommand+Status.m"; sourceTree = "<group>"; };
-		4A925B911BC2AD1A00CC3244 /* CTPersistanceMarcos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPersistanceMarcos.h; sourceTree = "<group>"; };
-		4A925B971BC2DFC500CC3244 /* CTPersistanceTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceTable.h; sourceTree = "<group>"; };
-		4A925B981BC2DFC500CC3244 /* CTPersistanceTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTable.m; sourceTree = "<group>"; };
-		4A925BA31BC2EDB500CC3244 /* CTPersistanceTable+Delete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceTable+Delete.h"; sourceTree = "<group>"; };
-		4A925BA41BC2EDB500CC3244 /* CTPersistanceTable+Delete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceTable+Delete.m"; sourceTree = "<group>"; };
-		4A925BA61BC2EDC300CC3244 /* CTPersistanceTable+Find.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceTable+Find.h"; sourceTree = "<group>"; };
-		4A925BA71BC2EDC300CC3244 /* CTPersistanceTable+Find.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceTable+Find.m"; sourceTree = "<group>"; };
-		4A925BA91BC2EDCE00CC3244 /* CTPersistanceTable+Insert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceTable+Insert.h"; sourceTree = "<group>"; };
-		4A925BAA1BC2EDCE00CC3244 /* CTPersistanceTable+Insert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceTable+Insert.m"; sourceTree = "<group>"; };
-		4A925BAC1BC2EDDA00CC3244 /* CTPersistanceTable+Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceTable+Update.h"; sourceTree = "<group>"; };
-		4A925BAD1BC2EDDA00CC3244 /* CTPersistanceTable+Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceTable+Update.m"; sourceTree = "<group>"; };
-		4A925BB31BC38F5000CC3244 /* CTPersistanceRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceRecord.h; sourceTree = "<group>"; };
-		4A925BB41BC38F5000CC3244 /* CTPersistanceRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceRecord.m; sourceTree = "<group>"; };
-		4A925BB71BC39CCD00CC3244 /* CTPersistanceCriteria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceCriteria.h; sourceTree = "<group>"; };
-		4A925BB81BC39CCD00CC3244 /* CTPersistanceCriteria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceCriteria.m; sourceTree = "<group>"; };
-		4A925BBB1BC3A0C500CC3244 /* NSString+SQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SQL.h"; sourceTree = "<group>"; };
-		4A925BBC1BC3A0C500CC3244 /* NSString+SQL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SQL.m"; sourceTree = "<group>"; };
-		4A925BC01BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CTPersistanceRecordTransform.h"; sourceTree = "<group>"; };
-		4A925BC11BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CTPersistanceRecordTransform.m"; sourceTree = "<group>"; };
-		4A925BC51BC3E83D00CC3244 /* TestRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecord.h; sourceTree = "<group>"; };
-		4A925BC61BC3E83D00CC3244 /* TestRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecord.m; sourceTree = "<group>"; };
-		4A925BC81BC3E83D00CC3244 /* TestTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTable.h; sourceTree = "<group>"; };
-		4A925BC91BC3E83D00CC3244 /* TestTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTable.m; sourceTree = "<group>"; };
-		4A925BD81BC4016A00CC3244 /* CTPersistanceRecordProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPersistanceRecordProtocol.h; sourceTree = "<group>"; };
-		4A9E4FE11BC4C3F60009E111 /* NSString+ReqularExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ReqularExpression.h"; sourceTree = "<group>"; };
-		4A9E4FE21BC4C3F60009E111 /* NSString+ReqularExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ReqularExpression.m"; sourceTree = "<group>"; };
-		4A9E4FE41BC4C76D0009E111 /* CTPersistanceConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CTPersistanceConfiguration.plist; sourceTree = "<group>"; };
-		4A9E4FEE1BC4CF770009E111 /* CTPersistanceVersionTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceVersionTable.h; sourceTree = "<group>"; };
-		4A9E4FEF1BC4CF770009E111 /* CTPersistanceVersionTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceVersionTable.m; sourceTree = "<group>"; };
-		4A9E4FF21BC4CFA00009E111 /* CTPersistanceVersionRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceVersionRecord.h; sourceTree = "<group>"; };
-		4A9E4FF31BC4CFA00009E111 /* CTPersistanceVersionRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceVersionRecord.m; sourceTree = "<group>"; };
-		4AC9242D1DF5A1D40024FE6F /* TestCaseMigration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCaseMigration.h; sourceTree = "<group>"; };
-		4AC9242E1DF5A1D40024FE6F /* TestCaseMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCaseMigration.m; sourceTree = "<group>"; };
-		4AC924331DF5A41A0024FE6F /* MigrationStep1_0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MigrationStep1_0.h; sourceTree = "<group>"; };
-		4AC924341DF5A41A0024FE6F /* MigrationStep1_0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MigrationStep1_0.m; sourceTree = "<group>"; };
-		4AC924361DF5A41A0024FE6F /* MigrationStep2_0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MigrationStep2_0.h; sourceTree = "<group>"; };
-		4AC924371DF5A41A0024FE6F /* MigrationStep2_0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MigrationStep2_0.m; sourceTree = "<group>"; };
-		4AC924381DF5A41A0024FE6F /* TestMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMigrator.h; sourceTree = "<group>"; };
-		4AC924391DF5A41A0024FE6F /* TestMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMigrator.m; sourceTree = "<group>"; };
-		4AC9243F1DF5A48D0024FE6F /* MigrationStep3_0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MigrationStep3_0.h; sourceTree = "<group>"; };
-		4AC924401DF5A48D0024FE6F /* MigrationStep3_0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MigrationStep3_0.m; sourceTree = "<group>"; };
-		4AC924421DF5A49B0024FE6F /* MigrationStep4_0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MigrationStep4_0.h; sourceTree = "<group>"; };
-		4AC924431DF5A49B0024FE6F /* MigrationStep4_0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MigrationStep4_0.m; sourceTree = "<group>"; };
-		4AC924461DF5AD180024FE6F /* testdatabase_origin.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = testdatabase_origin.sqlite; sourceTree = "<group>"; };
-		4AC924481DF5B52F0024FE6F /* testdatabase_1.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = testdatabase_1.sqlite; sourceTree = "<group>"; };
-		4AC924491DF5B52F0024FE6F /* testdatabase_2.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = testdatabase_2.sqlite; sourceTree = "<group>"; };
-		4AC9244A1DF5B52F0024FE6F /* testdatabase_3.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = testdatabase_3.sqlite; sourceTree = "<group>"; };
-		4AC9244B1DF5B52F0024FE6F /* testdatabase_4.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = testdatabase_4.sqlite; sourceTree = "<group>"; };
-		4AD2D6571BBFCD5E00E1F37D /* CTPersistance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CTPersistance.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4AD2D65B1BBFCD5E00E1F37D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4AD2D66B1BBFCD5E00E1F37D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4ADCE5B81BCD462000E54458 /* CTPersistanceTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceTransaction.h; sourceTree = "<group>"; };
-		4ADCE5B91BCD462000E54458 /* CTPersistanceTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTransaction.m; sourceTree = "<group>"; };
-		4AF066111BC00D020042288C /* CTPersistance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPersistance.h; sourceTree = "<group>"; };
-		4AF066121BC00E660042288C /* CTPersistanceConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPersistanceConfiguration.h; sourceTree = "<group>"; };
-		4AF066161BC189A70042288C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		4AF066201BC217280042288C /* CTPersistanceDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceDataBase.h; sourceTree = "<group>"; };
-		4AF066211BC217280042288C /* CTPersistanceDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceDataBase.m; sourceTree = "<group>"; };
-		4AF066221BC217280042288C /* CTPersistanceDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceDatabasePool.h; sourceTree = "<group>"; };
-		4AF066231BC217280042288C /* CTPersistanceDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceDatabasePool.m; sourceTree = "<group>"; };
-		4AF066251BC217280042288C /* CTPersistanceMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceMigrator.h; sourceTree = "<group>"; };
-		4AF066261BC217280042288C /* CTPersistanceMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceMigrator.m; sourceTree = "<group>"; };
-		4AF066361BC276C40042288C /* CTPersistanceQueryCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceQueryCommand.h; sourceTree = "<group>"; };
-		4AF066371BC276C40042288C /* CTPersistanceQueryCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceQueryCommand.m; sourceTree = "<group>"; };
-		4AF0663F1BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceQueryCommand+ReadMethods.h"; sourceTree = "<group>"; };
-		4AF066401BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceQueryCommand+ReadMethods.m"; sourceTree = "<group>"; };
-		4AF066431BC281F00042288C /* CTPersistanceQueryCommand+DataManipulations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceQueryCommand+DataManipulations.h"; sourceTree = "<group>"; };
-		4AF066441BC281F00042288C /* CTPersistanceQueryCommand+DataManipulations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceQueryCommand+DataManipulations.m"; sourceTree = "<group>"; };
-		4AF0664A1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceQueryCommand+SchemaManipulations.h"; sourceTree = "<group>"; };
-		4AF0664B1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceQueryCommand+SchemaManipulations.m"; sourceTree = "<group>"; };
-		4AFEFD091BCFE8B900751D82 /* TestCaseWhereCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCaseWhereCondition.h; sourceTree = "<group>"; };
-		4AFEFD0A1BCFE8B900751D82 /* TestCaseWhereCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCaseWhereCondition.m; sourceTree = "<group>"; };
-		720523321D473D30001EDBD2 /* SwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		720523401D473D30001EDBD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		720523441D473D3F001EDBD2 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		7205234B1D473D8A001EDBD2 /* CTFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CTFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7205234D1D473D8A001EDBD2 /* CTFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTFramework.h; sourceTree = "<group>"; };
-		7205234F1D473D8A001EDBD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		721CEE7B1D47497800EBE9CC /* CTFrameworkTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CTFrameworkTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		721CEE7D1D47497800EBE9CC /* CTFrameworkTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTFrameworkTest.h; sourceTree = "<group>"; };
-		721CEE7F1D47497800EBE9CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A0E00251F2C384E00E6A4DA /* CTPersistance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CTPersistance.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A0E00291F2C384E00E6A4DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4A0E002B1F2C384E00E6A4DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4A0E002C1F2C384E00E6A4DA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4A0E002E1F2C384E00E6A4DA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4A0E002F1F2C384E00E6A4DA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4A0E00321F2C384E00E6A4DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4A0E00341F2C384E00E6A4DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A0E00371F2C384E00E6A4DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4A0E00391F2C384E00E6A4DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A0E003E1F2C384E00E6A4DA /* CTPersistanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CTPersistanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A0E00441F2C384E00E6A4DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A0E004E1F2C388200E6A4DA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		4A0E00521F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceAsyncExecutor.h; sourceTree = "<group>"; };
+		4A0E00531F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceAsyncExecutor.m; sourceTree = "<group>"; };
+		4A0E00571F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CTPersistanceRecordTransform.h"; sourceTree = "<group>"; };
+		4A0E00581F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CTPersistanceRecordTransform.m"; sourceTree = "<group>"; };
+		4A0E005B1F2CBD6300E6A4DA /* NSString+ReqularExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ReqularExpression.h"; sourceTree = "<group>"; };
+		4A0E005C1F2CBD6300E6A4DA /* NSString+ReqularExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ReqularExpression.m"; sourceTree = "<group>"; };
+		4A0E00611F2CBD6300E6A4DA /* CTPersistanceCriteria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceCriteria.h; sourceTree = "<group>"; };
+		4A0E00621F2CBD6300E6A4DA /* CTPersistanceCriteria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceCriteria.m; sourceTree = "<group>"; };
+		4A0E00631F2CBD6300E6A4DA /* CTPersistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistance.h; sourceTree = "<group>"; };
+		4A0E00641F2CBD6300E6A4DA /* CTPersistanceConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceConfiguration.h; sourceTree = "<group>"; };
+		4A0E00651F2CBD6300E6A4DA /* CTPersistanceMarcos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceMarcos.h; sourceTree = "<group>"; };
+		4A0E00671F2CBD6300E6A4DA /* CTPersistanceDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceDataBase.h; sourceTree = "<group>"; };
+		4A0E00681F2CBD6300E6A4DA /* CTPersistanceDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceDataBase.m; sourceTree = "<group>"; };
+		4A0E00691F2CBD6300E6A4DA /* CTPersistanceDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceDatabasePool.h; sourceTree = "<group>"; };
+		4A0E006A1F2CBD6300E6A4DA /* CTPersistanceDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceDatabasePool.m; sourceTree = "<group>"; };
+		4A0E006C1F2CBD6300E6A4DA /* CTPersistanceMigrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceMigrator.h; sourceTree = "<group>"; };
+		4A0E006D1F2CBD6300E6A4DA /* CTPersistanceMigrator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceMigrator.m; sourceTree = "<group>"; };
+		4A0E006F1F2CBD6300E6A4DA /* CTPersistanceVersionTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceVersionTable.h; sourceTree = "<group>"; };
+		4A0E00701F2CBD6300E6A4DA /* CTPersistanceVersionTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceVersionTable.m; sourceTree = "<group>"; };
+		4A0E00721F2CBD6300E6A4DA /* CTPersistanceVersionRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceVersionRecord.h; sourceTree = "<group>"; };
+		4A0E00731F2CBD6300E6A4DA /* CTPersistanceVersionRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceVersionRecord.m; sourceTree = "<group>"; };
+		4A0E00771F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceQueryCommand+DataManipulations.h"; sourceTree = "<group>"; };
+		4A0E00781F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceQueryCommand+DataManipulations.m"; sourceTree = "<group>"; };
+		4A0E007A1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+ReadMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceQueryCommand+ReadMethods.h"; sourceTree = "<group>"; };
+		4A0E007B1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+ReadMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceQueryCommand+ReadMethods.m"; sourceTree = "<group>"; };
+		4A0E007D1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+SchemaManipulations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceQueryCommand+SchemaManipulations.h"; sourceTree = "<group>"; };
+		4A0E007E1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+SchemaManipulations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceQueryCommand+SchemaManipulations.m"; sourceTree = "<group>"; };
+		4A0E00801F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceQueryCommand+Status.h"; sourceTree = "<group>"; };
+		4A0E00811F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceQueryCommand+Status.m"; sourceTree = "<group>"; };
+		4A0E00821F2CBD6300E6A4DA /* CTPersistanceQueryCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceQueryCommand.h; sourceTree = "<group>"; };
+		4A0E00831F2CBD6300E6A4DA /* CTPersistanceQueryCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceQueryCommand.m; sourceTree = "<group>"; };
+		4A0E00851F2CBD6300E6A4DA /* CTPersistanceRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceRecord.h; sourceTree = "<group>"; };
+		4A0E00861F2CBD6300E6A4DA /* CTPersistanceRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceRecord.m; sourceTree = "<group>"; };
+		4A0E00871F2CBD6300E6A4DA /* CTPersistanceRecordProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceRecordProtocol.h; sourceTree = "<group>"; };
+		4A0E008B1F2CBD6300E6A4DA /* CTPersistanceTable+Delete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceTable+Delete.h"; sourceTree = "<group>"; };
+		4A0E008C1F2CBD6300E6A4DA /* CTPersistanceTable+Delete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceTable+Delete.m"; sourceTree = "<group>"; };
+		4A0E008E1F2CBD6300E6A4DA /* CTPersistanceTable+Find.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceTable+Find.h"; sourceTree = "<group>"; };
+		4A0E008F1F2CBD6300E6A4DA /* CTPersistanceTable+Find.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceTable+Find.m"; sourceTree = "<group>"; };
+		4A0E00911F2CBD6300E6A4DA /* CTPersistanceTable+Insert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceTable+Insert.h"; sourceTree = "<group>"; };
+		4A0E00921F2CBD6300E6A4DA /* CTPersistanceTable+Insert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceTable+Insert.m"; sourceTree = "<group>"; };
+		4A0E00941F2CBD6300E6A4DA /* CTPersistanceTable+Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceTable+Update.h"; sourceTree = "<group>"; };
+		4A0E00951F2CBD6300E6A4DA /* CTPersistanceTable+Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceTable+Update.m"; sourceTree = "<group>"; };
+		4A0E00961F2CBD6300E6A4DA /* CTPersistanceTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceTable.h; sourceTree = "<group>"; };
+		4A0E00971F2CBD6300E6A4DA /* CTPersistanceTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTable.m; sourceTree = "<group>"; };
+		4A0E00991F2CBD6300E6A4DA /* CTPersistanceTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceTransaction.h; sourceTree = "<group>"; };
+		4A0E009A1F2CBD6300E6A4DA /* CTPersistanceTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTransaction.m; sourceTree = "<group>"; };
+		4A0E00B31F2CBDBD00E6A4DA /* CTPersistanceTestInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestInsert.m; sourceTree = "<group>"; };
+		4A0E00B91F2CC25A00E6A4DA /* TestRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecord.h; sourceTree = "<group>"; };
+		4A0E00BA1F2CC25A00E6A4DA /* TestRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecord.m; sourceTree = "<group>"; };
+		4A0E00BD1F2CC25A00E6A4DA /* TestTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTable.h; sourceTree = "<group>"; };
+		4A0E00BE1F2CC25A00E6A4DA /* TestTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTable.m; sourceTree = "<group>"; };
+		4A0E00C41F2D84FB00E6A4DA /* NSMutableArray+CTPersistanceBindValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+CTPersistanceBindValue.h"; sourceTree = "<group>"; };
+		4A0E00C51F2D84FB00E6A4DA /* NSMutableArray+CTPersistanceBindValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+CTPersistanceBindValue.m"; sourceTree = "<group>"; };
+		4A0E00C71F2DAB5000E6A4DA /* TestRecord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TestRecord.png; sourceTree = "<group>"; };
+		4A0E00C91F2DBBB400E6A4DA /* CTPersistanceTestUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestUpdate.m; sourceTree = "<group>"; };
+		4A51505C1F2F2402004BA79C /* CTPersistanceTestDelete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestDelete.m; sourceTree = "<group>"; };
+		4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestFind.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4AD2D6541BBFCD5E00E1F37D /* Frameworks */ = {
+		4A0E00221F2C384E00E6A4DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AF066171BC189A70042288C /* libsqlite3.tbd in Frameworks */,
+				4A0E004F1F2C388200E6A4DA /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7205232F1D473D30001EDBD2 /* Frameworks */ = {
+		4A0E003B1F2C384E00E6A4DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				721CEE821D47497800EBE9CC /* CTFrameworkTest.framework in Frameworks */,
-				720523521D473D8A001EDBD2 /* CTFramework.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		720523471D473D8A001EDBD2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				720523881D473DCE001EDBD2 /* libsqlite3.tbd in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		721CEE771D47497800EBE9CC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				721CEE871D474D1300EBE9CC /* CTFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4A1F7DC01BD147D200A7C2C4 /* Async */ = {
+		4A0E001C1F2C384E00E6A4DA = {
 			isa = PBXGroup;
 			children = (
-				4A1F7DC11BD1CB8400A7C2C4 /* CTPersistanceAsyncExecutor.h */,
-				4A1F7DC21BD1CB8400A7C2C4 /* CTPersistanceAsyncExecutor.m */,
-			);
-			path = Async;
-			sourceTree = "<group>";
-		};
-		4A5DD9331BD909F100934C27 /* Async */ = {
-			isa = PBXGroup;
-			children = (
-				4A5DD9341BD90A1400934C27 /* TestCaseAsync.h */,
-				4A5DD9351BD90A1400934C27 /* TestCaseAsync.m */,
-			);
-			path = Async;
-			sourceTree = "<group>";
-		};
-		4A7A7F511BCBD92400A480C7 /* Delete */ = {
-			isa = PBXGroup;
-			children = (
-				4A7A7F521BCBD92400A480C7 /* TestDeleteData.h */,
-				4A7A7F531BCBD92400A480C7 /* TestDeleteData.m */,
-			);
-			path = Delete;
-			sourceTree = "<group>";
-		};
-		4A7A7F541BCBD92400A480C7 /* Fetch */ = {
-			isa = PBXGroup;
-			children = (
-				4A7A7F551BCBD92400A480C7 /* TestFetchData.h */,
-				4A7A7F561BCBD92400A480C7 /* TestFetchData.m */,
-			);
-			path = Fetch;
-			sourceTree = "<group>";
-		};
-		4A7A7F571BCBD92400A480C7 /* Insert */ = {
-			isa = PBXGroup;
-			children = (
-				4A7A7F581BCBD92400A480C7 /* TestInsertData.h */,
-				4A7A7F591BCBD92400A480C7 /* TestInsertData.m */,
-			);
-			path = Insert;
-			sourceTree = "<group>";
-		};
-		4A7A7F5A1BCBD92400A480C7 /* Record */ = {
-			isa = PBXGroup;
-			children = (
-				4A7A7F5B1BCBD92400A480C7 /* TestCaseRecord.h */,
-				4A7A7F5C1BCBD92400A480C7 /* TestCaseRecord.m */,
-			);
-			path = Record;
-			sourceTree = "<group>";
-		};
-		4A7A7F5D1BCBD92400A480C7 /* Transaction */ = {
-			isa = PBXGroup;
-			children = (
-				4A7A7F661BCBD94700A480C7 /* TestCaseTransaction.h */,
-				4A7A7F671BCBD94700A480C7 /* TestCaseTransaction.m */,
-			);
-			path = Transaction;
-			sourceTree = "<group>";
-		};
-		4A7A7F5E1BCBD92400A480C7 /* Update */ = {
-			isa = PBXGroup;
-			children = (
-				4A7A7F5F1BCBD92400A480C7 /* TestUpdateData.h */,
-				4A7A7F601BCBD92400A480C7 /* TestUpdateData.m */,
-			);
-			path = Update;
-			sourceTree = "<group>";
-		};
-		4A7A7F711BCC047E00A480C7 /* StatusMethods */ = {
-			isa = PBXGroup;
-			children = (
-				4A7A7F721BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.h */,
-				4A7A7F731BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.m */,
-			);
-			path = StatusMethods;
-			sourceTree = "<group>";
-		};
-		4A925B871BC295C600CC3244 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				4A925BBE1BC3AA2800CC3244 /* NSArray */,
-				4A925B881BC295C600CC3244 /* NSString */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		4A925B881BC295C600CC3244 /* NSString */ = {
-			isa = PBXGroup;
-			children = (
-				4A9E4FE01BC4C3CF0009E111 /* ReqularExpression */,
-				4A925BBA1BC3A0C500CC3244 /* SQL */,
-			);
-			path = NSString;
-			sourceTree = "<group>";
-		};
-		4A925B961BC2DFC500CC3244 /* Table */ = {
-			isa = PBXGroup;
-			children = (
-				4A925B9E1BC2ED3A00CC3244 /* Categories */,
-				4A925B971BC2DFC500CC3244 /* CTPersistanceTable.h */,
-				4A925B981BC2DFC500CC3244 /* CTPersistanceTable.m */,
-			);
-			path = Table;
-			sourceTree = "<group>";
-		};
-		4A925B9E1BC2ED3A00CC3244 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				4A925B9F1BC2ED5F00CC3244 /* Delete */,
-				4A925BA01BC2ED5F00CC3244 /* Find */,
-				4A925BA11BC2ED5F00CC3244 /* Insert */,
-				4A925BA21BC2ED5F00CC3244 /* Update */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		4A925B9F1BC2ED5F00CC3244 /* Delete */ = {
-			isa = PBXGroup;
-			children = (
-				4A925BA31BC2EDB500CC3244 /* CTPersistanceTable+Delete.h */,
-				4A925BA41BC2EDB500CC3244 /* CTPersistanceTable+Delete.m */,
-			);
-			path = Delete;
-			sourceTree = "<group>";
-		};
-		4A925BA01BC2ED5F00CC3244 /* Find */ = {
-			isa = PBXGroup;
-			children = (
-				4A925BA61BC2EDC300CC3244 /* CTPersistanceTable+Find.h */,
-				4A925BA71BC2EDC300CC3244 /* CTPersistanceTable+Find.m */,
-			);
-			path = Find;
-			sourceTree = "<group>";
-		};
-		4A925BA11BC2ED5F00CC3244 /* Insert */ = {
-			isa = PBXGroup;
-			children = (
-				4A925BA91BC2EDCE00CC3244 /* CTPersistanceTable+Insert.h */,
-				4A925BAA1BC2EDCE00CC3244 /* CTPersistanceTable+Insert.m */,
-			);
-			path = Insert;
-			sourceTree = "<group>";
-		};
-		4A925BA21BC2ED5F00CC3244 /* Update */ = {
-			isa = PBXGroup;
-			children = (
-				4A925BAC1BC2EDDA00CC3244 /* CTPersistanceTable+Update.h */,
-				4A925BAD1BC2EDDA00CC3244 /* CTPersistanceTable+Update.m */,
-			);
-			path = Update;
-			sourceTree = "<group>";
-		};
-		4A925BB21BC38F3C00CC3244 /* Record */ = {
-			isa = PBXGroup;
-			children = (
-				4A925BD81BC4016A00CC3244 /* CTPersistanceRecordProtocol.h */,
-				4A925BB31BC38F5000CC3244 /* CTPersistanceRecord.h */,
-				4A925BB41BC38F5000CC3244 /* CTPersistanceRecord.m */,
-			);
-			path = Record;
-			sourceTree = "<group>";
-		};
-		4A925BB61BC39CBB00CC3244 /* Criteria */ = {
-			isa = PBXGroup;
-			children = (
-				4A925BB71BC39CCD00CC3244 /* CTPersistanceCriteria.h */,
-				4A925BB81BC39CCD00CC3244 /* CTPersistanceCriteria.m */,
-			);
-			path = Criteria;
-			sourceTree = "<group>";
-		};
-		4A925BBA1BC3A0C500CC3244 /* SQL */ = {
-			isa = PBXGroup;
-			children = (
-				4A925BBB1BC3A0C500CC3244 /* NSString+SQL.h */,
-				4A925BBC1BC3A0C500CC3244 /* NSString+SQL.m */,
-			);
-			path = SQL;
-			sourceTree = "<group>";
-		};
-		4A925BBE1BC3AA2800CC3244 /* NSArray */ = {
-			isa = PBXGroup;
-			children = (
-				4A925BBF1BC3AA2800CC3244 /* CTPersistanceRecordTransform */,
-			);
-			path = NSArray;
-			sourceTree = "<group>";
-		};
-		4A925BBF1BC3AA2800CC3244 /* CTPersistanceRecordTransform */ = {
-			isa = PBXGroup;
-			children = (
-				4A925BC01BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.h */,
-				4A925BC11BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.m */,
-			);
-			path = CTPersistanceRecordTransform;
-			sourceTree = "<group>";
-		};
-		4A925BC31BC3E83D00CC3244 /* TestModel */ = {
-			isa = PBXGroup;
-			children = (
-				4A925BC41BC3E83D00CC3244 /* Record */,
-				4A925BC71BC3E83D00CC3244 /* Table */,
-			);
-			path = TestModel;
-			sourceTree = "<group>";
-		};
-		4A925BC41BC3E83D00CC3244 /* Record */ = {
-			isa = PBXGroup;
-			children = (
-				4A925BC51BC3E83D00CC3244 /* TestRecord.h */,
-				4A925BC61BC3E83D00CC3244 /* TestRecord.m */,
-			);
-			path = Record;
-			sourceTree = "<group>";
-		};
-		4A925BC71BC3E83D00CC3244 /* Table */ = {
-			isa = PBXGroup;
-			children = (
-				4A925BC81BC3E83D00CC3244 /* TestTable.h */,
-				4A925BC91BC3E83D00CC3244 /* TestTable.m */,
-			);
-			path = Table;
-			sourceTree = "<group>";
-		};
-		4A9E4FE01BC4C3CF0009E111 /* ReqularExpression */ = {
-			isa = PBXGroup;
-			children = (
-				4A9E4FE11BC4C3F60009E111 /* NSString+ReqularExpression.h */,
-				4A9E4FE21BC4C3F60009E111 /* NSString+ReqularExpression.m */,
-			);
-			path = ReqularExpression;
-			sourceTree = "<group>";
-		};
-		4A9E4FED1BC4CF770009E111 /* MigrationVersionTable */ = {
-			isa = PBXGroup;
-			children = (
-				4A9E4FF01BC4CF770009E111 /* Record */,
-				4A9E4FEE1BC4CF770009E111 /* CTPersistanceVersionTable.h */,
-				4A9E4FEF1BC4CF770009E111 /* CTPersistanceVersionTable.m */,
-			);
-			path = MigrationVersionTable;
-			sourceTree = "<group>";
-		};
-		4A9E4FF01BC4CF770009E111 /* Record */ = {
-			isa = PBXGroup;
-			children = (
-				4A9E4FF21BC4CFA00009E111 /* CTPersistanceVersionRecord.h */,
-				4A9E4FF31BC4CFA00009E111 /* CTPersistanceVersionRecord.m */,
-			);
-			path = Record;
-			sourceTree = "<group>";
-		};
-		4AC9242A1DF5A1710024FE6F /* Migration */ = {
-			isa = PBXGroup;
-			children = (
-				4AC924451DF5A5990024FE6F /* DataBase */,
-				4AC924301DF5A41A0024FE6F /* Migrator */,
-				4AC9242B1DF5A1B00024FE6F /* MigrationRecord */,
-				4AC9242C1DF5A1B00024FE6F /* MigrationTable */,
-				4AC9242D1DF5A1D40024FE6F /* TestCaseMigration.h */,
-				4AC9242E1DF5A1D40024FE6F /* TestCaseMigration.m */,
-			);
-			path = Migration;
-			sourceTree = "<group>";
-		};
-		4AC9242B1DF5A1B00024FE6F /* MigrationRecord */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MigrationRecord;
-			sourceTree = "<group>";
-		};
-		4AC9242C1DF5A1B00024FE6F /* MigrationTable */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MigrationTable;
-			sourceTree = "<group>";
-		};
-		4AC924301DF5A41A0024FE6F /* Migrator */ = {
-			isa = PBXGroup;
-			children = (
-				4AC924311DF5A41A0024FE6F /* MigrationSteps */,
-				4AC924381DF5A41A0024FE6F /* TestMigrator.h */,
-				4AC924391DF5A41A0024FE6F /* TestMigrator.m */,
-			);
-			path = Migrator;
-			sourceTree = "<group>";
-		};
-		4AC924311DF5A41A0024FE6F /* MigrationSteps */ = {
-			isa = PBXGroup;
-			children = (
-				4AC924321DF5A41A0024FE6F /* 1_0 */,
-				4AC924351DF5A41A0024FE6F /* 2_0 */,
-				4AC9243D1DF5A46F0024FE6F /* 3_0 */,
-				4AC9243E1DF5A46F0024FE6F /* 4_0 */,
-			);
-			path = MigrationSteps;
-			sourceTree = "<group>";
-		};
-		4AC924321DF5A41A0024FE6F /* 1_0 */ = {
-			isa = PBXGroup;
-			children = (
-				4AC924331DF5A41A0024FE6F /* MigrationStep1_0.h */,
-				4AC924341DF5A41A0024FE6F /* MigrationStep1_0.m */,
-			);
-			path = 1_0;
-			sourceTree = "<group>";
-		};
-		4AC924351DF5A41A0024FE6F /* 2_0 */ = {
-			isa = PBXGroup;
-			children = (
-				4AC924361DF5A41A0024FE6F /* MigrationStep2_0.h */,
-				4AC924371DF5A41A0024FE6F /* MigrationStep2_0.m */,
-			);
-			path = 2_0;
-			sourceTree = "<group>";
-		};
-		4AC9243D1DF5A46F0024FE6F /* 3_0 */ = {
-			isa = PBXGroup;
-			children = (
-				4AC9243F1DF5A48D0024FE6F /* MigrationStep3_0.h */,
-				4AC924401DF5A48D0024FE6F /* MigrationStep3_0.m */,
-			);
-			path = 3_0;
-			sourceTree = "<group>";
-		};
-		4AC9243E1DF5A46F0024FE6F /* 4_0 */ = {
-			isa = PBXGroup;
-			children = (
-				4AC924421DF5A49B0024FE6F /* MigrationStep4_0.h */,
-				4AC924431DF5A49B0024FE6F /* MigrationStep4_0.m */,
-			);
-			path = 4_0;
-			sourceTree = "<group>";
-		};
-		4AC924451DF5A5990024FE6F /* DataBase */ = {
-			isa = PBXGroup;
-			children = (
-				4AC924461DF5AD180024FE6F /* testdatabase_origin.sqlite */,
-				4AC924481DF5B52F0024FE6F /* testdatabase_1.sqlite */,
-				4AC924491DF5B52F0024FE6F /* testdatabase_2.sqlite */,
-				4AC9244A1DF5B52F0024FE6F /* testdatabase_3.sqlite */,
-				4AC9244B1DF5B52F0024FE6F /* testdatabase_4.sqlite */,
-			);
-			path = DataBase;
-			sourceTree = "<group>";
-		};
-		4AD2D64E1BBFCD5E00E1F37D = {
-			isa = PBXGroup;
-			children = (
-				4AD2D6591BBFCD5E00E1F37D /* CTPersistance */,
-				720523331D473D30001EDBD2 /* SwiftDemo */,
-				7205234C1D473D8A001EDBD2 /* CTFramework */,
-				721CEE7C1D47497800EBE9CC /* CTFrameworkTest */,
-				4AD2D6581BBFCD5E00E1F37D /* Products */,
+				4A0E00271F2C384E00E6A4DA /* CTPersistance */,
+				4A0E00411F2C384E00E6A4DA /* CTPersistanceTests */,
+				4A0E00261F2C384E00E6A4DA /* Products */,
+				4A0E004D1F2C388200E6A4DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		4AD2D6581BBFCD5E00E1F37D /* Products */ = {
+		4A0E00261F2C384E00E6A4DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4AD2D6571BBFCD5E00E1F37D /* CTPersistance.app */,
-				720523321D473D30001EDBD2 /* SwiftDemo.app */,
-				7205234B1D473D8A001EDBD2 /* CTFramework.framework */,
-				721CEE7B1D47497800EBE9CC /* CTFrameworkTest.framework */,
+				4A0E00251F2C384E00E6A4DA /* CTPersistance.app */,
+				4A0E003E1F2C384E00E6A4DA /* CTPersistanceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4AD2D6591BBFCD5E00E1F37D /* CTPersistance */ = {
+		4A0E00271F2C384E00E6A4DA /* CTPersistance */ = {
 			isa = PBXGroup;
 			children = (
-				4AD2D6711BBFCD7200E1F37D /* CTPersistance */,
-				4AF0662E1BC21EF80042288C /* Test */,
-				4AD2D65A1BBFCD5E00E1F37D /* Supporting Files */,
-				4A9E4FE41BC4C76D0009E111 /* CTPersistanceConfiguration.plist */,
+				4A0E00501F2C405A00E6A4DA /* CTPersistance */,
+				4A0E002B1F2C384E00E6A4DA /* AppDelegate.h */,
+				4A0E002C1F2C384E00E6A4DA /* AppDelegate.m */,
+				4A0E002E1F2C384E00E6A4DA /* ViewController.h */,
+				4A0E002F1F2C384E00E6A4DA /* ViewController.m */,
+				4A0E00311F2C384E00E6A4DA /* Main.storyboard */,
+				4A0E00341F2C384E00E6A4DA /* Assets.xcassets */,
+				4A0E00361F2C384E00E6A4DA /* LaunchScreen.storyboard */,
+				4A0E00391F2C384E00E6A4DA /* Info.plist */,
+				4A0E00281F2C384E00E6A4DA /* Supporting Files */,
 			);
 			path = CTPersistance;
 			sourceTree = "<group>";
 		};
-		4AD2D65A1BBFCD5E00E1F37D /* Supporting Files */ = {
+		4A0E00281F2C384E00E6A4DA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4AD2D66B1BBFCD5E00E1F37D /* Info.plist */,
-				4AF066161BC189A70042288C /* libsqlite3.tbd */,
-				4AD2D65B1BBFCD5E00E1F37D /* main.m */,
+				4A0E00291F2C384E00E6A4DA /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		4AD2D6711BBFCD7200E1F37D /* CTPersistance */ = {
+		4A0E00411F2C384E00E6A4DA /* CTPersistanceTests */ = {
 			isa = PBXGroup;
 			children = (
-				4A1F7DC01BD147D200A7C2C4 /* Async */,
-				4ADCE5B71BCD460A00E54458 /* Transaction */,
-				4A925B871BC295C600CC3244 /* Categories */,
-				4AF0661F1BC217280042288C /* Database */,
-				4A925B961BC2DFC500CC3244 /* Table */,
-				4A925BB21BC38F3C00CC3244 /* Record */,
-				4AF066351BC276C40042288C /* QueryCommand */,
-				4AF066241BC217280042288C /* Migration */,
-				4A925BB61BC39CBB00CC3244 /* Criteria */,
-				4AF066111BC00D020042288C /* CTPersistance.h */,
-				4AF066121BC00E660042288C /* CTPersistanceConfiguration.h */,
-				4A925B911BC2AD1A00CC3244 /* CTPersistanceMarcos.h */,
+				4A0E00C71F2DAB5000E6A4DA /* TestRecord.png */,
+				4A0E00B71F2CC25A00E6A4DA /* TestModel */,
+				4A0E00B31F2CBDBD00E6A4DA /* CTPersistanceTestInsert.m */,
+				4A0E00C91F2DBBB400E6A4DA /* CTPersistanceTestUpdate.m */,
+				4A51505C1F2F2402004BA79C /* CTPersistanceTestDelete.m */,
+				4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */,
+				4A0E00441F2C384E00E6A4DA /* Info.plist */,
+			);
+			path = CTPersistanceTests;
+			sourceTree = "<group>";
+		};
+		4A0E004D1F2C388200E6A4DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E004E1F2C388200E6A4DA /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4A0E00501F2C405A00E6A4DA /* CTPersistance */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00631F2CBD6300E6A4DA /* CTPersistance.h */,
+				4A0E00641F2CBD6300E6A4DA /* CTPersistanceConfiguration.h */,
+				4A0E00651F2CBD6300E6A4DA /* CTPersistanceMarcos.h */,
+				4A0E00511F2CBD6300E6A4DA /* Async */,
+				4A0E00541F2CBD6300E6A4DA /* Categories */,
+				4A0E00601F2CBD6300E6A4DA /* Criteria */,
+				4A0E00661F2CBD6300E6A4DA /* Database */,
+				4A0E006B1F2CBD6300E6A4DA /* Migration */,
+				4A0E00741F2CBD6300E6A4DA /* QueryCommand */,
+				4A0E00841F2CBD6300E6A4DA /* Record */,
+				4A0E00881F2CBD6300E6A4DA /* Table */,
+				4A0E00981F2CBD6300E6A4DA /* Transaction */,
 			);
 			path = CTPersistance;
 			sourceTree = "<group>";
 		};
-		4ADCE5B71BCD460A00E54458 /* Transaction */ = {
+		4A0E00511F2CBD6300E6A4DA /* Async */ = {
 			isa = PBXGroup;
 			children = (
-				4ADCE5B81BCD462000E54458 /* CTPersistanceTransaction.h */,
-				4ADCE5B91BCD462000E54458 /* CTPersistanceTransaction.m */,
+				4A0E00521F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.h */,
+				4A0E00531F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.m */,
 			);
-			path = Transaction;
+			path = Async;
 			sourceTree = "<group>";
 		};
-		4AF0661F1BC217280042288C /* Database */ = {
+		4A0E00541F2CBD6300E6A4DA /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				4AF066201BC217280042288C /* CTPersistanceDataBase.h */,
-				4AF066211BC217280042288C /* CTPersistanceDataBase.m */,
-				4AF066221BC217280042288C /* CTPersistanceDatabasePool.h */,
-				4AF066231BC217280042288C /* CTPersistanceDatabasePool.m */,
-			);
-			path = Database;
-			sourceTree = "<group>";
-		};
-		4AF066241BC217280042288C /* Migration */ = {
-			isa = PBXGroup;
-			children = (
-				4A9E4FED1BC4CF770009E111 /* MigrationVersionTable */,
-				4AF066251BC217280042288C /* CTPersistanceMigrator.h */,
-				4AF066261BC217280042288C /* CTPersistanceMigrator.m */,
-			);
-			path = Migration;
-			sourceTree = "<group>";
-		};
-		4AF0662E1BC21EF80042288C /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				4AC9242A1DF5A1710024FE6F /* Migration */,
-				4A5DD9331BD909F100934C27 /* Async */,
-				4AFEFD081BCFE8A300751D82 /* WhereCondition */,
-				4A925BC31BC3E83D00CC3244 /* TestModel */,
-				4A7A7F5E1BCBD92400A480C7 /* Update */,
-				4A7A7F511BCBD92400A480C7 /* Delete */,
-				4A7A7F541BCBD92400A480C7 /* Fetch */,
-				4A7A7F571BCBD92400A480C7 /* Insert */,
-				4A7A7F5A1BCBD92400A480C7 /* Record */,
-				4A7A7F5D1BCBD92400A480C7 /* Transaction */,
-			);
-			path = Test;
-			sourceTree = "<group>";
-		};
-		4AF066351BC276C40042288C /* QueryCommand */ = {
-			isa = PBXGroup;
-			children = (
-				4AF066391BC27F8B0042288C /* Categories */,
-				4AF066361BC276C40042288C /* CTPersistanceQueryCommand.h */,
-				4AF066371BC276C40042288C /* CTPersistanceQueryCommand.m */,
-			);
-			path = QueryCommand;
-			sourceTree = "<group>";
-		};
-		4AF066391BC27F8B0042288C /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				4A7A7F711BCC047E00A480C7 /* StatusMethods */,
-				4AF066491BC2821B0042288C /* SchemaManipulations */,
-				4AF0663D1BC2819D0042288C /* DataManipulations */,
-				4AF0663E1BC2819D0042288C /* ReadingMethods */,
+				4A0E00C11F2D84C500E6A4DA /* NSMutableArray */,
+				4A0E00551F2CBD6300E6A4DA /* NSArray */,
+				4A0E00591F2CBD6300E6A4DA /* NSString */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		4AF0663D1BC2819D0042288C /* DataManipulations */ = {
+		4A0E00551F2CBD6300E6A4DA /* NSArray */ = {
 			isa = PBXGroup;
 			children = (
-				4AF066431BC281F00042288C /* CTPersistanceQueryCommand+DataManipulations.h */,
-				4AF066441BC281F00042288C /* CTPersistanceQueryCommand+DataManipulations.m */,
+				4A0E00561F2CBD6300E6A4DA /* CTPersistanceRecordTransform */,
+			);
+			path = NSArray;
+			sourceTree = "<group>";
+		};
+		4A0E00561F2CBD6300E6A4DA /* CTPersistanceRecordTransform */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00571F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.h */,
+				4A0E00581F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m */,
+			);
+			path = CTPersistanceRecordTransform;
+			sourceTree = "<group>";
+		};
+		4A0E00591F2CBD6300E6A4DA /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E005A1F2CBD6300E6A4DA /* ReqularExpression */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		4A0E005A1F2CBD6300E6A4DA /* ReqularExpression */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E005B1F2CBD6300E6A4DA /* NSString+ReqularExpression.h */,
+				4A0E005C1F2CBD6300E6A4DA /* NSString+ReqularExpression.m */,
+			);
+			path = ReqularExpression;
+			sourceTree = "<group>";
+		};
+		4A0E00601F2CBD6300E6A4DA /* Criteria */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00611F2CBD6300E6A4DA /* CTPersistanceCriteria.h */,
+				4A0E00621F2CBD6300E6A4DA /* CTPersistanceCriteria.m */,
+			);
+			path = Criteria;
+			sourceTree = "<group>";
+		};
+		4A0E00661F2CBD6300E6A4DA /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00671F2CBD6300E6A4DA /* CTPersistanceDataBase.h */,
+				4A0E00681F2CBD6300E6A4DA /* CTPersistanceDataBase.m */,
+				4A0E00691F2CBD6300E6A4DA /* CTPersistanceDatabasePool.h */,
+				4A0E006A1F2CBD6300E6A4DA /* CTPersistanceDatabasePool.m */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		4A0E006B1F2CBD6300E6A4DA /* Migration */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E006C1F2CBD6300E6A4DA /* CTPersistanceMigrator.h */,
+				4A0E006D1F2CBD6300E6A4DA /* CTPersistanceMigrator.m */,
+				4A0E006E1F2CBD6300E6A4DA /* MigrationVersionTable */,
+			);
+			path = Migration;
+			sourceTree = "<group>";
+		};
+		4A0E006E1F2CBD6300E6A4DA /* MigrationVersionTable */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E006F1F2CBD6300E6A4DA /* CTPersistanceVersionTable.h */,
+				4A0E00701F2CBD6300E6A4DA /* CTPersistanceVersionTable.m */,
+				4A0E00711F2CBD6300E6A4DA /* Record */,
+			);
+			path = MigrationVersionTable;
+			sourceTree = "<group>";
+		};
+		4A0E00711F2CBD6300E6A4DA /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00721F2CBD6300E6A4DA /* CTPersistanceVersionRecord.h */,
+				4A0E00731F2CBD6300E6A4DA /* CTPersistanceVersionRecord.m */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		4A0E00741F2CBD6300E6A4DA /* QueryCommand */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00751F2CBD6300E6A4DA /* Categories */,
+				4A0E00821F2CBD6300E6A4DA /* CTPersistanceQueryCommand.h */,
+				4A0E00831F2CBD6300E6A4DA /* CTPersistanceQueryCommand.m */,
+			);
+			path = QueryCommand;
+			sourceTree = "<group>";
+		};
+		4A0E00751F2CBD6300E6A4DA /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00761F2CBD6300E6A4DA /* DataManipulations */,
+				4A0E00791F2CBD6300E6A4DA /* ReadingMethods */,
+				4A0E007C1F2CBD6300E6A4DA /* SchemaManipulations */,
+				4A0E007F1F2CBD6300E6A4DA /* StatusMethods */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		4A0E00761F2CBD6300E6A4DA /* DataManipulations */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00771F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.h */,
+				4A0E00781F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.m */,
 			);
 			path = DataManipulations;
 			sourceTree = "<group>";
 		};
-		4AF0663E1BC2819D0042288C /* ReadingMethods */ = {
+		4A0E00791F2CBD6300E6A4DA /* ReadingMethods */ = {
 			isa = PBXGroup;
 			children = (
-				4AF0663F1BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.h */,
-				4AF066401BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.m */,
+				4A0E007A1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+ReadMethods.h */,
+				4A0E007B1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+ReadMethods.m */,
 			);
 			path = ReadingMethods;
 			sourceTree = "<group>";
 		};
-		4AF066491BC2821B0042288C /* SchemaManipulations */ = {
+		4A0E007C1F2CBD6300E6A4DA /* SchemaManipulations */ = {
 			isa = PBXGroup;
 			children = (
-				4AF0664A1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.h */,
-				4AF0664B1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m */,
+				4A0E007D1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+SchemaManipulations.h */,
+				4A0E007E1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+SchemaManipulations.m */,
 			);
 			path = SchemaManipulations;
 			sourceTree = "<group>";
 		};
-		4AFEFD081BCFE8A300751D82 /* WhereCondition */ = {
+		4A0E007F1F2CBD6300E6A4DA /* StatusMethods */ = {
 			isa = PBXGroup;
 			children = (
-				4AFEFD091BCFE8B900751D82 /* TestCaseWhereCondition.h */,
-				4AFEFD0A1BCFE8B900751D82 /* TestCaseWhereCondition.m */,
+				4A0E00801F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.h */,
+				4A0E00811F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.m */,
 			);
-			path = WhereCondition;
+			path = StatusMethods;
 			sourceTree = "<group>";
 		};
-		720523331D473D30001EDBD2 /* SwiftDemo */ = {
+		4A0E00841F2CBD6300E6A4DA /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				720523401D473D30001EDBD2 /* Info.plist */,
-				720523441D473D3F001EDBD2 /* main.swift */,
+				4A0E00851F2CBD6300E6A4DA /* CTPersistanceRecord.h */,
+				4A0E00861F2CBD6300E6A4DA /* CTPersistanceRecord.m */,
+				4A0E00871F2CBD6300E6A4DA /* CTPersistanceRecordProtocol.h */,
 			);
-			path = SwiftDemo;
+			path = Record;
 			sourceTree = "<group>";
 		};
-		7205234C1D473D8A001EDBD2 /* CTFramework */ = {
+		4A0E00881F2CBD6300E6A4DA /* Table */ = {
 			isa = PBXGroup;
 			children = (
-				7205234D1D473D8A001EDBD2 /* CTFramework.h */,
-				7205234F1D473D8A001EDBD2 /* Info.plist */,
+				4A0E00891F2CBD6300E6A4DA /* Categories */,
+				4A0E00961F2CBD6300E6A4DA /* CTPersistanceTable.h */,
+				4A0E00971F2CBD6300E6A4DA /* CTPersistanceTable.m */,
 			);
-			path = CTFramework;
+			path = Table;
 			sourceTree = "<group>";
 		};
-		721CEE7C1D47497800EBE9CC /* CTFrameworkTest */ = {
+		4A0E00891F2CBD6300E6A4DA /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				721CEE7D1D47497800EBE9CC /* CTFrameworkTest.h */,
-				721CEE7F1D47497800EBE9CC /* Info.plist */,
+				4A0E008A1F2CBD6300E6A4DA /* Delete */,
+				4A0E008D1F2CBD6300E6A4DA /* Find */,
+				4A0E00901F2CBD6300E6A4DA /* Insert */,
+				4A0E00931F2CBD6300E6A4DA /* Update */,
 			);
-			path = CTFrameworkTest;
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		4A0E008A1F2CBD6300E6A4DA /* Delete */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E008B1F2CBD6300E6A4DA /* CTPersistanceTable+Delete.h */,
+				4A0E008C1F2CBD6300E6A4DA /* CTPersistanceTable+Delete.m */,
+			);
+			path = Delete;
+			sourceTree = "<group>";
+		};
+		4A0E008D1F2CBD6300E6A4DA /* Find */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E008E1F2CBD6300E6A4DA /* CTPersistanceTable+Find.h */,
+				4A0E008F1F2CBD6300E6A4DA /* CTPersistanceTable+Find.m */,
+			);
+			path = Find;
+			sourceTree = "<group>";
+		};
+		4A0E00901F2CBD6300E6A4DA /* Insert */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00911F2CBD6300E6A4DA /* CTPersistanceTable+Insert.h */,
+				4A0E00921F2CBD6300E6A4DA /* CTPersistanceTable+Insert.m */,
+			);
+			path = Insert;
+			sourceTree = "<group>";
+		};
+		4A0E00931F2CBD6300E6A4DA /* Update */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00941F2CBD6300E6A4DA /* CTPersistanceTable+Update.h */,
+				4A0E00951F2CBD6300E6A4DA /* CTPersistanceTable+Update.m */,
+			);
+			path = Update;
+			sourceTree = "<group>";
+		};
+		4A0E00981F2CBD6300E6A4DA /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00991F2CBD6300E6A4DA /* CTPersistanceTransaction.h */,
+				4A0E009A1F2CBD6300E6A4DA /* CTPersistanceTransaction.m */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		4A0E00B71F2CC25A00E6A4DA /* TestModel */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00B81F2CC25A00E6A4DA /* Record */,
+				4A0E00BB1F2CC25A00E6A4DA /* Table */,
+			);
+			path = TestModel;
+			sourceTree = "<group>";
+		};
+		4A0E00B81F2CC25A00E6A4DA /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00B91F2CC25A00E6A4DA /* TestRecord.h */,
+				4A0E00BA1F2CC25A00E6A4DA /* TestRecord.m */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		4A0E00BB1F2CC25A00E6A4DA /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00BC1F2CC25A00E6A4DA /* Columns */,
+				4A0E00BD1F2CC25A00E6A4DA /* TestTable.h */,
+				4A0E00BE1F2CC25A00E6A4DA /* TestTable.m */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		4A0E00BC1F2CC25A00E6A4DA /* Columns */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Columns;
+			sourceTree = "<group>";
+		};
+		4A0E00C11F2D84C500E6A4DA /* NSMutableArray */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00C21F2D84C500E6A4DA /* CTPersistanceBindValue */,
+			);
+			path = NSMutableArray;
+			sourceTree = "<group>";
+		};
+		4A0E00C21F2D84C500E6A4DA /* CTPersistanceBindValue */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E00C41F2D84FB00E6A4DA /* NSMutableArray+CTPersistanceBindValue.h */,
+				4A0E00C51F2D84FB00E6A4DA /* NSMutableArray+CTPersistanceBindValue.m */,
+			);
+			path = CTPersistanceBindValue;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		720523481D473D8A001EDBD2 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7205234E1D473D8A001EDBD2 /* CTFramework.h in Headers */,
-				720523891D473E66001EDBD2 /* CTPersistanceAsyncExecutor.h in Headers */,
-				7205238A1D473E66001EDBD2 /* CTPersistanceTransaction.h in Headers */,
-				7205238B1D473E66001EDBD2 /* NSArray+CTPersistanceRecordTransform.h in Headers */,
-				7205238C1D473E66001EDBD2 /* NSString+ReqularExpression.h in Headers */,
-				7205238D1D473E66001EDBD2 /* NSString+SQL.h in Headers */,
-				7205238E1D473E66001EDBD2 /* CTPersistanceDataBase.h in Headers */,
-				7205238F1D473E66001EDBD2 /* CTPersistanceDatabasePool.h in Headers */,
-				720523901D473E66001EDBD2 /* CTPersistanceTable+Delete.h in Headers */,
-				720523911D473E66001EDBD2 /* CTPersistanceTable+Find.h in Headers */,
-				720523921D473E66001EDBD2 /* CTPersistanceTable+Insert.h in Headers */,
-				720523931D473E66001EDBD2 /* CTPersistanceTable+Update.h in Headers */,
-				720523941D473E66001EDBD2 /* CTPersistanceTable.h in Headers */,
-				720523951D473E66001EDBD2 /* CTPersistanceRecordProtocol.h in Headers */,
-				720523961D473E66001EDBD2 /* CTPersistanceRecord.h in Headers */,
-				720523971D473E66001EDBD2 /* CTPersistanceQueryCommand+Status.h in Headers */,
-				720523981D473E66001EDBD2 /* CTPersistanceQueryCommand+SchemaManipulations.h in Headers */,
-				720523991D473E66001EDBD2 /* CTPersistanceQueryCommand+DataManipulations.h in Headers */,
-				7205239A1D473E66001EDBD2 /* CTPersistanceQueryCommand+ReadMethods.h in Headers */,
-				7205239B1D473E66001EDBD2 /* CTPersistanceQueryCommand.h in Headers */,
-				7205239C1D473E66001EDBD2 /* CTPersistanceVersionRecord.h in Headers */,
-				7205239D1D473E66001EDBD2 /* CTPersistanceVersionTable.h in Headers */,
-				7205239E1D473E66001EDBD2 /* CTPersistanceMigrator.h in Headers */,
-				7205239F1D473E66001EDBD2 /* CTPersistanceCriteria.h in Headers */,
-				720523A01D473E66001EDBD2 /* CTPersistance.h in Headers */,
-				720523A11D473E66001EDBD2 /* CTPersistanceConfiguration.h in Headers */,
-				720523A21D473E66001EDBD2 /* CTPersistanceMarcos.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		721CEE781D47497800EBE9CC /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				721CEE7E1D47497800EBE9CC /* CTFrameworkTest.h in Headers */,
-				721CEE9A1D474D5800EBE9CC /* TestRecord.h in Headers */,
-				721CEE9B1D474D5800EBE9CC /* TestTable.h in Headers */,
-				721CEE9F1D474D5800EBE9CC /* TestInsertData.h in Headers */,
-				721CEE9E1D474D5800EBE9CC /* TestFetchData.h in Headers */,
-				721CEEA01D474D5800EBE9CC /* TestCaseRecord.h in Headers */,
-				721CEEA11D474D5800EBE9CC /* TestCaseTransaction.h in Headers */,
-				721CEE9C1D474D5800EBE9CC /* TestUpdateData.h in Headers */,
-				721CEE9D1D474D5800EBE9CC /* TestDeleteData.h in Headers */,
-				721CEE951D474D5800EBE9CC /* TestCaseAsync.h in Headers */,
-				721CEE961D474D5800EBE9CC /* TestCaseWhereCondition.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		4AD2D6561BBFCD5E00E1F37D /* CTPersistance */ = {
+		4A0E00241F2C384E00E6A4DA /* CTPersistance */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4AD2D66E1BBFCD5E00E1F37D /* Build configuration list for PBXNativeTarget "CTPersistance" */;
+			buildConfigurationList = 4A0E00471F2C384E00E6A4DA /* Build configuration list for PBXNativeTarget "CTPersistance" */;
 			buildPhases = (
-				4AD2D6531BBFCD5E00E1F37D /* Sources */,
-				4AD2D6541BBFCD5E00E1F37D /* Frameworks */,
-				4AD2D6551BBFCD5E00E1F37D /* Resources */,
-				720523B61D4743A2001EDBD2 /* Embed Frameworks */,
+				4A0E00211F2C384E00E6A4DA /* Sources */,
+				4A0E00221F2C384E00E6A4DA /* Frameworks */,
+				4A0E00231F2C384E00E6A4DA /* Resources */,
 			);
 			buildRules = (
 			);
@@ -932,93 +536,50 @@
 			);
 			name = CTPersistance;
 			productName = CTPersistance;
-			productReference = 4AD2D6571BBFCD5E00E1F37D /* CTPersistance.app */;
+			productReference = 4A0E00251F2C384E00E6A4DA /* CTPersistance.app */;
 			productType = "com.apple.product-type.application";
 		};
-		720523311D473D30001EDBD2 /* SwiftDemo */ = {
+		4A0E003D1F2C384E00E6A4DA /* CTPersistanceTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 720523431D473D30001EDBD2 /* Build configuration list for PBXNativeTarget "SwiftDemo" */;
+			buildConfigurationList = 4A0E004A1F2C384E00E6A4DA /* Build configuration list for PBXNativeTarget "CTPersistanceTests" */;
 			buildPhases = (
-				7205232E1D473D30001EDBD2 /* Sources */,
-				7205232F1D473D30001EDBD2 /* Frameworks */,
-				720523301D473D30001EDBD2 /* Resources */,
-				720523571D473D8A001EDBD2 /* Embed Frameworks */,
+				4A0E003A1F2C384E00E6A4DA /* Sources */,
+				4A0E003B1F2C384E00E6A4DA /* Frameworks */,
+				4A0E003C1F2C384E00E6A4DA /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				720523511D473D8A001EDBD2 /* PBXTargetDependency */,
-				721CEE811D47497800EBE9CC /* PBXTargetDependency */,
+				4A0E00401F2C384E00E6A4DA /* PBXTargetDependency */,
 			);
-			name = SwiftDemo;
-			productName = SwiftDemo;
-			productReference = 720523321D473D30001EDBD2 /* SwiftDemo.app */;
-			productType = "com.apple.product-type.application";
-		};
-		7205234A1D473D8A001EDBD2 /* CTFramework */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 720523541D473D8A001EDBD2 /* Build configuration list for PBXNativeTarget "CTFramework" */;
-			buildPhases = (
-				720523461D473D8A001EDBD2 /* Sources */,
-				720523471D473D8A001EDBD2 /* Frameworks */,
-				720523481D473D8A001EDBD2 /* Headers */,
-				720523491D473D8A001EDBD2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CTFramework;
-			productName = CTFramework;
-			productReference = 7205234B1D473D8A001EDBD2 /* CTFramework.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		721CEE7A1D47497800EBE9CC /* CTFrameworkTest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 721CEE841D47497800EBE9CC /* Build configuration list for PBXNativeTarget "CTFrameworkTest" */;
-			buildPhases = (
-				721CEE761D47497800EBE9CC /* Sources */,
-				721CEE771D47497800EBE9CC /* Frameworks */,
-				721CEE781D47497800EBE9CC /* Headers */,
-				721CEE791D47497800EBE9CC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CTFrameworkTest;
-			productName = CTFrameworkTest;
-			productReference = 721CEE7B1D47497800EBE9CC /* CTFrameworkTest.framework */;
-			productType = "com.apple.product-type.framework";
+			name = CTPersistanceTests;
+			productName = CTPersistanceTests;
+			productReference = 4A0E003E1F2C384E00E6A4DA /* CTPersistanceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4AD2D64F1BBFCD5E00E1F37D /* Project object */ = {
+		4A0E001D1F2C384E00E6A4DA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = casa;
 				TargetAttributes = {
-					4AD2D6561BBFCD5E00E1F37D = {
-						CreatedOnToolsVersion = 7.0.1;
+					4A0E00241F2C384E00E6A4DA = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = THS9SRQVES;
+						ProvisioningStyle = Automatic;
 					};
-					720523311D473D30001EDBD2 = {
-						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0820;
-					};
-					7205234A1D473D8A001EDBD2 = {
-						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0820;
-					};
-					721CEE7A1D47497800EBE9CC = {
-						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0820;
+					4A0E003D1F2C384E00E6A4DA = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = EJ552L8U27;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4A0E00241F2C384E00E6A4DA;
 					};
 				};
 			};
-			buildConfigurationList = 4AD2D6521BBFCD5E00E1F37D /* Build configuration list for PBXProject "CTPersistance" */;
+			buildConfigurationList = 4A0E00201F2C384E00E6A4DA /* Build configuration list for PBXProject "CTPersistance" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1026,178 +587,120 @@
 				en,
 				Base,
 			);
-			mainGroup = 4AD2D64E1BBFCD5E00E1F37D;
-			productRefGroup = 4AD2D6581BBFCD5E00E1F37D /* Products */;
+			mainGroup = 4A0E001C1F2C384E00E6A4DA;
+			productRefGroup = 4A0E00261F2C384E00E6A4DA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4AD2D6561BBFCD5E00E1F37D /* CTPersistance */,
-				720523311D473D30001EDBD2 /* SwiftDemo */,
-				7205234A1D473D8A001EDBD2 /* CTFramework */,
-				721CEE7A1D47497800EBE9CC /* CTFrameworkTest */,
+				4A0E00241F2C384E00E6A4DA /* CTPersistance */,
+				4A0E003D1F2C384E00E6A4DA /* CTPersistanceTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4AD2D6551BBFCD5E00E1F37D /* Resources */ = {
+		4A0E00231F2C384E00E6A4DA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AC924471DF5AD1E0024FE6F /* testdatabase_origin.sqlite in Resources */,
-				4AC9244C1DF5B52F0024FE6F /* testdatabase_1.sqlite in Resources */,
-				4A9E4FE51BC4C76D0009E111 /* CTPersistanceConfiguration.plist in Resources */,
-				4AC9244F1DF5B52F0024FE6F /* testdatabase_4.sqlite in Resources */,
-				4AC9244D1DF5B52F0024FE6F /* testdatabase_2.sqlite in Resources */,
-				4AC9244E1DF5B52F0024FE6F /* testdatabase_3.sqlite in Resources */,
+				4A0E00381F2C384E00E6A4DA /* LaunchScreen.storyboard in Resources */,
+				4A0E00351F2C384E00E6A4DA /* Assets.xcassets in Resources */,
+				4A0E00331F2C384E00E6A4DA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		720523301D473D30001EDBD2 /* Resources */ = {
+		4A0E003C1F2C384E00E6A4DA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		720523491D473D8A001EDBD2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		721CEE791D47497800EBE9CC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				721CEEA21D474D7C00EBE9CC /* CTPersistanceConfiguration.plist in Resources */,
+				4A0E00C81F2DAB5000E6A4DA /* TestRecord.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4AD2D6531BBFCD5E00E1F37D /* Sources */ = {
+		4A0E00211F2C384E00E6A4DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AFEFD0B1BCFE8B900751D82 /* TestCaseWhereCondition.m in Sources */,
-				4AF066451BC281F00042288C /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,
-				4AF066421BC2819D0042288C /* CTPersistanceQueryCommand+ReadMethods.m in Sources */,
-				4A9E4FF11BC4CF770009E111 /* CTPersistanceVersionTable.m in Sources */,
-				4A925BA51BC2EDB500CC3244 /* CTPersistanceTable+Delete.m in Sources */,
-				4ADCE5BA1BCD462000E54458 /* CTPersistanceTransaction.m in Sources */,
-				4AC9243B1DF5A41A0024FE6F /* MigrationStep2_0.m in Sources */,
-				4A925BB51BC38F5000CC3244 /* CTPersistanceRecord.m in Sources */,
-				4A925B991BC2DFC500CC3244 /* CTPersistanceTable.m in Sources */,
-				4A925BAB1BC2EDCE00CC3244 /* CTPersistanceTable+Insert.m in Sources */,
-				4AF066281BC217280042288C /* CTPersistanceDatabasePool.m in Sources */,
-				4A5DD9361BD90A1400934C27 /* TestCaseAsync.m in Sources */,
-				4AC9243C1DF5A41A0024FE6F /* TestMigrator.m in Sources */,
-				4AD2D65C1BBFCD5E00E1F37D /* main.m in Sources */,
-				4A925BA81BC2EDC300CC3244 /* CTPersistanceTable+Find.m in Sources */,
-				4AC924411DF5A48D0024FE6F /* MigrationStep3_0.m in Sources */,
-				4A7A7F621BCBD92400A480C7 /* TestFetchData.m in Sources */,
-				4A7A7F641BCBD92400A480C7 /* TestCaseRecord.m in Sources */,
-				4AC9242F1DF5A1D40024FE6F /* TestCaseMigration.m in Sources */,
-				4A925BBD1BC3A0C500CC3244 /* NSString+SQL.m in Sources */,
-				4AC924441DF5A49B0024FE6F /* MigrationStep4_0.m in Sources */,
-				4A925BCB1BC3E83D00CC3244 /* TestTable.m in Sources */,
-				4AF066271BC217280042288C /* CTPersistanceDataBase.m in Sources */,
-				4A7A7F651BCBD92400A480C7 /* TestUpdateData.m in Sources */,
-				4AF066291BC217280042288C /* CTPersistanceMigrator.m in Sources */,
-				4A7A7F631BCBD92400A480C7 /* TestInsertData.m in Sources */,
-				4A925BC21BC3AA4100CC3244 /* NSArray+CTPersistanceRecordTransform.m in Sources */,
-				4AF066381BC276C40042288C /* CTPersistanceQueryCommand.m in Sources */,
-				4A1F7DC31BD1CB8400A7C2C4 /* CTPersistanceAsyncExecutor.m in Sources */,
-				4A925BB91BC39CCD00CC3244 /* CTPersistanceCriteria.m in Sources */,
-				4AC9243A1DF5A41A0024FE6F /* MigrationStep1_0.m in Sources */,
-				4AF0664C1BC2821B0042288C /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */,
-				4A925BCA1BC3E83D00CC3244 /* TestRecord.m in Sources */,
-				4A7A7F741BCC04A900A480C7 /* CTPersistanceQueryCommand+Status.m in Sources */,
-				4A9E4FE31BC4C3F60009E111 /* NSString+ReqularExpression.m in Sources */,
-				4A9E4FF41BC4CFA00009E111 /* CTPersistanceVersionRecord.m in Sources */,
-				4A7A7F611BCBD92400A480C7 /* TestDeleteData.m in Sources */,
-				4A7A7F681BCBD94700A480C7 /* TestCaseTransaction.m in Sources */,
-				4A925BAE1BC2EDDA00CC3244 /* CTPersistanceTable+Update.m in Sources */,
+				4A0E00A61F2CBD6300E6A4DA /* CTPersistanceQueryCommand+ReadMethods.m in Sources */,
+				4A0E00C61F2D84FB00E6A4DA /* NSMutableArray+CTPersistanceBindValue.m in Sources */,
+				4A0E00A51F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,
+				4A0E009B1F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.m in Sources */,
+				4A0E00AA1F2CBD6300E6A4DA /* CTPersistanceRecord.m in Sources */,
+				4A0E00301F2C384E00E6A4DA /* ViewController.m in Sources */,
+				4A0E00A81F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.m in Sources */,
+				4A0E00A21F2CBD6300E6A4DA /* CTPersistanceMigrator.m in Sources */,
+				4A0E009C1F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m in Sources */,
+				4A0E00AB1F2CBD6300E6A4DA /* CTPersistanceTable+Delete.m in Sources */,
+				4A0E00A31F2CBD6300E6A4DA /* CTPersistanceVersionTable.m in Sources */,
+				4A0E00B01F2CBD6300E6A4DA /* CTPersistanceTransaction.m in Sources */,
+				4A0E00A71F2CBD6300E6A4DA /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */,
+				4A0E00AE1F2CBD6300E6A4DA /* CTPersistanceTable+Update.m in Sources */,
+				4A0E002D1F2C384E00E6A4DA /* AppDelegate.m in Sources */,
+				4A0E00A41F2CBD6300E6A4DA /* CTPersistanceVersionRecord.m in Sources */,
+				4A0E009D1F2CBD6300E6A4DA /* NSString+ReqularExpression.m in Sources */,
+				4A0E009F1F2CBD6300E6A4DA /* CTPersistanceCriteria.m in Sources */,
+				4A0E002A1F2C384E00E6A4DA /* main.m in Sources */,
+				4A0E00AD1F2CBD6300E6A4DA /* CTPersistanceTable+Insert.m in Sources */,
+				4A0E00A11F2CBD6300E6A4DA /* CTPersistanceDatabasePool.m in Sources */,
+				4A0E00AC1F2CBD6300E6A4DA /* CTPersistanceTable+Find.m in Sources */,
+				4A0E00A01F2CBD6300E6A4DA /* CTPersistanceDataBase.m in Sources */,
+				4A0E00A91F2CBD6300E6A4DA /* CTPersistanceQueryCommand.m in Sources */,
+				4A0E00AF1F2CBD6300E6A4DA /* CTPersistanceTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7205232E1D473D30001EDBD2 /* Sources */ = {
+		4A0E003A1F2C384E00E6A4DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				720523451D473D3F001EDBD2 /* main.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		720523461D473D8A001EDBD2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				720523591D473DB2001EDBD2 /* CTPersistanceAsyncExecutor.m in Sources */,
-				7205235B1D473DB2001EDBD2 /* CTPersistanceTransaction.m in Sources */,
-				7205235D1D473DB2001EDBD2 /* NSArray+CTPersistanceRecordTransform.m in Sources */,
-				7205235F1D473DB2001EDBD2 /* NSString+ReqularExpression.m in Sources */,
-				720523611D473DB2001EDBD2 /* NSString+SQL.m in Sources */,
-				720523631D473DB2001EDBD2 /* CTPersistanceDataBase.m in Sources */,
-				720523651D473DB2001EDBD2 /* CTPersistanceDatabasePool.m in Sources */,
-				720523671D473DB2001EDBD2 /* CTPersistanceTable+Delete.m in Sources */,
-				720523691D473DB2001EDBD2 /* CTPersistanceTable+Find.m in Sources */,
-				7205236B1D473DB2001EDBD2 /* CTPersistanceTable+Insert.m in Sources */,
-				7205236D1D473DB2001EDBD2 /* CTPersistanceTable+Update.m in Sources */,
-				7205236F1D473DB2001EDBD2 /* CTPersistanceTable.m in Sources */,
-				720523721D473DB2001EDBD2 /* CTPersistanceRecord.m in Sources */,
-				720523741D473DB2001EDBD2 /* CTPersistanceQueryCommand+Status.m in Sources */,
-				720523761D473DB2001EDBD2 /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */,
-				720523781D473DB2001EDBD2 /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,
-				7205237A1D473DB2001EDBD2 /* CTPersistanceQueryCommand+ReadMethods.m in Sources */,
-				7205237C1D473DB2001EDBD2 /* CTPersistanceQueryCommand.m in Sources */,
-				7205237E1D473DB2001EDBD2 /* CTPersistanceVersionRecord.m in Sources */,
-				720523801D473DB2001EDBD2 /* CTPersistanceVersionTable.m in Sources */,
-				720523821D473DB2001EDBD2 /* CTPersistanceMigrator.m in Sources */,
-				720523841D473DB2001EDBD2 /* CTPersistanceCriteria.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		721CEE761D47497800EBE9CC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				721CEE881D474D3400EBE9CC /* TestCaseAsync.m in Sources */,
-				721CEE891D474D3400EBE9CC /* TestCaseWhereCondition.m in Sources */,
-				721CEE8D1D474D3400EBE9CC /* TestRecord.m in Sources */,
-				721CEE8E1D474D3400EBE9CC /* TestTable.m in Sources */,
-				721CEE8F1D474D3400EBE9CC /* TestUpdateData.m in Sources */,
-				721CEE901D474D3400EBE9CC /* TestDeleteData.m in Sources */,
-				721CEE911D474D3400EBE9CC /* TestFetchData.m in Sources */,
-				721CEE921D474D3400EBE9CC /* TestInsertData.m in Sources */,
-				721CEE931D474D3400EBE9CC /* TestCaseRecord.m in Sources */,
-				721CEE941D474D3400EBE9CC /* TestCaseTransaction.m in Sources */,
+				4A0E00BF1F2CC25A00E6A4DA /* TestRecord.m in Sources */,
+				4AB165E81F302AA60043E6A2 /* CTPersistanceTestFind.m in Sources */,
+				4A0E00B41F2CBDBD00E6A4DA /* CTPersistanceTestInsert.m in Sources */,
+				4A0E00C01F2CC25A00E6A4DA /* TestTable.m in Sources */,
+				4A51505D1F2F2402004BA79C /* CTPersistanceTestDelete.m in Sources */,
+				4A0E00CA1F2DBBB400E6A4DA /* CTPersistanceTestUpdate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		720523511D473D8A001EDBD2 /* PBXTargetDependency */ = {
+		4A0E00401F2C384E00E6A4DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7205234A1D473D8A001EDBD2 /* CTFramework */;
-			targetProxy = 720523501D473D8A001EDBD2 /* PBXContainerItemProxy */;
-		};
-		721CEE811D47497800EBE9CC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 721CEE7A1D47497800EBE9CC /* CTFrameworkTest */;
-			targetProxy = 721CEE801D47497800EBE9CC /* PBXContainerItemProxy */;
+			target = 4A0E00241F2C384E00E6A4DA /* CTPersistance */;
+			targetProxy = 4A0E003F1F2C384E00E6A4DA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		4A0E00311F2C384E00E6A4DA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A0E00321F2C384E00E6A4DA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4A0E00361F2C384E00E6A4DA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A0E00371F2C384E00E6A4DA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		4AD2D66C1BBFCD5E00E1F37D /* Debug */ = {
+		4A0E00451F2C384E00E6A4DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1205,6 +708,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -1232,17 +736,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		4AD2D66D1BBFCD5E00E1F37D /* Release */ = {
+		4A0E00461F2C384E00E6A4DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1250,6 +757,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -1271,214 +779,95 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		4AD2D66F1BBFCD5E00E1F37D /* Debug */ = {
+		4A0E00481F2C384E00E6A4DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = THS9SRQVES;
 				INFOPLIST_FILE = CTPersistance/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		4AD2D6701BBFCD5E00E1F37D /* Release */ = {
+		4A0E00491F2C384E00E6A4DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = THS9SRQVES;
 				INFOPLIST_FILE = CTPersistance/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
-		720523411D473D30001EDBD2 /* Debug */ = {
+		4A0E004B1F2C384E00E6A4DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = SwiftDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = welkiner.SwiftDemo;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = EJ552L8U27;
+				INFOPLIST_FILE = CTPersistanceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistanceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CTPersistance.app/CTPersistance";
 			};
 			name = Debug;
 		};
-		720523421D473D30001EDBD2 /* Release */ = {
+		4A0E004C1F2C384E00E6A4DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = SwiftDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = welkiner.SwiftDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		720523551D473D8A001EDBD2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CTFramework/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = EJ552L8U27;
+				INFOPLIST_FILE = CTPersistanceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = welkiner.CTFramework;
+				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistanceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		720523561D473D8A001EDBD2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CTFramework/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = welkiner.CTFramework;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		721CEE851D47497800EBE9CC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CTFrameworkTest/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = welkiner.CTFrameworkTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		721CEE861D47497800EBE9CC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CTFrameworkTest/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = welkiner.CTFrameworkTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CTPersistance.app/CTPersistance";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4AD2D6521BBFCD5E00E1F37D /* Build configuration list for PBXProject "CTPersistance" */ = {
+		4A0E00201F2C384E00E6A4DA /* Build configuration list for PBXProject "CTPersistance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4AD2D66C1BBFCD5E00E1F37D /* Debug */,
-				4AD2D66D1BBFCD5E00E1F37D /* Release */,
+				4A0E00451F2C384E00E6A4DA /* Debug */,
+				4A0E00461F2C384E00E6A4DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4AD2D66E1BBFCD5E00E1F37D /* Build configuration list for PBXNativeTarget "CTPersistance" */ = {
+		4A0E00471F2C384E00E6A4DA /* Build configuration list for PBXNativeTarget "CTPersistance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4AD2D66F1BBFCD5E00E1F37D /* Debug */,
-				4AD2D6701BBFCD5E00E1F37D /* Release */,
+				4A0E00481F2C384E00E6A4DA /* Debug */,
+				4A0E00491F2C384E00E6A4DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		720523431D473D30001EDBD2 /* Build configuration list for PBXNativeTarget "SwiftDemo" */ = {
+		4A0E004A1F2C384E00E6A4DA /* Build configuration list for PBXNativeTarget "CTPersistanceTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				720523411D473D30001EDBD2 /* Debug */,
-				720523421D473D30001EDBD2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		720523541D473D8A001EDBD2 /* Build configuration list for PBXNativeTarget "CTFramework" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				720523551D473D8A001EDBD2 /* Debug */,
-				720523561D473D8A001EDBD2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		721CEE841D47497800EBE9CC /* Build configuration list for PBXNativeTarget "CTFrameworkTest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				721CEE851D47497800EBE9CC /* Debug */,
-				721CEE861D47497800EBE9CC /* Release */,
+				4A0E004B1F2C384E00E6A4DA /* Debug */,
+				4A0E004C1F2C384E00E6A4DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 4AD2D64F1BBFCD5E00E1F37D /* Project object */;
+	rootObject = 4A0E001D1F2C384E00E6A4DA /* Project object */;
 }

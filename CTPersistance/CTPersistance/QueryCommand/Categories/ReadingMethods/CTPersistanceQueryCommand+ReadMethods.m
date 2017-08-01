@@ -7,93 +7,30 @@
 //
 
 #import "CTPersistanceQueryCommand+ReadMethods.h"
-#import "NSString+SQL.h"
 #import "CTPersistanceConfiguration.h"
+#import <sqlite3.h>
 
 @implementation CTPersistanceQueryCommand (ReadMethods)
 
-- (CTPersistanceQueryCommand *)select:(NSString *)columList isDistinct:(BOOL)isDistinct
+- (CTPersistanceQueryCommand *)readWithSQL:(NSString *)sqlString bindValueList:(NSArray *)bindValueList error:(NSError *__autoreleasing *)error
 {
-    [self resetQueryCommand];
+    sqlite3_stmt *statement = nil;
+    int returnCode = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
+
+    if (returnCode != SQLITE_OK && error) {
+        const char *errorMsg = sqlite3_errmsg(self.database.database);
+        *error = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n\n\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n\n\n", self.sqlString, [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]]}];
+        sqlite3_finalize(statement);
+        return self;
+    }
+
+    self.statement = statement;
+
+    [bindValueList enumerateObjectsUsingBlock:^(NSInvocation * _Nonnull bindInvocation, NSUInteger idx, BOOL * _Nonnull stop) {
+        [bindInvocation setArgument:(void *)&statement atIndex:2];
+        [bindInvocation invoke];
+    }];
     
-    if (columList == nil) {
-        if (isDistinct) {
-            [self.sqlString appendString:@"SELECT DISTINCT * "];
-        } else {
-            [self.sqlString appendString:@"SELECT * "];
-        }
-    } else {
-        if (isDistinct) {
-            [self.sqlString appendFormat:@"SELECT DISTINCT '%@' ", [columList safeSQLEncode]];
-        } else {
-            [self.sqlString appendFormat:@"SELECT '%@' ", [columList safeSQLEncode]];
-        }
-    }
-    
-    return self;
-}
-
-- (CTPersistanceQueryCommand *)from:(NSString *)fromList
-{
-    if (fromList == nil) {
-        return self;
-    }
-    [self.sqlString appendFormat:@"FROM '%@' ", [fromList safeSQLEncode]];
-    return self;
-}
-
-- (CTPersistanceQueryCommand *)where:(NSString *)condition params:(NSDictionary *)params
-{
-    if (condition == nil) {
-        return self;
-    }
-
-    NSString *whereString = [condition stringWithSQLParams:params];
-    [self.sqlString appendFormat:@"WHERE %@ ", whereString];
-    
-    return self;
-}
-
-- (CTPersistanceQueryCommand *)orderBy:(NSString *)orderBy isDESC:(BOOL)isDESC
-{
-    if (orderBy == nil) {
-        return self;
-    }
-    [self.sqlString appendFormat:@"ORDER BY %@ ", [orderBy safeSQLMetaString]];
-    if (isDESC) {
-        [self.sqlString appendString:@"DESC "];
-    } else {
-        [self.sqlString appendString:@"ASC "];
-    }
-    return self;
-}
-
-- (CTPersistanceQueryCommand *)limit:(NSInteger)limit
-{
-    if (limit == CTPersistanceNoLimit) {
-        return self;
-    }
-    [self.sqlString appendFormat:@"LIMIT %lu ", (unsigned long)limit];
-    return self;
-}
-
-- (CTPersistanceQueryCommand *)offset:(NSInteger)offset
-{
-    if (offset == CTPersistanceNoOffset) {
-        return self;
-    }
-    [self.sqlString appendFormat:@"OFFSET %lu ", (unsigned long)offset];
-    return self;
-}
-
-- (CTPersistanceQueryCommand *)limit:(NSInteger)limit offset:(NSInteger)offset
-{
-    return [[self limit:limit] offset:offset];
-}
-
-- (CTPersistanceQueryCommand *)countAll
-{
-    [self.sqlString appendFormat:@"SELECT COUNT(*) "];
     return self;
 }
 

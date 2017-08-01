@@ -71,13 +71,13 @@
 /**
  *  update value for key1, where key2 in a list
  *
- *  @param value    value to update
- *  @param key      key for value to update
- *  @param wherekey keyname to search
- *  @param keyList  keyname's value list
- *  @param error    error if fails
+ *  @param value        value to update
+ *  @param key          key for value to update
+ *  @param wherekey     keyname to search
+ *  @param valueList    keyname's value list
+ *  @param error        error if fails
  */
-- (void)updateValue:(id)value forKey:(NSString *)key whereKey:(NSString *)wherekey inList:(NSArray *)keyList error:(NSError *__autoreleasing *)error;
+- (void)updateValue:(id)value forKey:(NSString *)key whereKey:(NSString *)wherekey inList:(NSArray *)valueList error:(NSError *__autoreleasing *)error;
 
 /**
  *  update key-value list by primary key of the record you want to update

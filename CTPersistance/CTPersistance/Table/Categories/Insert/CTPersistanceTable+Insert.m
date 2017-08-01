@@ -47,7 +47,7 @@
         if (self.isFromMigration == NO) {
             queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
         }
-        if ([[queryCommand insertTable:[self.child tableName] withDataList:insertList] executeWithError:error]) {
+        if ([[queryCommand insertTable:self.child.tableName columnInfo:self.child.columnInfo dataList:insertList error:error] executeWithError:error]) {
             NSInteger changedRowsCount = [[queryCommand rowsChanged] integerValue];
             if (changedRowsCount != [insertList count]) {
                 isSuccess = NO;
@@ -82,7 +82,7 @@
             if (self.isFromMigration == NO) {
                 queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
             }
-            if ([[queryCommand insertTable:[self.child tableName] withDataList:@[[record dictionaryRepresentationWithTable:self.child]]] executeWithError:error]) {
+            if ([[queryCommand insertTable:self.child.tableName columnInfo:self.child.columnInfo dataList:@[[record dictionaryRepresentationWithTable:self.child]] error:error] executeWithError:error]) {
                 if ([[queryCommand rowsChanged] integerValue] > 0) {
                     if (![record setPersistanceValue:[queryCommand lastInsertRowId] forKey:[self.child primaryKeyName]]) {
                         isSuccessed = NO;

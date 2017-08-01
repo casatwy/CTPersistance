@@ -10,15 +10,12 @@
 
 #import "CTPersistanceMarcos.h"
 #import "CTPersistanceQueryCommand+ReadMethods.h"
-#import "NSString+SQL.h"
 
 @implementation CTPersistanceQueryCommand (SchemaManipulations)
 
 - (CTPersistanceQueryCommand *)createTable:(NSString *)tableName columnInfo:(NSDictionary *)columnInfo
 {
-    [self resetQueryCommand];
-    NSString *safeTableName = [tableName safeSQLMetaString];
-    if (CTPersistance_isEmptyString(safeTableName)) {
+    if (CTPersistance_isEmptyString(tableName)) {
         return self;
     }
     
@@ -36,29 +33,36 @@
     }];
     
     NSString *columns = [columnList componentsJoinedByString:@","];
-    [self.sqlString appendFormat:@"CREATE TABLE IF NOT EXISTS `%@` (%@);", safeTableName, columns];
+    [self.sqlString appendFormat:@"CREATE TABLE IF NOT EXISTS `%@` (%@);", tableName, columns];
+
+    sqlite3_stmt *statement = nil;
+    int result = sqlite3_prepare_v2(self.database.database, [self.sqlString UTF8String], (int)self.sqlString.length, &statement, NULL);
+    if (result != SQLITE_OK) {
+#warning todo
+        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
+        NSLog(@"error is %@", errorMessage);
+        sqlite3_finalize(statement);
+        return self;
+    }
+    
+    self.statement = statement;
     
     return self;
 }
 
 - (CTPersistanceQueryCommand *)dropTable:(NSString *)tableName
 {
-    [self resetQueryCommand];
     if (CTPersistance_isEmptyString(tableName)) {
         return self;
     }
-    NSString *safeTableName = [tableName safeSQLMetaString];
-    [self.sqlString appendFormat:@"DROP TABLE IF EXISTS `%@`;", safeTableName];
+    [self.sqlString appendFormat:@"DROP TABLE IF EXISTS `%@`;", tableName];
     return self;
 }
 
 - (CTPersistanceQueryCommand *)createIndex:(NSString *)indexName tableName:(NSString *)tableName indexedColumnList:(NSArray *)indexedColumnList condition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams isUnique:(BOOL)isUnique
 {
-    [self resetQueryCommand];
-    
-    NSString *safeIndexName = [indexName safeSQLMetaString];
-    NSString *safeTableName = [tableName safeSQLMetaString];
-    if (CTPersistance_isEmptyString(safeTableName) || CTPersistance_isEmptyString(safeIndexName) || indexedColumnList == nil) {
+#warning todo
+    if (CTPersistance_isEmptyString(tableName) || CTPersistance_isEmptyString(indexName) || indexedColumnList == nil) {
         return self;
     }
     
@@ -70,31 +74,26 @@
         [self.sqlString appendFormat:@"CREATE INDEX IF NOT EXISTS "];
     }
     
-    [self.sqlString appendFormat:@"`%@` ON `%@` (%@) ", safeIndexName, safeTableName, indexedColumnListString];
-    
-    return [self where:condition params:conditionParams];
+    [self.sqlString appendFormat:@"`%@` ON `%@` (%@) ", indexName, tableName, indexedColumnListString];
+
+    return nil;
+
+//    return [self where:condition params:conditionParams];
 }
 
 - (CTPersistanceQueryCommand *)dropIndex:(NSString *)indexName
 {
-    [self resetQueryCommand];
-    NSString *safeIndexName = [indexName safeSQLMetaString];
-    [self.sqlString appendFormat:@"DROP INDEX IF EXISTS `%@`;", safeIndexName];
+    [self.sqlString appendFormat:@"DROP INDEX IF EXISTS `%@`;", indexName];
     return self;
 }
 
 - (CTPersistanceQueryCommand *)addColumn:(NSString *)columnName columnInfo:(NSString *)columnInfo tableName:(NSString *)tableName
 {
-    [self resetQueryCommand];
-    NSString *safeColumnName = [columnName safeSQLMetaString];
-    NSString *safeColumnInfo = [columnInfo safeSQLMetaString];
-    NSString *safeTableName = [tableName safeSQLMetaString];
-    
-    if (CTPersistance_isEmptyString(safeTableName) || CTPersistance_isEmptyString(safeColumnInfo) || CTPersistance_isEmptyString(safeColumnName)) {
+    if (CTPersistance_isEmptyString(tableName) || CTPersistance_isEmptyString(columnInfo) || CTPersistance_isEmptyString(columnName)) {
         return self;
     }
     
-    [self.sqlString appendFormat:@"ALTER TABLE `%@` ADD COLUMN `%@` %@;", safeTableName, safeColumnName, safeColumnInfo];
+    [self.sqlString appendFormat:@"ALTER TABLE `%@` ADD COLUMN `%@` %@;", tableName, columnName, columnInfo];
     
     return self;
 }

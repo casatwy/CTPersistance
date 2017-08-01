@@ -58,15 +58,6 @@
 - (void)deleteWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error;
 
 /**
- *  delete with SQL string
- *
- *  @param sqlString the sqlString can be used as same as whereCondition to bind params, @see deleteWithWhereCondition:conditionParams:error:
- *  @param params    the params to bind into sqlString
- *  @param error     the error if delete fails
- */
-- (void)deleteWithSql:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error;
-
-/**
  *  delete with parimary key
  *
  *  @param primaryKeyValue the primary key of record to be deleted

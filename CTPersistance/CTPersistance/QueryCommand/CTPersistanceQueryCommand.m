@@ -10,7 +10,6 @@
 #import "CTPersistanceDataBase.h"
 #import "CTPersistanceDatabasePool.h"
 #import "CTPersistanceConfiguration.h"
-#import <sqlite3.h>
 @interface CTPersistanceQueryCommand ()
 
 @property (nonatomic, weak) CTPersistanceDataBase *database;
@@ -42,63 +41,37 @@
     return self;
 }
 
-- (CTPersistanceQueryCommand *)resetQueryCommand
-{
-    self.sqlString = nil;
-    return self;
-}
-
 - (BOOL)executeWithError:(NSError *__autoreleasing *)error
 {
-    BOOL isSuccess = YES;
-    
-    sqlite3_stmt *statement;
-    const char *query = [[NSString stringWithFormat:@"%@;", self.sqlString] UTF8String];
-#ifdef DEBUG
-    NSLog(@"\n\n\n\n\n=========================\n\nCTPersistance SQL String is:\n%@\n\n=========================\n\n\n\n\n", [NSString stringWithCString:query encoding:NSUTF8StringEncoding]);
-#endif
-    int result = sqlite3_prepare_v2(self.database.database, query, -1, &statement, NULL);
-    
-    if (result != SQLITE_OK && error) {
-        const char *errorMsg = sqlite3_errmsg(self.database.database);
-        NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", self.sqlString, [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]]}];
-        *error = generatedError;
-        sqlite3_finalize(statement);
+    if (error != NULL && *error != nil) {
+        sqlite3_finalize(self.statement);
+        self.statement = nil;
         return NO;
     }
-    
-    result = sqlite3_step(statement);
+
+    sqlite3_stmt *statement = self.statement;
+
+    int result = sqlite3_step(statement);
     
     if (result != SQLITE_DONE && error) {
         const char *errorMsg = sqlite3_errmsg(self.database.database);
-        NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", self.sqlString, [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]]}];
+        NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", [NSString stringWithUTF8String:sqlite3_sql(statement)], [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]]}];
         *error = generatedError;
         sqlite3_finalize(statement);
         return NO;
     }
     
     sqlite3_finalize(statement);
+    self.statement = nil;
     
-    return isSuccess;
+    return YES;
 }
 
 - (NSArray <NSDictionary *> *)fetchWithError:(NSError *__autoreleasing *)error
 {
     NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
-    sqlite3_stmt *statement;
-    const char *query = [[NSString stringWithFormat:@"%@;", self.sqlString] UTF8String];
-#ifdef DEBUG
-    NSLog(@"\n\n\n\n\n=========================\n\nCTPersistance SQL String is:\n%@\n\n=========================\n\n\n\n\n", [NSString stringWithCString:query encoding:NSUTF8StringEncoding]);
-#endif
-    int returnCode = sqlite3_prepare_v2(self.database.database, query, -1, &statement, NULL);
-    
-    if (returnCode != SQLITE_OK && error) {
-        const char *errorMsg = sqlite3_errmsg(self.database.database);
-        *error = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n\n\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n\n\n", self.sqlString, [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]]}];
-        sqlite3_finalize(statement);
-        return resultsArray;
-    }
-    
+
+    sqlite3_stmt *statement = self.statement;
     while (sqlite3_step(statement) == SQLITE_ROW) {
         int columns = sqlite3_column_count(statement);
         NSMutableDictionary *result = [[NSMutableDictionary alloc] initWithCapacity:columns];
@@ -157,6 +130,7 @@
         [resultsArray addObject:result];
     }
     sqlite3_finalize(statement);
+    self.statement = nil;
     
     return resultsArray;
 }

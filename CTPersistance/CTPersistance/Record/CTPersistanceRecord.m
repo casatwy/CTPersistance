@@ -8,7 +8,6 @@
 
 #import "CTPersistanceRecord.h"
 #import "objc/runtime.h"
-#import "NSString+SQL.h"
 #import "CTPersistanceTable.h"
 
 @implementation CTPersistanceRecord
@@ -54,7 +53,8 @@
     NSString *setter = [NSString stringWithFormat:@"set%@%@:", [[key substringToIndex:1] capitalizedString], [key substringFromIndex:1]];
     if ([self respondsToSelector:NSSelectorFromString(setter)]) {
         if ([value isKindOfClass:[NSString class]]) {
-            [self setValue:[value safeSQLDecode] forKey:key];
+#warning todo modify set value
+            [self setValue:value forKey:key];
         } else if ([value isKindOfClass:[NSNull class]]) {
             [self setValue:nil forKey:key];
         } else {

@@ -9,93 +9,108 @@
 #import "CTPersistanceQueryCommand+DataManipulations.h"
 
 #import "CTPersistanceMarcos.h"
-#import "NSString+SQL.h"
 #import "CTPersistanceQueryCommand+ReadMethods.h"
+#import "NSMutableArray+CTPersistanceBindValue.h"
+#import "CTPersistanceConfiguration.h"
+
+#import <sqlite3.h>
 
 @implementation CTPersistanceQueryCommand (DataManipulations)
 
-- (CTPersistanceQueryCommand *)insertTable:(NSString *)tableName withDataList:(NSArray *)dataList
+- (CTPersistanceQueryCommand *)insertTable:(NSString *)tableName columnInfo:(NSDictionary *)columnInfo dataList:(NSArray *)dataList error:(NSError *__autoreleasing *)error
 {
-    [self resetQueryCommand];
-    
-    NSString *safeTableName = [tableName safeSQLMetaString];
-    if (CTPersistance_isEmptyString(safeTableName) || dataList == nil) {
+    if (CTPersistance_isEmptyString(tableName) || dataList == nil) {
         return self;
     }
-    
+
     NSMutableArray *valueItemList = [[NSMutableArray alloc] init];
-    __block NSString *columString = nil;
-    [dataList enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull description, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSMutableArray *columList = [[NSMutableArray alloc] init];
+    NSMutableArray *columnList = [[NSMutableArray alloc] init];
+    NSMutableArray <NSInvocation *> *bindValueList = [[NSMutableArray alloc] init];
+
+    [dataList enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull recordData, NSUInteger idx, BOOL * _Nonnull stop) {
         NSMutableArray *valueList = [[NSMutableArray alloc] init];
-        
-        [description enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull colum, NSString * _Nonnull value, BOOL * _Nonnull stop) {
-            [columList addObject:[NSString stringWithFormat:@"`%@`", [colum safeSQLMetaString]]];
-            if ([value isKindOfClass:[NSString class]]) {
-                [valueList addObject:[NSString stringWithFormat:@"'%@'", [value safeSQLEncode]]];
-            } else if ([value isKindOfClass:[NSNull class]]) {
-                [valueList addObject:@"NULL"];
-            } else {
-                [valueList addObject:[NSString stringWithFormat:@"'%@'", value]];
+        [recordData enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull columnName, NSString * _Nonnull columnValue, BOOL * _Nonnull stop) {
+            if ([columnList containsObject:columnName] == NO) {
+                [columnList addObject:columnName];
             }
+            NSString *valueKey = [NSString stringWithFormat:@":%@%lu", columnName, (unsigned long)idx];
+            [valueList addObject:valueKey];
+            [bindValueList addBindKey:valueKey bindValue:columnValue columnDescription:columnInfo[columnName]];
         }];
-        
-        if (columString == nil) {
-            columString = [columList componentsJoinedByString:@","];
-        }
-        NSString *valueString = [valueList componentsJoinedByString:@","];
-        
-        [valueItemList addObject:[NSString stringWithFormat:@"(%@)", valueString]];
+        [valueItemList addObject:[NSString stringWithFormat:@"(%@)", [valueList componentsJoinedByString:@","]]];
     }];
+
+    NSString *sqlString = [NSString stringWithFormat:@"INSERT INTO `%@` (%@) VALUES %@;", tableName, [columnList componentsJoinedByString:@","], [valueItemList componentsJoinedByString:@","]];
+    sqlite3_stmt *statement = nil;
+    int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
+
     
-    [self.sqlString appendFormat:@"INSERT INTO `%@` (%@) VALUES %@;", safeTableName, columString, [valueItemList componentsJoinedByString:@","]];
-    
+    if (result != SQLITE_OK) {
+        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
+        NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", sqlString, errorMessage]}];
+        *error = generatedError;
+        NSLog(@"error is %@", errorMessage);
+        sqlite3_finalize(statement);
+        return self;
+    }
+    self.statement = statement;
+
+    [bindValueList enumerateObjectsUsingBlock:^(NSInvocation * _Nonnull bindInvocation, NSUInteger idx, BOOL * _Nonnull stop) {
+        [bindInvocation setArgument:(void *)&statement atIndex:2];
+        [bindInvocation invoke];
+    }];
+
     return self;
 }
 
-- (CTPersistanceQueryCommand *)updateTable:(NSString *)tableName withData:(NSDictionary *)data condition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams
+- (CTPersistanceQueryCommand *)updateTable:(NSString *)tableName valueString:(NSString *)valueString whereString:(NSString *)whereString bindValueList:(NSArray <NSInvocation *> *)bindValueList error:(NSError * __autoreleasing *)error
 {
-    [self resetQueryCommand];
-    
-    NSString *safeTableName = [tableName safeSQLMetaString];
-    if (CTPersistance_isEmptyString(safeTableName) || data == nil){
+    NSString *sqlString = [NSString stringWithFormat:@"UPDATE `%@` SET %@ WHERE %@;", tableName, valueString, whereString];
+    sqlite3_stmt *statement = nil;
+    int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
+
+    if (result != SQLITE_OK) {
+        self.statement = nil;
+        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
+        NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", sqlString, errorMessage]}];
+        *error = generatedError;
+        NSLog(@"error is %@", errorMessage);
+        sqlite3_finalize(statement);
         return self;
     }
+    self.statement = statement;
 
-    NSMutableArray *valueList = [[NSMutableArray alloc] init];
-
-    [data enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull colum, NSString * _Nonnull value, BOOL * _Nonnull stop) {
-        if ([value isKindOfClass:[NSString class]]) {
-            [valueList addObject:[NSString stringWithFormat:@"`%@`='%@'", [colum safeSQLMetaString], [value safeSQLEncode]]];
-        } else if ([value isKindOfClass:[NSNull class]]) {
-            [valueList addObject:[NSString stringWithFormat:@"`%@`=NULL", [colum safeSQLMetaString]]];
-        } else {
-            [valueList addObject:[NSString stringWithFormat:@"`%@`=%@", [colum safeSQLMetaString], value]];
-        }
+    [bindValueList enumerateObjectsUsingBlock:^(NSInvocation * _Nonnull bindInvocation, NSUInteger idx, BOOL * _Nonnull stop) {
+        [bindInvocation setArgument:(void *)&statement atIndex:2];
+        [bindInvocation invoke];
     }];
 
-    NSString *valueString = [valueList componentsJoinedByString:@","];
-
-    [self.sqlString appendFormat:@"UPDATE `%@` SET %@ ", safeTableName, valueString];
-
-    NSString *trimmedCondition = [condition safeSQLMetaString];
-    return [self where:trimmedCondition params:conditionParams];
+    return self;
 }
 
-- (CTPersistanceQueryCommand *)deleteTable:(NSString *)tableName withCondition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams
+- (CTPersistanceQueryCommand *)deleteTable:(NSString *)tableName whereString:(NSString *)whereString bindValueList:(NSArray<NSInvocation *> *)bindValueList error:(NSError *__autoreleasing *)error
 {
-    [self resetQueryCommand];
-    
-    NSString *safeTableName = [tableName safeSQLMetaString];
+    NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM `%@` WHERE %@", tableName, whereString];
+    sqlite3_stmt *statement = nil;
+    int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
 
-    if (CTPersistance_isEmptyString(safeTableName)) {
+    if (result != SQLITE_OK) {
+        self.statement = nil;
+        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
+        NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", sqlString, errorMessage]}];
+        *error = generatedError;
+        NSLog(@"error is %@", errorMessage);
+        sqlite3_finalize(statement);
         return self;
     }
-    
-    [self.sqlString appendFormat:@"DELETE FROM `%@` ", safeTableName];
+    self.statement = statement;
 
-    NSString *trimmedCondition = [condition safeSQLMetaString];
-    return [self where:trimmedCondition params:conditionParams];
+    [bindValueList enumerateObjectsUsingBlock:^(NSInvocation * _Nonnull bindInvocation, NSUInteger idx, BOOL * _Nonnull stop) {
+        [bindInvocation setArgument:(void *)&statement atIndex:2];
+        [bindInvocation invoke];
+    }];
+
+    return self;
 }
 
 @end

@@ -55,23 +55,22 @@
 @property (nonatomic, assign) BOOL isDistinct;
 
 /**
- *  generate SQL for SELECT
+ *  generate SQL and prepare statement for SELECT
  *
- *  @param queryCommand CTPersistanceQueryCommand instance
  *  @param tableName    name of table or tables which connected with comma(,)
  *
- *  @return return CTPersisstanceQueryCommand
+ *  @return return CTPersistanceCriteria
  */
-- (CTPersistanceQueryCommand *)applyToSelectQueryCommand:(CTPersistanceQueryCommand *)queryCommand tableName:(NSString *)tableName;
+- (CTPersistanceCriteria *)applySelectForTableName:(NSString *)tableName;
+
 
 /**
- *  generate SQL for DELETE
+ *  generate SQL and prepare statement for DELETE
  *
- *  @param queryCommand CTPersistanceQueryCommand instance
  *  @param tableName    name of table
  *
  *  @return return CTPersistanceQueryCommand
  */
-- (CTPersistanceQueryCommand *)applyToDeleteQueryCommand:(CTPersistanceQueryCommand *)queryCommand tableName:(NSString *)tableName;
+- (CTPersistanceCriteria *)applyDeleteForTableName:(NSString *)tableName;
 
 @end

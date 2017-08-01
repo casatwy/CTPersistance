@@ -45,18 +45,6 @@
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error;
 
 /**
- *  find all record with criteria.
- *
- *  @param criteria criteria to find records
- *  @param error    error if fails
- *
- *  @return return the record list
- *
- *  @see CTPersistanceCriteria
- */
-- (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error;
-
-/**
  *  find first row in record list with where condition.  @see - (void)deleteWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error: for how to use where condition. First row means the first record of fetched record list, not the first record in table.
  *
  *  @param condition       condition used in WHERE clause
@@ -80,17 +68,6 @@
  *  @return return the first row.
  */
 - (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error;
-
-/**
- *  find first row with criteria.
- *
- *  @param criteria criteria to find records
- *  @param error    error if fails
- *
- *  @return return the first row
- *  @see CTPersistanceCriteria
- */
-- (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error;
 
 /**
  *  return total record count in this table
