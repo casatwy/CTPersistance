@@ -24,52 +24,14 @@
 
 - (BOOL)insertRecordList:(NSArray<NSObject <CTPersistanceRecordProtocol> *> *)recordList error:(NSError *__autoreleasing *)error
 {
-    __block BOOL isSuccess = YES;
-    
-    if (recordList == nil) {
-        return isSuccess;
-    }
-    
-    NSMutableArray *insertList = [[NSMutableArray alloc] init];
-    __block NSUInteger errorRecordIndex = 0;
-    [recordList enumerateObjectsUsingBlock:^(NSObject <CTPersistanceRecordProtocol> * _Nonnull record, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([self.child isCorrectToInsertRecord:record]) {
-            [insertList addObject:[record dictionaryRepresentationWithTable:self.child]];
-        } else {
-            isSuccess = NO;
-            errorRecordIndex = idx;
+    __block BOOL result = YES;
+    [recordList enumerateObjectsUsingBlock:^(NSObject<CTPersistanceRecordProtocol> * _Nonnull record, NSUInteger idx, BOOL * _Nonnull stop) {
+        result = [self insertRecord:record error:error];
+        if (result == NO) {
             *stop = YES;
         }
     }];
-    
-    if (isSuccess) {
-        CTPersistanceQueryCommand *queryCommand = self.queryCommand;
-        if (self.isFromMigration == NO) {
-            queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
-        }
-        if ([[queryCommand insertTable:self.child.tableName columnInfo:self.child.columnInfo dataList:insertList error:error] executeWithError:error]) {
-            NSInteger changedRowsCount = [[queryCommand rowsChanged] integerValue];
-            if (changedRowsCount != [insertList count]) {
-                isSuccess = NO;
-                if (error) {
-                    *error = [NSError errorWithDomain:kCTPersistanceErrorDomain
-                                                 code:CTPersistanceErrorCodeRecordNotAvailableToInsert
-                                             userInfo:@{
-                                                        NSLocalizedDescriptionKey:[NSString stringWithFormat:@"there is %lu records to save, but only %ld saved, you should check error", (unsigned long)[insertList count], (long)changedRowsCount],
-                                                        kCTPersistanceErrorUserinfoKeyErrorRecord:insertList
-                                                        }];
-                }
-            }
-        } else {
-            isSuccess = NO;
-        }
-    } else {
-        if (error) {
-            *error = [self errorWithRecord:recordList[errorRecordIndex]];
-        }
-    }
-    
-    return isSuccess;
+    return result;
 }
 
 - (BOOL)insertRecord:(NSObject <CTPersistanceRecordProtocol> *)record error:(NSError *__autoreleasing *)error

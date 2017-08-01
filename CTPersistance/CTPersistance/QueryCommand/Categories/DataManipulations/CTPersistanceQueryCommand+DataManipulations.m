@@ -115,9 +115,17 @@
 
 - (CTPersistanceQueryCommand *)truncateTable:(NSString *)tableName
 {
-    NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM `%@`;", tableName];
+#warning todo
+    NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM `%@`; UPDATE `sqlite_sequence` SET seq = 0 WHERE name = '%@';VACUUM;", tableName, tableName];
     sqlite3_stmt *statement = nil;
-    sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
+    int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
+    if (result != SQLITE_OK) {
+        self.statement = nil;
+        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
+        NSLog(@"error is %@", errorMessage);
+        sqlite3_finalize(statement);
+        return self;
+    }
     self.statement = statement;
     return self;
 }

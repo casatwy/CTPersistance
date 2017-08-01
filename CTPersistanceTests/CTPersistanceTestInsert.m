@@ -118,38 +118,38 @@
     XCTAssertEqual(recordList.count, [self.testTable findAllWithPrimaryKey:primaryList error:NULL].count);
 }
 
-- (void)testInsert_100_Performance
-{
-    NSInteger recordCount = 100;
-    NSMutableArray <TestRecord *> *recordList = [[NSMutableArray alloc] init];
-    while (recordCount --> 0) {
-        TestRecord *record = [[TestRecord alloc] init];
-        record.age = @(recordCount);
-        [recordList addObject:record];
-    }
-
-    [self measureBlock:^{
-        NSError *error = nil;
-        [self.testTable insertRecordList:recordList error:&error];
-    }];
-}
-
-- (void)testInsert_1_000_Performance
-{
-    NSInteger recordCount = 1000;
-    NSMutableArray *recordList = [[NSMutableArray alloc] init];
-    while (recordCount --> 0) {
-        TestRecord *record = [[TestRecord alloc] init];
-        record.age = @(recordCount);
-        [recordList addObject:record];
-    }
-
-    [self measureBlock:^{
-        NSError *error = nil;
-        [self.testTable insertRecordList:recordList error:&error];
-    }];
-}
-
+//- (void)testInsert_100_Performance
+//{
+//    NSInteger recordCount = 100;
+//    NSMutableArray <TestRecord *> *recordList = [[NSMutableArray alloc] init];
+//    while (recordCount --> 0) {
+//        TestRecord *record = [[TestRecord alloc] init];
+//        record.age = @(recordCount);
+//        [recordList addObject:record];
+//    }
+//
+//    [self measureBlock:^{
+//        NSError *error = nil;
+//        [self.testTable insertRecordList:recordList error:&error];
+//    }];
+//}
+//
+//- (void)testInsert_1_000_Performance
+//{
+//    NSInteger recordCount = 1000;
+//    NSMutableArray *recordList = [[NSMutableArray alloc] init];
+//    while (recordCount --> 0) {
+//        TestRecord *record = [[TestRecord alloc] init];
+//        record.age = @(recordCount);
+//        [recordList addObject:record];
+//    }
+//
+//    [self measureBlock:^{
+//        NSError *error = nil;
+//        [self.testTable insertRecordList:recordList error:&error];
+//    }];
+//}
+//
 //- (void)testInsert_10_000_Performance
 //{
 //    NSInteger recordCount = 10000;
