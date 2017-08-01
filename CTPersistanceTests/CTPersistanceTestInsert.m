@@ -100,7 +100,7 @@
 - (void)testInsertRecordList
 {
     NSInteger recordCount = 10;
-    NSMutableArray *recordList = [[NSMutableArray alloc] init];
+    NSMutableArray <TestRecord *> *recordList = [[NSMutableArray alloc] init];
     while (recordCount --> 0) {
         TestRecord *record = [[TestRecord alloc] init];
         record.age = @(recordCount);
@@ -109,15 +109,19 @@
     
     NSError *error = nil;
     [self.testTable insertRecordList:recordList error:&error];
-
-    
     XCTAssertNil(error);
+
+    NSMutableArray *primaryList = [[NSMutableArray alloc] init];
+    [recordList enumerateObjectsUsingBlock:^(TestRecord * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [primaryList addObject:obj.primaryKey];
+    }];
+    XCTAssertEqual(recordList.count, [self.testTable findAllWithPrimaryKey:primaryList error:NULL].count);
 }
 
 - (void)testInsert_100_Performance
 {
     NSInteger recordCount = 100;
-    NSMutableArray *recordList = [[NSMutableArray alloc] init];
+    NSMutableArray <TestRecord *> *recordList = [[NSMutableArray alloc] init];
     while (recordCount --> 0) {
         TestRecord *record = [[TestRecord alloc] init];
         record.age = @(recordCount);
