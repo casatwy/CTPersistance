@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) TestTable *testTable;
 @property (nonatomic, strong) TestRecord *recordToUpdate;
+@property (nonatomic, strong) NSMutableArray <TestRecord *> *recordList;
+@property (nonatomic, strong) NSMutableArray *primaryKeyList;
 
 @end
 
@@ -22,13 +24,18 @@
 - (void)setUp {
     [super setUp];
     self.testTable = [[TestTable alloc] init];
+    self.recordList = [[NSMutableArray alloc] init];
 
-    TestRecord *record = [[TestRecord alloc] init];
-    record.name = @"casa";
+    NSInteger count = 5;
+    while (count --> 0) {
+        TestRecord *record = [[TestRecord alloc] init];
+        record.name = @"casa";
+        [self.testTable insertRecord:record error:NULL];
+        [self.recordList addObject:record];
+        [self.primaryKeyList addObject:record.primaryKey];
+    }
 
-    NSError *error = nil;
-    [self.testTable insertRecord:record error:&error];
-    self.recordToUpdate = record;
+    self.recordToUpdate = [self.recordList firstObject];;
 }
 
 - (void)tearDown {
@@ -38,87 +45,112 @@
 
 - (void)testUpdateRecord
 {
-    self.recordToUpdate.name = @"c'asa";
+    self.recordToUpdate.name = @"testUpdateRecord";
     NSError *error = nil;
     [self.testTable updateRecord:self.recordToUpdate error:&error];
     XCTAssertNil(error);
+
+    TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:self.recordToUpdate.primaryKey error:NULL];
+    XCTAssert([record.name isEqualToString:@"testUpdateRecord"]);
 }
 
 - (void)testUpdateRecordList
 {
-    self.recordToUpdate.name = @"c'recordList";
+    self.recordToUpdate.name = @"testUpdateRecordList";
     NSError *error = nil;
     [self.testTable updateRecordList:@[self.recordToUpdate] error:&error];
     XCTAssertNil(error);
+
+    TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:self.recordToUpdate.primaryKey error:NULL];
+    XCTAssert([record.name isEqualToString:@"testUpdateRecordList"]);
 }
 
 - (void)testUpdateRecordList_multiRecord
 {
-    NSMutableArray *recordList = [[NSMutableArray alloc] init];
-    NSInteger count = 3;
-    while (count --> 0) {
-        TestRecord *record = [[TestRecord alloc] init];
-        record.primaryKey = @(count);
-        record.name = @"multiRecord";
-        [recordList addObject:record];
-    }
-
+    [self.recordList enumerateObjectsUsingBlock:^(TestRecord * _Nonnull record, NSUInteger idx, BOOL * _Nonnull stop) {
+        record.name = @"testUpdateRecordList_multiRecord";
+    }];
+    
     NSError *error = nil;
-    [self.testTable updateRecordList:recordList error:&error];
+    [self.testTable updateRecordList:self.recordList error:&error];
     XCTAssertNil(error);
+
+    NSArray <TestRecord *> *recordListToCheck = (NSArray <TestRecord *> *)[self.testTable findAllWithPrimaryKey:self.primaryKeyList error:NULL];
+    XCTAssertEqual(recordListToCheck.count, self.primaryKeyList.count);
+    [recordListToCheck enumerateObjectsUsingBlock:^(TestRecord * _Nonnull recordToCheck, NSUInteger idx, BOOL * _Nonnull stop) {
+        XCTAssert([recordToCheck.name isEqualToString:@"testUpdateRecordList_multiRecord"]);
+    }];
 }
 
 - (void)testUpdateValueForKeyPrimaryKeyValue
 {
     NSError *error = nil;
-    [self.testTable updateValue:@"updateValueForKeyPrimaryKeyValue" forKey:@"name" primaryKeyValue:self.recordToUpdate.primaryKey error:&error];
+    [self.testTable updateValue:@"testUpdateValueForKeyPrimaryKeyValue" forKey:@"name" primaryKeyValue:self.recordToUpdate.primaryKey error:&error];
     XCTAssertNil(error);
+
+    TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:self.recordToUpdate.primaryKey error:NULL];
+    XCTAssert([record.name isEqualToString:@"testUpdateValueForKeyPrimaryKeyValue"]);
 }
 
 - (void)testUpdateValueForKeyWhereKeyInList
 {
     NSError *error = nil;
-    [self.testTable updateValue:@"wherekeyinlist" forKey:@"name" whereKey:self.testTable.primaryKeyName inList:@[self.recordToUpdate.primaryKey] error:&error];
+    [self.testTable updateValue:@"testUpdateValueForKeyWhereKeyInList" forKey:@"name" whereKey:self.testTable.primaryKeyName inList:self.primaryKeyList error:&error];
     XCTAssertNil(error);
-}
 
-- (void)testUpdateValueForKeyWhereKeyInList_multikey
-{
-    NSError *error = nil;
-    [self.testTable updateValue:@"wherekeyinlist" forKey:@"name" whereKey:self.testTable.primaryKeyName inList:@[@1, @2, @3] error:&error];
-    XCTAssertNil(error);
+    NSArray <TestRecord *> *recordListToCheck = (NSArray <TestRecord *> *)[self.testTable findAllWithPrimaryKey:self.primaryKeyList error:NULL];
+    XCTAssertEqual(recordListToCheck.count, self.primaryKeyList.count);
+    [recordListToCheck enumerateObjectsUsingBlock:^(TestRecord * _Nonnull recordToCheck, NSUInteger idx, BOOL * _Nonnull stop) {
+        XCTAssert([recordToCheck.name isEqualToString:@"testUpdateValueForKeyWhereKeyInList"]);
+    }];
 }
 
 - (void)testUpdateKeyValueListWhereConditionWhereConditionParams
 {
     NSError *error = nil;
-    [self.testTable updateKeyValueList:@{@"name":@"keyvaluelist"}
-                        whereCondition:@"primaryKey > :primaryKeyValue AND name = :name"
-                  whereConditionParams:@{
-                                         @":primaryKeyValue":@1,
-                                         @":name":@"casa"
-                                         }
+    [self.testTable updateKeyValueList:@{@"name":@"testUpdateKeyValueListWhereConditionWhereConditionParams"}
+                        whereCondition:@"primaryKey > :primaryKeyValue"
+                  whereConditionParams:@{@":primaryKeyValue":@0,}
                                  error:&error];
     XCTAssertNil(error);
+
+    NSArray <TestRecord *> *recordListToCheck = (NSArray <TestRecord *> *)[self.testTable findAllWithPrimaryKey:self.primaryKeyList error:NULL];
+    XCTAssertEqual(recordListToCheck.count, self.primaryKeyList.count);
+    [recordListToCheck enumerateObjectsUsingBlock:^(TestRecord * _Nonnull recordToCheck, NSUInteger idx, BOOL * _Nonnull stop) {
+        XCTAssert([recordToCheck.name isEqualToString:@"testUpdateKeyValueListWhereConditionWhereConditionParams"]);
+    }];
 }
 
 - (void)testUpdateValueForKeyPrimaryKeyValueList
 {
     NSError *error = nil;
-    [self.testTable updateValue:@"c'asa"
+    [self.testTable updateValue:@"testUpdateValueForKeyPrimaryKeyValueList"
                          forKey:@"name"
-            primaryKeyValueList:@[@1,self.recordToUpdate.primaryKey]
+            primaryKeyValueList:self.primaryKeyList
                           error:&error];
     XCTAssertNil(error);
+
+    NSArray <TestRecord *> *recordListToCheck = (NSArray <TestRecord *> *)[self.testTable findAllWithPrimaryKey:self.primaryKeyList error:NULL];
+    XCTAssertEqual(recordListToCheck.count, self.primaryKeyList.count);
+    [recordListToCheck enumerateObjectsUsingBlock:^(TestRecord * _Nonnull recordToCheck, NSUInteger idx, BOOL * _Nonnull stop) {
+        XCTAssert([recordToCheck.name isEqualToString:@"testUpdateValueForKeyPrimaryKeyValueList"]);
+    }];
 }
 
 - (void)testUpdateKeyValueList_PrimaryKeyValueList
 {
     NSError *error = nil;
-    [self.testTable updateKeyValueList:@{@"age":@1,@"name":@"casaupdated"}
-                   primaryKeyValueList:@[@1,self.recordToUpdate.primaryKey]
+    [self.testTable updateKeyValueList:@{@"age":@1,@"name":@"testUpdateKeyValueList_PrimaryKeyValueList"}
+                   primaryKeyValueList:self.primaryKeyList
                                  error:&error];
     XCTAssertNil(error);
+
+    NSArray <TestRecord *> *recordListToCheck = (NSArray <TestRecord *> *)[self.testTable findAllWithPrimaryKey:self.primaryKeyList error:NULL];
+    XCTAssertEqual(recordListToCheck.count, self.primaryKeyList.count);
+    [recordListToCheck enumerateObjectsUsingBlock:^(TestRecord * _Nonnull recordToCheck, NSUInteger idx, BOOL * _Nonnull stop) {
+        XCTAssert([recordToCheck.name isEqualToString:@"testUpdateKeyValueList_PrimaryKeyValueList"]);
+        XCTAssertEqual([recordToCheck.age integerValue], 1);
+    }];
 }
 
 //- (void)testPerformanceExample {
