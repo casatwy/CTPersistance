@@ -100,17 +100,7 @@
 
 - (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
 {
-#warning todo
-//    NSString *finalString = [sqlString stringWithSQLParams:params];
-//    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
-//    if (self.isFromMigration == NO) {
-//        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
-//    }
-//    finalString = [finalString stringByReplacingOccurrencesOfString:@";" withString:@""];
-//    [queryCommand.sqlString appendFormat:@"%@ ", finalString];
-//    [queryCommand limit:1];
-//    return [[[queryCommand fetchWithError:error] transformSQLItemsToClass:[self.child recordClass]] firstObject];
-    return nil;
+    return [[self findAllWithSQL:sqlString params:params error:error] firstObject];
 }
 
 - (NSNumber *)countTotalRecord
@@ -147,20 +137,26 @@
 
 - (NSObject <CTPersistanceRecordProtocol> *)findWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error
 {
-//    if (primaryKeyValue == nil) {
-//        if (error) {
-//            *error = [NSError errorWithDomain:kCTPersistanceErrorDomain
-//                                         code:CTPersistanceErrorCodeQueryStringError
-//                                     userInfo:@{NSLocalizedDescriptionKey:@"primaryKeyValue or primaryKeyValue is nil"}];
-//        }
-//        return nil;
-//    }
-//    
-//    CTPersistanceCriteria *criteria = [[CTPersistanceCriteria alloc] init];
-//    criteria.whereCondition = [NSString stringWithFormat:@"%@ = :primaryKeyValue", [self.child primaryKeyName]];
-//    criteria.whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyValue);
-//    return [self findFirstRowWithCriteria:criteria error:error];
-    return nil;
+    if (primaryKeyValue == nil) {
+        if (error) {
+            *error = [NSError errorWithDomain:kCTPersistanceErrorDomain
+                                         code:CTPersistanceErrorCodeQueryStringError
+                                     userInfo:@{NSLocalizedDescriptionKey:@"primaryKeyValue or primaryKeyValue is nil"}];
+        }
+        return nil;
+    }
+
+    NSString *valueKey = @":primaryValue";
+    NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
+    [bindValueList addBindKey:valueKey bindValue:primaryKeyValue columnDescription:self.child.columnInfo[self.child.primaryKeyName]];
+
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` WHERE %@ = %@ LIMIT 1;", self.child.tableName, self.child.primaryKeyName, valueKey];
+
+    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
+    if (self.isFromMigration == NO) {
+        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    }
+    return [[[[queryCommand readWithSQL:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass] firstObject];
 }
 
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithPrimaryKey:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error
@@ -181,7 +177,6 @@
 //        criteria.whereConditionParams = NSDictionaryOfVariableBindings(value);
 //        return [self findAllWithCriteria:criteria error:error];
 //    }
-//    return @[];
     return nil;
 }
 

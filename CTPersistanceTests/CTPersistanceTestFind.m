@@ -44,12 +44,10 @@
 }
 
 /*
-- (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithWhereCondition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams isDistinct:(BOOL)isDistinct error:(NSError **)error;
-- (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error;
-- (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error;
 - (NSNumber *)countTotalRecord;
 - (NSNumber *)countWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error;
 - (NSDictionary *)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error;
+
 - (NSObject <CTPersistanceRecordProtocol> *)findWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error;
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithPrimaryKey:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error;
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithKeyName:(NSString *)keyname value:(id)value error:(NSError **)error;
@@ -94,6 +92,17 @@
                                                                                 error:&error];
     XCTAssertNil(error);
     XCTAssertNotNil(record);
+}
+
+- (void)testFindWithPrimaryKey
+{
+    NSError *error = nil;
+
+    TestRecord *recordToFind = [self.recordListToDelete firstObject];
+    TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:recordToFind.primaryKey error:&error];
+    
+    XCTAssertNil(error);
+    XCTAssertEqual([recordToFind.primaryKey integerValue], [record.primaryKey integerValue]);
 }
 
 //- (void)testPerformanceExample {
