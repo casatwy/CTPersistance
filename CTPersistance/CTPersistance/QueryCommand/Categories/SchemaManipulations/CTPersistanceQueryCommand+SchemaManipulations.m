@@ -16,7 +16,6 @@
 
 - (CTPersistanceQueryCommand *)createTable:(NSString *)tableName columnInfo:(NSDictionary *)columnInfo
 {
-#warning todo need test
     if (CTPersistance_isEmptyString(tableName)) {
         return self;
     }
@@ -53,7 +52,6 @@
 
 - (CTPersistanceQueryCommand *)dropTable:(NSString *)tableName
 {
-#warning todo need test
     if (CTPersistance_isEmptyString(tableName)) {
         return self;
     }
