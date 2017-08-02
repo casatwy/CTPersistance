@@ -105,20 +105,25 @@
 
 - (NSInteger)countTotalRecord
 {
-    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM %@;", self.child.tableName];
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT COUNT(*) AS count FROM %@;", self.child.tableName];
     return [self countWithSQL:sqlString params:nil error:NULL];
 }
 
 - (NSInteger)countWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error
 {
-#warning todo
-//    NSString *sqlString = @"SELECT COUNT(*) AS count FROM :tableName WHERE :whereString;";
-//    NSString *whereString = [whereCondition stringWithSQLParams:conditionParams];
-//    NSString *tableName = self.child.tableName;
-//    NSDictionary *params = NSDictionaryOfVariableBindings(whereString, tableName);
-//    NSDictionary *countResult = [self countWithSQL:sqlString params:params error:NULL];
-//    return countResult[@"count"];
-    return nil;
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+
+    NSMutableString *whereString = [whereCondition mutableCopy];
+    [conditionParams enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
+        NSMutableString *valueKey = [key mutableCopy];
+        [valueKey deleteCharactersInRange:NSMakeRange(0, 1)];
+        [valueKey insertString:@":CTPersistanceWhere" atIndex:0];
+        [whereString replaceOccurrencesOfString:key withString:valueKey options:0 range:NSMakeRange(0, whereString.length)];
+        params[valueKey] = value;
+    }];
+
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT COUNT(*) AS count FROM %@ WHERE %@;", self.child.tableName, whereString];
+    return [self countWithSQL:sqlString params:params error:error];
 }
 
 - (NSInteger)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
@@ -132,7 +137,8 @@
     if (self.isFromMigration == NO) {
         queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     }
-    return [[queryCommand readWithSQL:sqlString bindValueList:bindValueList error:error] countWithError:error];
+    NSArray *result = [[queryCommand readWithSQL:sqlString bindValueList:bindValueList error:error] fetchWithError:error];
+    return [[result firstObject][@"count"] integerValue];
 }
 
 - (NSObject <CTPersistanceRecordProtocol> *)findWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error

@@ -135,6 +135,15 @@
     XCTAssertEqual(result, 3);
 }
 
+- (void)testCountWithWhereConditionParams
+{
+    NSError *error = nil;
+    NSInteger result = [self.testTable countWithWhereCondition:@"name = :name"
+                                               conditionParams:@{@":name":@"casa"}
+                                                         error:&error];
+    XCTAssertEqual(result, 3);
+}
+
 //- (void)testPerformanceExample {
 //    // This is an example of a performance test case.
 //    [self measureBlock:^{
