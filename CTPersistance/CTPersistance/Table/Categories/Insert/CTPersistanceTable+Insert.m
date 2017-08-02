@@ -46,16 +46,7 @@
             }
             if ([[queryCommand insertTable:self.child.tableName columnInfo:self.child.columnInfo dataList:@[[record dictionaryRepresentationWithTable:self.child]] error:error] executeWithError:error]) {
                 if ([[queryCommand rowsChanged] integerValue] > 0) {
-                    if (![record setPersistanceValue:[queryCommand lastInsertRowId] forKey:[self.child primaryKeyName]]) {
-                        isSuccessed = NO;
-                        if (error) {
-                            *error = [NSError errorWithDomain:kCTPersistanceErrorDomain
-                                                         code:CTPersistanceErrorCodeFailedToSetKeyForValue
-                                                     userInfo:@{
-                                                                NSLocalizedDescriptionKey:[NSString stringWithFormat:@"failed to set value[%@] with key[%@] in record[%@]", [self.child primaryKeyName], [queryCommand lastInsertRowId], record]
-                                                                }];
-                        }
-                    }
+                    [record setValue:[queryCommand lastInsertRowId] forKey:[self.child primaryKeyName]];
                 } else {
                     isSuccessed = NO;
                     if (error) {

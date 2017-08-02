@@ -70,13 +70,4 @@
  */
 - (NSArray <NSDictionary *> *)fetchWithError:(NSError **)error;
 
-/**
- *  count data with sqlString
- *
- *  @param error error if fails
- *
- *  @return return count, return -1 if fails
- */
-- (NSInteger)countWithError:(NSError **)error;
-
 @end

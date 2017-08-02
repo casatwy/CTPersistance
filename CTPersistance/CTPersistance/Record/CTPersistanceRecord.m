@@ -43,7 +43,7 @@
 - (void)objectRepresentationWithDictionary:(NSDictionary *)dictionary
 {
     [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull value, BOOL * _Nonnull stop) {
-        [self setPersistanceValue:value forKey:key];
+        [self setValue:value forKey:key];
     }];
 }
 
@@ -55,11 +55,11 @@
             if ([record respondsToSelector:NSSelectorFromString(key)]) {
                 id recordValue = [record valueForKey:key];
                 if (shouldOverride) {
-                    [self setPersistanceValue:recordValue forKey:key];
+                    [self setValue:recordValue forKey:key];
                 } else {
                     id selfValue = [self valueForKey:key];
                     if (selfValue == nil) {
-                        [self setPersistanceValue:recordValue forKey:key];
+                        [self setValue:recordValue forKey:key];
                     }
                 }
             }
