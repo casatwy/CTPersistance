@@ -19,7 +19,7 @@
 
     if (returnCode != SQLITE_OK && error) {
         const char *errorMsg = sqlite3_errmsg(self.database.database);
-        *error = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n\n\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n\n\n", self.sqlString, [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]]}];
+        *error = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n\n\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n\n\n", sqlString, [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]]}];
         sqlite3_finalize(statement);
         return self;
     }

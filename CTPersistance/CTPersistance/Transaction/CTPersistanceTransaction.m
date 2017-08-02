@@ -12,6 +12,7 @@
 
 + (void)performTranscationWithBlock:(void (^)(BOOL *))transactionBlock queryCommand:(CTPersistanceQueryCommand *)queryCommand lockType:(CTPersistanceTransactionLockType)lockType
 {
+#warning todo
     if (queryCommand == nil || transactionBlock == nil) {
         return;
     }
@@ -19,13 +20,13 @@
     switch (lockType) {
         case CTPersistanceTransactionLockTypeExclusive:
         {
-            [queryCommand.sqlString appendString:@"BEGIN EXCLUSIVE TRANSACTION"];
+//            [queryCommand.sqlString appendString:@"BEGIN EXCLUSIVE TRANSACTION"];
             break;
         }
             
         case CTPersistanceTransactionLockTypeImmediate:
         {
-            [queryCommand.sqlString appendString:@"BEGIN IMMEDIATE TRANSACTION"];
+//            [queryCommand.sqlString appendString:@"BEGIN IMMEDIATE TRANSACTION"];
             break;
         }
             
@@ -33,7 +34,7 @@
         case CTPersistanceTransactionLockTypeDefault:
         default:
         {
-            [queryCommand.sqlString appendString:@"BEGIN DEFERRED TRANSACTION"];
+//            [queryCommand.sqlString appendString:@"BEGIN DEFERRED TRANSACTION"];
             break;
         }
     }
@@ -43,10 +44,10 @@
     transactionBlock(&shouldRollback);
 
     if (shouldRollback) {
-        [queryCommand.sqlString appendString:@"ROLLBACK TRANSACTION"];
+//        [queryCommand.sqlString appendString:@"ROLLBACK TRANSACTION"];
         [queryCommand executeWithError:NULL];
     } else {
-        [queryCommand.sqlString appendString:@"COMMIT TRANSACTION"];
+//        [queryCommand.sqlString appendString:@"COMMIT TRANSACTION"];
         [queryCommand executeWithError:NULL];
     }
 }

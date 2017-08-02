@@ -18,12 +18,6 @@
  */
 @interface CTPersistanceQueryCommand : NSObject
 
-#warning todo delete sqlstring
-/**
- *  the current generated SQL string
- */
-@property (nonatomic, strong, readonly) NSMutableString *sqlString; 
-
 /*
  * the statement of current SQL
  */

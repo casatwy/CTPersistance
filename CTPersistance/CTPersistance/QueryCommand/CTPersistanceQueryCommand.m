@@ -14,7 +14,6 @@
 
 @property (nonatomic, weak) CTPersistanceDataBase *database;
 @property (nonatomic, strong) NSString *databaseName;
-@property (nonatomic, strong) NSMutableString *sqlString;
 
 @property (nonatomic, assign) BOOL isInTransaction;
 
@@ -160,14 +159,6 @@
 }
 
 #pragma mark - getters and setters
-- (NSMutableString *)sqlString
-{
-    if (_sqlString == nil) {
-        _sqlString = [[NSMutableString alloc] init];
-    }
-    return _sqlString;
-}
-
 - (CTPersistanceDataBase *)database
 {
     if (_database == nil) {
