@@ -42,12 +42,6 @@
     [self.testTable truncate];
 }
 
-/*
-- (NSNumber *)countTotalRecord;
-- (NSNumber *)countWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error;
-- (NSDictionary *)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error;
- */
-
 - (void)testFindLatestRecord
 {
     NSError *error = nil;
