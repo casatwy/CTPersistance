@@ -103,14 +103,13 @@
     return [[self findAllWithSQL:sqlString params:params error:error] firstObject];
 }
 
-- (NSNumber *)countTotalRecord
+- (NSInteger)countTotalRecord
 {
-    NSString *sqlString = [NSString stringWithFormat:@"SELECT COUNT(*) as count FROM %@", self.child.tableName];
-    NSDictionary *countResult = [self countWithSQL:sqlString params:nil error:NULL];
-    return countResult[@"count"];
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM %@;", self.child.tableName];
+    return [self countWithSQL:sqlString params:nil error:NULL];
 }
 
-- (NSNumber *)countWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error
+- (NSInteger)countWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error
 {
 #warning todo
 //    NSString *sqlString = @"SELECT COUNT(*) AS count FROM :tableName WHERE :whereString;";
@@ -122,17 +121,18 @@
     return nil;
 }
 
-- (NSDictionary *)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
+- (NSInteger)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
 {
-#warning todo
-//    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
-//    if (self.isFromMigration == NO) {
-//        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
-//    }
-//    NSString *finalString = [sqlString stringWithSQLParams:params];
-//    [queryCommand.sqlString appendString:finalString];
-//    return [[queryCommand fetchWithError:NULL] firstObject];
-    return nil;
+    NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
+    [params enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id _Nonnull value, BOOL * _Nonnull stop) {
+        [bindValueList addBindKey:key bindValue:value columnDescription:self.child.columnInfo[key]];
+    }];
+
+    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
+    if (self.isFromMigration == NO) {
+        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    }
+    return [[queryCommand readWithSQL:sqlString bindValueList:bindValueList error:error] countWithError:error];
 }
 
 - (NSObject <CTPersistanceRecordProtocol> *)findWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error
@@ -161,22 +161,32 @@
 
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithPrimaryKey:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error
 {
-//    NSString *primaryKeyValueListString = [primaryKeyValueList componentsJoinedByString:@","];
-//    CTPersistanceCriteria *criteria = [[CTPersistanceCriteria alloc] init];
-//    criteria.whereCondition = [NSString stringWithFormat:@"%@ IN (:primaryKeyValueListString)", [self.child primaryKeyName]];
-//    criteria.whereConditionParams = NSDictionaryOfVariableBindings(primaryKeyValueListString);
-//    return [self findAllWithCriteria:criteria error:error];
-    return nil;
+    NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
+    NSMutableArray *valueList = [[NSMutableArray alloc] init];
+
+    [primaryKeyValueList enumerateObjectsUsingBlock:^(NSNumber * _Nonnull value, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhereKey%lu", (unsigned long)idx];
+        [valueList addObject:valueKey];
+        [bindValueList addBindKey:valueKey bindValue:value columnDescription:self.child.columnInfo[self.child.primaryKeyName]];
+    }];
+
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` WHERE %@ IN (%@);", self.child.tableName, self.child.primaryKeyName, [valueList componentsJoinedByString:@","]];
+
+    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
+    if (self.isFromMigration == NO) {
+        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    }
+    return [[[queryCommand readWithSQL:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass];
 }
 
 - (NSArray<NSObject<CTPersistanceRecordProtocol> *> *)findAllWithKeyName:(NSString *)keyname value:(id)value error:(NSError *__autoreleasing *)error
 {
-//    if (keyname && value) {
-//        CTPersistanceCriteria *criteria = [[CTPersistanceCriteria alloc] init];
-//        criteria.whereCondition = [NSString stringWithFormat:@"%@ = :value", keyname];
-//        criteria.whereConditionParams = NSDictionaryOfVariableBindings(value);
-//        return [self findAllWithCriteria:criteria error:error];
-//    }
+    if (keyname && value) {
+        return [self findAllWithWhereCondition:[NSString stringWithFormat:@"%@ = :%@", keyname, keyname]
+                               conditionParams:@{[NSString stringWithFormat:@":%@", keyname]:value}
+                                    isDistinct:NO
+                                         error:error];
+    }
     return nil;
 }
 

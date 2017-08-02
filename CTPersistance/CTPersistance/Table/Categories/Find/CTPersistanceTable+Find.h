@@ -74,7 +74,7 @@
  *
  *  @return return total record count in this table
  */
-- (NSNumber *)countTotalRecord;
+- (NSInteger)countTotalRecord;
 
 /**
  *  record count of record list with matches where condition. @see deleteWithWhereCondition:conditionParams:error: for how to use where condition.
@@ -85,18 +85,18 @@
  *
  *  @return return record count of record list with matches where condition.
  */
-- (NSNumber *)countWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error;
+- (NSInteger)countWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error;
 
 /**
  *  return count of record list by SQL. sqlString can be bind with params like where condition. @see deleteWithWhereCondition:conditionParams:error: for how to use where condition.
  *
- *  @param sqlString the sqlString to count
- *  @param params    the params to bind into sqlString
- *  @param error     error if fails
+ *  @param sqlString    the sqlString to count
+ *  @param params       the params to bind into sqlString
+ *  @param error        error if fails
  *
- *  @return return a dictionary which contains count column.
+ *  @return             return count as NSInteger.
  */
-- (NSDictionary *)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error;
+- (NSInteger)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error;
 
 /**
  *  find a record with primary key.

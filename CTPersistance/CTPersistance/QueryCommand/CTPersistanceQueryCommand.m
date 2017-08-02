@@ -69,6 +69,12 @@
 
 - (NSArray <NSDictionary *> *)fetchWithError:(NSError *__autoreleasing *)error
 {
+    if (error != NULL && *error != nil) {
+        sqlite3_finalize(self.statement);
+        self.statement = nil;
+        return nil;
+    }
+
     NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
 
     sqlite3_stmt *statement = self.statement;
@@ -129,10 +135,28 @@
         }
         [resultsArray addObject:result];
     }
+
     sqlite3_finalize(statement);
     self.statement = nil;
     
     return resultsArray;
+}
+
+- (NSInteger)countWithError:(NSError *__autoreleasing *)error
+{
+    if (error != NULL && *error != nil) {
+        sqlite3_finalize(self.statement);
+        self.statement = nil;
+        return -1;
+    }
+
+    sqlite3_step(self.statement);
+    NSInteger result = (NSInteger)sqlite3_data_count(self.statement);
+    
+    sqlite3_finalize(self.statement);
+    self.statement = nil;
+
+    return result;
 }
 
 #pragma mark - getters and setters

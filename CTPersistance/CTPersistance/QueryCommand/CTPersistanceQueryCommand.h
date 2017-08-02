@@ -83,6 +83,6 @@
  *
  *  @return return count, return -1 if fails
  */
-//- (NSNumber *)countWithError:(NSError **)error;
+- (NSInteger)countWithError:(NSError **)error;
 
 @end

@@ -14,7 +14,7 @@
 @interface CTPersistanceTestFind : XCTestCase
 
 @property (nonatomic, strong) TestTable *testTable;
-@property (nonatomic, strong) NSMutableArray *recordListToDelete;
+@property (nonatomic, strong) NSMutableArray <TestRecord *> *recordListToDelete;
 
 @end
 
@@ -46,10 +46,6 @@
 - (NSNumber *)countTotalRecord;
 - (NSNumber *)countWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error;
 - (NSDictionary *)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error;
-
-- (NSObject <CTPersistanceRecordProtocol> *)findWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error;
-- (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithPrimaryKey:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error;
-- (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithKeyName:(NSString *)keyname value:(id)value error:(NSError **)error;
  */
 
 - (void)testFindLatestRecord
@@ -102,6 +98,41 @@
     
     XCTAssertNil(error);
     XCTAssertEqual([recordToFind.primaryKey integerValue], [record.primaryKey integerValue]);
+}
+
+- (void)testFindAllWithKeyValue
+{
+    NSError *error = nil;
+
+    TestRecord *recordToFind = [self.recordListToDelete firstObject];
+    TestRecord *record = (TestRecord *)[[self.testTable findAllWithKeyName:@"age" value:recordToFind.age error:&error] firstObject];
+    
+    XCTAssertNil(error);
+    XCTAssertEqual([recordToFind.primaryKey integerValue], [record.primaryKey integerValue]);
+}
+
+- (void)testFindAllWithPrimaryKeyList
+{
+    NSError *error = nil;
+
+    NSMutableArray *primaryKeyList = [[NSMutableArray alloc] init];
+    [self.recordListToDelete enumerateObjectsUsingBlock:^(TestRecord * _Nonnull record, NSUInteger idx, BOOL * _Nonnull stop) {
+        [primaryKeyList addObject:record.primaryKey];
+    }];
+    NSArray <TestRecord *> *recordList = (NSArray <TestRecord *> *)[self.testTable findAllWithPrimaryKey:primaryKeyList error:&error];
+
+    XCTAssertNil(error);
+    XCTAssertEqual(recordList.count, self.recordListToDelete.count);
+    [recordList enumerateObjectsUsingBlock:^(TestRecord * _Nonnull record, NSUInteger idx, BOOL * _Nonnull stop) {
+        TestRecord *recordToCompare = self.recordListToDelete[idx];
+        XCTAssertEqual([recordToCompare.primaryKey integerValue], [record.primaryKey integerValue]);
+    }];
+}
+
+- (void)testCountTotalRecord
+{
+    NSInteger result = [self.testTable countTotalRecord];
+    XCTAssertEqual(result, 3);
 }
 
 //- (void)testPerformanceExample {
