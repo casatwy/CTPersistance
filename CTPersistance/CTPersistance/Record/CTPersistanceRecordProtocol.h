@@ -39,16 +39,6 @@
 - (void)objectRepresentationWithDictionary:(NSDictionary *)dictionary;
 
 /**
- *  CTPersistanceTable will set data by this method, this method can also be called when merge another record.
- *
- *  @param value the value in fetched data
- *  @param key   the key in fetched data
- *
- *  @return return YES if success.
- */
-- (BOOL)setPersistanceValue:(id)value forKey:(NSString *)key;
-
-/**
  *  merge record
  *
  *  @param record         the record to merge
