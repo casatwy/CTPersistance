@@ -48,16 +48,6 @@
 - (void)deleteWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error;
 
 /**
- *  delete with criteria
- *
- *  @param criteria the criteria for delete
- *  @param error    the error if delete fails
- *
- *  @see CTPersistanceCriteria
- */
-- (void)deleteWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error;
-
-/**
  *  delete with parimary key
  *
  *  @param primaryKeyValue the primary key of record to be deleted

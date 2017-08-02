@@ -51,16 +51,6 @@
     [[queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
 }
 
-- (void)deleteWithCriteria:(CTPersistanceCriteria *)criteria error:(NSError **)error
-{
-#warning todo
-    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
-    if (self.isFromMigration == NO) {
-        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
-    }
-//    [[criteria applyToDeleteQueryCommand:queryCommand tableName:[self.child tableName]] executeWithError:error];
-}
-
 - (void)deleteWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error
 {
     if (primaryKeyValue) {
