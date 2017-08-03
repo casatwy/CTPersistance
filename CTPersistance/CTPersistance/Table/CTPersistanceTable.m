@@ -89,7 +89,7 @@
     return [self.queryCommand executeWithError:error];
 }
 
-- (NSArray *)fetchWithSQL:(NSString *)sqlString error:(NSError *__autoreleasing *)error
+- (NSArray <NSDictionary *> *)fetchWithSQL:(NSString *)sqlString error:(NSError *__autoreleasing *)error
 {
 #warning todo need test
     if (self.isFromMigration == NO) {

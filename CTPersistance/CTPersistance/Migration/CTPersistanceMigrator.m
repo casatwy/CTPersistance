@@ -47,7 +47,6 @@ NSString * const kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";
 #pragma mark - public methods
 - (BOOL)databaseShouldMigrate:(CTPersistanceDataBase *)database
 {
-#warning todo need test
     self.database = database;
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:database];
     NSDictionary *latestRecord = [[[queryCommand readWithSQL:[NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY %@ DESC LIMIT 1;", [CTPersistanceVersionTable tableName], [CTPersistanceVersionTable primaryKeyName]] bindValueList:nil error:NULL] fetchWithError:NULL] firstObject];
@@ -61,7 +60,6 @@ NSString * const kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";
 
 - (void)databasePerformMigrate:(CTPersistanceDataBase *)database
 {
-#warning todo need test
     self.database = database;
     NSError *error = nil;
     

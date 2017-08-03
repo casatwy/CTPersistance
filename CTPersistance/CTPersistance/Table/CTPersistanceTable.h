@@ -122,7 +122,7 @@
  *
  *  @return return NO if fails
  */
-- (NSArray *)fetchWithSQL:(NSString *)sqlString error:(NSError **)error;
+- (NSArray <NSDictionary *> *)fetchWithSQL:(NSString *)sqlString error:(NSError **)error;
 
 /**
  *  used only in Migration
