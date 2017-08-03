@@ -47,9 +47,4 @@
     return @"primaryKey";
 }
 
-- (void)modifyDatabaseName:(NSString *)databaseName
-{
-    
-}
-
 @end
