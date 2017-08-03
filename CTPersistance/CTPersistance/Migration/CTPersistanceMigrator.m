@@ -45,14 +45,6 @@ NSString * const kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";
 }
 
 #pragma mark - public methods
-- (void)createVersionTableWithDatabase:(CTPersistanceDataBase *)database
-{
-#warning todo need test
-    self.database = database;
-
-    
-}
-
 - (BOOL)databaseShouldMigrate:(CTPersistanceDataBase *)database
 {
 #warning todo need test
@@ -115,7 +107,6 @@ NSString * const kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";
                 if (error) {
                     NSLog(@"[%s:%s(%d)]:\n\terror is %@", __FILE__, __FUNCTION__, __LINE__, error);
                 }
-                
             }
         }
         

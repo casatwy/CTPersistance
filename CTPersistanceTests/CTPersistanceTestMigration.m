@@ -27,7 +27,17 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
 - (void)setUp
 {
     [super setUp];
+    [self prepare];
+}
 
+- (void)tearDown
+{
+    [super tearDown];
+    [self clean];
+}
+
+- (void)prepare
+{
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kCTPersistanceMigrationTestCaseVersionKey];
 
     CTPersistanceTable *testTable = [[TestTableVersion1 alloc] init];
@@ -45,10 +55,8 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
     [[CTPersistanceDatabasePool sharedInstance] closeAllDatabase];
 }
 
-- (void)tearDown
+- (void)clean
 {
-    [super tearDown];
-
     NSInteger version = 4;
 
     while (version --> 0) {
@@ -66,35 +74,134 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
 
 - (void)testMiagration_1_to_2
 {
+    [self prepare];
+
     [[NSUserDefaults standardUserDefaults] setObject:@"TestMiagratorVersion_1_to_2" forKey:kCTPersistanceMigrationTestCaseVersionKey];
     CTPersistanceTable *testTable = [[TestTableVersion1 alloc] init];
-    [testTable insertValue:@"test" forKey:@"version1" error:NULL];
-    // This is an example of a functional test case.
+    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoInDataBase];
+
+    __block BOOL founded = NO;
+    [columnInfo enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([info[@"name"] isEqualToString:@"version2"]) {
+            founded = YES;
+            *stop = YES;
+        }
+    }];
+
+    XCTAssertTrue(founded);
+    XCTAssertEqual(columnInfo.count, 3);
+
+    [self clean];
 }
 
 - (void)testMiagration_1_to_3
 {
-    // This is an example of a functional test case.
+    [self prepare];
+
+    [[NSUserDefaults standardUserDefaults] setObject:@"TestMiagratorVersion_1_to_3" forKey:kCTPersistanceMigrationTestCaseVersionKey];
+    CTPersistanceTable *testTable = [[TestTableVersion1 alloc] init];
+    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoInDataBase];
+
+    __block BOOL founded = NO;
+    [columnInfo enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([info[@"name"] isEqualToString:@"version3"]) {
+            founded = YES;
+            *stop = YES;
+        }
+    }];
+
+    XCTAssertTrue(founded);
+    XCTAssertEqual(columnInfo.count, 4);
+
+    [self clean];
 }
 
 - (void)testMiagration_1_to_4
 {
-    // This is an example of a functional test case.
+    [self prepare];
+
+    [[NSUserDefaults standardUserDefaults] setObject:@"TestMiagratorVersion_1_to_4" forKey:kCTPersistanceMigrationTestCaseVersionKey];
+    CTPersistanceTable *testTable = [[TestTableVersion1 alloc] init];
+    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoInDataBase];
+
+    __block BOOL founded = NO;
+    [columnInfo enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([info[@"name"] isEqualToString:@"version4"]) {
+            founded = YES;
+            *stop = YES;
+        }
+    }];
+
+    XCTAssertTrue(founded);
+    XCTAssertEqual(columnInfo.count, 5);
+
+    [self clean];
 }
 
 - (void)testMiagration_2_to_3
 {
-    // This is an example of a functional test case.
+    [self prepare];
+
+    [[NSUserDefaults standardUserDefaults] setObject:@"TestMiagratorVersion_2_to_3" forKey:kCTPersistanceMigrationTestCaseVersionKey];
+    CTPersistanceTable *testTable = [[TestTableVersion2 alloc] init];
+    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoInDataBase];
+
+    __block BOOL founded = NO;
+    [columnInfo enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([info[@"name"] isEqualToString:@"version3"]) {
+            founded = YES;
+            *stop = YES;
+        }
+    }];
+
+    XCTAssertTrue(founded);
+    XCTAssertEqual(columnInfo.count, 4);
+
+    [self clean];
 }
 
 - (void)testMiagration_2_to_4
 {
-    // This is an example of a functional test case.
+    [self prepare];
+
+    [[NSUserDefaults standardUserDefaults] setObject:@"TestMiagratorVersion_2_to_4" forKey:kCTPersistanceMigrationTestCaseVersionKey];
+    CTPersistanceTable *testTable = [[TestTableVersion2 alloc] init];
+    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoInDataBase];
+
+    __block BOOL founded = NO;
+    [columnInfo enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([info[@"name"] isEqualToString:@"version4"]) {
+            founded = YES;
+            *stop = YES;
+        }
+    }];
+
+    XCTAssertTrue(founded);
+    XCTAssertEqual(columnInfo.count, 5);
+
+    [self clean];
 }
 
 - (void)testMiagration_3_to_4
 {
-    // This is an example of a functional test case.
+    [self prepare];
+
+    [[NSUserDefaults standardUserDefaults] setObject:@"TestMiagratorVersion_3_to_4" forKey:kCTPersistanceMigrationTestCaseVersionKey];
+    CTPersistanceTable *testTable = [[TestTableVersion3 alloc] init];
+    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoInDataBase];
+
+    __block BOOL founded = NO;
+    [columnInfo enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([info[@"name"] isEqualToString:@"version4"]) {
+            founded = YES;
+            *stop = YES;
+        }
+    }];
+
+    XCTAssertTrue(founded);
+    XCTAssertEqual(columnInfo.count, 5);
+
+    [self clean];
 }
 
 //- (void)testPerformanceExample {

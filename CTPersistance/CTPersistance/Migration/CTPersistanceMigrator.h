@@ -105,16 +105,4 @@ extern NSString * const kCTPersistanceInitVersion;
  */
 - (void)databasePerformMigrate:(CTPersistanceDataBase *)database;
 
-/**
- *  create version table with database if version table not exists
- *
- *  You should never call this method.
- *
- *  @param database CTPersistanceDataBase instance
- *
- *  @warning you should never call this method
- *
- */
-- (void)createVersionTableWithDatabase:(CTPersistanceDataBase *)database;
-
 @end

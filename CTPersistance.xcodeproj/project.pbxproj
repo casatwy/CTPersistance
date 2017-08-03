@@ -64,6 +64,7 @@
 		4A9A9DE71F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DE61F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.m */; };
 		4A9A9DF41F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DF31F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m */; };
 		4AB165E81F302AA60043E6A2 /* CTPersistanceTestFind.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */; };
+		4ADFAB681F3316A0008EA281 /* CTPersistanceTable+Schema.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFAB671F3316A0008EA281 /* CTPersistanceTable+Schema.m */; };
 		6284DE2109EF43B7A3D56F18 /* libPods-CTPersistance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24975DE09A62B809BFED181C /* libPods-CTPersistance.a */; };
 		DAEEF1BE411F617114764D0F /* libPods-CTPersistanceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D31FADFF56BDD50C7FD9C94 /* libPods-CTPersistanceTests.a */; };
 /* End PBXBuildFile section */
@@ -192,6 +193,8 @@
 		4A9A9DF21F32D06F00090F73 /* TestMiagratorVersion_1_to_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMiagratorVersion_1_to_2.h; sourceTree = "<group>"; };
 		4A9A9DF31F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMiagratorVersion_1_to_2.m; sourceTree = "<group>"; };
 		4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestFind.m; sourceTree = "<group>"; };
+		4ADFAB661F3316A0008EA281 /* CTPersistanceTable+Schema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceTable+Schema.h"; sourceTree = "<group>"; };
+		4ADFAB671F3316A0008EA281 /* CTPersistanceTable+Schema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceTable+Schema.m"; sourceTree = "<group>"; };
 		4D31FADFF56BDD50C7FD9C94 /* libPods-CTPersistanceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CTPersistanceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D41C6489863CB58D4966E5 /* Pods-CTPersistance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistance/Pods-CTPersistance.debug.xcconfig"; sourceTree = "<group>"; };
 		AD102503C09A04454242FAC0 /* Pods-CTPersistanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistanceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistanceTests/Pods-CTPersistanceTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -502,6 +505,7 @@
 		4A0E00891F2CBD6300E6A4DA /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				4ADFAB651F331685008EA281 /* Schema */,
 				4A0E008A1F2CBD6300E6A4DA /* Delete */,
 				4A0E008D1F2CBD6300E6A4DA /* Find */,
 				4A0E00901F2CBD6300E6A4DA /* Insert */,
@@ -886,6 +890,15 @@
 			path = Version_3_to_4;
 			sourceTree = "<group>";
 		};
+		4ADFAB651F331685008EA281 /* Schema */ = {
+			isa = PBXGroup;
+			children = (
+				4ADFAB661F3316A0008EA281 /* CTPersistanceTable+Schema.h */,
+				4ADFAB671F3316A0008EA281 /* CTPersistanceTable+Schema.m */,
+			);
+			path = Schema;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1110,6 +1123,7 @@
 				4A0E009F1F2CBD6300E6A4DA /* CTPersistanceCriteria.m in Sources */,
 				4A0E002A1F2C384E00E6A4DA /* main.m in Sources */,
 				4A0E00AD1F2CBD6300E6A4DA /* CTPersistanceTable+Insert.m in Sources */,
+				4ADFAB681F3316A0008EA281 /* CTPersistanceTable+Schema.m in Sources */,
 				4A0E00A11F2CBD6300E6A4DA /* CTPersistanceDatabasePool.m in Sources */,
 				4A0E00AC1F2CBD6300E6A4DA /* CTPersistanceTable+Find.m in Sources */,
 				4A0E00A01F2CBD6300E6A4DA /* CTPersistanceDataBase.m in Sources */,
