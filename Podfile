@@ -6,10 +6,10 @@ target 'CTPersistance' do
   # use_frameworks!
 
   # Pods for CTPersistance
+  pod "CTMediator"
 
   target 'CTPersistanceTests' do
     inherit! :search_paths
-    pod "CTMediator"
   end
 
 end

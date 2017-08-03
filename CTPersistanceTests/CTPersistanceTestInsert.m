@@ -29,6 +29,15 @@
     [self.testTable truncate];
 }
 
+- (void)testInsertKeyValue
+{
+    NSError *error = nil;
+    NSNumber *primaryKey = [self.testTable insertValue:@"casa" forKey:@"name" error:&error];
+    XCTAssertNil(error);
+    XCTAssertNotNil(primaryKey);
+    XCTAssertNotNil([self.testTable findWithPrimaryKey:primaryKey error:NULL]);
+}
+
 - (void)testInsertSpecialCharRecord
 {
     TestRecord *record = [[TestRecord alloc] init];

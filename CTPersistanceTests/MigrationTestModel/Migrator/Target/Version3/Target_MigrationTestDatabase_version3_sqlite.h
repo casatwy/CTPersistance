@@ -1,5 +1,5 @@
 //
-//  Target_MigrationTestDatabase_version1.h
+//  Target_MigrationTestDatabase_version3.h
 //  CTPersistance
 //
 //  Created by casa on 2017/8/3.
@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "CTPersistanceMigrator.h"
 
-@interface Target_MigrationTestDatabase_version1 : NSObject <CTPersistanceMigratorTarget>
+@interface Target_MigrationTestDatabase_version3_sqlite : NSObject <CTPersistanceMigratorTarget>
 
 @end

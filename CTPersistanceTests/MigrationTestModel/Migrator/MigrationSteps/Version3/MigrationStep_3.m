@@ -10,4 +10,14 @@
 
 @implementation MigrationStep_3
 
+- (void)goUpWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError *__autoreleasing *)error
+{
+    [queryCommand addColumn:@"version3" columnInfo:@"TEXT" tableName:@"migration"];
+}
+
+- (void)goDownWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError *__autoreleasing *)error
+{
+
+}
+
 @end

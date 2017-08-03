@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "CTPersistanceMigrator.h"
 
-@interface Target_MigrationTestDatabase_version2 : NSObject <CTPersistanceMigratorTarget>
+@interface Target_MigrationTestDatabase_version2_sqlite : NSObject <CTPersistanceMigratorTarget>
 
 @end

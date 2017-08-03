@@ -7,8 +7,11 @@
 //
 
 #import "CTPersistanceDataBase.h"
+
 #import "CTPersistanceConfiguration.h"
 #import "CTPersistanceMigrator.h"
+#import "CTPersistanceVersionTable.h"
+
 #import "NSString+ReqularExpression.h"
 
 #import <CTMediator/CTMediator.h>
@@ -52,6 +55,7 @@
             CTPersistanceErrorCode errorCode = CTPersistanceErrorCodeOpenError;
             NSString *sqliteErrorString = [NSString stringWithCString:sqlite3_errmsg(self.database) encoding:NSUTF8StringEncoding];
             NSString *errorString = [NSString stringWithFormat:@"open database at %@ failed with error:\n %@", self.databaseFilePath, sqliteErrorString];
+            BOOL isFileExists = [defaultFileManager fileExistsAtPath:self.databaseFilePath];
             if (isFileExists == NO) {
                 errorCode = CTPersistanceErrorCodeCreateError;
                 errorString = [NSString stringWithFormat:@"create database at %@ failed with error:\n %@", self.databaseFilePath, [NSString stringWithCString:sqlite3_errmsg(self.database) encoding:NSUTF8StringEncoding]];
@@ -62,8 +66,10 @@
             return nil;
         }
         
-        if (self.migrator) {
-            [self.migrator createVersionTableWithDatabase:self];
+        if (isFileExists == NO) {
+            CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:self];
+            [[queryCommand createTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo]] executeWithError:NULL];
+            [[queryCommand insertTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo] dataList:@[@{@"databaseVersion":kCTPersistanceInitVersion}] error:NULL] executeWithError:NULL];
         }
 
         if ([self.migrator databaseShouldMigrate:self]) {
@@ -90,7 +96,8 @@
 - (CTPersistanceMigrator *)migrator
 {
     if (_migrator == nil) {
-        _migrator = [[CTMediator sharedInstance] performTarget:self.databaseName action:@"fetchMigrator" params:nil shouldCacheTarget:NO];
+        NSString *targetName = [self.databaseName stringByReplacingOccurrencesOfString:@"." withString:@"_"];
+        _migrator = [[CTMediator sharedInstance] performTarget:targetName action:@"fetchMigrator" params:nil shouldCacheTarget:NO];
     }
     return _migrator;
 }

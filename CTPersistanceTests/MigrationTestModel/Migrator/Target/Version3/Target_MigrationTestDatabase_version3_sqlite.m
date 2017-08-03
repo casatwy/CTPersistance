@@ -1,17 +1,16 @@
 //
-//  Target_MigrationTestDatabase_version1.m
+//  Target_MigrationTestDatabase_version3.m
 //  CTPersistance
 //
 //  Created by casa on 2017/8/3.
 //  Copyright © 2017年 casa. All rights reserved.
 //
 
-#import "Target_MigrationTestDatabase_version1.h"
-#import <objc/runtime.h>
+#import "Target_MigrationTestDatabase_version3_sqlite.h"
 
 extern NSString * const kCTPersistanceMigrationTestCaseVersionKey;
 
-@implementation Target_MigrationTestDatabase_version1
+@implementation Target_MigrationTestDatabase_version3_sqlite
 
 - (CTPersistanceMigrator *)Action_fetchMigrator:(NSDictionary *)params
 {

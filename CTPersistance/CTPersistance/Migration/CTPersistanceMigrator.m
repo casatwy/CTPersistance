@@ -50,12 +50,7 @@ NSString * const kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";
 #warning todo need test
     self.database = database;
 
-    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:database];
-    [[queryCommand createTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo]] executeWithError:NULL];
-    NSInteger count = [[[[queryCommand readWithSQL:[NSString stringWithFormat:@"SELECT COUNT(*) AS count FROM %@;", [CTPersistanceVersionTable tableName]] bindValueList:nil error:NULL] fetchWithError:NULL] firstObject][@"count"] integerValue];
-    if (count == 0) {
-        [[queryCommand insertTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo] dataList:@[@{@"databaseVersion":[[self.child migrationVersionList] lastObject]}] error:NULL] executeWithError:NULL];
-    }
+    
 }
 
 - (BOOL)databaseShouldMigrate:(CTPersistanceDataBase *)database

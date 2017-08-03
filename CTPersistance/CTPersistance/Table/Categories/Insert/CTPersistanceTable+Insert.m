@@ -67,6 +67,29 @@
     return isSuccessed;
 }
 
+- (NSNumber *)insertValue:(id)value forKey:(NSString *)key error:(NSError *__autoreleasing *)error
+{
+    if (value == nil) {
+        value = [NSNull null];
+    }
+
+    if (key == nil) {
+        return nil;
+    }
+    
+    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
+    if (self.isFromMigration == NO) {
+        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+    }
+
+    BOOL result = [[queryCommand insertTable:self.child.tableName columnInfo:self.child.columnInfo dataList:@[@{key:value}] error:error] executeWithError:error];
+    if (result) {
+        return [queryCommand lastInsertRowId];
+    } else {
+        return nil;
+    }
+}
+
 - (NSError *)errorWithRecord:(NSObject <CTPersistanceRecordProtocol> *)record
 {
     return [NSError errorWithDomain:kCTPersistanceErrorDomain

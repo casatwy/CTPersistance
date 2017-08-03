@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTPersistance.h"
 
-@interface MigrationStep_2 : NSObject
+@interface MigrationStep_2 : NSObject <CTPersistanceMigrationStep>
 
 @end

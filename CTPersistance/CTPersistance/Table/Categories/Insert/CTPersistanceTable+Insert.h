@@ -43,4 +43,20 @@
  */
 - (BOOL)insertRecord:(NSObject <CTPersistanceRecordProtocol> *)record error:(NSError **)error;
 
+/**
+ *  insert a record
+ *
+ *  the record failed to insert will be included into error's userinfo, which key is kCTPersistanceErrorUserinfoKeyErrorRecord
+ *
+ *  if the record to insert is nil, this method will return YES and error is nil.
+ *
+ *  @param value    the value to insert
+ *  @param key      the key of value
+ *  @param error    error if fails
+ *
+ *  @return return last insert row id if successed, return nil if failed.
+ *
+ */
+- (NSNumber *)insertValue:(id)value forKey:(NSString *)key error:(NSError **)error;
+
 @end

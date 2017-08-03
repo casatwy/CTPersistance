@@ -49,19 +49,19 @@
 		4A17A96F1F32D45A009356D7 /* MigrationStep_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A96E1F32D45A009356D7 /* MigrationStep_2.m */; };
 		4A17A9721F32D461009356D7 /* MigrationStep_3.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A9711F32D461009356D7 /* MigrationStep_3.m */; };
 		4A17A9751F32D46A009356D7 /* MigrationStep_4.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A9741F32D46A009356D7 /* MigrationStep_4.m */; };
+		4A17A9931F32F392009356D7 /* TestRecordVersion1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A97A1F32F392009356D7 /* TestRecordVersion1.m */; };
+		4A17A9941F32F392009356D7 /* TestTableVersion1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A97D1F32F392009356D7 /* TestTableVersion1.m */; };
+		4A17A9951F32F392009356D7 /* TestRecordVersion2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A9811F32F392009356D7 /* TestRecordVersion2.m */; };
+		4A17A9961F32F392009356D7 /* TestTableVersion2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A9841F32F392009356D7 /* TestTableVersion2.m */; };
+		4A17A9971F32F392009356D7 /* TestRecordVersion3.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A9881F32F392009356D7 /* TestRecordVersion3.m */; };
+		4A17A9981F32F392009356D7 /* TestTableVersion3.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A98B1F32F392009356D7 /* TestTableVersion3.m */; };
+		4A17A9991F32F392009356D7 /* TestRecordVersion4.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A98F1F32F392009356D7 /* TestRecordVersion4.m */; };
+		4A17A99A1F32F392009356D7 /* TestTableVersion4.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A9921F32F392009356D7 /* TestTableVersion4.m */; };
 		4A51505D1F2F2402004BA79C /* CTPersistanceTestDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A51505C1F2F2402004BA79C /* CTPersistanceTestDelete.m */; };
-		4A7844C31F32BD6700CF4809 /* CTPersistanceMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844C21F32BD6700CF4809 /* CTPersistanceMigration.m */; };
-		4A7844DF1F32C27200CF4809 /* TestRecordVersion1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844DE1F32C27200CF4809 /* TestRecordVersion1.m */; };
-		4A7844E21F32C27C00CF4809 /* TestRecordVersion2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844E11F32C27C00CF4809 /* TestRecordVersion2.m */; };
-		4A7844E51F32C28800CF4809 /* TestRecordVersion3.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844E41F32C28800CF4809 /* TestRecordVersion3.m */; };
-		4A7844E81F32C29300CF4809 /* TestRecordVersion4.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844E71F32C29300CF4809 /* TestRecordVersion4.m */; };
-		4A7844EB1F32C2A300CF4809 /* TestTableVersion1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844EA1F32C2A300CF4809 /* TestTableVersion1.m */; };
-		4A7844EE1F32C2AE00CF4809 /* TestTableVersion2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844ED1F32C2AE00CF4809 /* TestTableVersion2.m */; };
-		4A7844F11F32C2B800CF4809 /* TestTableVersion3.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844F01F32C2B800CF4809 /* TestTableVersion3.m */; };
-		4A7844F41F32C2C100CF4809 /* TestTableVersion4.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844F31F32C2C100CF4809 /* TestTableVersion4.m */; };
-		4A9A9DE11F32CCC400090F73 /* Target_MigrationTestDatabase_version1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DE01F32CCC400090F73 /* Target_MigrationTestDatabase_version1.m */; };
-		4A9A9DE41F32CCDE00090F73 /* Target_MigrationTestDatabase_version2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DE31F32CCDE00090F73 /* Target_MigrationTestDatabase_version2.m */; };
-		4A9A9DE71F32CCEA00090F73 /* Target_MigrationTestDatabase_version3.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DE61F32CCEA00090F73 /* Target_MigrationTestDatabase_version3.m */; };
+		4A7844C31F32BD6700CF4809 /* CTPersistanceTestMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */; };
+		4A9A9DE11F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DE01F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.m */; };
+		4A9A9DE41F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DE31F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.m */; };
+		4A9A9DE71F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DE61F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.m */; };
 		4A9A9DF41F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DF31F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m */; };
 		4AB165E81F302AA60043E6A2 /* CTPersistanceTestFind.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */; };
 		6284DE2109EF43B7A3D56F18 /* libPods-CTPersistance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24975DE09A62B809BFED181C /* libPods-CTPersistance.a */; };
@@ -165,30 +165,30 @@
 		4A17A9711F32D461009356D7 /* MigrationStep_3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MigrationStep_3.m; sourceTree = "<group>"; };
 		4A17A9731F32D46A009356D7 /* MigrationStep_4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MigrationStep_4.h; sourceTree = "<group>"; };
 		4A17A9741F32D46A009356D7 /* MigrationStep_4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MigrationStep_4.m; sourceTree = "<group>"; };
+		4A17A9791F32F392009356D7 /* TestRecordVersion1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecordVersion1.h; sourceTree = "<group>"; };
+		4A17A97A1F32F392009356D7 /* TestRecordVersion1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecordVersion1.m; sourceTree = "<group>"; };
+		4A17A97C1F32F392009356D7 /* TestTableVersion1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableVersion1.h; sourceTree = "<group>"; };
+		4A17A97D1F32F392009356D7 /* TestTableVersion1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableVersion1.m; sourceTree = "<group>"; };
+		4A17A9801F32F392009356D7 /* TestRecordVersion2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecordVersion2.h; sourceTree = "<group>"; };
+		4A17A9811F32F392009356D7 /* TestRecordVersion2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecordVersion2.m; sourceTree = "<group>"; };
+		4A17A9831F32F392009356D7 /* TestTableVersion2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableVersion2.h; sourceTree = "<group>"; };
+		4A17A9841F32F392009356D7 /* TestTableVersion2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableVersion2.m; sourceTree = "<group>"; };
+		4A17A9871F32F392009356D7 /* TestRecordVersion3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecordVersion3.h; sourceTree = "<group>"; };
+		4A17A9881F32F392009356D7 /* TestRecordVersion3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecordVersion3.m; sourceTree = "<group>"; };
+		4A17A98A1F32F392009356D7 /* TestTableVersion3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableVersion3.h; sourceTree = "<group>"; };
+		4A17A98B1F32F392009356D7 /* TestTableVersion3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableVersion3.m; sourceTree = "<group>"; };
+		4A17A98E1F32F392009356D7 /* TestRecordVersion4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecordVersion4.h; sourceTree = "<group>"; };
+		4A17A98F1F32F392009356D7 /* TestRecordVersion4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecordVersion4.m; sourceTree = "<group>"; };
+		4A17A9911F32F392009356D7 /* TestTableVersion4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableVersion4.h; sourceTree = "<group>"; };
+		4A17A9921F32F392009356D7 /* TestTableVersion4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableVersion4.m; sourceTree = "<group>"; };
 		4A51505C1F2F2402004BA79C /* CTPersistanceTestDelete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestDelete.m; sourceTree = "<group>"; };
-		4A7844C21F32BD6700CF4809 /* CTPersistanceMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceMigration.m; sourceTree = "<group>"; };
-		4A7844DD1F32C27200CF4809 /* TestRecordVersion1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecordVersion1.h; sourceTree = "<group>"; };
-		4A7844DE1F32C27200CF4809 /* TestRecordVersion1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecordVersion1.m; sourceTree = "<group>"; };
-		4A7844E01F32C27C00CF4809 /* TestRecordVersion2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecordVersion2.h; sourceTree = "<group>"; };
-		4A7844E11F32C27C00CF4809 /* TestRecordVersion2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecordVersion2.m; sourceTree = "<group>"; };
-		4A7844E31F32C28800CF4809 /* TestRecordVersion3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecordVersion3.h; sourceTree = "<group>"; };
-		4A7844E41F32C28800CF4809 /* TestRecordVersion3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecordVersion3.m; sourceTree = "<group>"; };
-		4A7844E61F32C29300CF4809 /* TestRecordVersion4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRecordVersion4.h; sourceTree = "<group>"; };
-		4A7844E71F32C29300CF4809 /* TestRecordVersion4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRecordVersion4.m; sourceTree = "<group>"; };
-		4A7844E91F32C2A300CF4809 /* TestTableVersion1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableVersion1.h; sourceTree = "<group>"; };
-		4A7844EA1F32C2A300CF4809 /* TestTableVersion1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableVersion1.m; sourceTree = "<group>"; };
-		4A7844EC1F32C2AE00CF4809 /* TestTableVersion2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableVersion2.h; sourceTree = "<group>"; };
-		4A7844ED1F32C2AE00CF4809 /* TestTableVersion2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableVersion2.m; sourceTree = "<group>"; };
-		4A7844EF1F32C2B800CF4809 /* TestTableVersion3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableVersion3.h; sourceTree = "<group>"; };
-		4A7844F01F32C2B800CF4809 /* TestTableVersion3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableVersion3.m; sourceTree = "<group>"; };
-		4A7844F21F32C2C100CF4809 /* TestTableVersion4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableVersion4.h; sourceTree = "<group>"; };
-		4A7844F31F32C2C100CF4809 /* TestTableVersion4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableVersion4.m; sourceTree = "<group>"; };
-		4A9A9DDF1F32CCC400090F73 /* Target_MigrationTestDatabase_version1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_MigrationTestDatabase_version1.h; sourceTree = "<group>"; };
-		4A9A9DE01F32CCC400090F73 /* Target_MigrationTestDatabase_version1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_MigrationTestDatabase_version1.m; sourceTree = "<group>"; };
-		4A9A9DE21F32CCDE00090F73 /* Target_MigrationTestDatabase_version2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_MigrationTestDatabase_version2.h; sourceTree = "<group>"; };
-		4A9A9DE31F32CCDE00090F73 /* Target_MigrationTestDatabase_version2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_MigrationTestDatabase_version2.m; sourceTree = "<group>"; };
-		4A9A9DE51F32CCEA00090F73 /* Target_MigrationTestDatabase_version3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_MigrationTestDatabase_version3.h; sourceTree = "<group>"; };
-		4A9A9DE61F32CCEA00090F73 /* Target_MigrationTestDatabase_version3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_MigrationTestDatabase_version3.m; sourceTree = "<group>"; };
+		4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestMigration.m; sourceTree = "<group>"; };
+		4A9A9DDF1F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_MigrationTestDatabase_version1_sqlite.h; sourceTree = "<group>"; };
+		4A9A9DE01F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_MigrationTestDatabase_version1_sqlite.m; sourceTree = "<group>"; };
+		4A9A9DE21F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_MigrationTestDatabase_version2_sqlite.h; sourceTree = "<group>"; };
+		4A9A9DE31F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_MigrationTestDatabase_version2_sqlite.m; sourceTree = "<group>"; };
+		4A9A9DE51F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_MigrationTestDatabase_version3_sqlite.h; sourceTree = "<group>"; };
+		4A9A9DE61F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_MigrationTestDatabase_version3_sqlite.m; sourceTree = "<group>"; };
 		4A9A9DF21F32D06F00090F73 /* TestMiagratorVersion_1_to_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMiagratorVersion_1_to_2.h; sourceTree = "<group>"; };
 		4A9A9DF31F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMiagratorVersion_1_to_2.m; sourceTree = "<group>"; };
 		4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestFind.m; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 				4A0E00C91F2DBBB400E6A4DA /* CTPersistanceTestUpdate.m */,
 				4A51505C1F2F2402004BA79C /* CTPersistanceTestDelete.m */,
 				4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */,
-				4A7844C21F32BD6700CF4809 /* CTPersistanceMigration.m */,
+				4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */,
 				4A7844C41F32C1F500CF4809 /* MigrationTestModel */,
 				4A0E00441F2C384E00E6A4DA /* Info.plist */,
 			);
@@ -607,124 +607,132 @@
 			path = CTPersistanceBindValue;
 			sourceTree = "<group>";
 		};
-		4A7844C41F32C1F500CF4809 /* MigrationTestModel */ = {
+		4A17A9761F32F392009356D7 /* Tables_&_Records */ = {
 			isa = PBXGroup;
 			children = (
-				4A9A9DCF1F32CBE300090F73 /* Migrator */,
-				4A7844C51F32C1F500CF4809 /* Version1 */,
-				4A7844C81F32C1F500CF4809 /* Version2 */,
-				4A7844CB1F32C1F500CF4809 /* Version3 */,
-				4A7844CE1F32C1F500CF4809 /* Version4 */,
+				4A17A9771F32F392009356D7 /* Version1 */,
+				4A17A97E1F32F392009356D7 /* Version2 */,
+				4A17A9851F32F392009356D7 /* Version3 */,
+				4A17A98C1F32F392009356D7 /* Version4 */,
 			);
-			path = MigrationTestModel;
+			path = "Tables_&_Records";
 			sourceTree = "<group>";
 		};
-		4A7844C51F32C1F500CF4809 /* Version1 */ = {
+		4A17A9771F32F392009356D7 /* Version1 */ = {
 			isa = PBXGroup;
 			children = (
-				4A7844C71F32C1F500CF4809 /* TestTableVersion1 */,
-				4A7844C61F32C1F500CF4809 /* TestRecordVersion1 */,
+				4A17A9781F32F392009356D7 /* TestRecordVersion1 */,
+				4A17A97B1F32F392009356D7 /* TestTableVersion1 */,
 			);
 			path = Version1;
 			sourceTree = "<group>";
 		};
-		4A7844C61F32C1F500CF4809 /* TestRecordVersion1 */ = {
+		4A17A9781F32F392009356D7 /* TestRecordVersion1 */ = {
 			isa = PBXGroup;
 			children = (
-				4A7844DD1F32C27200CF4809 /* TestRecordVersion1.h */,
-				4A7844DE1F32C27200CF4809 /* TestRecordVersion1.m */,
+				4A17A9791F32F392009356D7 /* TestRecordVersion1.h */,
+				4A17A97A1F32F392009356D7 /* TestRecordVersion1.m */,
 			);
 			path = TestRecordVersion1;
 			sourceTree = "<group>";
 		};
-		4A7844C71F32C1F500CF4809 /* TestTableVersion1 */ = {
+		4A17A97B1F32F392009356D7 /* TestTableVersion1 */ = {
 			isa = PBXGroup;
 			children = (
-				4A7844E91F32C2A300CF4809 /* TestTableVersion1.h */,
-				4A7844EA1F32C2A300CF4809 /* TestTableVersion1.m */,
+				4A17A97C1F32F392009356D7 /* TestTableVersion1.h */,
+				4A17A97D1F32F392009356D7 /* TestTableVersion1.m */,
 			);
 			path = TestTableVersion1;
 			sourceTree = "<group>";
 		};
-		4A7844C81F32C1F500CF4809 /* Version2 */ = {
+		4A17A97E1F32F392009356D7 /* Version2 */ = {
 			isa = PBXGroup;
 			children = (
-				4A7844CA1F32C1F500CF4809 /* TestTableVersion2 */,
-				4A7844C91F32C1F500CF4809 /* TestRecordVersion2 */,
+				4A17A97F1F32F392009356D7 /* TestRecordVersion2 */,
+				4A17A9821F32F392009356D7 /* TestTableVersion2 */,
 			);
 			path = Version2;
 			sourceTree = "<group>";
 		};
-		4A7844C91F32C1F500CF4809 /* TestRecordVersion2 */ = {
+		4A17A97F1F32F392009356D7 /* TestRecordVersion2 */ = {
 			isa = PBXGroup;
 			children = (
-				4A7844E01F32C27C00CF4809 /* TestRecordVersion2.h */,
-				4A7844E11F32C27C00CF4809 /* TestRecordVersion2.m */,
+				4A17A9801F32F392009356D7 /* TestRecordVersion2.h */,
+				4A17A9811F32F392009356D7 /* TestRecordVersion2.m */,
 			);
 			path = TestRecordVersion2;
 			sourceTree = "<group>";
 		};
-		4A7844CA1F32C1F500CF4809 /* TestTableVersion2 */ = {
+		4A17A9821F32F392009356D7 /* TestTableVersion2 */ = {
 			isa = PBXGroup;
 			children = (
-				4A7844EC1F32C2AE00CF4809 /* TestTableVersion2.h */,
-				4A7844ED1F32C2AE00CF4809 /* TestTableVersion2.m */,
+				4A17A9831F32F392009356D7 /* TestTableVersion2.h */,
+				4A17A9841F32F392009356D7 /* TestTableVersion2.m */,
 			);
 			path = TestTableVersion2;
 			sourceTree = "<group>";
 		};
-		4A7844CB1F32C1F500CF4809 /* Version3 */ = {
+		4A17A9851F32F392009356D7 /* Version3 */ = {
 			isa = PBXGroup;
 			children = (
-				4A7844CD1F32C1F500CF4809 /* TestTableVersion3 */,
-				4A7844CC1F32C1F500CF4809 /* TestRecordVersion3 */,
+				4A17A9861F32F392009356D7 /* TestRecordVersion3 */,
+				4A17A9891F32F392009356D7 /* TestTableVersion3 */,
 			);
 			path = Version3;
 			sourceTree = "<group>";
 		};
-		4A7844CC1F32C1F500CF4809 /* TestRecordVersion3 */ = {
+		4A17A9861F32F392009356D7 /* TestRecordVersion3 */ = {
 			isa = PBXGroup;
 			children = (
-				4A7844E31F32C28800CF4809 /* TestRecordVersion3.h */,
-				4A7844E41F32C28800CF4809 /* TestRecordVersion3.m */,
+				4A17A9871F32F392009356D7 /* TestRecordVersion3.h */,
+				4A17A9881F32F392009356D7 /* TestRecordVersion3.m */,
 			);
 			path = TestRecordVersion3;
 			sourceTree = "<group>";
 		};
-		4A7844CD1F32C1F500CF4809 /* TestTableVersion3 */ = {
+		4A17A9891F32F392009356D7 /* TestTableVersion3 */ = {
 			isa = PBXGroup;
 			children = (
-				4A7844EF1F32C2B800CF4809 /* TestTableVersion3.h */,
-				4A7844F01F32C2B800CF4809 /* TestTableVersion3.m */,
+				4A17A98A1F32F392009356D7 /* TestTableVersion3.h */,
+				4A17A98B1F32F392009356D7 /* TestTableVersion3.m */,
 			);
 			path = TestTableVersion3;
 			sourceTree = "<group>";
 		};
-		4A7844CE1F32C1F500CF4809 /* Version4 */ = {
+		4A17A98C1F32F392009356D7 /* Version4 */ = {
 			isa = PBXGroup;
 			children = (
-				4A7844D01F32C1F500CF4809 /* TestTableVersion4 */,
-				4A7844CF1F32C1F500CF4809 /* TestRecordVersion4 */,
+				4A17A98D1F32F392009356D7 /* TestRecordVersion4 */,
+				4A17A9901F32F392009356D7 /* TestTableVersion4 */,
 			);
 			path = Version4;
 			sourceTree = "<group>";
 		};
-		4A7844CF1F32C1F500CF4809 /* TestRecordVersion4 */ = {
+		4A17A98D1F32F392009356D7 /* TestRecordVersion4 */ = {
 			isa = PBXGroup;
 			children = (
-				4A7844E61F32C29300CF4809 /* TestRecordVersion4.h */,
-				4A7844E71F32C29300CF4809 /* TestRecordVersion4.m */,
+				4A17A98E1F32F392009356D7 /* TestRecordVersion4.h */,
+				4A17A98F1F32F392009356D7 /* TestRecordVersion4.m */,
 			);
 			path = TestRecordVersion4;
 			sourceTree = "<group>";
 		};
-		4A7844D01F32C1F500CF4809 /* TestTableVersion4 */ = {
+		4A17A9901F32F392009356D7 /* TestTableVersion4 */ = {
 			isa = PBXGroup;
 			children = (
-				4A7844F21F32C2C100CF4809 /* TestTableVersion4.h */,
-				4A7844F31F32C2C100CF4809 /* TestTableVersion4.m */,
+				4A17A9911F32F392009356D7 /* TestTableVersion4.h */,
+				4A17A9921F32F392009356D7 /* TestTableVersion4.m */,
 			);
 			path = TestTableVersion4;
+			sourceTree = "<group>";
+		};
+		4A7844C41F32C1F500CF4809 /* MigrationTestModel */ = {
+			isa = PBXGroup;
+			children = (
+				4A9A9DCF1F32CBE300090F73 /* Migrator */,
+				4A17A9761F32F392009356D7 /* Tables_&_Records */,
+			);
+			path = MigrationTestModel;
 			sourceTree = "<group>";
 		};
 		4A9A9DCF1F32CBE300090F73 /* Migrator */ = {
@@ -787,8 +795,8 @@
 		4A9A9DDB1F32CCA100090F73 /* Version1 */ = {
 			isa = PBXGroup;
 			children = (
-				4A9A9DDF1F32CCC400090F73 /* Target_MigrationTestDatabase_version1.h */,
-				4A9A9DE01F32CCC400090F73 /* Target_MigrationTestDatabase_version1.m */,
+				4A9A9DDF1F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.h */,
+				4A9A9DE01F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.m */,
 			);
 			path = Version1;
 			sourceTree = "<group>";
@@ -796,8 +804,8 @@
 		4A9A9DDC1F32CCA100090F73 /* Version2 */ = {
 			isa = PBXGroup;
 			children = (
-				4A9A9DE21F32CCDE00090F73 /* Target_MigrationTestDatabase_version2.h */,
-				4A9A9DE31F32CCDE00090F73 /* Target_MigrationTestDatabase_version2.m */,
+				4A9A9DE21F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.h */,
+				4A9A9DE31F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.m */,
 			);
 			path = Version2;
 			sourceTree = "<group>";
@@ -805,8 +813,8 @@
 		4A9A9DDD1F32CCA100090F73 /* Version3 */ = {
 			isa = PBXGroup;
 			children = (
-				4A9A9DE51F32CCEA00090F73 /* Target_MigrationTestDatabase_version3.h */,
-				4A9A9DE61F32CCEA00090F73 /* Target_MigrationTestDatabase_version3.m */,
+				4A9A9DE51F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.h */,
+				4A9A9DE61F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.m */,
 			);
 			path = Version3;
 			sourceTree = "<group>";
@@ -1115,32 +1123,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A17A96C1F32D0C0009356D7 /* TestMiagratorVersion_3_to_4.m in Sources */,
+				4A17A9941F32F392009356D7 /* TestTableVersion1.m in Sources */,
+				4A17A9951F32F392009356D7 /* TestRecordVersion2.m in Sources */,
 				4A17A9661F32D0A7009356D7 /* TestMiagratorVersion_2_to_3.m in Sources */,
-				4A7844E81F32C29300CF4809 /* TestRecordVersion4.m in Sources */,
 				4A17A96F1F32D45A009356D7 /* MigrationStep_2.m in Sources */,
-				4A7844F41F32C2C100CF4809 /* TestTableVersion4.m in Sources */,
-				4A7844EB1F32C2A300CF4809 /* TestTableVersion1.m in Sources */,
 				4A17A9631F32D09D009356D7 /* TestMiagratorVersion_1_to_4.m in Sources */,
 				4A17A9601F32D094009356D7 /* TestMiagratorVersion_1_to_3.m in Sources */,
+				4A17A9971F32F392009356D7 /* TestRecordVersion3.m in Sources */,
 				4A0E00BF1F2CC25A00E6A4DA /* TestRecord.m in Sources */,
 				4AB165E81F302AA60043E6A2 /* CTPersistanceTestFind.m in Sources */,
-				4A9A9DE11F32CCC400090F73 /* Target_MigrationTestDatabase_version1.m in Sources */,
-				4A7844C31F32BD6700CF4809 /* CTPersistanceMigration.m in Sources */,
+				4A17A9981F32F392009356D7 /* TestTableVersion3.m in Sources */,
+				4A9A9DE11F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.m in Sources */,
+				4A7844C31F32BD6700CF4809 /* CTPersistanceTestMigration.m in Sources */,
 				4A17A9721F32D461009356D7 /* MigrationStep_3.m in Sources */,
 				4A9A9DF41F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m in Sources */,
+				4A17A9961F32F392009356D7 /* TestTableVersion2.m in Sources */,
 				4A0E00B41F2CBDBD00E6A4DA /* CTPersistanceTestInsert.m in Sources */,
 				4A0E00C01F2CC25A00E6A4DA /* TestTable.m in Sources */,
-				4A7844E21F32C27C00CF4809 /* TestRecordVersion2.m in Sources */,
-				4A7844DF1F32C27200CF4809 /* TestRecordVersion1.m in Sources */,
+				4A17A9931F32F392009356D7 /* TestRecordVersion1.m in Sources */,
+				4A17A99A1F32F392009356D7 /* TestTableVersion4.m in Sources */,
 				4A51505D1F2F2402004BA79C /* CTPersistanceTestDelete.m in Sources */,
-				4A7844EE1F32C2AE00CF4809 /* TestTableVersion2.m in Sources */,
 				4A17A9691F32D0B5009356D7 /* TestMiagratorVersion_2_to_4.m in Sources */,
-				4A7844F11F32C2B800CF4809 /* TestTableVersion3.m in Sources */,
 				4A17A9751F32D46A009356D7 /* MigrationStep_4.m in Sources */,
+				4A17A9991F32F392009356D7 /* TestRecordVersion4.m in Sources */,
 				4A0E00CA1F2DBBB400E6A4DA /* CTPersistanceTestUpdate.m in Sources */,
-				4A9A9DE41F32CCDE00090F73 /* Target_MigrationTestDatabase_version2.m in Sources */,
-				4A7844E51F32C28800CF4809 /* TestRecordVersion3.m in Sources */,
-				4A9A9DE71F32CCEA00090F73 /* Target_MigrationTestDatabase_version3.m in Sources */,
+				4A9A9DE41F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.m in Sources */,
+				4A9A9DE71F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
