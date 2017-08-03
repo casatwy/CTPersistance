@@ -7,7 +7,7 @@
 //
 
 #import "CTPersistanceTable+Schema.h"
-#import "CTPersistanceQueryCommand+ReadMethods.h"
+#import "CTPersistanceQueryCommand+SchemaManipulations.h"
 
 @implementation CTPersistanceTable (Schema)
 
@@ -18,8 +18,7 @@
         queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     }
 
-    NSString *sqlString = [NSString stringWithFormat:@"PRAGMA table_info(`%@`);", self.child.tableName];
-    NSArray *columnInfo = [[queryCommand readWithSQL:sqlString bindValueList:nil error:NULL] fetchWithError:NULL];
+    NSArray *columnInfo = [[queryCommand columnInfoWithTableName:self.child.tableName] fetchWithError:NULL];
 
     return columnInfo;
 }

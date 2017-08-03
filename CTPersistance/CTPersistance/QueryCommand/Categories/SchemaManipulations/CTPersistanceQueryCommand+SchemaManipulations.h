@@ -63,4 +63,13 @@
  */
 - (CTPersistanceQueryCommand *)dropIndex:(NSString *)indexName;
 
+/**
+ *  show the structure of a table
+ *
+ *  @param tableName tableName name
+ *
+ *  @return return CTPersisitanceQueryCommand
+ */
+- (CTPersistanceQueryCommand *)columnInfoWithTableName:(NSString *)tableName;
+
 @end

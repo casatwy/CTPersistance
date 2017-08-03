@@ -145,7 +145,6 @@
 
 - (CTPersistanceQueryCommand *)addColumn:(NSString *)columnName columnInfo:(NSString *)columnInfo tableName:(NSString *)tableName
 {
-#warning todo need test
     if (CTPersistance_isEmptyString(tableName) || CTPersistance_isEmptyString(columnInfo) || CTPersistance_isEmptyString(columnName)) {
         return self;
     }
@@ -163,6 +162,12 @@
     self.statement = statement;
     
     return self;
+}
+
+- (CTPersistanceQueryCommand *)columnInfoWithTableName:(NSString *)tableName
+{
+    NSString *sqlString = [NSString stringWithFormat:@"PRAGMA table_info(`%@`);", tableName];
+    return [self readWithSQL:sqlString bindValueList:nil error:NULL];
 }
 
 @end
