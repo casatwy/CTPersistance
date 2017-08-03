@@ -19,6 +19,8 @@
 #import "NSMutableArray+CTPersistanceBindValue.h"
 #import <UIKit/UIKit.h>
 
+NSString * const kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";
+
 @interface CTPersistanceMigrator ()
 
 @property (nonatomic, weak) id<CTPersistanceMigratorProtocol> child;

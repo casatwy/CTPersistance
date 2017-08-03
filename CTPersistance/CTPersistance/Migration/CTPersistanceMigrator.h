@@ -13,6 +13,10 @@
 #import "CTPersistanceQueryCommand+ReadMethods.h"
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"
 
+extern NSString * const kCTPersistanceInitVersion;
+
+@class CTPersistanceMigrator;
+
 /**
  *  this protocol is used for Migration
  */
@@ -59,6 +63,12 @@
  *  @return return step dictionary
  */
 - (NSDictionary *)migrationStepDictionary;
+
+@end
+
+@protocol CTPersistanceMigratorTarget <NSObject>
+
+- (CTPersistanceMigrator *)Action_fetchMigrator:(NSDictionary *)params;
 
 @end
 

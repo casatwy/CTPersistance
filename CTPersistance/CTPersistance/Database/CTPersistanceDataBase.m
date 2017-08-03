@@ -10,6 +10,9 @@
 #import "CTPersistanceConfiguration.h"
 #import "CTPersistanceMigrator.h"
 #import "NSString+ReqularExpression.h"
+
+#import <CTMediator/CTMediator.h>
+
 @interface CTPersistanceDataBase ()
 
 @property (nonatomic, unsafe_unretained) sqlite3 *database;
@@ -87,17 +90,7 @@
 - (CTPersistanceMigrator *)migrator
 {
     if (_migrator == nil) {
-        NSString *persistanceConfigurationPlistPath = [[NSBundle mainBundle] pathForResource:kCTPersisatanceConfigurationFileName ofType:@"plist"];
-        NSDictionary *persistanceConfigurationPlist = [NSDictionary dictionaryWithContentsOfFile:persistanceConfigurationPlistPath];
-        __block Class migratorClass = NULL;
-        [persistanceConfigurationPlist enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull pattern, NSString * _Nonnull migartorClassName, BOOL * _Nonnull stop) {
-            if ([self.databaseName isMatchWithRegularExpression:pattern]) {
-                migratorClass = NSClassFromString(migartorClassName);
-            }
-        }];
-        if (migratorClass != NULL) {
-            _migrator = [[migratorClass alloc] init];
-        }
+        _migrator = [[CTMediator sharedInstance] performTarget:self.databaseName action:@"fetchMigrator" params:nil shouldCacheTarget:NO];
     }
     return _migrator;
 }

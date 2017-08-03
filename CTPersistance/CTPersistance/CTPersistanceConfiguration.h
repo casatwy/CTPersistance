@@ -46,7 +46,7 @@ typedef NS_ENUM(NSUInteger, CTPersistanceErrorCode){
 static NSString * const kCTPersistanceErrorUserinfoKeyErrorRecord = @"kCTPersistanceErrorUserinfoKeyErrorRecord";
 
 static NSString * const kCTPersistanceVersionTableName = @"kCTPersistanceVersionTableName";
-static NSString * const kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";
+
 
 static NSInteger const CTPersistanceNoLimit = -1;
 static NSInteger const CTPersistanceNoOffset = -1;

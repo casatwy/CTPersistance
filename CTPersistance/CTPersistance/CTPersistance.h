@@ -35,5 +35,6 @@
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"
 
 extern NSString * const kCTPersistanceDataBaseCheckMigrationNotification;
+extern NSString * const kCTPersistanceInitVersion;
 
 #endif /* CTPersistance_h */

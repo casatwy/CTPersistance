@@ -8,9 +8,9 @@
 
 #import <XCTest/XCTest.h>
 
+NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMigrationTestCaseVersionKey";
+
 @interface CTPersistanceMigration : XCTestCase
-
-
 
 @end
 
