@@ -14,6 +14,8 @@
 
 #import "NSArray+CTPersistanceRecordTransform.h"
 #import "NSMutableArray+CTPersistanceBindValue.h"
+#import "NSDictionary+KeyValueBind.h"
+#import "NSString+Where.h"
 
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"
 #import "CTPersistanceQueryCommand+ReadMethods.h"
@@ -34,14 +36,7 @@
 {
     NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
-    NSMutableString *whereString = [condition mutableCopy];
-    [conditionParams enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
-        NSMutableString *valueKey = [key mutableCopy];
-        [valueKey deleteCharactersInRange:NSMakeRange(0, 1)];
-        [valueKey insertString:@":CTPersistanceWhere" atIndex:0];
-        [whereString replaceOccurrencesOfString:key withString:valueKey options:0 range:NSMakeRange(0, whereString.length)];
-        [bindValueList addBindKey:valueKey bindValue:value columnDescription:nil];
-    }];
+    NSString *whereString = [condition whereStringWithConditionParams:conditionParams bindValueList:bindValueList];
 
     NSString *sqlString = nil;
     if (isDistinct) {
@@ -75,14 +70,7 @@
 {
     NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
-    NSMutableString *whereString = [condition mutableCopy];
-    [conditionParams enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
-        NSMutableString *valueKey = [key mutableCopy];
-        [valueKey deleteCharactersInRange:NSMakeRange(0, 1)];
-        [valueKey insertString:@":CTPersistanceWhere" atIndex:0];
-        [whereString replaceOccurrencesOfString:key withString:valueKey options:0 range:NSMakeRange(0, whereString.length)];
-        [bindValueList addBindKey:valueKey bindValue:value columnDescription:nil];
-    }];
+    NSString *whereString = [condition whereStringWithConditionParams:conditionParams bindValueList:bindValueList];
 
     NSString *sqlString = nil;
     if (isDistinct) {
@@ -117,7 +105,7 @@
     [conditionParams enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
         NSMutableString *valueKey = [key mutableCopy];
         [valueKey deleteCharactersInRange:NSMakeRange(0, 1)];
-        [valueKey insertString:@":CTPersistanceWhere" atIndex:0];
+        [valueKey insertString:@":CTPersistanceWhere_" atIndex:0];
         [whereString replaceOccurrencesOfString:key withString:valueKey options:0 range:NSMakeRange(0, whereString.length)];
         params[valueKey] = value;
     }];

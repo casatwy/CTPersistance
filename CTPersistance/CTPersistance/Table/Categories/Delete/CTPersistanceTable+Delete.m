@@ -7,9 +7,12 @@
 //
 
 #import "CTPersistanceTable+Delete.h"
-#import "NSMutableArray+CTPersistanceBindValue.h"
-#import "CTPersistanceQueryCommand+DataManipulations.h"
 #import <UIKit/UIKit.h>
+
+#import "CTPersistanceQueryCommand+DataManipulations.h"
+#import "NSMutableArray+CTPersistanceBindValue.h"
+#import "NSString+Where.h"
+#import "NSDictionary+KeyValueBind.h"
 
 @implementation CTPersistanceTable (Delete)
 
@@ -38,16 +41,9 @@
     }
 
     NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
-    
-    NSMutableString *whereString = [whereCondition mutableCopy];
-    [conditionParams enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
-        NSMutableString *valueKey = [key mutableCopy];
-        [valueKey deleteCharactersInRange:NSMakeRange(0, 1)];
-        [valueKey insertString:@":CTPersistanceWhere" atIndex:0];
-        [whereString replaceOccurrencesOfString:key withString:valueKey options:0 range:NSMakeRange(0, whereString.length)];
-        [bindValueList addBindKey:valueKey bindValue:value columnDescription:nil];
-    }];
 
+    NSString *whereString = [whereCondition whereStringWithConditionParams:conditionParams bindValueList:bindValueList];
+    
     [[queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
 }
 
@@ -61,7 +57,7 @@
 
         NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
         
-        NSString *whereKey = [NSString stringWithFormat:@":CTPersistanceWhereKey%@", self.child.primaryKeyName];
+        NSString *whereKey = [NSString stringWithFormat:@":CTPersistanceWhere_%@", self.child.primaryKeyName];
         [bindValueList addBindKey:whereKey bindValue:primaryKeyValue columnDescription:self.child.columnInfo[self.child.primaryKeyName]];
 
         NSString *whereString = [NSString stringWithFormat:@"%@ = %@", self.child.primaryKeyName, whereKey];

@@ -9,8 +9,10 @@
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"
 
 #import "CTPersistanceMarcos.h"
+
 #import "CTPersistanceQueryCommand+ReadMethods.h"
 #import "NSMutableArray+CTPersistanceBindValue.h"
+#import "NSString+Where.h"
 
 @implementation CTPersistanceQueryCommand (SchemaManipulations)
 
@@ -23,16 +25,13 @@
     NSMutableArray *columnList = [[NSMutableArray alloc] init];
     
     [columnInfo enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull columnName, NSString * _Nonnull columnDescription, BOOL * _Nonnull stop) {
-        NSString *safeColumnName = columnName;
-        NSString *safeDescription = columnDescription;
-        
-        if (CTPersistance_isEmptyString(safeDescription)) {
-            [columnList addObject:[NSString stringWithFormat:@"`%@`", safeColumnName]];
+        if (CTPersistance_isEmptyString(columnDescription)) {
+            [columnList addObject:[NSString stringWithFormat:@"`%@`", columnName]];
         } else {
-            [columnList addObject:[NSString stringWithFormat:@"`%@` %@", safeColumnName, safeDescription]];
+            [columnList addObject:[NSString stringWithFormat:@"`%@` %@", columnName, columnDescription]];
         }
     }];
-    
+
     NSString *columns = [columnList componentsJoinedByString:@","];
 
     NSString *sqlString = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS `%@` (%@);", tableName, columns];
@@ -84,14 +83,7 @@
     
     NSMutableArray <NSInvocation *> *bindValueList = [[NSMutableArray alloc] init];
 
-    NSMutableString *whereString = [condition mutableCopy];
-    [conditionParams enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
-        NSMutableString *valueKey = [key mutableCopy];
-        [valueKey deleteCharactersInRange:NSMakeRange(0, 1)];
-        [valueKey insertString:@":CTPersistanceWhere" atIndex:0];
-        [whereString replaceOccurrencesOfString:key withString:valueKey options:0 range:NSMakeRange(0, whereString.length)];
-        [bindValueList addBindKey:valueKey bindValue:value columnDescription:nil];
-    }];
+    NSString *whereString = [condition whereStringWithConditionParams:conditionParams bindValueList:bindValueList];
 
     NSMutableString *sqlString = nil;
     if (isUnique) {

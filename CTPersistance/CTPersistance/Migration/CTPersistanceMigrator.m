@@ -17,6 +17,7 @@
 
 #import "NSArray+CTPersistanceRecordTransform.h"
 #import "NSMutableArray+CTPersistanceBindValue.h"
+#import "NSDictionary+KeyValueBind.h"
 #import <UIKit/UIKit.h>
 
 NSString * const kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";
@@ -87,20 +88,14 @@ NSString * const kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";
                 error = nil;
 
                 NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
-
-                NSMutableArray *valueList = [[NSMutableArray alloc] init];
-                [latestRecord enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
-                    NSString *valueKey = [NSString stringWithFormat:@":%@", key];
-                    [valueList addObject:[NSString stringWithFormat:@"%@ = %@", key, valueKey]];
-                    [bindValueList addBindKey:valueKey bindValue:value columnDescription:nil];
-                }];
+                NSString *valueString = [latestRecord bindToValueList:bindValueList];
 
                 NSNumber *primaryKeyValue = latestRecord[@"identifier"];
                 NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhere_%@", [CTPersistanceVersionTable primaryKeyName]];
                 NSString *whereString = [NSString stringWithFormat:@"%@ = %@", [CTPersistanceVersionTable primaryKeyName], valueKey];
                 [bindValueList addBindKey:valueKey bindValue:primaryKeyValue columnDescription:nil];
 
-                [[queryCommand updateTable:[CTPersistanceVersionTable tableName] valueString:[valueList componentsJoinedByString:@","] whereString:whereString bindValueList:bindValueList error:&error] executeWithError:&error];
+                [[queryCommand updateTable:[CTPersistanceVersionTable tableName] valueString:valueString whereString:whereString bindValueList:bindValueList error:&error] executeWithError:&error];
 
                 if (error) {
                     NSLog(@"[%s:%s(%d)]:\n\terror is %@", __FILE__, __FUNCTION__, __LINE__, error);

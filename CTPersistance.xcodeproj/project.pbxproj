@@ -64,6 +64,8 @@
 		4A9A9DE71F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DE61F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.m */; };
 		4A9A9DF41F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DF31F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m */; };
 		4AB165E81F302AA60043E6A2 /* CTPersistanceTestFind.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */; };
+		4ACE635B1F340E54007F3E6D /* NSDictionary+KeyValueBind.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE635A1F340E54007F3E6D /* NSDictionary+KeyValueBind.m */; };
+		4ACE635F1F341102007F3E6D /* NSString+Where.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE635E1F341102007F3E6D /* NSString+Where.m */; };
 		4ADFAB681F3316A0008EA281 /* CTPersistanceTable+Schema.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFAB671F3316A0008EA281 /* CTPersistanceTable+Schema.m */; };
 		6284DE2109EF43B7A3D56F18 /* libPods-CTPersistance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24975DE09A62B809BFED181C /* libPods-CTPersistance.a */; };
 		DAEEF1BE411F617114764D0F /* libPods-CTPersistanceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D31FADFF56BDD50C7FD9C94 /* libPods-CTPersistanceTests.a */; };
@@ -193,6 +195,10 @@
 		4A9A9DF21F32D06F00090F73 /* TestMiagratorVersion_1_to_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMiagratorVersion_1_to_2.h; sourceTree = "<group>"; };
 		4A9A9DF31F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMiagratorVersion_1_to_2.m; sourceTree = "<group>"; };
 		4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestFind.m; sourceTree = "<group>"; };
+		4ACE63591F340E54007F3E6D /* NSDictionary+KeyValueBind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+KeyValueBind.h"; sourceTree = "<group>"; };
+		4ACE635A1F340E54007F3E6D /* NSDictionary+KeyValueBind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+KeyValueBind.m"; sourceTree = "<group>"; };
+		4ACE635D1F341102007F3E6D /* NSString+Where.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Where.h"; sourceTree = "<group>"; };
+		4ACE635E1F341102007F3E6D /* NSString+Where.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Where.m"; sourceTree = "<group>"; };
 		4ADFAB661F3316A0008EA281 /* CTPersistanceTable+Schema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceTable+Schema.h"; sourceTree = "<group>"; };
 		4ADFAB671F3316A0008EA281 /* CTPersistanceTable+Schema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceTable+Schema.m"; sourceTree = "<group>"; };
 		4D31FADFF56BDD50C7FD9C94 /* libPods-CTPersistanceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CTPersistanceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -335,6 +341,7 @@
 		4A0E00541F2CBD6300E6A4DA /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				4ACE63571F340E29007F3E6D /* NSDictionary */,
 				4A0E00C11F2D84C500E6A4DA /* NSMutableArray */,
 				4A0E00551F2CBD6300E6A4DA /* NSArray */,
 				4A0E00591F2CBD6300E6A4DA /* NSString */,
@@ -362,6 +369,7 @@
 		4A0E00591F2CBD6300E6A4DA /* NSString */ = {
 			isa = PBXGroup;
 			children = (
+				4ACE635C1F3410F4007F3E6D /* Where */,
 				4A0E005A1F2CBD6300E6A4DA /* ReqularExpression */,
 			);
 			path = NSString;
@@ -890,6 +898,32 @@
 			path = Version_3_to_4;
 			sourceTree = "<group>";
 		};
+		4ACE63571F340E29007F3E6D /* NSDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				4ACE63581F340E29007F3E6D /* KeyValueBind */,
+			);
+			path = NSDictionary;
+			sourceTree = "<group>";
+		};
+		4ACE63581F340E29007F3E6D /* KeyValueBind */ = {
+			isa = PBXGroup;
+			children = (
+				4ACE63591F340E54007F3E6D /* NSDictionary+KeyValueBind.h */,
+				4ACE635A1F340E54007F3E6D /* NSDictionary+KeyValueBind.m */,
+			);
+			path = KeyValueBind;
+			sourceTree = "<group>";
+		};
+		4ACE635C1F3410F4007F3E6D /* Where */ = {
+			isa = PBXGroup;
+			children = (
+				4ACE635D1F341102007F3E6D /* NSString+Where.h */,
+				4ACE635E1F341102007F3E6D /* NSString+Where.m */,
+			);
+			path = Where;
+			sourceTree = "<group>";
+		};
 		4ADFAB651F331685008EA281 /* Schema */ = {
 			isa = PBXGroup;
 			children = (
@@ -1112,6 +1146,7 @@
 				4A0E00A81F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.m in Sources */,
 				4A0E00A21F2CBD6300E6A4DA /* CTPersistanceMigrator.m in Sources */,
 				4A0E009C1F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m in Sources */,
+				4ACE635F1F341102007F3E6D /* NSString+Where.m in Sources */,
 				4A0E00AB1F2CBD6300E6A4DA /* CTPersistanceTable+Delete.m in Sources */,
 				4A0E00A31F2CBD6300E6A4DA /* CTPersistanceVersionTable.m in Sources */,
 				4A0E00B01F2CBD6300E6A4DA /* CTPersistanceTransaction.m in Sources */,
@@ -1122,6 +1157,7 @@
 				4A0E009D1F2CBD6300E6A4DA /* NSString+ReqularExpression.m in Sources */,
 				4A0E009F1F2CBD6300E6A4DA /* CTPersistanceCriteria.m in Sources */,
 				4A0E002A1F2C384E00E6A4DA /* main.m in Sources */,
+				4ACE635B1F340E54007F3E6D /* NSDictionary+KeyValueBind.m in Sources */,
 				4A0E00AD1F2CBD6300E6A4DA /* CTPersistanceTable+Insert.m in Sources */,
 				4ADFAB681F3316A0008EA281 /* CTPersistanceTable+Schema.m in Sources */,
 				4A0E00A11F2CBD6300E6A4DA /* CTPersistanceDatabasePool.m in Sources */,

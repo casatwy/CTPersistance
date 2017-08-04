@@ -7,10 +7,14 @@
 //
 
 #import "CTPersistanceTable+Update.h"
+#import <UIKit/UIKit.h>
+
 #import "CTPersistanceQueryCommand+DataManipulations.h"
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"
+
 #import "NSMutableArray+CTPersistanceBindValue.h"
-#import <UIKit/UIKit.h>
+#import "NSDictionary+KeyValueBind.h"
+#import "NSString+Where.h"
 
 @implementation CTPersistanceTable (Update)
 
@@ -43,25 +47,12 @@
         queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     }
 
-    NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
-    
-    NSMutableArray *valueList = [[NSMutableArray alloc] init];
-    [keyValueList enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
-        NSString *valueKey = [NSString stringWithFormat:@":%@", key];
-        [valueList addObject:[NSString stringWithFormat:@"%@ = %@", key, valueKey]];
-        [bindValueList addBindKey:valueKey bindValue:value columnDescription:self.child.columnInfo[key]];
-    }];
+    NSMutableArray <NSInvocation *> *bindValueList = [[NSMutableArray alloc] init];
 
-    NSMutableString *whereString = [whereCondition mutableCopy];
-    [whereConditionParams enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
-        NSMutableString *valueKey = [key mutableCopy];
-        [valueKey deleteCharactersInRange:NSMakeRange(0, 1)];
-        [valueKey insertString:@":CTPersistanceWhere" atIndex:0];
-        [whereString replaceOccurrencesOfString:key withString:valueKey options:0 range:NSMakeRange(0, whereString.length)];
-        [bindValueList addBindKey:valueKey bindValue:value columnDescription:nil];
-    }];
+    NSString *valueString = [keyValueList bindToValueList:bindValueList];
+    NSString *whereString = [whereCondition whereStringWithConditionParams:whereConditionParams bindValueList:bindValueList];
 
-    [[queryCommand updateTable:self.child.tableName valueString:[valueList componentsJoinedByString:@","] whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
+    [[queryCommand updateTable:self.child.tableName valueString:valueString whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
 }
 
 - (void)updateValue:(id)value forKey:(NSString *)key primaryKeyValue:(NSNumber *)primaryKeyValue error:(NSError **)error
@@ -74,7 +65,7 @@
 
         NSMutableArray *bindValueArray = [[NSMutableArray alloc] init];
 
-        NSString *whereKey = [NSString stringWithFormat:@":CTPersistanceWhere%@", self.child.primaryKeyName];
+        NSString *whereKey = [NSString stringWithFormat:@":CTPersistanceWhere_%@", self.child.primaryKeyName];
         NSString *whereString = [NSString stringWithFormat:@"%@ = %@", self.child.primaryKeyName, whereKey];
         [bindValueArray addBindKey:whereKey bindValue:primaryKeyValue columnDescription:self.child.columnInfo[self.child.primaryKeyName]];
 
@@ -109,7 +100,7 @@
 
         NSMutableArray *valueKeyList = [[NSMutableArray alloc] init];
         [valueList enumerateObjectsUsingBlock:^(id  _Nonnull value, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhere%lu", (unsigned long)idx];
+            NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhere%lu_", (unsigned long)idx];
             [valueKeyList addObject:valueKey];
             [bindValueList addBindKey:valueKey bindValue:value columnDescription:self.child.columnInfo[wherekey]];
         }];
@@ -131,15 +122,9 @@
 
     NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
-    NSMutableArray *valueList = [[NSMutableArray alloc] init];
-    [keyValueList enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id _Nonnull value, BOOL * _Nonnull stop) {
-        NSString *bindValueKey = [NSString stringWithFormat:@":%@", key];
-        [valueList addObject:[NSString stringWithFormat:@"%@ = %@", key, bindValueKey]];
-        [bindValueList addBindKey:bindValueKey bindValue:value columnDescription:self.child.columnInfo[key]];
-    }];
-    NSString *valueString = [valueList componentsJoinedByString:@","];
+    NSString *valueString = [keyValueList bindToValueList:bindValueList];
 
-    NSString *whereKey = [NSString stringWithFormat:@":CTPersistanceWhere%@", self.child.primaryKeyName];
+    NSString *whereKey = [NSString stringWithFormat:@":CTPersistanceWhere_%@", self.child.primaryKeyName];
     NSString *whereCondition = [NSString stringWithFormat:@"%@ = %@", self.child.primaryKeyName, whereKey];
     [bindValueList addBindKey:whereKey bindValue:primaryKeyValue columnDescription:self.child.columnInfo[self.child.primaryKeyName]];
 
@@ -155,17 +140,11 @@
 
     NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
-    NSMutableArray *valueList = [[NSMutableArray alloc] init];
-    [keyValueList enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id _Nonnull value, BOOL * _Nonnull stop) {
-        NSString *bindValueKey = [NSString stringWithFormat:@":%@", key];
-        [valueList addObject:[NSString stringWithFormat:@"%@ = %@", key, bindValueKey]];
-        [bindValueList addBindKey:bindValueKey bindValue:value columnDescription:self.child.columnInfo[key]];
-    }];
-    NSString *valueString = [valueList componentsJoinedByString:@","];
+    NSString *valueString = [keyValueList bindToValueList:bindValueList];
 
     NSMutableArray *valueKeyList = [[NSMutableArray alloc] init];
     [primaryKeyValueList enumerateObjectsUsingBlock:^(id  _Nonnull value, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhere%lu", (unsigned long)idx];
+        NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhere%lu_", (unsigned long)idx];
         [valueKeyList addObject:valueKey];
         [bindValueList addBindKey:valueKey bindValue:value columnDescription:self.child.columnInfo[self.child.primaryKeyName]];
     }];

@@ -10,8 +10,9 @@
 
 #import "CTPersistanceMarcos.h"
 #import "CTPersistanceQueryCommand+ReadMethods.h"
-#import "NSMutableArray+CTPersistanceBindValue.h"
 #import "CTPersistanceConfiguration.h"
+
+#import "NSMutableArray+CTPersistanceBindValue.h"
 
 #import <sqlite3.h>
 
