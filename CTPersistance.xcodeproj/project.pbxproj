@@ -24,7 +24,6 @@
 		4A0E00A31F2CBD6300E6A4DA /* CTPersistanceVersionTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00701F2CBD6300E6A4DA /* CTPersistanceVersionTable.m */; };
 		4A0E00A41F2CBD6300E6A4DA /* CTPersistanceVersionRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00731F2CBD6300E6A4DA /* CTPersistanceVersionRecord.m */; };
 		4A0E00A51F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00781F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.m */; };
-		4A0E00A61F2CBD6300E6A4DA /* CTPersistanceQueryCommand+ReadMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E007B1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+ReadMethods.m */; };
 		4A0E00A71F2CBD6300E6A4DA /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E007E1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+SchemaManipulations.m */; };
 		4A0E00A81F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00811F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.m */; };
 		4A0E00A91F2CBD6300E6A4DA /* CTPersistanceQueryCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00831F2CBD6300E6A4DA /* CTPersistanceQueryCommand.m */; };
@@ -120,8 +119,6 @@
 		4A0E00731F2CBD6300E6A4DA /* CTPersistanceVersionRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceVersionRecord.m; sourceTree = "<group>"; };
 		4A0E00771F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceQueryCommand+DataManipulations.h"; sourceTree = "<group>"; };
 		4A0E00781F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceQueryCommand+DataManipulations.m"; sourceTree = "<group>"; };
-		4A0E007A1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+ReadMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceQueryCommand+ReadMethods.h"; sourceTree = "<group>"; };
-		4A0E007B1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+ReadMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceQueryCommand+ReadMethods.m"; sourceTree = "<group>"; };
 		4A0E007D1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+SchemaManipulations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceQueryCommand+SchemaManipulations.h"; sourceTree = "<group>"; };
 		4A0E007E1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+SchemaManipulations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceQueryCommand+SchemaManipulations.m"; sourceTree = "<group>"; };
 		4A0E00801F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceQueryCommand+Status.h"; sourceTree = "<group>"; };
@@ -447,7 +444,6 @@
 			isa = PBXGroup;
 			children = (
 				4A0E00761F2CBD6300E6A4DA /* DataManipulations */,
-				4A0E00791F2CBD6300E6A4DA /* ReadingMethods */,
 				4A0E007C1F2CBD6300E6A4DA /* SchemaManipulations */,
 				4A0E007F1F2CBD6300E6A4DA /* StatusMethods */,
 			);
@@ -461,15 +457,6 @@
 				4A0E00781F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.m */,
 			);
 			path = DataManipulations;
-			sourceTree = "<group>";
-		};
-		4A0E00791F2CBD6300E6A4DA /* ReadingMethods */ = {
-			isa = PBXGroup;
-			children = (
-				4A0E007A1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+ReadMethods.h */,
-				4A0E007B1F2CBD6300E6A4DA /* CTPersistanceQueryCommand+ReadMethods.m */,
-			);
-			path = ReadingMethods;
 			sourceTree = "<group>";
 		};
 		4A0E007C1F2CBD6300E6A4DA /* SchemaManipulations */ = {
@@ -1137,7 +1124,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A0E00A61F2CBD6300E6A4DA /* CTPersistanceQueryCommand+ReadMethods.m in Sources */,
 				4A0E00C61F2D84FB00E6A4DA /* NSMutableArray+CTPersistanceBindValue.m in Sources */,
 				4A0E00A51F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,
 				4A0E009B1F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.m in Sources */,

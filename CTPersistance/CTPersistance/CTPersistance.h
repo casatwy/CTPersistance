@@ -12,13 +12,13 @@
 #import "CTPersistanceConfiguration.h"
 #import "CTPersistanceMarcos.h"
 
-#import "CTPersistanceDatabasePool.h"
 #import "CTPersistanceMigrator.h"
 #import "CTPersistanceCriteria.h"
 #import "CTPersistanceTransaction.h"
 #import "CTPersistanceAsyncExecutor.h"
 
 #import "CTPersistanceDataBase.h"
+#import "CTPersistanceDatabasePool.h"
 
 #import "CTPersistanceRecordProtocol.h"
 #import "CTPersistanceRecord.h"
@@ -31,9 +31,9 @@
 #import "CTPersistanceTable+Schema.h"
 
 #import "CTPersistanceQueryCommand.h"
-#import "CTPersistanceQueryCommand+ReadMethods.h"
 #import "CTPersistanceQueryCommand+DataManipulations.h"
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"
+#import "CTPersistanceQueryCommand+Status.h"
 
 extern NSString * const kCTPersistanceDataBaseCheckMigrationNotification;
 extern NSString * const kCTPersistanceInitVersion;

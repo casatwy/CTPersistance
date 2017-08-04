@@ -8,7 +8,6 @@
 
 #import "CTPersistanceCriteria.h"
 #import "CTPersistanceConfiguration.h"
-#import "CTPersistanceQueryCommand+ReadMethods.h"
 #import "CTPersistanceQueryCommand+DataManipulations.h"
 #import "NSMutableArray+CTPersistanceBindValue.h"
 

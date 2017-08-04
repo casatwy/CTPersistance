@@ -9,7 +9,6 @@
 #import "CTPersistanceMigrator.h"
 
 #import "CTPersistanceQueryCommand.h"
-#import "CTPersistanceQueryCommand+ReadMethods.h"
 
 #import "CTPersistanceVersionRecord.h"
 #import "CTPersistanceVersionTable.h"
@@ -50,7 +49,8 @@ NSString * const kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";
 {
     self.database = database;
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:database];
-    NSDictionary *latestRecord = [[[queryCommand readWithSQL:[NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY %@ DESC LIMIT 1;", [CTPersistanceVersionTable tableName], [CTPersistanceVersionTable primaryKeyName]] bindValueList:nil error:NULL] fetchWithError:NULL] firstObject];
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY %@ DESC LIMIT 1;", [CTPersistanceVersionTable tableName], [CTPersistanceVersionTable primaryKeyName]];
+    NSDictionary *latestRecord = [[[queryCommand compileSqlString:sqlString bindValueList:nil error:NULL] fetchWithError:NULL] firstObject];
     NSString *currentVersion = latestRecord[@"databaseVersion"];
     NSUInteger index = [[self.child migrationVersionList] indexOfObject:currentVersion];
     if (index == [[self.child migrationVersionList] count] - 1) {
@@ -65,7 +65,8 @@ NSString * const kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";
     NSError *error = nil;
     
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:database];
-    NSMutableDictionary *latestRecord = [[[[queryCommand readWithSQL:[NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY %@ DESC LIMIT 1;", [CTPersistanceVersionTable tableName], [CTPersistanceVersionTable primaryKeyName]] bindValueList:nil error:NULL] fetchWithError:NULL] firstObject] mutableCopy];
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM %@ ORDER BY %@ DESC LIMIT 1;", [CTPersistanceVersionTable tableName], [CTPersistanceVersionTable primaryKeyName]];
+    NSMutableDictionary *latestRecord = [[[[queryCommand compileSqlString:sqlString bindValueList:nil error:NULL] fetchWithError:NULL] firstObject] mutableCopy];
     if (error) {
         NSLog(@"[%s:%s(%d)]:\n\terror is %@", __FILE__, __FUNCTION__, __LINE__, error);
         return;

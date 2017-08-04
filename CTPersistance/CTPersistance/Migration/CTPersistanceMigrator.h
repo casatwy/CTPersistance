@@ -10,7 +10,6 @@
 #import "CTPersistanceDataBase.h"
 #import "CTPersistanceQueryCommand.h"
 #import "CTPersistanceQueryCommand+DataManipulations.h"
-#import "CTPersistanceQueryCommand+ReadMethods.h"
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"
 
 extern NSString * const kCTPersistanceInitVersion;

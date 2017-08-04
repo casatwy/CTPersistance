@@ -9,8 +9,6 @@
 #import "CTPersistanceQueryCommand+DataManipulations.h"
 
 #import "CTPersistanceMarcos.h"
-#import "CTPersistanceQueryCommand+ReadMethods.h"
-#import "CTPersistanceConfiguration.h"
 
 #import "NSMutableArray+CTPersistanceBindValue.h"
 
@@ -42,93 +40,26 @@
     }];
 
     NSString *sqlString = [NSString stringWithFormat:@"INSERT INTO `%@` (%@) VALUES %@;", tableName, [columnList componentsJoinedByString:@","], [valueItemList componentsJoinedByString:@","]];
-    sqlite3_stmt *statement = nil;
-    int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
-
-    
-    if (result != SQLITE_OK) {
-        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
-        NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", sqlString, errorMessage]}];
-        *error = generatedError;
-        NSLog(@"error is %@", errorMessage);
-        sqlite3_finalize(statement);
-        return self;
-    }
-    self.statement = statement;
-
-    [bindValueList enumerateObjectsUsingBlock:^(NSInvocation * _Nonnull bindInvocation, NSUInteger idx, BOOL * _Nonnull stop) {
-        [bindInvocation setArgument:(void *)&statement atIndex:2];
-        [bindInvocation invoke];
-    }];
-
-    return self;
+    return [self compileSqlString:sqlString bindValueList:bindValueList error:error];
 }
 
 - (CTPersistanceQueryCommand *)updateTable:(NSString *)tableName valueString:(NSString *)valueString whereString:(NSString *)whereString bindValueList:(NSArray <NSInvocation *> *)bindValueList error:(NSError * __autoreleasing *)error
 {
     NSString *sqlString = [NSString stringWithFormat:@"UPDATE `%@` SET %@ WHERE %@;", tableName, valueString, whereString];
-    sqlite3_stmt *statement = nil;
-    int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
-
-    if (result != SQLITE_OK) {
-        self.statement = nil;
-        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
-        NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", sqlString, errorMessage]}];
-        *error = generatedError;
-        NSLog(@"error is %@", errorMessage);
-        sqlite3_finalize(statement);
-        return self;
-    }
-    self.statement = statement;
-
-    [bindValueList enumerateObjectsUsingBlock:^(NSInvocation * _Nonnull bindInvocation, NSUInteger idx, BOOL * _Nonnull stop) {
-        [bindInvocation setArgument:(void *)&statement atIndex:2];
-        [bindInvocation invoke];
-    }];
-
-    return self;
+    return [self compileSqlString:sqlString bindValueList:bindValueList error:error];
 }
 
 - (CTPersistanceQueryCommand *)deleteTable:(NSString *)tableName whereString:(NSString *)whereString bindValueList:(NSArray<NSInvocation *> *)bindValueList error:(NSError *__autoreleasing *)error
 {
     NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM `%@` WHERE %@", tableName, whereString];
-    sqlite3_stmt *statement = nil;
-    int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
-
-    if (result != SQLITE_OK) {
-        self.statement = nil;
-        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
-        NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", sqlString, errorMessage]}];
-        *error = generatedError;
-        NSLog(@"error is %@", errorMessage);
-        sqlite3_finalize(statement);
-        return self;
-    }
-    self.statement = statement;
-
-    [bindValueList enumerateObjectsUsingBlock:^(NSInvocation * _Nonnull bindInvocation, NSUInteger idx, BOOL * _Nonnull stop) {
-        [bindInvocation setArgument:(void *)&statement atIndex:2];
-        [bindInvocation invoke];
-    }];
-
-    return self;
+    return [self compileSqlString:sqlString bindValueList:bindValueList error:error];
 }
 
 - (CTPersistanceQueryCommand *)truncateTable:(NSString *)tableName
 {
 #warning todo
     NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM `%@`; UPDATE `sqlite_sequence` SET seq = 0 WHERE name = '%@';VACUUM;", tableName, tableName];
-    sqlite3_stmt *statement = nil;
-    int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
-    if (result != SQLITE_OK) {
-        self.statement = nil;
-        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
-        NSLog(@"error is %@", errorMessage);
-        sqlite3_finalize(statement);
-        return self;
-    }
-    self.statement = statement;
-    return self;
+    return [self compileSqlString:sqlString bindValueList:nil error:NULL];
 }
 
 @end

@@ -10,7 +10,6 @@
 
 #import "CTPersistanceMarcos.h"
 
-#import "CTPersistanceQueryCommand+ReadMethods.h"
 #import "NSMutableArray+CTPersistanceBindValue.h"
 #import "NSString+Where.h"
 
@@ -36,17 +35,7 @@
 
     NSString *sqlString = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS `%@` (%@);", tableName, columns];
 
-    sqlite3_stmt *statement = nil;
-    int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
-    if (result != SQLITE_OK) {
-        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
-        NSLog(@"error is %@", errorMessage);
-        sqlite3_finalize(statement);
-        return self;
-    }
-    self.statement = statement;
-    
-    return self;
+    return [self compileSqlString:sqlString bindValueList:nil error:NULL];
 }
 
 - (CTPersistanceQueryCommand *)dropTable:(NSString *)tableName
@@ -56,17 +45,7 @@
     }
     NSString *sqlString = [NSString stringWithFormat:@"DROP TABLE IF EXISTS `%@`;", tableName];
 
-    sqlite3_stmt *statement = nil;
-    int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
-    if (result != SQLITE_OK) {
-        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
-        NSLog(@"error is %@", errorMessage);
-        sqlite3_finalize(statement);
-        return self;
-    }
-    self.statement = statement;
-
-    return self;
+    return [self compileSqlString:sqlString bindValueList:nil error:NULL];
 }
 
 - (CTPersistanceQueryCommand *)createIndex:(NSString *)indexName
@@ -99,22 +78,7 @@
         [sqlString appendFormat:@"WHERE %@;", whereString];
     }
 
-    sqlite3_stmt *statement = nil;
-    int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
-    if (result != SQLITE_OK) {
-        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
-        NSLog(@"error is %@", errorMessage);
-        sqlite3_finalize(statement);
-        return self;
-    }
-    self.statement = statement;
-
-    [bindValueList enumerateObjectsUsingBlock:^(NSInvocation * _Nonnull invocation, NSUInteger idx, BOOL * _Nonnull stop) {
-        [invocation setArgument:statement atIndex:2];
-        [invocation invoke];
-    }];
-
-    return self;
+    return [self compileSqlString:sqlString bindValueList:bindValueList error:NULL];
 }
 
 - (CTPersistanceQueryCommand *)dropIndex:(NSString *)indexName
@@ -122,17 +86,7 @@
 #warning todo need test
     NSString *sqlString = [NSString stringWithFormat:@"DROP INDEX IF EXISTS `%@`;", indexName];
 
-    sqlite3_stmt *statement = nil;
-    int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
-    if (result != SQLITE_OK) {
-        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
-        NSLog(@"error is %@", errorMessage);
-        sqlite3_finalize(statement);
-        return self;
-    }
-    self.statement = statement;
-    
-    return self;
+    return [self compileSqlString:sqlString bindValueList:nil error:NULL];
 }
 
 - (CTPersistanceQueryCommand *)addColumn:(NSString *)columnName columnInfo:(NSString *)columnInfo tableName:(NSString *)tableName
@@ -143,23 +97,13 @@
     
     NSString *sqlString = [NSString stringWithFormat:@"ALTER TABLE `%@` ADD COLUMN `%@` %@;", tableName, columnName, columnInfo];
 
-    sqlite3_stmt *statement = nil;
-    int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
-    if (result != SQLITE_OK) {
-        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
-        NSLog(@"error is %@", errorMessage);
-        sqlite3_finalize(statement);
-        return self;
-    }
-    self.statement = statement;
-    
-    return self;
+    return [self compileSqlString:sqlString bindValueList:nil error:NULL];
 }
 
 - (CTPersistanceQueryCommand *)columnInfoWithTableName:(NSString *)tableName
 {
     NSString *sqlString = [NSString stringWithFormat:@"PRAGMA table_info(`%@`);", tableName];
-    return [self readWithSQL:sqlString bindValueList:nil error:NULL];
+    return [self compileSqlString:sqlString bindValueList:nil error:NULL];
 }
 
 @end

@@ -18,7 +18,6 @@
 #import "NSString+Where.h"
 
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"
-#import "CTPersistanceQueryCommand+ReadMethods.h"
 
 @implementation CTPersistanceTable (Find)
 
@@ -29,7 +28,7 @@
         queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     }
     NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` ORDER BY %@ DESC LIMIT 1;", self.child.tableName, self.child.primaryKeyName];
-    return [[[[queryCommand readWithSQL:sqlString bindValueList:nil error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass] firstObject];
+    return [[[[queryCommand compileSqlString:sqlString bindValueList:NULL error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass] firstObject];
 }
 
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithWhereCondition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams isDistinct:(BOOL)isDistinct error:(NSError **)error
@@ -49,7 +48,7 @@
     if (self.isFromMigration == NO) {
         queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     }
-    return [[[queryCommand readWithSQL:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass];
+    return [[[queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass];
 }
 
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
@@ -63,7 +62,7 @@
     if (self.isFromMigration == NO) {
         queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     }
-    return [[[queryCommand readWithSQL:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass];
+    return [[[queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass];
 }
 
 - (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithWhereCondition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams isDistinct:(BOOL)isDistinct error:(NSError **)error
@@ -83,7 +82,7 @@
     if (self.isFromMigration == NO) {
         queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     }
-    return [[[[queryCommand readWithSQL:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass] firstObject];
+    return [[[[queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass] firstObject];
 }
 
 - (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
@@ -125,7 +124,7 @@
     if (self.isFromMigration == NO) {
         queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     }
-    NSArray *result = [[queryCommand readWithSQL:sqlString bindValueList:bindValueList error:error] fetchWithError:error];
+    NSArray *result = [[queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error];
     return [[result firstObject][@"count"] integerValue];
 }
 
@@ -150,7 +149,7 @@
     if (self.isFromMigration == NO) {
         queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     }
-    return [[[[queryCommand readWithSQL:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass] firstObject];
+    return [[[[queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass] firstObject];
 }
 
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithPrimaryKey:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error
@@ -170,7 +169,7 @@
     if (self.isFromMigration == NO) {
         queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     }
-    return [[[queryCommand readWithSQL:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass];
+    return [[[queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass];
 }
 
 - (NSArray<NSObject<CTPersistanceRecordProtocol> *> *)findAllWithKeyName:(NSString *)keyname value:(id)value error:(NSError *__autoreleasing *)error

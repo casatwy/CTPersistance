@@ -141,6 +141,30 @@
     return resultsArray;
 }
 
+- (CTPersistanceQueryCommand *)compileSqlString:(NSString *)sqlString bindValueList:(NSArray<NSInvocation *> *)bindValueList error:(NSError *__autoreleasing *)error
+{
+    sqlite3_stmt *statement = nil;
+    int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
+
+    if (result != SQLITE_OK) {
+        self.statement = nil;
+        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
+        NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", sqlString, errorMessage]}];
+        *error = generatedError;
+        NSLog(@"error is %@", errorMessage);
+        sqlite3_finalize(statement);
+        return nil;
+    }
+    self.statement = statement;
+
+    [bindValueList enumerateObjectsUsingBlock:^(NSInvocation * _Nonnull bindInvocation, NSUInteger idx, BOOL * _Nonnull stop) {
+        [bindInvocation setArgument:(void *)&statement atIndex:2];
+        [bindInvocation invoke];
+    }];
+
+    return self;
+}
+
 #pragma mark - getters and setters
 - (CTPersistanceDataBase *)database
 {

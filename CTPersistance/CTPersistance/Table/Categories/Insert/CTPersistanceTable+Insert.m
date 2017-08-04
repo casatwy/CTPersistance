@@ -12,7 +12,6 @@
 
 #import "CTPersistanceQueryCommand.h"
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"
-#import "CTPersistanceQueryCommand+ReadMethods.h"
 #import "CTPersistanceQueryCommand+DataManipulations.h"
 #import "CTPersistanceQueryCommand+Status.h"
 
