@@ -143,6 +143,7 @@
 
 - (CTPersistanceQueryCommand *)compileSqlString:(NSString *)sqlString bindValueList:(NSArray<NSInvocation *> *)bindValueList error:(NSError *__autoreleasing *)error
 {
+#warning todo statement cache
     sqlite3_stmt *statement = nil;
     int result = sqlite3_prepare_v2(self.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
 

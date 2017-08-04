@@ -16,7 +16,6 @@
 		4A0E004F1F2C388200E6A4DA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A0E004E1F2C388200E6A4DA /* libsqlite3.tbd */; };
 		4A0E009B1F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00531F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.m */; };
 		4A0E009C1F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00581F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m */; };
-		4A0E009D1F2CBD6300E6A4DA /* NSString+ReqularExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E005C1F2CBD6300E6A4DA /* NSString+ReqularExpression.m */; };
 		4A0E009F1F2CBD6300E6A4DA /* CTPersistanceCriteria.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00621F2CBD6300E6A4DA /* CTPersistanceCriteria.m */; };
 		4A0E00A01F2CBD6300E6A4DA /* CTPersistanceDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00681F2CBD6300E6A4DA /* CTPersistanceDataBase.m */; };
 		4A0E00A11F2CBD6300E6A4DA /* CTPersistanceDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E006A1F2CBD6300E6A4DA /* CTPersistanceDatabasePool.m */; };
@@ -100,8 +99,6 @@
 		4A0E00531F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceAsyncExecutor.m; sourceTree = "<group>"; };
 		4A0E00571F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CTPersistanceRecordTransform.h"; sourceTree = "<group>"; };
 		4A0E00581F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CTPersistanceRecordTransform.m"; sourceTree = "<group>"; };
-		4A0E005B1F2CBD6300E6A4DA /* NSString+ReqularExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ReqularExpression.h"; sourceTree = "<group>"; };
-		4A0E005C1F2CBD6300E6A4DA /* NSString+ReqularExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ReqularExpression.m"; sourceTree = "<group>"; };
 		4A0E00611F2CBD6300E6A4DA /* CTPersistanceCriteria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceCriteria.h; sourceTree = "<group>"; };
 		4A0E00621F2CBD6300E6A4DA /* CTPersistanceCriteria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceCriteria.m; sourceTree = "<group>"; };
 		4A0E00631F2CBD6300E6A4DA /* CTPersistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistance.h; sourceTree = "<group>"; };
@@ -367,18 +364,8 @@
 			isa = PBXGroup;
 			children = (
 				4ACE635C1F3410F4007F3E6D /* Where */,
-				4A0E005A1F2CBD6300E6A4DA /* ReqularExpression */,
 			);
 			path = NSString;
-			sourceTree = "<group>";
-		};
-		4A0E005A1F2CBD6300E6A4DA /* ReqularExpression */ = {
-			isa = PBXGroup;
-			children = (
-				4A0E005B1F2CBD6300E6A4DA /* NSString+ReqularExpression.h */,
-				4A0E005C1F2CBD6300E6A4DA /* NSString+ReqularExpression.m */,
-			);
-			path = ReqularExpression;
 			sourceTree = "<group>";
 		};
 		4A0E00601F2CBD6300E6A4DA /* Criteria */ = {
@@ -1140,7 +1127,6 @@
 				4A0E00AE1F2CBD6300E6A4DA /* CTPersistanceTable+Update.m in Sources */,
 				4A0E002D1F2C384E00E6A4DA /* AppDelegate.m in Sources */,
 				4A0E00A41F2CBD6300E6A4DA /* CTPersistanceVersionRecord.m in Sources */,
-				4A0E009D1F2CBD6300E6A4DA /* NSString+ReqularExpression.m in Sources */,
 				4A0E009F1F2CBD6300E6A4DA /* CTPersistanceCriteria.m in Sources */,
 				4A0E002A1F2C384E00E6A4DA /* main.m in Sources */,
 				4ACE635B1F340E54007F3E6D /* NSDictionary+KeyValueBind.m in Sources */,
