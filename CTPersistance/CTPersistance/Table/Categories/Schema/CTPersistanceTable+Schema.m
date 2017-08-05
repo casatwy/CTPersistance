@@ -13,12 +13,7 @@
 
 - (NSArray <NSDictionary *> *)columnInfoInDataBase
 {
-    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
-    if (self.isFromMigration == NO) {
-        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
-    }
-
-    NSArray *columnInfo = [[queryCommand columnInfoWithTableName:self.child.tableName] fetchWithError:NULL];
+    NSArray *columnInfo = [[self.queryCommand columnInfoWithTableName:self.child.tableName] fetchWithError:NULL];
 
     return columnInfo;
 }

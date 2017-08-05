@@ -35,44 +35,27 @@
 
 - (void)deleteWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error
 {
-    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
-    if (self.isFromMigration == NO) {
-        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
-    }
-
     NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
-
     NSString *whereString = [whereCondition whereStringWithConditionParams:conditionParams bindValueList:bindValueList];
-    
-    [[queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
+    [[self.queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
 }
 
 - (void)deleteWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error
 {
     if (primaryKeyValue) {
-        CTPersistanceQueryCommand *queryCommand = self.queryCommand;
-        if (self.isFromMigration == NO) {
-            queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
-        }
-
         NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
-        
+
         NSString *whereKey = [NSString stringWithFormat:@":CTPersistanceWhere_%@", self.child.primaryKeyName];
         [bindValueList addBindKey:whereKey bindValue:primaryKeyValue columnDescription:self.child.columnInfo[self.child.primaryKeyName]];
 
         NSString *whereString = [NSString stringWithFormat:@"%@ = %@", self.child.primaryKeyName, whereKey];
-        [[queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
+        [[self.queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
     }
 }
 
 - (void)deleteWithPrimaryKeyList:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error
 {
     if ([primaryKeyValueList count] > 0) {
-        CTPersistanceQueryCommand *queryCommand = self.queryCommand;
-        if (self.isFromMigration == NO) {
-            queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
-        }
-
         NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
         NSMutableArray *valueKeyList = [[NSMutableArray alloc] init];
@@ -83,17 +66,13 @@
         }];
         NSString *whereString = [NSString stringWithFormat:@"%@ IN (%@)", self.child.primaryKeyName, [valueKeyList componentsJoinedByString:@","]];
 
-        [[queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
+        [[self.queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
     }
 }
 
 - (void)truncate
 {
-    CTPersistanceQueryCommand *queryCommand = self.queryCommand;
-    if (self.isFromMigration == NO) {
-        queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
-    }
-    [[queryCommand truncateTable:self.child.tableName] executeWithError:NULL];
+    [[self.queryCommand truncateTable:self.child.tableName] executeWithError:NULL];
 }
 
 @end

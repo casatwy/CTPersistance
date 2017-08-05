@@ -70,20 +70,12 @@
 - (BOOL)executeSQL:(NSString *)sqlString error:(NSError *__autoreleasing *)error
 {
 #warning todo need test
-    if (self.isFromMigration == NO) {
-        self.queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
-    }
-    
     return [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:error] executeWithError:error];
 }
 
 - (NSArray <NSDictionary *> *)fetchWithSQL:(NSString *)sqlString error:(NSError *__autoreleasing *)error
 {
 #warning todo need test
-    if (self.isFromMigration == NO) {
-        self.queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
-    }
-
     return [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:error] fetchWithError:error];
 }
 
@@ -96,6 +88,17 @@
 - (BOOL)isCorrectToUpdateRecord:(NSObject <CTPersistanceRecordProtocol> *)record;
 {
     return YES;
+}
+
+#pragma mark - getters and setters
+- (CTPersistanceQueryCommand *)queryCommand
+{
+    if (_queryCommand == nil) {
+        if (self.isFromMigration == NO) {
+            _queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
+        }
+    }
+    return _queryCommand;
 }
 
 @end
