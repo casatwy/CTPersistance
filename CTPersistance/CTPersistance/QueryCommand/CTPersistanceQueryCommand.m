@@ -12,6 +12,7 @@
 #import "CTPersistanceConfiguration.h"
 @interface CTPersistanceQueryCommand ()
 
+@property (nonatomic, unsafe_unretained) sqlite3_stmt *statement;
 @property (nonatomic, weak) CTPersistanceDataBase *database;
 @property (nonatomic, strong) NSString *databaseName;
 

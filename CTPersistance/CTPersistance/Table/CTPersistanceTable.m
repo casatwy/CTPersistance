@@ -74,19 +74,7 @@
         self.queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     }
     
-    sqlite3_stmt *statement = nil;
-    int result = sqlite3_prepare_v2(self.queryCommand.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
-    if (result != SQLITE_OK) {
-        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.queryCommand.database.database)];
-        NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", [NSString stringWithUTF8String:sqlite3_sql(statement)], errorMessage]}];
-        *error = generatedError;
-        NSLog(@"error is %@", errorMessage);
-        sqlite3_finalize(statement);
-        return NO;
-    }
-    self.queryCommand.statement = statement;
-    
-    return [self.queryCommand executeWithError:error];
+    return [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:error] executeWithError:error];
 }
 
 - (NSArray <NSDictionary *> *)fetchWithSQL:(NSString *)sqlString error:(NSError *__autoreleasing *)error
@@ -96,19 +84,7 @@
         self.queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:[self.child databaseName]];
     }
 
-    sqlite3_stmt *statement = nil;
-    int result = sqlite3_prepare_v2(self.queryCommand.database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
-    if (result != SQLITE_OK) {
-        NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.queryCommand.database.database)];
-        NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", [NSString stringWithUTF8String:sqlite3_sql(statement)], errorMessage]}];
-        *error = generatedError;
-        NSLog(@"error is %@", errorMessage);
-        sqlite3_finalize(statement);
-        return nil;
-    }
-    self.queryCommand.statement = statement;
-    
-    return [self.queryCommand fetchWithError:error];
+    return [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:error] fetchWithError:error];
 }
 
 #pragma mark - method to override

@@ -12,8 +12,6 @@
 #import "CTPersistanceMigrator.h"
 #import "CTPersistanceVersionTable.h"
 
-#import "NSString+ReqularExpression.h"
-
 #import <CTMediator/CTMediator.h>
 
 @interface CTPersistanceDataBase ()

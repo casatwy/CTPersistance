@@ -18,11 +18,6 @@
  */
 @interface CTPersistanceQueryCommand : NSObject
 
-/*
- * the statement of current SQL
- */
-@property (nonatomic, unsafe_unretained) sqlite3_stmt *statement;
-
 /**
  *  related CTPersistanceDataBase
  */
