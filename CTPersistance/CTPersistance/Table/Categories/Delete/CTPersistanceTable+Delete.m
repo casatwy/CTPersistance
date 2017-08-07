@@ -72,7 +72,12 @@
 
 - (void)truncate
 {
-    [[self.queryCommand truncateTable:self.child.tableName] executeWithError:NULL];
+    NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM `%@`;", self.child.tableName];
+    [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:NULL] executeWithError:NULL];
+    sqlString = [NSString stringWithFormat:@"UPDATE `sqlite_sequence` SET seq = 0 WHERE name = '%@';", self.child.tableName];
+    [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:NULL] executeWithError:NULL];
+    sqlString = @"VACUUM;";
+    [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:NULL] executeWithError:NULL];
 }
 
 @end

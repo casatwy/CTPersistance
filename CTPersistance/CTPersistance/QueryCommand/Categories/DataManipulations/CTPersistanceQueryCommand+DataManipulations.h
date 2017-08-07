@@ -60,6 +60,4 @@
  */
 - (CTPersistanceQueryCommand *)deleteTable:(NSString *)tableName whereString:(NSString *)whereString bindValueList:(NSArray <NSInvocation *> *)bindValueList error:(NSError * __autoreleasing *)error;
 
-- (CTPersistanceQueryCommand *)truncateTable:(NSString *)tableName;
-
 @end

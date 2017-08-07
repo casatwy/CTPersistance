@@ -55,11 +55,4 @@
     return [self compileSqlString:sqlString bindValueList:bindValueList error:error];
 }
 
-- (CTPersistanceQueryCommand *)truncateTable:(NSString *)tableName
-{
-#warning todo
-    NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM `%@`; UPDATE `sqlite_sequence` SET seq = 0 WHERE name = '%@';VACUUM;", tableName, tableName];
-    return [self compileSqlString:sqlString bindValueList:nil error:NULL];
-}
-
 @end
