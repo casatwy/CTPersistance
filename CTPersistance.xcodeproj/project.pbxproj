@@ -58,6 +58,7 @@
 		4A51505D1F2F2402004BA79C /* CTPersistanceTestDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A51505C1F2F2402004BA79C /* CTPersistanceTestDelete.m */; };
 		4A532C9B1F37FDCE0074BA46 /* CTPersistanceTestCriteria.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A532C9A1F37FDCE0074BA46 /* CTPersistanceTestCriteria.m */; };
 		4A532C9D1F3804BF0074BA46 /* CTPersistanceTestAsync.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A532C9C1F3804BF0074BA46 /* CTPersistanceTestAsync.m */; };
+		4A532CAB1F3C51250074BA46 /* Target_CTPersistanceConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A532CA91F3C4F750074BA46 /* Target_CTPersistanceConfiguration.m */; };
 		4A7844C31F32BD6700CF4809 /* CTPersistanceTestMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */; };
 		4A9A9DE11F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DE01F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.m */; };
 		4A9A9DE41F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DE31F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.m */; };
@@ -183,6 +184,8 @@
 		4A51505C1F2F2402004BA79C /* CTPersistanceTestDelete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestDelete.m; sourceTree = "<group>"; };
 		4A532C9A1F37FDCE0074BA46 /* CTPersistanceTestCriteria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestCriteria.m; sourceTree = "<group>"; };
 		4A532C9C1F3804BF0074BA46 /* CTPersistanceTestAsync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestAsync.m; sourceTree = "<group>"; };
+		4A532CA81F3C4F750074BA46 /* Target_CTPersistanceConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_CTPersistanceConfiguration.h; sourceTree = "<group>"; };
+		4A532CA91F3C4F750074BA46 /* Target_CTPersistanceConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_CTPersistanceConfiguration.m; sourceTree = "<group>"; };
 		4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestMigration.m; sourceTree = "<group>"; };
 		4A9A9DDF1F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_MigrationTestDatabase_version1_sqlite.h; sourceTree = "<group>"; };
 		4A9A9DE01F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_MigrationTestDatabase_version1_sqlite.m; sourceTree = "<group>"; };
@@ -265,6 +268,8 @@
 				4A0E002C1F2C384E00E6A4DA /* AppDelegate.m */,
 				4A0E002E1F2C384E00E6A4DA /* ViewController.h */,
 				4A0E002F1F2C384E00E6A4DA /* ViewController.m */,
+				4A532CA81F3C4F750074BA46 /* Target_CTPersistanceConfiguration.h */,
+				4A532CA91F3C4F750074BA46 /* Target_CTPersistanceConfiguration.m */,
 				4A0E00311F2C384E00E6A4DA /* Main.storyboard */,
 				4A0E00341F2C384E00E6A4DA /* Assets.xcassets */,
 				4A0E00361F2C384E00E6A4DA /* LaunchScreen.storyboard */,
@@ -1127,6 +1132,7 @@
 				4A0E00A51F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,
 				4A0E009B1F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.m in Sources */,
 				4A0E00AA1F2CBD6300E6A4DA /* CTPersistanceRecord.m in Sources */,
+				4A532CAB1F3C51250074BA46 /* Target_CTPersistanceConfiguration.m in Sources */,
 				4A0E00301F2C384E00E6A4DA /* ViewController.m in Sources */,
 				4A0E00A81F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.m in Sources */,
 				4A0E00A21F2CBD6300E6A4DA /* CTPersistanceMigrator.m in Sources */,

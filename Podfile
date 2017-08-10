@@ -7,6 +7,7 @@ target 'CTPersistance' do
 
   # Pods for CTPersistance
   pod "CTMediator"
+  pod "SQLCipher"
 
   target 'CTPersistanceTests' do
     inherit! :search_paths

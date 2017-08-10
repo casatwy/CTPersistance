@@ -38,4 +38,12 @@
 extern NSString * const kCTPersistanceDataBaseCheckMigrationNotification;
 extern NSString * const kCTPersistanceInitVersion;
 
+extern NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName;
+
+@protocol CTPersistanceConfigurationTarget <NSObject>
+
+-(NSString *)Action_secretKey:(NSDictionary *)params;
+
+@end
+
 #endif /* CTPersistance_h */

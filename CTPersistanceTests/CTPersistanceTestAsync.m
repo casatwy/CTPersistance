@@ -40,12 +40,12 @@
 
 - (void)testMultiWrite
 {
-    @autoreleasepool {
-        NSInteger count = 10;
-        while (count --> 0) {
-            [NSThread detachNewThreadSelector:@selector(insertRecord) toTarget:self withObject:nil];
-        }
-    }
+//    @autoreleasepool {
+//        NSInteger count = 10;
+//        while (count --> 0) {
+//            [NSThread detachNewThreadSelector:@selector(insertRecord) toTarget:self withObject:nil];
+//        }
+//    }
 }
 
 - (void)testMultiReadSingleWrite

@@ -14,6 +14,8 @@
 
 #import <CTMediator/CTMediator.h>
 
+NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersistanceConfigurationParamsKeyDatabaseName";
+
 @interface CTPersistanceDataBase ()
 
 @property (nonatomic, unsafe_unretained) sqlite3 *database;
@@ -62,6 +64,15 @@
             *error = [NSError errorWithDomain:kCTPersistanceErrorDomain code:errorCode userInfo:@{NSLocalizedDescriptionKey:errorString}];
             [self closeDatabase];
             return nil;
+        }
+
+        NSString *secretKey = [[CTMediator sharedInstance] performTarget:@"CTPersistanceConfiguration"
+                                                                  action:@"secretKey"
+                                                                  params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:databaseName}
+                                                       shouldCacheTarget:NO];
+
+        if (secretKey && secretKey.length > 0) {
+            sqlite3_key(_database, [secretKey UTF8String], (int)secretKey.length);
         }
         
         if (isFileExists == NO) {
