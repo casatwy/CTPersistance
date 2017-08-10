@@ -58,11 +58,8 @@
 		4A51505D1F2F2402004BA79C /* CTPersistanceTestDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A51505C1F2F2402004BA79C /* CTPersistanceTestDelete.m */; };
 		4A532C9B1F37FDCE0074BA46 /* CTPersistanceTestCriteria.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A532C9A1F37FDCE0074BA46 /* CTPersistanceTestCriteria.m */; };
 		4A532C9D1F3804BF0074BA46 /* CTPersistanceTestAsync.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A532C9C1F3804BF0074BA46 /* CTPersistanceTestAsync.m */; };
-		4A532CAB1F3C51250074BA46 /* Target_CTPersistanceConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A532CA91F3C4F750074BA46 /* Target_CTPersistanceConfiguration.m */; };
+		4A532CAF1F3C59520074BA46 /* Target_CTPersistanceConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A532CAE1F3C59520074BA46 /* Target_CTPersistanceConfiguration.m */; };
 		4A7844C31F32BD6700CF4809 /* CTPersistanceTestMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */; };
-		4A9A9DE11F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DE01F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.m */; };
-		4A9A9DE41F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DE31F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.m */; };
-		4A9A9DE71F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DE61F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.m */; };
 		4A9A9DF41F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DF31F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m */; };
 		4AB165E81F302AA60043E6A2 /* CTPersistanceTestFind.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */; };
 		4ACE635B1F340E54007F3E6D /* NSDictionary+KeyValueBind.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE635A1F340E54007F3E6D /* NSDictionary+KeyValueBind.m */; };
@@ -184,15 +181,9 @@
 		4A51505C1F2F2402004BA79C /* CTPersistanceTestDelete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestDelete.m; sourceTree = "<group>"; };
 		4A532C9A1F37FDCE0074BA46 /* CTPersistanceTestCriteria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestCriteria.m; sourceTree = "<group>"; };
 		4A532C9C1F3804BF0074BA46 /* CTPersistanceTestAsync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestAsync.m; sourceTree = "<group>"; };
-		4A532CA81F3C4F750074BA46 /* Target_CTPersistanceConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_CTPersistanceConfiguration.h; sourceTree = "<group>"; };
-		4A532CA91F3C4F750074BA46 /* Target_CTPersistanceConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_CTPersistanceConfiguration.m; sourceTree = "<group>"; };
+		4A532CAD1F3C59520074BA46 /* Target_CTPersistanceConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_CTPersistanceConfiguration.h; sourceTree = "<group>"; };
+		4A532CAE1F3C59520074BA46 /* Target_CTPersistanceConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_CTPersistanceConfiguration.m; sourceTree = "<group>"; };
 		4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestMigration.m; sourceTree = "<group>"; };
-		4A9A9DDF1F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_MigrationTestDatabase_version1_sqlite.h; sourceTree = "<group>"; };
-		4A9A9DE01F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_MigrationTestDatabase_version1_sqlite.m; sourceTree = "<group>"; };
-		4A9A9DE21F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_MigrationTestDatabase_version2_sqlite.h; sourceTree = "<group>"; };
-		4A9A9DE31F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_MigrationTestDatabase_version2_sqlite.m; sourceTree = "<group>"; };
-		4A9A9DE51F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_MigrationTestDatabase_version3_sqlite.h; sourceTree = "<group>"; };
-		4A9A9DE61F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_MigrationTestDatabase_version3_sqlite.m; sourceTree = "<group>"; };
 		4A9A9DF21F32D06F00090F73 /* TestMiagratorVersion_1_to_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMiagratorVersion_1_to_2.h; sourceTree = "<group>"; };
 		4A9A9DF31F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMiagratorVersion_1_to_2.m; sourceTree = "<group>"; };
 		4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestFind.m; sourceTree = "<group>"; };
@@ -268,8 +259,6 @@
 				4A0E002C1F2C384E00E6A4DA /* AppDelegate.m */,
 				4A0E002E1F2C384E00E6A4DA /* ViewController.h */,
 				4A0E002F1F2C384E00E6A4DA /* ViewController.m */,
-				4A532CA81F3C4F750074BA46 /* Target_CTPersistanceConfiguration.h */,
-				4A532CA91F3C4F750074BA46 /* Target_CTPersistanceConfiguration.m */,
 				4A0E00311F2C384E00E6A4DA /* Main.storyboard */,
 				4A0E00341F2C384E00E6A4DA /* Assets.xcassets */,
 				4A0E00361F2C384E00E6A4DA /* LaunchScreen.storyboard */,
@@ -291,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				4A0E00C71F2DAB5000E6A4DA /* TestRecord.png */,
+				4A532CAC1F3C59520074BA46 /* ConfigurationTarget */,
 				4A0E00B71F2CC25A00E6A4DA /* TestModel */,
 				4A0E00B31F2CBDBD00E6A4DA /* CTPersistanceTestInsert.m */,
 				4A0E00C91F2DBBB400E6A4DA /* CTPersistanceTestUpdate.m */,
@@ -723,6 +713,15 @@
 			path = TestTableVersion4;
 			sourceTree = "<group>";
 		};
+		4A532CAC1F3C59520074BA46 /* ConfigurationTarget */ = {
+			isa = PBXGroup;
+			children = (
+				4A532CAD1F3C59520074BA46 /* Target_CTPersistanceConfiguration.h */,
+				4A532CAE1F3C59520074BA46 /* Target_CTPersistanceConfiguration.m */,
+			);
+			path = ConfigurationTarget;
+			sourceTree = "<group>";
+		};
 		4A7844C41F32C1F500CF4809 /* MigrationTestModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -737,19 +736,8 @@
 			children = (
 				4A9A9DEB1F32D03700090F73 /* Migrators */,
 				4A9A9DD71F32CC8C00090F73 /* MigrationSteps */,
-				4A9A9DD01F32CBE300090F73 /* Target */,
 			);
 			path = Migrator;
-			sourceTree = "<group>";
-		};
-		4A9A9DD01F32CBE300090F73 /* Target */ = {
-			isa = PBXGroup;
-			children = (
-				4A9A9DDB1F32CCA100090F73 /* Version1 */,
-				4A9A9DDC1F32CCA100090F73 /* Version2 */,
-				4A9A9DDD1F32CCA100090F73 /* Version3 */,
-			);
-			path = Target;
 			sourceTree = "<group>";
 		};
 		4A9A9DD71F32CC8C00090F73 /* MigrationSteps */ = {
@@ -787,33 +775,6 @@
 				4A17A9741F32D46A009356D7 /* MigrationStep_4.m */,
 			);
 			path = Version4;
-			sourceTree = "<group>";
-		};
-		4A9A9DDB1F32CCA100090F73 /* Version1 */ = {
-			isa = PBXGroup;
-			children = (
-				4A9A9DDF1F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.h */,
-				4A9A9DE01F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.m */,
-			);
-			path = Version1;
-			sourceTree = "<group>";
-		};
-		4A9A9DDC1F32CCA100090F73 /* Version2 */ = {
-			isa = PBXGroup;
-			children = (
-				4A9A9DE21F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.h */,
-				4A9A9DE31F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.m */,
-			);
-			path = Version2;
-			sourceTree = "<group>";
-		};
-		4A9A9DDD1F32CCA100090F73 /* Version3 */ = {
-			isa = PBXGroup;
-			children = (
-				4A9A9DE51F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.h */,
-				4A9A9DE61F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.m */,
-			);
-			path = Version3;
 			sourceTree = "<group>";
 		};
 		4A9A9DEB1F32D03700090F73 /* Migrators */ = {
@@ -1132,7 +1093,6 @@
 				4A0E00A51F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,
 				4A0E009B1F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.m in Sources */,
 				4A0E00AA1F2CBD6300E6A4DA /* CTPersistanceRecord.m in Sources */,
-				4A532CAB1F3C51250074BA46 /* Target_CTPersistanceConfiguration.m in Sources */,
 				4A0E00301F2C384E00E6A4DA /* ViewController.m in Sources */,
 				4A0E00A81F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.m in Sources */,
 				4A0E00A21F2CBD6300E6A4DA /* CTPersistanceMigrator.m in Sources */,
@@ -1173,7 +1133,6 @@
 				4A0E00BF1F2CC25A00E6A4DA /* TestRecord.m in Sources */,
 				4AB165E81F302AA60043E6A2 /* CTPersistanceTestFind.m in Sources */,
 				4A17A9981F32F392009356D7 /* TestTableVersion3.m in Sources */,
-				4A9A9DE11F32CCC400090F73 /* Target_MigrationTestDatabase_version1_sqlite.m in Sources */,
 				4A7844C31F32BD6700CF4809 /* CTPersistanceTestMigration.m in Sources */,
 				4A532C9B1F37FDCE0074BA46 /* CTPersistanceTestCriteria.m in Sources */,
 				4A17A9721F32D461009356D7 /* MigrationStep_3.m in Sources */,
@@ -1184,13 +1143,12 @@
 				4A532C9D1F3804BF0074BA46 /* CTPersistanceTestAsync.m in Sources */,
 				4A17A9931F32F392009356D7 /* TestRecordVersion1.m in Sources */,
 				4A17A99A1F32F392009356D7 /* TestTableVersion4.m in Sources */,
+				4A532CAF1F3C59520074BA46 /* Target_CTPersistanceConfiguration.m in Sources */,
 				4A51505D1F2F2402004BA79C /* CTPersistanceTestDelete.m in Sources */,
 				4A17A9691F32D0B5009356D7 /* TestMiagratorVersion_2_to_4.m in Sources */,
 				4A17A9751F32D46A009356D7 /* MigrationStep_4.m in Sources */,
 				4A17A9991F32F392009356D7 /* TestRecordVersion4.m in Sources */,
 				4A0E00CA1F2DBBB400E6A4DA /* CTPersistanceTestUpdate.m in Sources */,
-				4A9A9DE41F32CCDE00090F73 /* Target_MigrationTestDatabase_version2_sqlite.m in Sources */,
-				4A9A9DE71F32CCEA00090F73 /* Target_MigrationTestDatabase_version3_sqlite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

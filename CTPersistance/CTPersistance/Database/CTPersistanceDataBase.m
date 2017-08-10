@@ -32,6 +32,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
 {
     self = [super init];
     if (self) {
+
         self.databaseName = databaseName;
         self.databaseFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:databaseName];
 
@@ -41,7 +42,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
             [defaultFileManager createDirectoryAtPath:checkFilePath withIntermediateDirectories:YES attributes:nil error:nil];
         }
         
-        BOOL isFileExists = [defaultFileManager fileExistsAtPath:self.databaseFilePath];
+        BOOL isFileExistsBefore = [defaultFileManager fileExistsAtPath:self.databaseFilePath];
 
         const char *path = [self.databaseFilePath UTF8String];
         int result = sqlite3_open_v2(path, &(_database),
@@ -75,7 +76,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
             sqlite3_key(_database, [secretKey UTF8String], (int)secretKey.length);
         }
         
-        if (isFileExists == NO) {
+        if (isFileExistsBefore == NO) {
             CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:self];
             [[queryCommand createTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo]] executeWithError:NULL];
             [[queryCommand insertTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo] dataList:@[@{@"databaseVersion":kCTPersistanceInitVersion}] error:NULL] executeWithError:NULL];
@@ -97,7 +98,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
 - (void)closeDatabase
 {
     sqlite3_close_v2(self.database);
-    self.database = 0x00;
+    self.database = NULL;
     self.databaseFilePath = nil;
 }
 
@@ -105,8 +106,10 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
 - (CTPersistanceMigrator *)migrator
 {
     if (_migrator == nil) {
-        NSString *targetName = [self.databaseName stringByReplacingOccurrencesOfString:@"." withString:@"_"];
-        _migrator = [[CTMediator sharedInstance] performTarget:targetName action:@"fetchMigrator" params:nil shouldCacheTarget:NO];
+        _migrator = [[CTMediator sharedInstance] performTarget:@"CTPersistanceConfiguration"
+                                                        action:@"fetchMigrator"
+                                                        params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:self.databaseName}
+                                             shouldCacheTarget:NO];
     }
     return _migrator;
 }

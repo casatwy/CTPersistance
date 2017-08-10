@@ -42,7 +42,8 @@ extern NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName;
 
 @protocol CTPersistanceConfigurationTarget <NSObject>
 
--(NSString *)Action_secretKey:(NSDictionary *)params;
+- (CTPersistanceMigrator *)Action_fetchMigrator:(NSDictionary *)params;
+- (NSString *)Action_secretKey:(NSDictionary *)params;
 
 @end
 

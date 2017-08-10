@@ -65,12 +65,6 @@ extern NSString * const kCTPersistanceInitVersion;
 
 @end
 
-@protocol CTPersistanceMigratorTarget <NSObject>
-
-- (CTPersistanceMigrator *)Action_fetchMigrator:(NSDictionary *)params;
-
-@end
-
 /**
  *  You should create your own migrator object which must extend from CTPersistanceMigrator and confirms to this <CTPersistanceMigratorProtocol>, or migration won't work.
  */

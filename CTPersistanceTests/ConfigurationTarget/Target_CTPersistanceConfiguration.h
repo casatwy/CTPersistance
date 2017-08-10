@@ -11,6 +11,7 @@
 
 @interface Target_CTPersistanceConfiguration : NSObject <CTPersistanceConfigurationTarget>
 
--(NSString *)Action_secretKey:(NSDictionary *)params;
+- (CTPersistanceMigrator *)Action_fetchMigrator:(NSDictionary *)params;
+- (NSString *)Action_secretKey:(NSDictionary *)params;
 
 @end
