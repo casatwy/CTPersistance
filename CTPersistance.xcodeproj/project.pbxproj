@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A0238721F3F14E800EE91C7 /* AsyncTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0238711F3F14E800EE91C7 /* AsyncTestViewController.m */; };
 		4A0E002A1F2C384E00E6A4DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00291F2C384E00E6A4DA /* main.m */; };
 		4A0E002D1F2C384E00E6A4DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E002C1F2C384E00E6A4DA /* AppDelegate.m */; };
 		4A0E00301F2C384E00E6A4DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E002F1F2C384E00E6A4DA /* ViewController.m */; };
@@ -57,7 +58,6 @@
 		4A17A99A1F32F392009356D7 /* TestTableVersion4.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A17A9921F32F392009356D7 /* TestTableVersion4.m */; };
 		4A51505D1F2F2402004BA79C /* CTPersistanceTestDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A51505C1F2F2402004BA79C /* CTPersistanceTestDelete.m */; };
 		4A532C9B1F37FDCE0074BA46 /* CTPersistanceTestCriteria.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A532C9A1F37FDCE0074BA46 /* CTPersistanceTestCriteria.m */; };
-		4A532C9D1F3804BF0074BA46 /* CTPersistanceTestAsync.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A532C9C1F3804BF0074BA46 /* CTPersistanceTestAsync.m */; };
 		4A532CAF1F3C59520074BA46 /* Target_CTPersistanceConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A532CAE1F3C59520074BA46 /* Target_CTPersistanceConfiguration.m */; };
 		4A7844C31F32BD6700CF4809 /* CTPersistanceTestMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */; };
 		4A9A9DF41F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DF31F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m */; };
@@ -82,6 +82,8 @@
 /* Begin PBXFileReference section */
 		0E3659C0BE44F61448420F54 /* Pods-CTPersistance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistance.release.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistance/Pods-CTPersistance.release.xcconfig"; sourceTree = "<group>"; };
 		24975DE09A62B809BFED181C /* libPods-CTPersistance.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CTPersistance.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A0238701F3F14E800EE91C7 /* AsyncTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncTestViewController.h; sourceTree = "<group>"; };
+		4A0238711F3F14E800EE91C7 /* AsyncTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncTestViewController.m; sourceTree = "<group>"; };
 		4A0E00251F2C384E00E6A4DA /* CTPersistance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CTPersistance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A0E00291F2C384E00E6A4DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4A0E002B1F2C384E00E6A4DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -180,7 +182,6 @@
 		4A17A9921F32F392009356D7 /* TestTableVersion4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableVersion4.m; sourceTree = "<group>"; };
 		4A51505C1F2F2402004BA79C /* CTPersistanceTestDelete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestDelete.m; sourceTree = "<group>"; };
 		4A532C9A1F37FDCE0074BA46 /* CTPersistanceTestCriteria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestCriteria.m; sourceTree = "<group>"; };
-		4A532C9C1F3804BF0074BA46 /* CTPersistanceTestAsync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestAsync.m; sourceTree = "<group>"; };
 		4A532CAD1F3C59520074BA46 /* Target_CTPersistanceConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_CTPersistanceConfiguration.h; sourceTree = "<group>"; };
 		4A532CAE1F3C59520074BA46 /* Target_CTPersistanceConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_CTPersistanceConfiguration.m; sourceTree = "<group>"; };
 		4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestMigration.m; sourceTree = "<group>"; };
@@ -231,6 +232,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4A02386E1F3F14C700EE91C7 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				4A02386F1F3F14C700EE91C7 /* AsyncTestViewController */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		4A02386F1F3F14C700EE91C7 /* AsyncTestViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4A0238701F3F14E800EE91C7 /* AsyncTestViewController.h */,
+				4A0238711F3F14E800EE91C7 /* AsyncTestViewController.m */,
+			);
+			path = AsyncTestViewController;
+			sourceTree = "<group>";
+		};
 		4A0E001C1F2C384E00E6A4DA = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +277,7 @@
 				4A0E002C1F2C384E00E6A4DA /* AppDelegate.m */,
 				4A0E002E1F2C384E00E6A4DA /* ViewController.h */,
 				4A0E002F1F2C384E00E6A4DA /* ViewController.m */,
+				4A02386E1F3F14C700EE91C7 /* Demo */,
 				4A0E00311F2C384E00E6A4DA /* Main.storyboard */,
 				4A0E00341F2C384E00E6A4DA /* Assets.xcassets */,
 				4A0E00361F2C384E00E6A4DA /* LaunchScreen.storyboard */,
@@ -288,7 +307,6 @@
 				4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */,
 				4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */,
 				4A532C9A1F37FDCE0074BA46 /* CTPersistanceTestCriteria.m */,
-				4A532C9C1F3804BF0074BA46 /* CTPersistanceTestAsync.m */,
 				4A7844C41F32C1F500CF4809 /* MigrationTestModel */,
 				4A0E00441F2C384E00E6A4DA /* Info.plist */,
 			);
@@ -1110,6 +1128,7 @@
 				4ACE635B1F340E54007F3E6D /* NSDictionary+KeyValueBind.m in Sources */,
 				4A0E00AD1F2CBD6300E6A4DA /* CTPersistanceTable+Insert.m in Sources */,
 				4ADFAB681F3316A0008EA281 /* CTPersistanceTable+Schema.m in Sources */,
+				4A0238721F3F14E800EE91C7 /* AsyncTestViewController.m in Sources */,
 				4A0E00A11F2CBD6300E6A4DA /* CTPersistanceDatabasePool.m in Sources */,
 				4A0E00AC1F2CBD6300E6A4DA /* CTPersistanceTable+Find.m in Sources */,
 				4A0E00A01F2CBD6300E6A4DA /* CTPersistanceDataBase.m in Sources */,
@@ -1140,7 +1159,6 @@
 				4A17A9961F32F392009356D7 /* TestTableVersion2.m in Sources */,
 				4A0E00B41F2CBDBD00E6A4DA /* CTPersistanceTestInsert.m in Sources */,
 				4A0E00C01F2CC25A00E6A4DA /* TestTable.m in Sources */,
-				4A532C9D1F3804BF0074BA46 /* CTPersistanceTestAsync.m in Sources */,
 				4A17A9931F32F392009356D7 /* TestRecordVersion1.m in Sources */,
 				4A17A99A1F32F392009356D7 /* TestTableVersion4.m in Sources */,
 				4A532CAF1F3C59520074BA46 /* Target_CTPersistanceConfiguration.m in Sources */,
