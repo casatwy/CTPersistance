@@ -32,8 +32,7 @@
 
         _isFromMigration = NO;
         NSError *error = nil;
-        CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:self.child.databaseName];
-        [[queryCommand createTable:self.child.tableName columnInfo:self.child.columnInfo] executeWithError:&error];
+        [[self.queryCommand createTable:self.child.tableName columnInfo:self.child.columnInfo] executeWithError:&error];
         if (error) {
             NSLog(@"Error at [%s]:[%d]:%@", __FILE__, __LINE__, error);
         }

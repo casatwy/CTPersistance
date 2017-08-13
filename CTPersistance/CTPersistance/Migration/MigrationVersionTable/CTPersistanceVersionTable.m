@@ -83,10 +83,7 @@
 #pragma mark - getters and setters
 - (CTPersistanceQueryCommand *)queryCommand
 {
-    if (_queryCommand == nil) {
-        _queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:self.database];
-        [[_queryCommand createTable:[self.child tableName] columnInfo:[self.child columnInfo]] executeWithError:NULL];
-    }
+    _queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:self.database];
     return _queryCommand;
 }
 

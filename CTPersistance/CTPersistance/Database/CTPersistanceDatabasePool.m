@@ -39,18 +39,20 @@
     if (databaseName == nil) {
         return nil;
     }
-    
-    if (self.databaseList[databaseName] == nil) {
+
+    NSString *key = [NSString stringWithFormat:@"%@ - %@", [NSThread currentThread], databaseName];
+    if (self.databaseList[key] == nil) {
+        NSLog(@"%@", key);
         NSError *error = nil;
         CTPersistanceDataBase *databaseInstance = [[CTPersistanceDataBase alloc] initWithDatabaseName:databaseName error:&error];
         if (error) {
             NSLog(@"Error at %s:[%d]:%@", __FILE__, __LINE__, error);
         } else {
-            self.databaseList[databaseName] = databaseInstance;
+            self.databaseList[key] = databaseInstance;
         }
     }
     
-    return self.databaseList[databaseName];
+    return self.databaseList[key];
 }
 
 - (void)closeAllDatabase

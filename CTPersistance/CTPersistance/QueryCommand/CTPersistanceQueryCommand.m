@@ -152,7 +152,9 @@
         self.statement = nil;
         NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(self.database.database)];
         NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", sqlString, errorMessage]}];
-        *error = generatedError;
+        if (error != NULL) {
+            *error = generatedError;
+        }
         NSLog(@"error is %@", errorMessage);
         sqlite3_finalize(statement);
         return nil;
