@@ -10,7 +10,11 @@
 
 @interface CTPersistanceAsyncExecutor ()
 
-@property (nonatomic, unsafe_unretained) dispatch_queue_t queue;
+#if OS_OBJECT_HAVE_OBJC_SUPPORT == 1
+@property (nonatomic, strong) dispatch_queue_t queue;
+#else
+@property (nonatomic, assign) dispatch_queue_t queue;
+#endif
 
 @end
 
@@ -39,12 +43,16 @@
 #pragma mark - public methods
 - (void)write:(void (^)(void))writeAction
 {
-    dispatch_barrier_async(self.queue, writeAction);
+    dispatch_barrier_async(self.queue, ^{
+        writeAction();
+    });
 }
 
 - (void)read:(void (^)(void))readAction
 {
-    dispatch_async(self.queue, readAction);
+    dispatch_async(self.queue, ^{
+        readAction();
+    });
 }
 
 @end

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CTPersistanceDataBase.h"
 #import <sqlite3.h>
+#import "CTPersistanceSqlStatement.h"
 
 /**
  *  CTPersistanceQueryCommand is a SQL builder for CTPersistance
@@ -47,23 +48,7 @@
  */
 - (instancetype)initWithDatabase:(CTPersistanceDataBase *)database;
 
-/**
- *  execute SQL with sqlString
- *
- *  @param error error if fails
- *
- *  @return return NO if fails, and YES for success
- */
-- (BOOL)executeWithError:(NSError **)error;
 
-/**
- *  fetch data with sqlString
- *
- *  @param error error if fails
- *
- *  @return return fetched data list
- */
-- (NSArray <NSDictionary *> *)fetchWithError:(NSError **)error;
 
 /**
  *  compile sql string for future use
@@ -75,6 +60,6 @@
  *  @return return fetched data list
  *
  */
-- (CTPersistanceQueryCommand *)compileSqlString:(NSString *)sqlString bindValueList:(NSArray <NSInvocation *> *)bindValueList error:(NSError **)error;
+- (CTPersistanceSqlStatement *)compileSqlString:(NSString *)sqlString bindValueList:(NSArray <NSInvocation *> *)bindValueList error:(NSError **)error;
 
 @end

@@ -18,7 +18,7 @@
  *
  *  @return return CTPersistanceQueryCommand
  */
-- (CTPersistanceQueryCommand *)createTable:(NSString *)tableName columnInfo:(NSDictionary *)columnInfo;
+- (CTPersistanceSqlStatement *)createTable:(NSString *)tableName columnInfo:(NSDictionary *)columnInfo;
 
 /**
  *  drop table with table name
@@ -27,7 +27,7 @@
  *
  *  @return return CTPersistanceQueryCommnad
  */
-- (CTPersistanceQueryCommand *)dropTable:(NSString *)tableName;
+- (CTPersistanceSqlStatement *)dropTable:(NSString *)tableName;
 
 /**
  *  add column with column name and column infomation and name of table
@@ -38,7 +38,7 @@
  *
  *  @return return CTPersistanceQueryCommnad
  */
-- (CTPersistanceQueryCommand *)addColumn:(NSString *)columnName columnInfo:(NSString *)columnInfo tableName:(NSString *)tableName;
+- (CTPersistanceSqlStatement *)addColumn:(NSString *)columnName columnInfo:(NSString *)columnInfo tableName:(NSString *)tableName;
 
 /**
  *  create Index for table with indexed column list and condition with condition params.
@@ -52,7 +52,7 @@
  *
  *  @return return CTPerisistanceQueryCommand
  */
-- (CTPersistanceQueryCommand *)createIndex:(NSString *)indexName tableName:(NSString *)tableName indexedColumnList:(NSArray *)indexedColumnList condition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams isUnique:(BOOL)isUnique;
+- (CTPersistanceSqlStatement *)createIndex:(NSString *)indexName tableName:(NSString *)tableName indexedColumnList:(NSArray *)indexedColumnList condition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams isUnique:(BOOL)isUnique;
 
 /**
  *  drop index with index name
@@ -61,7 +61,7 @@
  *
  *  @return return CTPersisitanceQueryCommand
  */
-- (CTPersistanceQueryCommand *)dropIndex:(NSString *)indexName;
+- (CTPersistanceSqlStatement *)dropIndex:(NSString *)indexName;
 
 /**
  *  show the structure of a table
@@ -70,6 +70,6 @@
  *
  *  @return return CTPersisitanceQueryCommand
  */
-- (CTPersistanceQueryCommand *)columnInfoWithTableName:(NSString *)tableName;
+- (CTPersistanceSqlStatement *)columnInfoWithTableName:(NSString *)tableName;
 
 @end

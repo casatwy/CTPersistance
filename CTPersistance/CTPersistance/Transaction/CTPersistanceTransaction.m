@@ -38,18 +38,18 @@
             break;
         }
     }
-    [queryCommand executeWithError:NULL];
-    
-    BOOL shouldRollback = NO;
-    transactionBlock(&shouldRollback);
-
-    if (shouldRollback) {
-//        [queryCommand.sqlString appendString:@"ROLLBACK TRANSACTION"];
-        [queryCommand executeWithError:NULL];
-    } else {
-//        [queryCommand.sqlString appendString:@"COMMIT TRANSACTION"];
-        [queryCommand executeWithError:NULL];
-    }
+//    [queryCommand executeWithError:NULL];
+//    
+//    BOOL shouldRollback = NO;
+//    transactionBlock(&shouldRollback);
+//
+//    if (shouldRollback) {
+////        [queryCommand.sqlString appendString:@"ROLLBACK TRANSACTION"];
+//        [queryCommand executeWithError:NULL];
+//    } else {
+////        [queryCommand.sqlString appendString:@"COMMIT TRANSACTION"];
+//        [queryCommand executeWithError:NULL];
+//    }
 }
 
 @end

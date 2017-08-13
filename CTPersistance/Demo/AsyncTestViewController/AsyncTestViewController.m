@@ -12,6 +12,8 @@
 #import "TestTable.h"
 #import "TestRecord.h"
 
+#define COUNT 100
+
 @interface AsyncTestViewController ()
 
 @property (nonatomic, strong) TestTable *testTable;
@@ -23,8 +25,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
 
-    NSInteger count = 100;
+    [self.testTable truncate];
+    NSInteger count = COUNT;
     while (count --> 0) {
         TestRecord *record = [[TestRecord alloc] init];
         record.name = @"casa";
@@ -39,14 +43,14 @@
     [super viewWillAppear:animated];
 
     [[CTPersistanceAsyncExecutor sharedInstance] read:^{
-        NSInteger count = 98;
+        NSInteger count = COUNT;
         while (count --> 0) {
             TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:@(count) error:NULL];
             NSLog(@"%@", record.primaryKey);
         }
     }];
 
-    NSInteger count = 98;
+    NSInteger count = COUNT;
     while (count --> 0) {
         [[CTPersistanceAsyncExecutor sharedInstance] read:^{
             TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:@(count) error:NULL];
@@ -55,14 +59,14 @@
     }
 
     [[CTPersistanceAsyncExecutor sharedInstance] write:^{
-        NSInteger count = 100;
+        NSInteger count = COUNT;
         while (count --> 0) {
             NSNumber *primaryKey = [self.testTable insertValue:@"casa" forKey:@"name" error:NULL];
             NSLog(@"%@", primaryKey);
         }
     }];
 
-    count = 98;
+    count = COUNT;
     while (count --> 0) {
         [[CTPersistanceAsyncExecutor sharedInstance] read:^{
             TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:@(count) error:NULL];
@@ -70,15 +74,15 @@
         }];
     }
 
-    count = 98;
+    count = COUNT;
     while (count --> 0) {
-        [[CTPersistanceAsyncExecutor sharedInstance] read:^{
+        [[CTPersistanceAsyncExecutor sharedInstance] write:^{
             NSNumber *primaryKey = [self.testTable insertValue:@"casa" forKey:@"name" error:NULL];
             NSLog(@"%@", primaryKey);
         }];
     }
 
-    count = 98;
+    count = COUNT;
     while (count --> 0) {
         [[CTPersistanceAsyncExecutor sharedInstance] read:^{
             TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:@(count) error:NULL];

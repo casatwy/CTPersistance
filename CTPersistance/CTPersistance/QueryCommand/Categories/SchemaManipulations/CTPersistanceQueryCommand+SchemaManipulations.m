@@ -15,10 +15,10 @@
 
 @implementation CTPersistanceQueryCommand (SchemaManipulations)
 
-- (CTPersistanceQueryCommand *)createTable:(NSString *)tableName columnInfo:(NSDictionary *)columnInfo
+- (CTPersistanceSqlStatement *)createTable:(NSString *)tableName columnInfo:(NSDictionary *)columnInfo
 {
     if (CTPersistance_isEmptyString(tableName)) {
-        return self;
+        return nil;
     }
     
     NSMutableArray *columnList = [[NSMutableArray alloc] init];
@@ -38,17 +38,17 @@
     return [self compileSqlString:sqlString bindValueList:nil error:NULL];
 }
 
-- (CTPersistanceQueryCommand *)dropTable:(NSString *)tableName
+- (CTPersistanceSqlStatement *)dropTable:(NSString *)tableName
 {
     if (CTPersistance_isEmptyString(tableName)) {
-        return self;
+        return nil;
     }
     NSString *sqlString = [NSString stringWithFormat:@"DROP TABLE IF EXISTS `%@`;", tableName];
 
     return [self compileSqlString:sqlString bindValueList:nil error:NULL];
 }
 
-- (CTPersistanceQueryCommand *)createIndex:(NSString *)indexName
+- (CTPersistanceSqlStatement *)createIndex:(NSString *)indexName
                                  tableName:(NSString *)tableName
                          indexedColumnList:(NSArray *)indexedColumnList
                                  condition:(NSString *)condition
@@ -57,7 +57,7 @@
 {
 #warning todo need test
     if (CTPersistance_isEmptyString(tableName) || CTPersistance_isEmptyString(indexName) || indexedColumnList == nil) {
-        return self;
+        return nil;
     }
     
     NSMutableArray <NSInvocation *> *bindValueList = [[NSMutableArray alloc] init];
@@ -81,7 +81,7 @@
     return [self compileSqlString:sqlString bindValueList:bindValueList error:NULL];
 }
 
-- (CTPersistanceQueryCommand *)dropIndex:(NSString *)indexName
+- (CTPersistanceSqlStatement *)dropIndex:(NSString *)indexName
 {
 #warning todo need test
     NSString *sqlString = [NSString stringWithFormat:@"DROP INDEX IF EXISTS `%@`;", indexName];
@@ -89,10 +89,10 @@
     return [self compileSqlString:sqlString bindValueList:nil error:NULL];
 }
 
-- (CTPersistanceQueryCommand *)addColumn:(NSString *)columnName columnInfo:(NSString *)columnInfo tableName:(NSString *)tableName
+- (CTPersistanceSqlStatement *)addColumn:(NSString *)columnName columnInfo:(NSString *)columnInfo tableName:(NSString *)tableName
 {
     if (CTPersistance_isEmptyString(tableName) || CTPersistance_isEmptyString(columnInfo) || CTPersistance_isEmptyString(columnName)) {
-        return self;
+        return nil;
     }
     
     NSString *sqlString = [NSString stringWithFormat:@"ALTER TABLE `%@` ADD COLUMN `%@` %@;", tableName, columnName, columnInfo];
@@ -100,7 +100,7 @@
     return [self compileSqlString:sqlString bindValueList:nil error:NULL];
 }
 
-- (CTPersistanceQueryCommand *)columnInfoWithTableName:(NSString *)tableName
+- (CTPersistanceSqlStatement *)columnInfoWithTableName:(NSString *)tableName
 {
     NSString *sqlString = [NSString stringWithFormat:@"PRAGMA table_info(`%@`);", tableName];
     return [self compileSqlString:sqlString bindValueList:nil error:NULL];
