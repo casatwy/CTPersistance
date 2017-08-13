@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4A0238721F3F14E800EE91C7 /* AsyncTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0238711F3F14E800EE91C7 /* AsyncTestViewController.m */; };
+		4A0238731F3FFBA300EE91C7 /* TestRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00BA1F2CC25A00E6A4DA /* TestRecord.m */; };
+		4A0238741F3FFBA800EE91C7 /* TestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00BE1F2CC25A00E6A4DA /* TestTable.m */; };
 		4A0E002A1F2C384E00E6A4DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00291F2C384E00E6A4DA /* main.m */; };
 		4A0E002D1F2C384E00E6A4DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E002C1F2C384E00E6A4DA /* AppDelegate.m */; };
 		4A0E00301F2C384E00E6A4DA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E002F1F2C384E00E6A4DA /* ViewController.m */; };
@@ -1124,6 +1126,7 @@
 				4A0E002D1F2C384E00E6A4DA /* AppDelegate.m in Sources */,
 				4A0E00A41F2CBD6300E6A4DA /* CTPersistanceVersionRecord.m in Sources */,
 				4A0E009F1F2CBD6300E6A4DA /* CTPersistanceCriteria.m in Sources */,
+				4A0238741F3FFBA800EE91C7 /* TestTable.m in Sources */,
 				4A0E002A1F2C384E00E6A4DA /* main.m in Sources */,
 				4ACE635B1F340E54007F3E6D /* NSDictionary+KeyValueBind.m in Sources */,
 				4A0E00AD1F2CBD6300E6A4DA /* CTPersistanceTable+Insert.m in Sources */,
@@ -1133,6 +1136,7 @@
 				4A0E00AC1F2CBD6300E6A4DA /* CTPersistanceTable+Find.m in Sources */,
 				4A0E00A01F2CBD6300E6A4DA /* CTPersistanceDataBase.m in Sources */,
 				4A0E00A91F2CBD6300E6A4DA /* CTPersistanceQueryCommand.m in Sources */,
+				4A0238731F3FFBA300EE91C7 /* TestRecord.m in Sources */,
 				4A0E00AF1F2CBD6300E6A4DA /* CTPersistanceTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

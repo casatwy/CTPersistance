@@ -10,7 +10,7 @@
 
 @interface CTPersistanceAsyncExecutor ()
 
-@property (nonatomic, strong) NSOperationQueue *operationQueue;
+@property (nonatomic, unsafe_unretained) dispatch_queue_t queue;
 
 @end
 
@@ -31,34 +31,20 @@
 {
     self = [super init];
     if (self) {
-        [self operationQueue];
+        self.queue = dispatch_queue_create("CTPersistanceAsyncThread", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }
 
-- (void)performAsyncAction:(void (^)(void))action shouldWaitUntilDone:(BOOL)shouldWaitUntilDone
+#pragma mark - public methods
+- (void)write:(void (^)(void))writeAction
 {
-    __block volatile BOOL shouldWait = shouldWaitUntilDone;
-    
-    NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
-        action();
-        shouldWait = NO;
-    }];
-    
-    [self.operationQueue addOperation:operation];
-    
-    while (shouldWait) {
-    }
+    dispatch_barrier_async(self.queue, writeAction);
 }
 
-#pragma mark - getters and setters
-- (NSOperationQueue *)operationQueue
+- (void)read:(void (^)(void))readAction
 {
-    if (_operationQueue == nil) {
-        _operationQueue = [[NSOperationQueue alloc] init];
-        _operationQueue.maxConcurrentOperationCount = 1;
-    }
-    return _operationQueue;
+    dispatch_async(self.queue, readAction);
 }
 
 @end

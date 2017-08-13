@@ -20,14 +20,8 @@
  */
 + (instancetype)sharedInstance;
 
-/**
- *  perform aync action.
- *
- *  you must always create CTPersistanceTable in action block, do not use outside table instance in this block.
- *
- *  @param action              the action block to be performed
- *  @param shouldWaitUntilDone if YES, this method will not end until action block has finished.
- */
-- (void)performAsyncAction:(void (^)(void))action shouldWaitUntilDone:(BOOL)shouldWaitUntilDone;
+- (void)write:(void (^)(void))writeAction;
+
+- (void)read:(void (^)(void))readAction;
 
 @end

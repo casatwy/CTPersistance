@@ -14,7 +14,7 @@ extern NSString * const kCTPersistanceMigrationTestCaseVersionKey;
 
 - (NSString *)Action_secretKey:(NSDictionary *)params
 {
-    return @"casa";
+    return nil;
 }
 
 - (CTPersistanceMigrator *)Action_fetchMigrator:(NSDictionary *)params
