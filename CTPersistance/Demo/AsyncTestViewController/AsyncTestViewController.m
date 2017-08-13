@@ -12,7 +12,7 @@
 #import "TestTable.h"
 #import "TestRecord.h"
 
-#define COUNT 100
+#define COUNT 1000
 
 @interface AsyncTestViewController ()
 

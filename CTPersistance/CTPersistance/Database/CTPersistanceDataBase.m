@@ -48,7 +48,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
         int result = sqlite3_open_v2(path, &(_database),
                                      SQLITE_OPEN_CREATE |
                                      SQLITE_OPEN_READWRITE |
-                                     SQLITE_OPEN_FULLMUTEX |
+                                     SQLITE_OPEN_NOMUTEX |
                                      SQLITE_OPEN_SHAREDCACHE,
                                      NULL);
 
