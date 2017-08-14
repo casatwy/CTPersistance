@@ -7,7 +7,6 @@
 //
 
 #import "CTPersistanceTable+Update.h"
-#import <UIKit/UIKit.h>
 
 #import "CTPersistanceQueryCommand+DataManipulations.h"
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"

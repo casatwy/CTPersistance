@@ -19,7 +19,6 @@
 		4A0E004F1F2C388200E6A4DA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A0E004E1F2C388200E6A4DA /* libsqlite3.tbd */; };
 		4A0E009B1F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00531F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.m */; };
 		4A0E009C1F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00581F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m */; };
-		4A0E009F1F2CBD6300E6A4DA /* CTPersistanceCriteria.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00621F2CBD6300E6A4DA /* CTPersistanceCriteria.m */; };
 		4A0E00A01F2CBD6300E6A4DA /* CTPersistanceDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00681F2CBD6300E6A4DA /* CTPersistanceDataBase.m */; };
 		4A0E00A11F2CBD6300E6A4DA /* CTPersistanceDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E006A1F2CBD6300E6A4DA /* CTPersistanceDatabasePool.m */; };
 		4A0E00A21F2CBD6300E6A4DA /* CTPersistanceMigrator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E006D1F2CBD6300E6A4DA /* CTPersistanceMigrator.m */; };
@@ -104,8 +103,6 @@
 		4A0E00531F2CBD6300E6A4DA /* CTPersistanceAsyncExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceAsyncExecutor.m; sourceTree = "<group>"; };
 		4A0E00571F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CTPersistanceRecordTransform.h"; sourceTree = "<group>"; };
 		4A0E00581F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CTPersistanceRecordTransform.m"; sourceTree = "<group>"; };
-		4A0E00611F2CBD6300E6A4DA /* CTPersistanceCriteria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceCriteria.h; sourceTree = "<group>"; };
-		4A0E00621F2CBD6300E6A4DA /* CTPersistanceCriteria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceCriteria.m; sourceTree = "<group>"; };
 		4A0E00631F2CBD6300E6A4DA /* CTPersistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistance.h; sourceTree = "<group>"; };
 		4A0E00641F2CBD6300E6A4DA /* CTPersistanceConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceConfiguration.h; sourceTree = "<group>"; };
 		4A0E00651F2CBD6300E6A4DA /* CTPersistanceMarcos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceMarcos.h; sourceTree = "<group>"; };
@@ -336,7 +333,6 @@
 				4A0E00651F2CBD6300E6A4DA /* CTPersistanceMarcos.h */,
 				4A0E00511F2CBD6300E6A4DA /* Async */,
 				4A0E00541F2CBD6300E6A4DA /* Categories */,
-				4A0E00601F2CBD6300E6A4DA /* Criteria */,
 				4A0E00661F2CBD6300E6A4DA /* Database */,
 				4A0E006B1F2CBD6300E6A4DA /* Migration */,
 				4A0E00741F2CBD6300E6A4DA /* QueryCommand */,
@@ -390,15 +386,6 @@
 				4ACE635C1F3410F4007F3E6D /* Where */,
 			);
 			path = NSString;
-			sourceTree = "<group>";
-		};
-		4A0E00601F2CBD6300E6A4DA /* Criteria */ = {
-			isa = PBXGroup;
-			children = (
-				4A0E00611F2CBD6300E6A4DA /* CTPersistanceCriteria.h */,
-				4A0E00621F2CBD6300E6A4DA /* CTPersistanceCriteria.m */,
-			);
-			path = Criteria;
 			sourceTree = "<group>";
 		};
 		4A0E00661F2CBD6300E6A4DA /* Database */ = {
@@ -1138,7 +1125,6 @@
 				4A0E00AE1F2CBD6300E6A4DA /* CTPersistanceTable+Update.m in Sources */,
 				4A0E002D1F2C384E00E6A4DA /* AppDelegate.m in Sources */,
 				4A0E00A41F2CBD6300E6A4DA /* CTPersistanceVersionRecord.m in Sources */,
-				4A0E009F1F2CBD6300E6A4DA /* CTPersistanceCriteria.m in Sources */,
 				4A0238741F3FFBA800EE91C7 /* TestTable.m in Sources */,
 				4A0E002A1F2C384E00E6A4DA /* main.m in Sources */,
 				4A5E3BF11F403A4A00946749 /* CTPersistanceSqlStatement.m in Sources */,

@@ -13,7 +13,6 @@
 #import "CTPersistanceMarcos.h"
 
 #import "CTPersistanceMigrator.h"
-#import "CTPersistanceCriteria.h"
 #import "CTPersistanceTransaction.h"
 #import "CTPersistanceAsyncExecutor.h"
 

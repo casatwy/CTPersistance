@@ -54,7 +54,6 @@
         NSString *key = [NSString stringWithFormat:@"%@ - %@", [NSThread currentThread], databaseName];
         CTPersistanceDataBase *databaseInstance = self.databaseList[key];
         if (databaseInstance == nil) {
-            NSLog(@"%@", key);
             NSError *error = nil;
             databaseInstance = [[CTPersistanceDataBase alloc] initWithDatabaseName:databaseName error:&error];
             if (error) {

@@ -17,7 +17,6 @@
 #import "NSArray+CTPersistanceRecordTransform.h"
 #import "NSMutableArray+CTPersistanceBindValue.h"
 #import "NSDictionary+KeyValueBind.h"
-#import <UIKit/UIKit.h>
 
 NSString * const kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";
 

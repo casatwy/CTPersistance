@@ -9,8 +9,6 @@
 #import "CTPersistanceTable+Find.h"
 
 #import "CTPersistanceConfiguration.h"
-#import "CTPersistanceCriteria.h"
-#import <UIKit/UIKit.h>
 
 #import "NSArray+CTPersistanceRecordTransform.h"
 #import "NSMutableArray+CTPersistanceBindValue.h"

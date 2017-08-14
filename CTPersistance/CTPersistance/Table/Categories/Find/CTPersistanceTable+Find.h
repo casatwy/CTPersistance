@@ -8,7 +8,6 @@
 
 #import "CTPersistanceTable.h"
 #import "CTPersistanceRecord.h"
-#import "CTPersistanceCriteria.h"
 
 @interface CTPersistanceTable (Find)
 

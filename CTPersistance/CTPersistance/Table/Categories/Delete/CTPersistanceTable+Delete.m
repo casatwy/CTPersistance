@@ -7,7 +7,6 @@
 //
 
 #import "CTPersistanceTable+Delete.h"
-#import <UIKit/UIKit.h>
 
 #import "CTPersistanceQueryCommand+DataManipulations.h"
 #import "NSMutableArray+CTPersistanceBindValue.h"
