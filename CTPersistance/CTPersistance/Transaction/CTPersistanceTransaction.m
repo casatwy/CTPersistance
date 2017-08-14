@@ -20,13 +20,13 @@
     switch (lockType) {
         case CTPersistanceTransactionLockTypeExclusive:
         {
-//            [queryCommand.sqlString appendString:@"BEGIN EXCLUSIVE TRANSACTION"];
+            [[queryCommand compileSqlString:@"BEGIN EXCLUSIVE TRANSACTION;" bindValueList:nil error:NULL] executeWithError:NULL];
             break;
         }
             
         case CTPersistanceTransactionLockTypeImmediate:
         {
-//            [queryCommand.sqlString appendString:@"BEGIN IMMEDIATE TRANSACTION"];
+            [[queryCommand compileSqlString:@"BEGIN IMMEDIATE TRANSACTION;" bindValueList:nil error:NULL] executeWithError:NULL];
             break;
         }
             
@@ -34,22 +34,19 @@
         case CTPersistanceTransactionLockTypeDefault:
         default:
         {
-//            [queryCommand.sqlString appendString:@"BEGIN DEFERRED TRANSACTION"];
+            [[queryCommand compileSqlString:@"BEGIN DEFERRED TRANSACTION;" bindValueList:nil error:NULL] executeWithError:NULL];
             break;
         }
     }
-//    [queryCommand executeWithError:NULL];
-//    
-//    BOOL shouldRollback = NO;
-//    transactionBlock(&shouldRollback);
-//
-//    if (shouldRollback) {
-////        [queryCommand.sqlString appendString:@"ROLLBACK TRANSACTION"];
-//        [queryCommand executeWithError:NULL];
-//    } else {
-////        [queryCommand.sqlString appendString:@"COMMIT TRANSACTION"];
-//        [queryCommand executeWithError:NULL];
-//    }
+    
+    BOOL shouldRollback = NO;
+    transactionBlock(&shouldRollback);
+
+    if (shouldRollback) {
+        [[queryCommand compileSqlString:@"ROLLBACK TRANSACTION;" bindValueList:nil error:NULL] executeWithError:NULL];
+    } else {
+        [[queryCommand compileSqlString:@"COMMIT TRANSACTION;" bindValueList:nil error:NULL] executeWithError:NULL];
+    }
 }
 
 @end
