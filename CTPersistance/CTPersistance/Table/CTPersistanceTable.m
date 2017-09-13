@@ -68,13 +68,11 @@
 #pragma mark - public methods
 - (BOOL)executeSQL:(NSString *)sqlString error:(NSError *__autoreleasing *)error
 {
-#warning todo need test
     return [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:error] executeWithError:error];
 }
 
 - (NSArray <NSDictionary *> *)fetchWithSQL:(NSString *)sqlString error:(NSError *__autoreleasing *)error
 {
-#warning todo need test
     return [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:error] fetchWithError:error];
 }
 

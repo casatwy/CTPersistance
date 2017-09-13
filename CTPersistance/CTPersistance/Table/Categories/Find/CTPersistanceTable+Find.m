@@ -19,6 +19,12 @@
 
 @implementation CTPersistanceTable (Find)
 
+- (NSArray <NSObject<CTPersistanceRecordProtocol> *> *)findAllWithError:(NSError *__autoreleasing *)error
+{
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@`;", self.child.tableName];
+    return [[[self.queryCommand compileSqlString:sqlString bindValueList:NULL error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass];
+}
+
 - (NSObject<CTPersistanceRecordProtocol> *)findLatestRecordWithError:(NSError *__autoreleasing *)error
 {
     NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` ORDER BY %@ DESC LIMIT 1;", self.child.tableName, self.child.primaryKeyName];

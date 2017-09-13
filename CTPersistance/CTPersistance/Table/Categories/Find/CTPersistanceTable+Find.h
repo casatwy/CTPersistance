@@ -12,6 +12,15 @@
 @interface CTPersistanceTable (Find)
 
 /**
+ *  find all the record in the table
+ *
+ *  @param error error if find fails
+ *
+ *  @return return all the record.
+ */
+- (NSArray <NSObject<CTPersistanceRecordProtocol> *> *)findAllWithError:(NSError **)error;
+
+/**
  *  find the latest record
  *
  *  @param error error if find fails

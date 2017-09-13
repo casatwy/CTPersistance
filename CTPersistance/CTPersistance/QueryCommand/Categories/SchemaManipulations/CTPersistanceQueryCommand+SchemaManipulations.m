@@ -55,7 +55,6 @@
                            conditionParams:(NSDictionary *)conditionParams
                                   isUnique:(BOOL)isUnique
 {
-#warning todo need test
     if (CTPersistance_isEmptyString(tableName) || CTPersistance_isEmptyString(indexName) || indexedColumnList == nil) {
         return nil;
     }
@@ -83,7 +82,6 @@
 
 - (CTPersistanceSqlStatement *)dropIndex:(NSString *)indexName
 {
-#warning todo need test
     NSString *sqlString = [NSString stringWithFormat:@"DROP INDEX IF EXISTS `%@`;", indexName];
 
     return [self compileSqlString:sqlString bindValueList:nil error:NULL];
