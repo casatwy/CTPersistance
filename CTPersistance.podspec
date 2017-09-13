@@ -15,8 +15,8 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "CTPersistance"
-  s.version      = "137"
+  s.name         = "CTPersistence"
+  s.version      = "138"
   s.summary      = "Objective-C Model Layer with SQLite."
 
   s.description  = <<-DESC
@@ -126,6 +126,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # s.dependency "JSONKit", "~> 1.4"
+  s.dependency "SQLCipher"
+  s.dependency "CTMediator"
 
 end
