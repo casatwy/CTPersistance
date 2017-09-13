@@ -9,7 +9,6 @@
 #import <XCTest/XCTest.h>
 #import "TestTable.h"
 #import "TestRecord.h"
-#import "CTPersistanceCriteria.h"
 
 @interface CTPersistanceTestFind : XCTestCase
 
