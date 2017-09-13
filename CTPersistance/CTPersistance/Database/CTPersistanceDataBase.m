@@ -13,6 +13,7 @@
 #import "CTPersistanceVersionTable.h"
 
 #import <CTMediator/CTMediator.h>
+#import <SQLCipher/sqlite3.h>
 
 NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersistanceConfigurationParamsKeyDatabaseName";
 
