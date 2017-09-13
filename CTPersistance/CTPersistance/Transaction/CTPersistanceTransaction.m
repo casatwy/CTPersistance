@@ -12,7 +12,6 @@
 
 + (void)performTranscationWithBlock:(void (^)(BOOL *))transactionBlock queryCommand:(CTPersistanceQueryCommand *)queryCommand lockType:(CTPersistanceTransactionLockType)lockType
 {
-#warning todo
     if (queryCommand == nil || transactionBlock == nil) {
         return;
     }
