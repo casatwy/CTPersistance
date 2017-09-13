@@ -15,8 +15,8 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "CTPersistence"
-  s.version      = "139"
+  s.name         = "CTPersistance"
+  s.version      = "140"
   s.summary      = "Objective-C Model Layer with SQLite."
 
   s.description  = <<-DESC
