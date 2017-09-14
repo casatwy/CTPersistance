@@ -118,8 +118,7 @@
     }
 
     if ([value isKindOfClass:[NSString class]]) {
-        NSString *stringValue = (NSString *)value;
-        sqlite3_bind_text(statement, sqlite3_bind_parameter_index(statement, [key UTF8String]), [value UTF8String], (int)stringValue.length, SQLITE_TRANSIENT);
+        sqlite3_bind_text(statement, sqlite3_bind_parameter_index(statement, [key UTF8String]), [value UTF8String], -1, SQLITE_TRANSIENT);
         return;
     }
 }
