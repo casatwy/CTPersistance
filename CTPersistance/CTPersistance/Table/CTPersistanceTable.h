@@ -55,17 +55,6 @@
 
 @optional
 /**
- *  modify current database name.
- *
- *  sometimes, especially when migration, the table will be create with CTPersistanceQueryCommand, and the database name of CTPersistanceQueryCommand is not match to this table, so query command will ask you to change database.
- *
- *  and in some other time, you have many databases, they share the same table. If you want your current table to work for the new database, you should modify the database name of this table.
- *
- *  @param newDatabaseName the new database name.
- */
-- (void)modifyDatabaseName:(NSString *)newDatabaseName;
-
-/**
  *  to check record before insert
  *
  *  some times we want to validate the record before it been insert into database, so you can implement this method in your table to check every record waiting to insert. Return NO will prevent record been insert.
@@ -86,7 +75,32 @@
  *  @return return the result of validation
  */
 - (BOOL)isCorrectToUpdateRecord:(NSObject <CTPersistanceRecordProtocol> *)record;
+
+
+/**
+ Provide index definition list when create the table in database, it is a list like:
+ 
+ @[
+    @{
+        kCTPersistanceTableIndexName:@"indexName1",
+        kCTPersistanceTableIndexedColumnList:@[@"column1",@"column2"],
+        kCTPersistanceTableIndexIsUniq:@(NO),
+    },
+ @{
+        kCTPersistanceTableIndexName:@"indexName2",
+        kCTPersistanceTableIndexedColumnList:@[@"column3"],
+        kCTPersistanceTableIndexIsUniq:@(YES),
+    }
+ ]
+ 
+ @return index definition list
+ */
+- (NSArray <NSDictionary *> *)indexList;
 @end
+
+extern NSString * const kCTPersistanceTableIndexName;
+extern NSString * const kCTPersistanceTableIndexedColumnList;
+extern NSString * const kCTPersistanceTableIndexIsUniq;
 
 /**
  *  CTPersistanceTable is used to operate records.

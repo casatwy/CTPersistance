@@ -46,13 +46,11 @@
  *  @param indexName         index name
  *  @param tableName         table name
  *  @param indexedColumnList indexed column list
- *  @param condition         condition
- *  @param conditionParams   params for condition
  *  @param isUnique          if YES, create UNIQUE index
  *
  *  @return return CTPerisistanceQueryCommand
  */
-- (CTPersistanceSqlStatement *)createIndex:(NSString *)indexName tableName:(NSString *)tableName indexedColumnList:(NSArray *)indexedColumnList condition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams isUnique:(BOOL)isUnique;
+- (CTPersistanceSqlStatement *)createIndex:(NSString *)indexName tableName:(NSString *)tableName indexedColumnList:(NSArray *)indexedColumnList isUnique:(BOOL)isUnique;
 
 /**
  *  drop index with index name

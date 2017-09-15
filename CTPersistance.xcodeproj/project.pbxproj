@@ -574,18 +574,10 @@
 		4A0E00BB1F2CC25A00E6A4DA /* Table */ = {
 			isa = PBXGroup;
 			children = (
-				4A0E00BC1F2CC25A00E6A4DA /* Columns */,
 				4A0E00BD1F2CC25A00E6A4DA /* TestTable.h */,
 				4A0E00BE1F2CC25A00E6A4DA /* TestTable.m */,
 			);
 			path = Table;
-			sourceTree = "<group>";
-		};
-		4A0E00BC1F2CC25A00E6A4DA /* Columns */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Columns;
 			sourceTree = "<group>";
 		};
 		4A0E00C11F2D84C500E6A4DA /* NSMutableArray */ = {

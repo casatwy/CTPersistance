@@ -51,18 +51,12 @@
 - (CTPersistanceSqlStatement *)createIndex:(NSString *)indexName
                                  tableName:(NSString *)tableName
                          indexedColumnList:(NSArray *)indexedColumnList
-                                 condition:(NSString *)condition
-                           conditionParams:(NSDictionary *)conditionParams
                                   isUnique:(BOOL)isUnique
 {
     if (CTPersistance_isEmptyString(tableName) || CTPersistance_isEmptyString(indexName) || indexedColumnList == nil) {
         return nil;
     }
     
-    NSMutableArray <NSInvocation *> *bindValueList = [[NSMutableArray alloc] init];
-
-    NSString *whereString = [condition whereStringWithConditionParams:conditionParams bindValueList:bindValueList];
-
     NSMutableString *sqlString = nil;
     if (isUnique) {
         sqlString = [NSMutableString stringWithFormat:@"CREATE UNIQUE INDEX IF NOT EXISTS "];
@@ -73,11 +67,7 @@
     NSString *indexedColumnListString = [indexedColumnList componentsJoinedByString:@","];
     [sqlString appendFormat:@"`%@` ON `%@` (%@) ", indexName, tableName, indexedColumnListString];
 
-    if (whereString.length > 0) {
-        [sqlString appendFormat:@"WHERE %@;", whereString];
-    }
-
-    return [self compileSqlString:sqlString bindValueList:bindValueList error:NULL];
+    return [self compileSqlString:sqlString bindValueList:nil error:NULL];
 }
 
 - (CTPersistanceSqlStatement *)dropIndex:(NSString *)indexName

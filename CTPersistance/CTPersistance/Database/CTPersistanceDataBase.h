@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
+extern NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName;
+
 /**
  *  CTPersistanceDataBase is a wrapper of sqlite3 database
  */

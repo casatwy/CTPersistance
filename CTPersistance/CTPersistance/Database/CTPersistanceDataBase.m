@@ -34,9 +34,18 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
 {
     self = [super init];
     if (self) {
+        
+        NSString *target = [[[[databaseName componentsSeparatedByString:@"_"] firstObject] componentsSeparatedByString:@"."] firstObject];
 
         self.databaseName = databaseName;
-        self.databaseFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:databaseName];
+        
+        self.databaseFilePath = [[CTMediator sharedInstance] performTarget:target
+                                                                    action:@"filePath"
+                                                                    params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:databaseName}
+                                                         shouldCacheTarget:NO];
+        if (self.databaseFilePath == nil) {
+            self.databaseFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:databaseName];
+        }
 
         NSString *checkFilePath = [self.databaseFilePath stringByDeletingLastPathComponent];
         NSFileManager *defaultFileManager = [NSFileManager defaultManager];
@@ -69,7 +78,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
             return nil;
         }
 
-        NSString *secretKey = [[CTMediator sharedInstance] performTarget:@"CTPersistanceConfiguration"
+        NSString *secretKey = [[CTMediator sharedInstance] performTarget:target
                                                                   action:@"secretKey"
                                                                   params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:databaseName}
                                                        shouldCacheTarget:NO];
