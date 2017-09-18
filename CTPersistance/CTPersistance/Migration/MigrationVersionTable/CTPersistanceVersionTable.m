@@ -12,6 +12,8 @@
 #import "CTPersistanceQueryCommand.h"
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"
 
+static NSString * const kCTPersistanceVersionTableName = @"kCTPersistanceVersionTableName";
+
 @interface CTPersistanceVersionTable ()
 
 @property (nonatomic, weak) CTPersistanceDataBase *database;

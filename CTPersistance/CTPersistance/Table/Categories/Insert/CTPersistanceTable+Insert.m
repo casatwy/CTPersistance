@@ -18,6 +18,8 @@
 #import "objc/runtime.h"
 #import <sqlite3.h>
 
+static NSString * const kCTPersistanceErrorUserinfoKeyErrorRecord = @"kCTPersistanceErrorUserinfoKeyErrorRecord";
+
 @implementation CTPersistanceTable (Insert)
 
 - (BOOL)insertRecordList:(NSArray<NSObject <CTPersistanceRecordProtocol> *> *)recordList error:(NSError *__autoreleasing *)error
