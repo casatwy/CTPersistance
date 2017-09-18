@@ -30,7 +30,9 @@ say you have a database file which name is:
 Record
 ======
 
-CTPersistance's record does not have to be a specific object. Any object who conforms to `CTPersistanceRecordProtocol` can be handled by CTPersistance. That means you can handle any object like `UIView`、`UIViewController` with CTPersistance as long as they conforms to `CTPersistanceRecordProtocol`. For example you can insert a `UIView`, and the fetch the same data as a dictionary or even `UIViewController`.
+CTPersistance's record does not have to be a specific object. Any object who conforms to `CTPersistanceRecordProtocol` can be handled by CTPersistance.
+
+That means you can handle any object like `UIView`、`UIViewController` with CTPersistance as long as they conforms to `CTPersistanceRecordProtocol`. For example you can insert a `UIView`, and the fetch the same data as a dictionary or even `UIViewController`.
 
 Though CTPersistance does not require your object to inherit from a specific model, CTPersistance provide you `CTPersistanceRecord` if you still want to inherit some model.
 
@@ -61,7 +63,7 @@ NSNumber *primaryKey = [self.testTable insertValue:@"casa" forKey:@"name" error:
 NSInteger recordCount = 10;
 NSMutableArray <TestRecord *> *recordList = [[NSMutableArray alloc] init];
 while (recordCount --> 0) {
-	TestRecord *record = [[TestRecord alloc] init];
+    TestRecord *record = [[TestRecord alloc] init];
     record.age = @(recordCount);
     [recordList addObject:record];
 }
