@@ -79,3 +79,4 @@ NSError *error = nil;
 Update
 ======
 
+I'm still writing this document, you can check test case for usage.
