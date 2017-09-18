@@ -41,8 +41,33 @@ extern NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName;
 
 @protocol CTPersistanceConfigurationTarget <NSObject>
 
+@optional
+/**
+ return migrator for database migration, return nil means do not check version for migration
+
+ @param params params is a dictionary, with key kCTPersistanceConfigurationParamsKeyDatabaseName to tell you the database name
+ @return migrator
+ */
 - (CTPersistanceMigrator *)Action_fetchMigrator:(NSDictionary *)params;
+
+
+/**
+ secret key to encrypt the database, return nil means no encryption.
+
+ @param params params is a dictionary, with key kCTPersistanceConfigurationParamsKeyDatabaseName to tell you the database name
+ @return secret key
+ */
 - (NSString *)Action_secretKey:(NSDictionary *)params;
+
+
+/**
+ return file path if you want your database file to lcoate at specific path. return nil means use the default file path.
+ default path is: [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:databaseName];
+
+ @param params params is a dictionary, with key kCTPersistanceConfigurationParamsKeyDatabaseName to tell you the database name
+ @return database file path
+ */
+- (NSString *)Action_filePath:(NSDictionary *)params;
 
 @end
 
