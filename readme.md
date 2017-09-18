@@ -34,9 +34,9 @@ Record
 
 CTPersistance's record does not have to be a specific object. Any object who conforms to `CTPersistanceRecordProtocol` can be handled by CTPersistance.
 
-That means you can handle any object like `UIView`、`UIViewController` with CTPersistance as long as they conforms to `CTPersistanceRecordProtocol`. For example you can insert a `UIView`, and the fetch the same data as a dictionary or even `UIViewController`.
+That means you can handle any object like `UIView`、`UIViewController` with CTPersistance as long as they conforms to `CTPersistanceRecordProtocol`. For example you can insert a `UIView`, and fetch the same data as a dictionary or even `UIViewController`.
 
-Though CTPersistance does not require your object to inherit from a specific model, CTPersistance provide you `CTPersistanceRecord` if you still want to inherit some model.
+Though CTPersistance does not require your object to inherit from a specific model, CTPersistance provide you `CTPersistanceRecord` if you do not want to implement the protocol.
 
 Insert
 ======
