@@ -1,5 +1,7 @@
 pod "CTPersistence"
 
+CTPersistance is a sqlite wrapper which help you to handle with database.
+
 Target-Action in CTPersistance
 ==============================
 
