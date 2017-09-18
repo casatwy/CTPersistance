@@ -3,7 +3,7 @@ pod "CTPersistence"
 Target-Action in CTPersistance
 ==============================
 
-CTPersistance use `CTMediator` to handle how the database migrate, what secret key to encrypt, where to place the database file.
+CTPersistance use [CTMediator](https://github.com/casatwy/CTMediator) to handle how the database migrate, what secret key to encrypt, where to place the database file.
 
 You should create a target, and just put it into your project, no more code and `CTMediator` will call your target.
 
