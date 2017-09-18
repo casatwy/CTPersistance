@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CTPersistance.h"
 
-@interface Target_CTPersistanceConfiguration : NSObject <CTPersistanceConfigurationTarget>
+@interface Target_MigrationTestDatabase : NSObject <CTPersistanceConfigurationTarget>
 
 - (CTPersistanceMigrator *)Action_fetchMigrator:(NSDictionary *)params;
 - (NSString *)Action_secretKey:(NSDictionary *)params;

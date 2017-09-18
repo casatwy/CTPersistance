@@ -24,6 +24,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
 @property (nonatomic, copy) NSString *databaseName;
 @property (nonatomic, copy) NSString *databaseFilePath;
 @property (nonatomic, strong) CTPersistanceMigrator *migrator;
+@property (nonatomic, strong) NSString *target;
 
 @end
 
@@ -35,11 +36,11 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
     self = [super init];
     if (self) {
         
-        NSString *target = [[[[databaseName componentsSeparatedByString:@"_"] firstObject] componentsSeparatedByString:@"."] firstObject];
+        self.target = [[[[databaseName componentsSeparatedByString:@"_"] firstObject] componentsSeparatedByString:@"."] firstObject];
 
         self.databaseName = databaseName;
         
-        self.databaseFilePath = [[CTMediator sharedInstance] performTarget:target
+        self.databaseFilePath = [[CTMediator sharedInstance] performTarget:self.target
                                                                     action:@"filePath"
                                                                     params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:databaseName}
                                                          shouldCacheTarget:NO];
@@ -78,7 +79,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
             return nil;
         }
 
-        NSString *secretKey = [[CTMediator sharedInstance] performTarget:target
+        NSString *secretKey = [[CTMediator sharedInstance] performTarget:self.target
                                                                   action:@"secretKey"
                                                                   params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:databaseName}
                                                        shouldCacheTarget:NO];
@@ -117,7 +118,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
 - (CTPersistanceMigrator *)migrator
 {
     if (_migrator == nil) {
-        _migrator = [[CTMediator sharedInstance] performTarget:@"CTPersistanceConfiguration"
+        _migrator = [[CTMediator sharedInstance] performTarget:self.target
                                                         action:@"fetchMigrator"
                                                         params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:self.databaseName}
                                              shouldCacheTarget:NO];

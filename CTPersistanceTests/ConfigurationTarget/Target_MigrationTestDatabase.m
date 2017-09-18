@@ -6,11 +6,11 @@
 //  Copyright © 2017年 casa. All rights reserved.
 //
 
-#import "Target_CTPersistanceConfiguration.h"
+#import "Target_MigrationTestDatabase.h"
 
 extern NSString * const kCTPersistanceMigrationTestCaseVersionKey;
 
-@implementation Target_CTPersistanceConfiguration
+@implementation Target_MigrationTestDatabase
 
 - (NSString *)Action_secretKey:(NSDictionary *)params
 {
