@@ -68,4 +68,10 @@
     return self;
 }
 
+#pragma mark - method override
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    // do nothing
+}
+
 @end
