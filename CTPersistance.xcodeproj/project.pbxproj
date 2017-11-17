@@ -69,7 +69,7 @@
 		4AC74A761FBE862B0092B636 /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC74A751FBE862B0092B636 /* ItemView.m */; };
 		4AC74A7C1FBE87FB0092B636 /* ItemRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC74A7B1FBE87FB0092B636 /* ItemRecord.m */; };
 		4AC74A7F1FBE88060092B636 /* ItemDetailRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC74A7E1FBE88060092B636 /* ItemDetailRecord.m */; };
-		4AC74A831FBE8A050092B636 /* ItemView+DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC74A821FBE8A050092B636 /* ItemView+DataCenter.m */; };
+		4AC74A881FBEAA0E0092B636 /* ItemView+DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC74A871FBEAA0E0092B636 /* ItemView+DataCenter.m */; };
 		4ACE635B1F340E54007F3E6D /* NSDictionary+KeyValueBind.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE635A1F340E54007F3E6D /* NSDictionary+KeyValueBind.m */; };
 		4ACE635F1F341102007F3E6D /* NSString+Where.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE635E1F341102007F3E6D /* NSString+Where.m */; };
 		4ADFAB681F3316A0008EA281 /* CTPersistanceTable+Schema.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFAB671F3316A0008EA281 /* CTPersistanceTable+Schema.m */; };
@@ -211,8 +211,8 @@
 		4AC74A7B1FBE87FB0092B636 /* ItemRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemRecord.m; sourceTree = "<group>"; };
 		4AC74A7D1FBE88060092B636 /* ItemDetailRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemDetailRecord.h; sourceTree = "<group>"; };
 		4AC74A7E1FBE88060092B636 /* ItemDetailRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemDetailRecord.m; sourceTree = "<group>"; };
-		4AC74A811FBE8A050092B636 /* ItemView+DataCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ItemView+DataCenter.h"; sourceTree = "<group>"; };
-		4AC74A821FBE8A050092B636 /* ItemView+DataCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ItemView+DataCenter.m"; sourceTree = "<group>"; };
+		4AC74A861FBEAA0E0092B636 /* ItemView+DataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ItemView+DataCenter.h"; sourceTree = "<group>"; };
+		4AC74A871FBEAA0E0092B636 /* ItemView+DataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ItemView+DataCenter.m"; sourceTree = "<group>"; };
 		4ACE63591F340E54007F3E6D /* NSDictionary+KeyValueBind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+KeyValueBind.h"; sourceTree = "<group>"; };
 		4ACE635A1F340E54007F3E6D /* NSDictionary+KeyValueBind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+KeyValueBind.m"; sourceTree = "<group>"; };
 		4ACE635D1F341102007F3E6D /* NSString+Where.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Where.h"; sourceTree = "<group>"; };
@@ -895,7 +895,6 @@
 		4AC74A641FBE7DED0092B636 /* ItemView */ = {
 			isa = PBXGroup;
 			children = (
-				4AC74A801FBE89ED0092B636 /* ItemViewDataOperationCategory */,
 				4AC74A741FBE862B0092B636 /* ItemView.h */,
 				4AC74A751FBE862B0092B636 /* ItemView.m */,
 			);
@@ -905,6 +904,7 @@
 		4AC74A651FBE7E110092B636 /* DataCenter */ = {
 			isa = PBXGroup;
 			children = (
+				4AC74A841FBEAA0E0092B636 /* Categories */,
 				4AC74A771FBE87E50092B636 /* Record */,
 				4AC74A661FBE7E110092B636 /* Table */,
 				4AC74A6B1FBE7E670092B636 /* ItemDataCenter.h */,
@@ -967,13 +967,21 @@
 			path = ItemDetail;
 			sourceTree = "<group>";
 		};
-		4AC74A801FBE89ED0092B636 /* ItemViewDataOperationCategory */ = {
+		4AC74A841FBEAA0E0092B636 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				4AC74A811FBE8A050092B636 /* ItemView+DataCenter.h */,
-				4AC74A821FBE8A050092B636 /* ItemView+DataCenter.m */,
+				4AC74A851FBEAA0E0092B636 /* ItemView */,
 			);
-			path = ItemViewDataOperationCategory;
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		4AC74A851FBEAA0E0092B636 /* ItemView */ = {
+			isa = PBXGroup;
+			children = (
+				4AC74A861FBEAA0E0092B636 /* ItemView+DataCenter.h */,
+				4AC74A871FBEAA0E0092B636 /* ItemView+DataCenter.m */,
+			);
+			path = ItemView;
 			sourceTree = "<group>";
 		};
 		4ACE63571F340E29007F3E6D /* NSDictionary */ = {
@@ -1247,6 +1255,7 @@
 				4A5E3BF11F403A4A00946749 /* CTPersistanceSqlStatement.m in Sources */,
 				4ACE635B1F340E54007F3E6D /* NSDictionary+KeyValueBind.m in Sources */,
 				4A0E00AD1F2CBD6300E6A4DA /* CTPersistanceTable+Insert.m in Sources */,
+				4AC74A881FBEAA0E0092B636 /* ItemView+DataCenter.m in Sources */,
 				4ADFAB681F3316A0008EA281 /* CTPersistanceTable+Schema.m in Sources */,
 				4AC74A6D1FBE7E670092B636 /* ItemDataCenter.m in Sources */,
 				4A0238721F3F14E800EE91C7 /* AsyncTestViewController.m in Sources */,
@@ -1257,7 +1266,6 @@
 				4AC74A7C1FBE87FB0092B636 /* ItemRecord.m in Sources */,
 				4A0E00A91F2CBD6300E6A4DA /* CTPersistanceQueryCommand.m in Sources */,
 				4A0E00AF1F2CBD6300E6A4DA /* CTPersistanceTable.m in Sources */,
-				4AC74A831FBE8A050092B636 /* ItemView+DataCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
