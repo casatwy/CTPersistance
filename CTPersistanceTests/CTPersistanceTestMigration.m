@@ -84,7 +84,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
 
     [[NSUserDefaults standardUserDefaults] setObject:@"TestMiagratorVersion_1_to_2" forKey:kCTPersistanceMigrationTestCaseVersionKey];
     CTPersistanceTable *testTable = [[TestTableVersion1 alloc] init];
-    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoInDataBase];
+    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoList];
 
     __block BOOL founded = NO;
     [columnInfo enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -112,7 +112,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
 
     [[NSUserDefaults standardUserDefaults] setObject:@"TestMiagratorVersion_1_to_3" forKey:kCTPersistanceMigrationTestCaseVersionKey];
     CTPersistanceTable *testTable = [[TestTableVersion1 alloc] init];
-    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoInDataBase];
+    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoList];
 
     __block BOOL founded = NO;
     [columnInfo enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -140,7 +140,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
 
     [[NSUserDefaults standardUserDefaults] setObject:@"TestMiagratorVersion_1_to_4" forKey:kCTPersistanceMigrationTestCaseVersionKey];
     CTPersistanceTable *testTable = [[TestTableVersion1 alloc] init];
-    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoInDataBase];
+    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoList];
 
     __block BOOL founded = NO;
     [columnInfo enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -168,7 +168,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
 
     [[NSUserDefaults standardUserDefaults] setObject:@"TestMiagratorVersion_2_to_3" forKey:kCTPersistanceMigrationTestCaseVersionKey];
     CTPersistanceTable *testTable = [[TestTableVersion2 alloc] init];
-    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoInDataBase];
+    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoList];
 
     __block BOOL founded = NO;
     [columnInfo enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -196,7 +196,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
 
     [[NSUserDefaults standardUserDefaults] setObject:@"TestMiagratorVersion_2_to_4" forKey:kCTPersistanceMigrationTestCaseVersionKey];
     CTPersistanceTable *testTable = [[TestTableVersion2 alloc] init];
-    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoInDataBase];
+    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoList];
 
     __block BOOL founded = NO;
     [columnInfo enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -224,7 +224,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
 
     [[NSUserDefaults standardUserDefaults] setObject:@"TestMiagratorVersion_3_to_4" forKey:kCTPersistanceMigrationTestCaseVersionKey];
     CTPersistanceTable *testTable = [[TestTableVersion3 alloc] init];
-    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoInDataBase];
+    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoList];
 
     __block BOOL founded = NO;
     [columnInfo enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull info, NSUInteger idx, BOOL * _Nonnull stop) {

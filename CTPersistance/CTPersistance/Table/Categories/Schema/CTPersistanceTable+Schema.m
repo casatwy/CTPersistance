@@ -11,11 +11,10 @@
 
 @implementation CTPersistanceTable (Schema)
 
-- (NSArray <NSDictionary *> *)columnInfoInDataBase
+- (NSArray <NSDictionary *> *)columnInfoList
 {
-    NSArray *columnInfo = [[self.queryCommand columnInfoWithTableName:self.child.tableName] fetchWithError:NULL];
-
-    return columnInfo;
+    NSArray *columnInfoList = [[self.queryCommand columnInfoWithTableName:self.child.tableName] fetchWithError:NULL];
+    return columnInfoList;
 }
 
 @end

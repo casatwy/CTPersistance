@@ -10,6 +10,6 @@
 
 @interface CTPersistanceTable (Schema)
 
-- (NSArray <NSDictionary *> *)columnInfoInDataBase;
+- (NSArray <NSDictionary *> *)columnInfoList;
 
 @end

@@ -47,4 +47,15 @@
     return @"primaryKey";
 }
 
+- (NSArray<NSDictionary *> *)indexList
+{
+    return @[
+             @{
+                 kCTPersistanceTableIndexName:@"IndexAge",
+                 kCTPersistanceTableIndexedColumnList:@[@"age"],
+                 kCTPersistanceTableIndexIsUniq:@(NO),
+                 },
+            ];
+}
+
 @end

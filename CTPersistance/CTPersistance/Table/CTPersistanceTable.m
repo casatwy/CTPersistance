@@ -67,7 +67,7 @@ NSString * const kCTPersistanceTableIndexIsUniq = @"kCTPersistanceTableIndexIsUn
 
 - (void)configTable:(CTPersistanceQueryCommand *)queryCommand
 {
-    NSError *error = nil;
+    __block NSError *error = nil;
     
     // create table if not exists
     [[queryCommand createTable:self.child.tableName columnInfo:self.child.columnInfo] executeWithError:&error];
@@ -75,10 +75,13 @@ NSString * const kCTPersistanceTableIndexIsUniq = @"kCTPersistanceTableIndexIsUn
     // create index if not exists
     if (error == nil) {
         [self.child.indexList enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [queryCommand createIndex:obj[kCTPersistanceTableIndexName]
-                            tableName:self.child.tableName
-                    indexedColumnList:obj[kCTPersistanceTableIndexedColumnList]
-                             isUnique:[obj[kCTPersistanceTableIndexIsUniq] boolValue]];
+            [[queryCommand createIndex:obj[kCTPersistanceTableIndexName]
+                             tableName:self.child.tableName
+                     indexedColumnList:obj[kCTPersistanceTableIndexedColumnList]
+                              isUnique:[obj[kCTPersistanceTableIndexIsUniq] boolValue]] executeWithError:&error];
+            if (error) {
+                *stop = YES;
+            }
         }];
     }
     
