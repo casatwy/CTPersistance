@@ -62,6 +62,14 @@
 		4A7844C31F32BD6700CF4809 /* CTPersistanceTestMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */; };
 		4A9A9DF41F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DF31F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m */; };
 		4AB165E81F302AA60043E6A2 /* CTPersistanceTestFind.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */; };
+		4AC74A631FBE7DC60092B636 /* ViewRecordAndMergeDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC74A621FBE7DC60092B636 /* ViewRecordAndMergeDemoViewController.m */; };
+		4AC74A6D1FBE7E670092B636 /* ItemDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC74A6C1FBE7E670092B636 /* ItemDataCenter.m */; };
+		4AC74A701FBE7E7B0092B636 /* ItemTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC74A6F1FBE7E7B0092B636 /* ItemTable.m */; };
+		4AC74A731FBE7EC90092B636 /* ItemDetailTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC74A721FBE7EC90092B636 /* ItemDetailTable.m */; };
+		4AC74A761FBE862B0092B636 /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC74A751FBE862B0092B636 /* ItemView.m */; };
+		4AC74A7C1FBE87FB0092B636 /* ItemRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC74A7B1FBE87FB0092B636 /* ItemRecord.m */; };
+		4AC74A7F1FBE88060092B636 /* ItemDetailRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC74A7E1FBE88060092B636 /* ItemDetailRecord.m */; };
+		4AC74A831FBE8A050092B636 /* ItemView+DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC74A821FBE8A050092B636 /* ItemView+DataCenter.m */; };
 		4ACE635B1F340E54007F3E6D /* NSDictionary+KeyValueBind.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE635A1F340E54007F3E6D /* NSDictionary+KeyValueBind.m */; };
 		4ACE635F1F341102007F3E6D /* NSString+Where.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE635E1F341102007F3E6D /* NSString+Where.m */; };
 		4ADFAB681F3316A0008EA281 /* CTPersistanceTable+Schema.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFAB671F3316A0008EA281 /* CTPersistanceTable+Schema.m */; };
@@ -189,6 +197,22 @@
 		4A9A9DF21F32D06F00090F73 /* TestMiagratorVersion_1_to_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMiagratorVersion_1_to_2.h; sourceTree = "<group>"; };
 		4A9A9DF31F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMiagratorVersion_1_to_2.m; sourceTree = "<group>"; };
 		4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestFind.m; sourceTree = "<group>"; };
+		4AC74A611FBE7DC60092B636 /* ViewRecordAndMergeDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewRecordAndMergeDemoViewController.h; sourceTree = "<group>"; };
+		4AC74A621FBE7DC60092B636 /* ViewRecordAndMergeDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewRecordAndMergeDemoViewController.m; sourceTree = "<group>"; };
+		4AC74A6B1FBE7E670092B636 /* ItemDataCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemDataCenter.h; sourceTree = "<group>"; };
+		4AC74A6C1FBE7E670092B636 /* ItemDataCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemDataCenter.m; sourceTree = "<group>"; };
+		4AC74A6E1FBE7E7B0092B636 /* ItemTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemTable.h; sourceTree = "<group>"; };
+		4AC74A6F1FBE7E7B0092B636 /* ItemTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemTable.m; sourceTree = "<group>"; };
+		4AC74A711FBE7EC90092B636 /* ItemDetailTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemDetailTable.h; sourceTree = "<group>"; };
+		4AC74A721FBE7EC90092B636 /* ItemDetailTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemDetailTable.m; sourceTree = "<group>"; };
+		4AC74A741FBE862B0092B636 /* ItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemView.h; sourceTree = "<group>"; };
+		4AC74A751FBE862B0092B636 /* ItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemView.m; sourceTree = "<group>"; };
+		4AC74A7A1FBE87FB0092B636 /* ItemRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemRecord.h; sourceTree = "<group>"; };
+		4AC74A7B1FBE87FB0092B636 /* ItemRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemRecord.m; sourceTree = "<group>"; };
+		4AC74A7D1FBE88060092B636 /* ItemDetailRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemDetailRecord.h; sourceTree = "<group>"; };
+		4AC74A7E1FBE88060092B636 /* ItemDetailRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemDetailRecord.m; sourceTree = "<group>"; };
+		4AC74A811FBE8A050092B636 /* ItemView+DataCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ItemView+DataCenter.h"; sourceTree = "<group>"; };
+		4AC74A821FBE8A050092B636 /* ItemView+DataCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ItemView+DataCenter.m"; sourceTree = "<group>"; };
 		4ACE63591F340E54007F3E6D /* NSDictionary+KeyValueBind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+KeyValueBind.h"; sourceTree = "<group>"; };
 		4ACE635A1F340E54007F3E6D /* NSDictionary+KeyValueBind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+KeyValueBind.m"; sourceTree = "<group>"; };
 		4ACE635D1F341102007F3E6D /* NSString+Where.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Where.h"; sourceTree = "<group>"; };
@@ -237,6 +261,7 @@
 		4A02386E1F3F14C700EE91C7 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				4AC74A601FBE7DB30092B636 /* ViewRecordAndMergeDemoViewController */,
 				4A02386F1F3F14C700EE91C7 /* AsyncTestViewController */,
 			);
 			path = Demo;
@@ -856,6 +881,101 @@
 			path = Version_3_to_4;
 			sourceTree = "<group>";
 		};
+		4AC74A601FBE7DB30092B636 /* ViewRecordAndMergeDemoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4AC74A651FBE7E110092B636 /* DataCenter */,
+				4AC74A641FBE7DED0092B636 /* ItemView */,
+				4AC74A611FBE7DC60092B636 /* ViewRecordAndMergeDemoViewController.h */,
+				4AC74A621FBE7DC60092B636 /* ViewRecordAndMergeDemoViewController.m */,
+			);
+			path = ViewRecordAndMergeDemoViewController;
+			sourceTree = "<group>";
+		};
+		4AC74A641FBE7DED0092B636 /* ItemView */ = {
+			isa = PBXGroup;
+			children = (
+				4AC74A801FBE89ED0092B636 /* ItemViewDataOperationCategory */,
+				4AC74A741FBE862B0092B636 /* ItemView.h */,
+				4AC74A751FBE862B0092B636 /* ItemView.m */,
+			);
+			path = ItemView;
+			sourceTree = "<group>";
+		};
+		4AC74A651FBE7E110092B636 /* DataCenter */ = {
+			isa = PBXGroup;
+			children = (
+				4AC74A771FBE87E50092B636 /* Record */,
+				4AC74A661FBE7E110092B636 /* Table */,
+				4AC74A6B1FBE7E670092B636 /* ItemDataCenter.h */,
+				4AC74A6C1FBE7E670092B636 /* ItemDataCenter.m */,
+			);
+			path = DataCenter;
+			sourceTree = "<group>";
+		};
+		4AC74A661FBE7E110092B636 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				4AC74A681FBE7E390092B636 /* Item */,
+				4AC74A671FBE7E390092B636 /* ItemDetail */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		4AC74A671FBE7E390092B636 /* ItemDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4AC74A711FBE7EC90092B636 /* ItemDetailTable.h */,
+				4AC74A721FBE7EC90092B636 /* ItemDetailTable.m */,
+			);
+			path = ItemDetail;
+			sourceTree = "<group>";
+		};
+		4AC74A681FBE7E390092B636 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				4AC74A6E1FBE7E7B0092B636 /* ItemTable.h */,
+				4AC74A6F1FBE7E7B0092B636 /* ItemTable.m */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		4AC74A771FBE87E50092B636 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				4AC74A781FBE87E50092B636 /* Item */,
+				4AC74A791FBE87E50092B636 /* ItemDetail */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		4AC74A781FBE87E50092B636 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				4AC74A7A1FBE87FB0092B636 /* ItemRecord.h */,
+				4AC74A7B1FBE87FB0092B636 /* ItemRecord.m */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		4AC74A791FBE87E50092B636 /* ItemDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4AC74A7D1FBE88060092B636 /* ItemDetailRecord.h */,
+				4AC74A7E1FBE88060092B636 /* ItemDetailRecord.m */,
+			);
+			path = ItemDetail;
+			sourceTree = "<group>";
+		};
+		4AC74A801FBE89ED0092B636 /* ItemViewDataOperationCategory */ = {
+			isa = PBXGroup;
+			children = (
+				4AC74A811FBE8A050092B636 /* ItemView+DataCenter.h */,
+				4AC74A821FBE8A050092B636 /* ItemView+DataCenter.m */,
+			);
+			path = ItemViewDataOperationCategory;
+			sourceTree = "<group>";
+		};
 		4ACE63571F340E29007F3E6D /* NSDictionary */ = {
 			isa = PBXGroup;
 			children = (
@@ -941,12 +1061,12 @@
 		4A0E001D1F2C384E00E6A4DA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = casa;
 				TargetAttributes = {
 					4A0E00241F2C384E00E6A4DA = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = A538N96H5F;
+						DevelopmentTeam = 6C6JHMW46K;
 						ProvisioningStyle = Automatic;
 					};
 					4A0E003D1F2C384E00E6A4DA = {
@@ -1043,7 +1163,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B005E67EAC7A8E24188EAAFF /* [CP] Embed Pods Frameworks */ = {
@@ -1076,7 +1196,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E89438496151546E4C4E397A /* [CP] Embed Pods Frameworks */ = {
@@ -1112,24 +1232,32 @@
 				4A0E009C1F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m in Sources */,
 				4ACE635F1F341102007F3E6D /* NSString+Where.m in Sources */,
 				4A0E00AB1F2CBD6300E6A4DA /* CTPersistanceTable+Delete.m in Sources */,
+				4AC74A761FBE862B0092B636 /* ItemView.m in Sources */,
 				4A0E00A31F2CBD6300E6A4DA /* CTPersistanceVersionTable.m in Sources */,
 				4A0E00B01F2CBD6300E6A4DA /* CTPersistanceTransaction.m in Sources */,
+				4AC74A7F1FBE88060092B636 /* ItemDetailRecord.m in Sources */,
 				4A0E00A71F2CBD6300E6A4DA /* CTPersistanceQueryCommand+SchemaManipulations.m in Sources */,
 				4A0E00AE1F2CBD6300E6A4DA /* CTPersistanceTable+Update.m in Sources */,
 				4A0E002D1F2C384E00E6A4DA /* AppDelegate.m in Sources */,
 				4A0E00A41F2CBD6300E6A4DA /* CTPersistanceVersionRecord.m in Sources */,
 				4A0238741F3FFBA800EE91C7 /* TestTable.m in Sources */,
+				4AC74A631FBE7DC60092B636 /* ViewRecordAndMergeDemoViewController.m in Sources */,
+				4AC74A731FBE7EC90092B636 /* ItemDetailTable.m in Sources */,
 				4A0E002A1F2C384E00E6A4DA /* main.m in Sources */,
 				4A5E3BF11F403A4A00946749 /* CTPersistanceSqlStatement.m in Sources */,
 				4ACE635B1F340E54007F3E6D /* NSDictionary+KeyValueBind.m in Sources */,
 				4A0E00AD1F2CBD6300E6A4DA /* CTPersistanceTable+Insert.m in Sources */,
 				4ADFAB681F3316A0008EA281 /* CTPersistanceTable+Schema.m in Sources */,
+				4AC74A6D1FBE7E670092B636 /* ItemDataCenter.m in Sources */,
 				4A0238721F3F14E800EE91C7 /* AsyncTestViewController.m in Sources */,
 				4A0E00A11F2CBD6300E6A4DA /* CTPersistanceDatabasePool.m in Sources */,
 				4A0E00AC1F2CBD6300E6A4DA /* CTPersistanceTable+Find.m in Sources */,
 				4A0E00A01F2CBD6300E6A4DA /* CTPersistanceDataBase.m in Sources */,
+				4AC74A701FBE7E7B0092B636 /* ItemTable.m in Sources */,
+				4AC74A7C1FBE87FB0092B636 /* ItemRecord.m in Sources */,
 				4A0E00A91F2CBD6300E6A4DA /* CTPersistanceQueryCommand.m in Sources */,
 				4A0E00AF1F2CBD6300E6A4DA /* CTPersistanceTable.m in Sources */,
+				4AC74A831FBE8A050092B636 /* ItemView+DataCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1206,7 +1334,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1214,7 +1344,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1255,7 +1389,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1263,7 +1399,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1293,7 +1433,7 @@
 			baseConfigurationReference = 89D41C6489863CB58D4966E5 /* Pods-CTPersistance.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = A538N96H5F;
+				DEVELOPMENT_TEAM = 6C6JHMW46K;
 				INFOPLIST_FILE = CTPersistance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistance;
@@ -1306,7 +1446,7 @@
 			baseConfigurationReference = 0E3659C0BE44F61448420F54 /* Pods-CTPersistance.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = A538N96H5F;
+				DEVELOPMENT_TEAM = 6C6JHMW46K;
 				INFOPLIST_FILE = CTPersistance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistance;
