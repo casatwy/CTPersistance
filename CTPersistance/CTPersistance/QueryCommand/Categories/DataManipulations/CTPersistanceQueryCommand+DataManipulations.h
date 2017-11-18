@@ -41,7 +41,7 @@
  *  @warning You should never use this method directly, use insert methods in CTPersistanceTable instead
  *
  */
-- (CTPersistanceSqlStatement *)updateTable:(NSString *)tableName valueString:(NSString *)valueString whereString:(NSString *)whereString bindValueList:(NSArray <NSInvocation *> *)bindValueList error:(NSError * __autoreleasing *)error;
+- (CTPersistanceSqlStatement *)updateTable:(NSString *)tableName valueString:(NSString *)valueString whereString:(NSString *)whereString bindValueList:(NSMutableArray <NSInvocation *> *)bindValueList error:(NSError * __autoreleasing *)error;
 
 /**
  *  delete table with table name and condition with conditition params
@@ -58,6 +58,6 @@
  *  @warning You should never use this method directly, use insert methods in CTPersistanceTable instead
  *
  */
-- (CTPersistanceSqlStatement *)deleteTable:(NSString *)tableName whereString:(NSString *)whereString bindValueList:(NSArray <NSInvocation *> *)bindValueList error:(NSError * __autoreleasing *)error;
+- (CTPersistanceSqlStatement *)deleteTable:(NSString *)tableName whereString:(NSString *)whereString bindValueList:(NSMutableArray <NSInvocation *> *)bindValueList error:(NSError * __autoreleasing *)error;
 
 @end

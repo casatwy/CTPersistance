@@ -60,6 +60,6 @@
  *  @return return fetched data list
  *
  */
-- (CTPersistanceSqlStatement *)compileSqlString:(NSString *)sqlString bindValueList:(NSArray <NSInvocation *> *)bindValueList error:(NSError **)error;
+- (CTPersistanceSqlStatement *)compileSqlString:(NSString *)sqlString bindValueList:(NSMutableArray <NSInvocation *> *)bindValueList error:(NSError **)error;
 
 @end

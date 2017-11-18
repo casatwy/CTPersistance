@@ -43,13 +43,13 @@
     return [self compileSqlString:sqlString bindValueList:bindValueList error:error];
 }
 
-- (CTPersistanceSqlStatement *)updateTable:(NSString *)tableName valueString:(NSString *)valueString whereString:(NSString *)whereString bindValueList:(NSArray <NSInvocation *> *)bindValueList error:(NSError * __autoreleasing *)error
+- (CTPersistanceSqlStatement *)updateTable:(NSString *)tableName valueString:(NSString *)valueString whereString:(NSString *)whereString bindValueList:(NSMutableArray <NSInvocation *> *)bindValueList error:(NSError * __autoreleasing *)error
 {
     NSString *sqlString = [NSString stringWithFormat:@"UPDATE `%@` SET %@ WHERE %@;", tableName, valueString, whereString];
     return [self compileSqlString:sqlString bindValueList:bindValueList error:error];
 }
 
-- (CTPersistanceSqlStatement *)deleteTable:(NSString *)tableName whereString:(NSString *)whereString bindValueList:(NSArray<NSInvocation *> *)bindValueList error:(NSError *__autoreleasing *)error
+- (CTPersistanceSqlStatement *)deleteTable:(NSString *)tableName whereString:(NSString *)whereString bindValueList:(NSMutableArray <NSInvocation *> *)bindValueList error:(NSError *__autoreleasing *)error
 {
     NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM `%@` WHERE %@", tableName, whereString];
     return [self compileSqlString:sqlString bindValueList:bindValueList error:error];

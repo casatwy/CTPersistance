@@ -1077,7 +1077,7 @@
 				TargetAttributes = {
 					4A0E00241F2C384E00E6A4DA = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 6C6JHMW46K;
+						DevelopmentTeam = EJ552L8U27;
 						ProvisioningStyle = Automatic;
 					};
 					4A0E003D1F2C384E00E6A4DA = {
@@ -1174,7 +1174,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B005E67EAC7A8E24188EAAFF /* [CP] Embed Pods Frameworks */ = {
@@ -1207,7 +1207,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E89438496151546E4C4E397A /* [CP] Embed Pods Frameworks */ = {
@@ -1445,8 +1445,9 @@
 			baseConfigurationReference = 89D41C6489863CB58D4966E5 /* Pods-CTPersistance.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6C6JHMW46K;
+				DEVELOPMENT_TEAM = EJ552L8U27;
 				INFOPLIST_FILE = CTPersistance/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1458,8 +1459,9 @@
 			baseConfigurationReference = 0E3659C0BE44F61448420F54 /* Pods-CTPersistance.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6C6JHMW46K;
+				DEVELOPMENT_TEAM = EJ552L8U27;
 				INFOPLIST_FILE = CTPersistance/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistance;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -42,7 +42,7 @@
     return self;
 }
 
-- (CTPersistanceSqlStatement *)compileSqlString:(NSString *)sqlString bindValueList:(NSArray<NSInvocation *> *)bindValueList error:(NSError *__autoreleasing *)error
+- (CTPersistanceSqlStatement *)compileSqlString:(NSString *)sqlString bindValueList:(NSMutableArray <NSInvocation *> *)bindValueList error:(NSError *__autoreleasing *)error
 {
     CTPersistanceSqlStatement *statement = [[CTPersistanceSqlStatement alloc] initWithSqlString:sqlString bindValueList:bindValueList database:self.database error:error];
     return statement;

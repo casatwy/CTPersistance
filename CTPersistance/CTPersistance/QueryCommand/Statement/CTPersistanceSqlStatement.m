@@ -19,7 +19,7 @@
 
 @implementation CTPersistanceSqlStatement
 
-- (instancetype)initWithSqlString:(NSString *)sqlString bindValueList:(NSArray<NSInvocation *> *)bindValueList database:(CTPersistanceDataBase *)database error:(NSError *__autoreleasing *)error
+- (instancetype)initWithSqlString:(NSString *)sqlString bindValueList:(NSMutableArray <NSInvocation *> *)bindValueList database:(CTPersistanceDataBase *)database error:(NSError *__autoreleasing *)error
 {
     self = [super init];
     if (self) {
@@ -45,6 +45,7 @@
             [bindInvocation setArgument:(void *)&statement atIndex:2];
             [bindInvocation invoke];
         }];
+        [bindValueList removeAllObjects];
     }
     return self;
 }

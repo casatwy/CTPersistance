@@ -11,7 +11,7 @@
 
 @interface CTPersistanceSqlStatement : NSObject
 
-- (instancetype)initWithSqlString:(NSString *)sqlString bindValueList:(NSArray<NSInvocation *> *)bindValueList database:(CTPersistanceDataBase *)database error:(NSError *__autoreleasing *)error;
+- (instancetype)initWithSqlString:(NSString *)sqlString bindValueList:(NSMutableArray <NSInvocation *> *)bindValueList database:(CTPersistanceDataBase *)database error:(NSError *__autoreleasing *)error;
 
 /**
  *  execute SQL with sqlString
