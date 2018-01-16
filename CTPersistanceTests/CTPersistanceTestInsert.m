@@ -48,6 +48,7 @@
     [self.testTable insertRecord:record error:&error];
     XCTAssertNil(error);
     TestRecord *recordToTest = (TestRecord *)[self.testTable findWithPrimaryKey:record.primaryKey error:NULL];
+    XCTAssertTrue([recordToTest.isCelebrity boolValue]);
     XCTAssertNotNil(recordToTest);
 }
 

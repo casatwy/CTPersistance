@@ -95,6 +95,30 @@
         [self addObject:invocation];
         return;
     }
+    
+    if ([valueType isEqualToString:@"BOOLEAN"]) {
+        invocation = [NSInvocation invocationWithMethodSignature:[NSMutableArray instanceMethodSignatureForSelector:@selector(bindBooleanWithStatement:value:key:)]];
+        invocation.target = self;
+        invocation.selector = @selector(bindBooleanWithStatement:value:key:);
+        [invocation setArgument:&bindValue atIndex:3];
+        [invocation setArgument:&bindKey atIndex:4];
+        [invocation retainArguments];
+        [self addObject:invocation];
+        return;
+    }
+}
+
+- (void)bindBooleanWithStatement:(sqlite3_stmt *)statement value:(id)value key:(NSString *)key
+{
+    if ([value isKindOfClass:[NSNull class]]) {
+        sqlite3_bind_null(statement, sqlite3_bind_parameter_index(statement, [key UTF8String]));
+        return;
+    }
+    
+    if ([value isKindOfClass:[NSNumber class]]) {
+        sqlite3_bind_int(statement, sqlite3_bind_parameter_index(statement, [key UTF8String]), [value boolValue]);
+        return;
+    }
 }
 
 - (void)bindIntegerWithStatement:(sqlite3_stmt *)statement value:(id)value key:(NSString *)key

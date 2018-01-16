@@ -32,7 +32,7 @@
              @"primaryKey":@"INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL",
              @"name":@"TEXT",
              @"age":@"INTEGER",
-             @"isCelebrity":@"INTEGER",
+             @"isCelebrity":@"BOOLEAN",
              @"avatar":@"BLOB",
              @"progress":@"REAL"
              };
