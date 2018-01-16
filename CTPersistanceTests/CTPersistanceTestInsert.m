@@ -42,11 +42,13 @@
 {
     TestRecord *record = [[TestRecord alloc] init];
     record.name = @"c'asa";
+    record.isCelebrity = @(YES);
 
     NSError *error = nil;
     [self.testTable insertRecord:record error:&error];
     XCTAssertNil(error);
-    XCTAssertNotNil([self.testTable findWithPrimaryKey:record.primaryKey error:NULL]);
+    TestRecord *recordToTest = (TestRecord *)[self.testTable findWithPrimaryKey:record.primaryKey error:NULL];
+    XCTAssertNotNil(recordToTest);
 }
 
 - (void)testInsertNULLTextRecord
