@@ -1,6 +1,6 @@
-pod "CTPersistence"
+pod "CTPersistance"
 
-CTPersistance is a sqlite wrapper which help you to handle with database.
+`CTPersistance` is a sqlite wrapper which help you to handle with database.
 
 I'm still writing this document, you can check test case for usage.
 
