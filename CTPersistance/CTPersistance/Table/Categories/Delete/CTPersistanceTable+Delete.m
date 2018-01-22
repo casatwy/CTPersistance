@@ -15,33 +15,33 @@
 
 @implementation CTPersistanceTable (Delete)
 
-- (void)deleteRecord:(NSObject <CTPersistanceRecordProtocol> *)record error:(NSError **)error
+- (void)deleteRecord:(NSObject<CTPersistanceRecordProtocol> *)record error:(NSError *__autoreleasing *)error
 {
     [self deleteWithPrimaryKey:[record valueForKey:[self.child primaryKeyName]] error:error];
 }
 
-- (void)deleteRecordList:(NSArray <NSObject <CTPersistanceRecordProtocol> *> *)recordList error:(NSError **)error
+- (void)deleteRecordList:(NSArray<NSObject<CTPersistanceRecordProtocol> *> *)recordList error:(NSError *__autoreleasing *)error
 {
     NSMutableArray *primatKeyList = [[NSMutableArray alloc] init];
     [recordList enumerateObjectsUsingBlock:^(NSObject <CTPersistanceRecordProtocol> * _Nonnull record, NSUInteger idx, BOOL * _Nonnull stop) {
         NSNumber *primaryKeyValue = [record valueForKey:[self.child primaryKeyName]];
-        if (primaryKeyValue) {
+        if (primaryKeyValue != nil) {
             [primatKeyList addObject:primaryKeyValue];
         }
     }];
     [self deleteWithPrimaryKeyList:primatKeyList error:error];
 }
 
-- (void)deleteWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError **)error
+- (void)deleteWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError *__autoreleasing *)error
 {
     NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
     NSString *whereString = [whereCondition whereStringWithConditionParams:conditionParams bindValueList:bindValueList];
     [[self.queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
 }
 
-- (void)deleteWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error
+- (void)deleteWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError *__autoreleasing *)error
 {
-    if (primaryKeyValue) {
+    if (primaryKeyValue != nil) {
         NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
         NSString *whereKey = [NSString stringWithFormat:@":CTPersistanceWhere_%@", self.child.primaryKeyName];
@@ -52,7 +52,7 @@
     }
 }
 
-- (void)deleteWithPrimaryKeyList:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error
+- (void)deleteWithPrimaryKeyList:(NSArray<NSNumber *> *)primaryKeyValueList error:(NSError *__autoreleasing *)error
 {
     if ([primaryKeyValueList count] > 0) {
         NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
