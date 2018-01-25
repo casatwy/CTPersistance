@@ -26,7 +26,7 @@
 {
     [recordList enumerateObjectsUsingBlock:^(NSObject <CTPersistanceRecordProtocol> * _Nonnull record, NSUInteger idx, BOOL * _Nonnull stop) {
         [self updateRecord:record error:error];
-        if (*error != nil) {
+        if (error != NULL && *error != nil) {
             *stop = YES;
         }
     }];
