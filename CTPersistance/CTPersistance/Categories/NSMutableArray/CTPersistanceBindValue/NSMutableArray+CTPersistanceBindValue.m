@@ -50,6 +50,9 @@
         if ([bindValue isKindOfClass:[NSNull class]]) {
             valueType = @"INTEGER";
         }
+        if ([bindValue isKindOfClass:[NSData class]]) {
+            valueType = @"BLOB";
+        }
     }
 
     if ([valueType isEqualToString:@"INTEGER"]) {
