@@ -32,6 +32,7 @@
         record.name = @"casa";
         record.avatar = [@"avatar" dataUsingEncoding:NSUTF8StringEncoding];
         record.progress = @(0.0f);
+        record.isCelebrity = @(NO);
         [self.testTable insertRecord:record error:NULL];
         [self.recordList addObject:record];
         [self.primaryKeyList addObject:record.primaryKey];
@@ -50,6 +51,7 @@
     self.recordToUpdate.name = @"testUpdateRecord";
     self.recordToUpdate.avatar = [@"newAvatar" dataUsingEncoding:NSUTF8StringEncoding];
     self.recordToUpdate.progress = @(0.1f);
+    self.recordToUpdate.isCelebrity = @(YES);
     NSError *error = nil;
     [self.testTable updateRecord:self.recordToUpdate error:&error];
     XCTAssertNil(error);
@@ -59,6 +61,7 @@
     NSString *newAvatarString = [[NSString alloc] initWithData:record.avatar encoding:NSUTF8StringEncoding];
     XCTAssert([newAvatarString isEqualToString:@"newAvatar"]);
     XCTAssertEqual([record.progress doubleValue], 0.1f);
+    XCTAssertEqual([record.isCelebrity boolValue], YES);
 }
 
 - (void)testUpdateRecordList

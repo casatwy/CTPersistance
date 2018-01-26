@@ -60,7 +60,9 @@
                 valueType = @"REAL";
                 
             } else if (strcmp(value.objCType, @encode(BOOL)) == 0
-                       || strcmp(value.objCType, @encode(Boolean)) == 0) {
+                       || strcmp(value.objCType, @encode(Boolean)) == 0
+                       || strcmp(value.objCType, @encode(boolean_t)) == 0
+                       || strcmp(value.objCType, @encode(char)) == 0) {
                 
                 valueType = @"BOOLEAN";
                 
