@@ -8,6 +8,7 @@
 
 #import "NSMutableArray+CTPersistanceBindValue.h"
 #import <sqlite3.h>
+#import <UIKit/UIKit.h>
 
 @implementation NSMutableArray (CTPersistanceBindValue)
 
@@ -42,7 +43,28 @@
 
     if (valueType == nil) {
         if ([bindValue isKindOfClass:[NSNumber class]]) {
-            valueType = @"INTEGER";
+            NSNumber *value = (NSNumber *)bindValue;
+            if (strcmp(value.objCType, @encode(int)) == 0
+                || strcmp(value.objCType, @encode(long)) == 0
+                || strcmp(value.objCType, @encode(long long)) == 0
+                || strcmp(value.objCType, @encode(NSInteger)) == 0
+                || strcmp(value.objCType, @encode(NSUInteger)) == 0
+                || strcmp(value.objCType, @encode(short)) == 0) {
+                
+                valueType = @"INTEGER";
+                
+            } else if (strcmp(value.objCType, @encode(float)) == 0
+                       || strcmp(value.objCType, @encode(double)) == 0
+                       || strcmp(value.objCType, @encode(CGFloat)) == 0) {
+                
+                valueType = @"REAL";
+                
+            } else if (strcmp(value.objCType, @encode(BOOL)) == 0
+                       || strcmp(value.objCType, @encode(Boolean)) == 0) {
+                
+                valueType = @"BOOLEAN";
+                
+            }
         }
         if ([bindValue isKindOfClass:[NSString class]]) {
             valueType = @"TEXT";

@@ -31,6 +31,7 @@
         TestRecord *record = [[TestRecord alloc] init];
         record.name = @"casa";
         record.avatar = [@"avatar" dataUsingEncoding:NSUTF8StringEncoding];
+        record.progress = @(0.0f);
         [self.testTable insertRecord:record error:NULL];
         [self.recordList addObject:record];
         [self.primaryKeyList addObject:record.primaryKey];
@@ -48,6 +49,7 @@
 {
     self.recordToUpdate.name = @"testUpdateRecord";
     self.recordToUpdate.avatar = [@"newAvatar" dataUsingEncoding:NSUTF8StringEncoding];
+    self.recordToUpdate.progress = @(0.1f);
     NSError *error = nil;
     [self.testTable updateRecord:self.recordToUpdate error:&error];
     XCTAssertNil(error);
@@ -56,12 +58,14 @@
     XCTAssert([record.name isEqualToString:@"testUpdateRecord"]);
     NSString *newAvatarString = [[NSString alloc] initWithData:record.avatar encoding:NSUTF8StringEncoding];
     XCTAssert([newAvatarString isEqualToString:@"newAvatar"]);
+    XCTAssertEqual([record.progress doubleValue], 0.1f);
 }
 
 - (void)testUpdateRecordList
 {
     self.recordToUpdate.name = @"testUpdateRecordList";
     self.recordToUpdate.avatar = [@"newAvatar" dataUsingEncoding:NSUTF8StringEncoding];
+    self.recordToUpdate.progress = @(0.1f);
     NSError *error = nil;
     [self.testTable updateRecordList:@[self.recordToUpdate] error:&error];
     XCTAssertNil(error);
@@ -70,6 +74,7 @@
     XCTAssert([record.name isEqualToString:@"testUpdateRecordList"]);
     NSString *newAvatarString = [[NSString alloc] initWithData:record.avatar encoding:NSUTF8StringEncoding];
     XCTAssert([newAvatarString isEqualToString:@"newAvatar"]);
+    XCTAssertEqual([record.progress doubleValue], 0.1f);
 }
 
 - (void)testUpdateRecordList_multiRecord
@@ -77,6 +82,7 @@
     [self.recordList enumerateObjectsUsingBlock:^(TestRecord * _Nonnull record, NSUInteger idx, BOOL * _Nonnull stop) {
         record.name = @"testUpdateRecordList_multiRecord";
         record.avatar = [@"newAvatar" dataUsingEncoding:NSUTF8StringEncoding];
+        record.progress = @(0.1f);
     }];
     
     NSError *error = nil;
@@ -89,6 +95,7 @@
         XCTAssert([recordToCheck.name isEqualToString:@"testUpdateRecordList_multiRecord"]);
         NSString *newAvatarString = [[NSString alloc] initWithData:recordToCheck.avatar encoding:NSUTF8StringEncoding];
         XCTAssert([newAvatarString isEqualToString:@"newAvatar"]);
+        XCTAssertEqual([recordToCheck.progress doubleValue], 0.1f);
     }];
 }
 
@@ -97,12 +104,14 @@
     NSError *error = nil;
     [self.testTable updateValue:@"testUpdateValueForKeyPrimaryKeyValue" forKey:@"name" primaryKeyValue:self.recordToUpdate.primaryKey error:&error];
     [self.testTable updateValue:[@"newAvatar" dataUsingEncoding:NSUTF8StringEncoding] forKey:@"avatar" primaryKeyValue:self.recordToUpdate.primaryKey error:&error];
+    [self.testTable updateValue:@(0.1f) forKey:@"progress" primaryKeyValue:self.recordToUpdate.primaryKey error:&error];
     XCTAssertNil(error);
 
     TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:self.recordToUpdate.primaryKey error:NULL];
     XCTAssert([record.name isEqualToString:@"testUpdateValueForKeyPrimaryKeyValue"]);
     NSString *newAvatarString = [[NSString alloc] initWithData:record.avatar encoding:NSUTF8StringEncoding];
     XCTAssert([newAvatarString isEqualToString:@"newAvatar"]);
+    XCTAssertEqual([record.progress doubleValue], 0.1f);
 }
 
 - (void)testUpdateValueForKeyWhereKeyInList
@@ -110,6 +119,7 @@
     NSError *error = nil;
     [self.testTable updateValue:@"testUpdateValueForKeyWhereKeyInList" forKey:@"name" whereKey:self.testTable.primaryKeyName inList:self.primaryKeyList error:&error];
     [self.testTable updateValue:[@"newAvatar" dataUsingEncoding:NSUTF8StringEncoding] forKey:@"avatar" whereKey:self.testTable.primaryKeyName inList:self.primaryKeyList error:&error];
+    [self.testTable updateValue:@(0.1f) forKey:@"progress" whereKey:self.testTable.primaryKeyName inList:self.primaryKeyList error:&error];
     XCTAssertNil(error);
 
     NSArray <TestRecord *> *recordListToCheck = (NSArray <TestRecord *> *)[self.testTable findAllWithPrimaryKey:self.primaryKeyList error:NULL];
@@ -118,6 +128,7 @@
         XCTAssert([recordToCheck.name isEqualToString:@"testUpdateValueForKeyWhereKeyInList"]);
         NSString *newAvatarString = [[NSString alloc] initWithData:recordToCheck.avatar encoding:NSUTF8StringEncoding];
         XCTAssert([newAvatarString isEqualToString:@"newAvatar"]);
+        XCTAssertEqual([recordToCheck.progress doubleValue], 0.1f);
     }];
 }
 
@@ -127,6 +138,7 @@
     [self.testTable updateKeyValueList:@{
                                          @"name":@"testUpdateKeyValueListWhereConditionWhereConditionParams",
                                          @"avatar":[@"newAvatar" dataUsingEncoding:NSUTF8StringEncoding],
+                                         @"progress":@(0.1f)
                                          }
                         whereCondition:@"primaryKey > :primaryKeyValue"
                   whereConditionParams:@{@":primaryKeyValue":@0,}
@@ -139,6 +151,7 @@
         XCTAssert([recordToCheck.name isEqualToString:@"testUpdateKeyValueListWhereConditionWhereConditionParams"]);
         NSString *newAvatarString = [[NSString alloc] initWithData:recordToCheck.avatar encoding:NSUTF8StringEncoding];
         XCTAssert([newAvatarString isEqualToString:@"newAvatar"]);
+        XCTAssertEqual([recordToCheck.progress doubleValue], 0.1f);
     }];
 }
 
@@ -155,6 +168,11 @@
             primaryKeyValueList:self.primaryKeyList
                           error:&error];
     XCTAssertNil(error);
+    [self.testTable updateValue:@(0.1f)
+                         forKey:@"progress"
+            primaryKeyValueList:self.primaryKeyList
+                          error:&error];
+    XCTAssertNil(error);
 
     NSArray <TestRecord *> *recordListToCheck = (NSArray <TestRecord *> *)[self.testTable findAllWithPrimaryKey:self.primaryKeyList error:NULL];
     XCTAssertEqual(recordListToCheck.count, self.primaryKeyList.count);
@@ -162,6 +180,7 @@
         XCTAssert([recordToCheck.name isEqualToString:@"testUpdateValueForKeyPrimaryKeyValueList"]);
         NSString *newAvatarString = [[NSString alloc] initWithData:recordToCheck.avatar encoding:NSUTF8StringEncoding];
         XCTAssert([newAvatarString isEqualToString:@"newAvatar"]);
+        XCTAssertEqual([recordToCheck.progress doubleValue], 0.1f);
     }];
 }
 
@@ -171,7 +190,8 @@
     [self.testTable updateKeyValueList:@{
                                          @"age":@1,
                                          @"name":@"testUpdateKeyValueList_PrimaryKeyValueList",
-                                         @"avatar":[@"newAvatar" dataUsingEncoding:NSUTF8StringEncoding]
+                                         @"avatar":[@"newAvatar" dataUsingEncoding:NSUTF8StringEncoding],
+                                         @"progress":@(0.1f)
                                          }
                    primaryKeyValueList:self.primaryKeyList
                                  error:&error];
@@ -184,6 +204,7 @@
         XCTAssertEqual([recordToCheck.age integerValue], 1);
         NSString *newAvatarString = [[NSString alloc] initWithData:recordToCheck.avatar encoding:NSUTF8StringEncoding];
         XCTAssert([newAvatarString isEqualToString:@"newAvatar"]);
+        XCTAssertEqual([recordToCheck.progress doubleValue], 0.1f);
     }];
 }
 
