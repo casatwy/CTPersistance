@@ -33,6 +33,11 @@
         record.avatar = [@"avatar" dataUsingEncoding:NSUTF8StringEncoding];
         record.progress = @(0.0f);
         record.isCelebrity = @(NO);
+
+        NSDate *now = [NSDate date];
+        long long millisecond = [now timeIntervalSince1970] * 1000;
+        record.timeStamp = millisecond;
+
         [self.testTable insertRecord:record error:NULL];
         [self.recordList addObject:record];
         [self.primaryKeyList addObject:record.primaryKey];
@@ -148,6 +153,32 @@
                                  error:&error];
     XCTAssertNil(error);
 
+    NSArray <TestRecord *> *recordListToCheck = (NSArray <TestRecord *> *)[self.testTable findAllWithPrimaryKey:self.primaryKeyList error:NULL];
+    XCTAssertEqual(recordListToCheck.count, self.primaryKeyList.count);
+    [recordListToCheck enumerateObjectsUsingBlock:^(TestRecord * _Nonnull recordToCheck, NSUInteger idx, BOOL * _Nonnull stop) {
+        XCTAssert([recordToCheck.name isEqualToString:@"testUpdateKeyValueListWhereConditionWhereConditionParams"]);
+        NSString *newAvatarString = [[NSString alloc] initWithData:recordToCheck.avatar encoding:NSUTF8StringEncoding];
+        XCTAssert([newAvatarString isEqualToString:@"newAvatar"]);
+        XCTAssertEqual([recordToCheck.progress doubleValue], 0.1f);
+    }];
+}
+
+- (void)testUpdateKeyValueListWithLongLongTypeWhereCondition {
+    NSError *error = nil;
+
+    NSDate *now = [NSDate date];
+    long long millisecond = [now timeIntervalSince1970] * 1000;
+
+
+    [self.testTable updateKeyValueList:@{
+                                         @"name":@"testUpdateKeyValueListWhereConditionWhereConditionParams",
+                                         @"avatar":[@"newAvatar" dataUsingEncoding:NSUTF8StringEncoding],
+                                         @"progress":@(0.1f)
+                                         }
+                        whereCondition:@"timeStamp < :timeStamp"
+                  whereConditionParams:@{@":timeStamp":@(millisecond + 1),}
+                                 error:&error];
+    XCTAssertNil(error);
     NSArray <TestRecord *> *recordListToCheck = (NSArray <TestRecord *> *)[self.testTable findAllWithPrimaryKey:self.primaryKeyList error:NULL];
     XCTAssertEqual(recordListToCheck.count, self.primaryKeyList.count);
     [recordListToCheck enumerateObjectsUsingBlock:^(TestRecord * _Nonnull recordToCheck, NSUInteger idx, BOOL * _Nonnull stop) {

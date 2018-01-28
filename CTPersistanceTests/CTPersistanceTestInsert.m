@@ -109,6 +109,23 @@
     XCTAssertNotNil([self.testTable findWithPrimaryKey:record.primaryKey error:NULL]);
 }
 
+- (void)testInsertLongLongTypeRecord {
+    NSDate *now = [NSDate date];
+    long long millisecond = [now timeIntervalSince1970] * 1000;
+
+    TestRecord *record = [[TestRecord alloc] init];
+    record.timeStamp = millisecond;
+
+    NSError *error = nil;
+    [self.testTable insertRecord:record error:&error];
+    XCTAssertNil(error);
+
+    TestRecord *existRecord = (TestRecord*)[self.testTable findWithPrimaryKey:record.primaryKey error:&error];
+    XCTAssertNil(error);
+    XCTAssertNotNil(existRecord);
+    XCTAssert(existRecord.timeStamp == millisecond);
+}
+
 - (void)testInsertRecordList
 {
     NSInteger recordCount = 10;
