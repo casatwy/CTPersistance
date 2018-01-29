@@ -242,4 +242,33 @@
     }];
 }
 
+- (void)testUpdateWithDefaultValue {
+    NSError *error = nil;
+
+    TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:@(1) error:&error];
+    XCTAssertNil(error);
+
+    // Default String
+    record.defaultStr = nil;
+    [self.testTable updateRecord:record error:&error];
+    XCTAssertNil(error);
+    TestRecord *existRecord = (TestRecord *)[self.testTable findWithPrimaryKey:@(1) error:&error];
+    XCTAssertNil(error);
+    XCTAssert([existRecord.defaultStr isEqualToString:@""]);
+
+    // Default Int
+    [self.testTable updateValue:nil forKey:@"defaultInt" primaryKeyValue:@(1)  error:&error];
+    XCTAssertNil(error);
+    existRecord = (TestRecord *)[self.testTable findWithPrimaryKey:@(1) error:&error];
+    XCTAssertNil(error);
+    XCTAssert(existRecord.defaultInt == 1);
+
+    // Default Int
+    [self.testTable updateValue:nil forKey:@"defaultDouble" primaryKeyValue:@(1)  error:&error];
+    XCTAssertNil(error);
+    existRecord = (TestRecord *)[self.testTable findWithPrimaryKey:@(1) error:&error];
+    XCTAssertNil(error);
+    XCTAssert(existRecord.defaultDouble == 1);
+
+}
 @end

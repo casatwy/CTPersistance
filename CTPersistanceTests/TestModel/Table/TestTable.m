@@ -28,9 +28,10 @@
 
 -(NSDictionary *)columnDetaultValue {
     return @{
-             @"defaultInt":@"0",
+             @"defaultInt":@(1),
              @"defaultStr":@"",
-             @"defaultBool":@"1"
+             @"defaultBool":@(1),
+             @"defaultDouble":@(1.0)
              };
 }
 
@@ -45,8 +46,10 @@
              @"progress":@"REAL",
              @"timeStamp":@"INTEGER",
              @"defaultInt":@"INTEGER",
-             @"defaultStr":@"TEXT NOT NULL",
-             @"defaultBool":@"INTEGER"
+             @"defaultStr":@"TEXT",
+             @"defaultBool":@"INTEGER",
+             @"defaultDouble":@"REAL",
+             @"defaultBlob":@"BLOB"
              };
 }
 
