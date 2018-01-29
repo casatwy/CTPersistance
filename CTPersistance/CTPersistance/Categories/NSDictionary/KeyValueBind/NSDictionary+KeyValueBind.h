@@ -11,5 +11,6 @@
 @interface NSDictionary (KeyValueBind)
 
 - (NSString *)bindToValueList:(NSMutableArray <NSInvocation *> *)bindValueList;
+- (NSString *)bindToUpdateValueList:(NSMutableArray <NSInvocation *> *)bindUpdateValueList;
 
 @end

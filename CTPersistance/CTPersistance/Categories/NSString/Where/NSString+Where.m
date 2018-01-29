@@ -19,7 +19,7 @@
         [valueKey deleteCharactersInRange:NSMakeRange(0, 1)];
         [valueKey insertString:@":CTPersistanceWhere_" atIndex:0];
         [whereString replaceOccurrencesOfString:key withString:valueKey options:0 range:NSMakeRange(0, whereString.length)];
-        [bindValueList addBindKey:valueKey bindValue:value columnDescription:nil];
+        [bindValueList addBindKey:valueKey bindValue:value];
     }];
     return whereString;
 }

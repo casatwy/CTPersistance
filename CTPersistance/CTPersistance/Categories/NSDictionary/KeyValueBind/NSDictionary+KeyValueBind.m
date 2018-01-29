@@ -17,10 +17,27 @@
 
     [self enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
         NSString *valueKey = [NSString stringWithFormat:@":%@", key];
-        [valueList addObject:[NSString stringWithFormat:@"%@ = %@", key, valueKey]];
-        [bindValueList addBindKey:valueKey bindValue:value columnDescription:nil];
+        if ([value isKindOfClass:[NSNull class]]) {
+            [valueList addObject:[NSString stringWithFormat:@"%@ is %@", key, valueKey]];
+        } else {
+            [valueList addObject:[NSString stringWithFormat:@"%@ = %@", key, valueKey]];
+        }
+        [bindValueList addBindKey:valueKey bindValue:value];
     }];
 
+    return [valueList componentsJoinedByString:@","];
+}
+
+- (NSString *)bindToUpdateValueList:(NSMutableArray<NSInvocation *> *)bindUpdateValueList
+{
+    NSMutableArray *valueList = [[NSMutableArray alloc] init];
+    
+    [self enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
+        NSString *valueKey = [NSString stringWithFormat:@":%@", key];
+        [valueList addObject:[NSString stringWithFormat:@"%@ = %@", key, valueKey]];
+        [bindUpdateValueList addBindKey:valueKey bindValue:value];
+    }];
+    
     return [valueList componentsJoinedByString:@","];
 }
 

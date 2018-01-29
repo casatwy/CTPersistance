@@ -51,7 +51,7 @@
 {
     NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
     [params enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
-        [bindValueList addBindKey:key bindValue:value columnDescription:self.child.columnInfo[key]];
+        [bindValueList addBindKey:key bindValue:value];
     }];
 
     return [[[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass];
@@ -105,7 +105,7 @@
 {
     NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
     [params enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id _Nonnull value, BOOL * _Nonnull stop) {
-        [bindValueList addBindKey:key bindValue:value columnDescription:self.child.columnInfo[key]];
+        [bindValueList addBindKey:key bindValue:value];
     }];
 
     NSArray *result = [[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error];
@@ -125,7 +125,7 @@
 
     NSString *valueKey = @":primaryValue";
     NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
-    [bindValueList addBindKey:valueKey bindValue:primaryKeyValue columnDescription:self.child.columnInfo[self.child.primaryKeyName]];
+    [bindValueList addBindKey:valueKey bindValue:primaryKeyValue];
 
     NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` WHERE %@ = %@ LIMIT 1;", self.child.tableName, self.child.primaryKeyName, valueKey];
 
@@ -140,7 +140,7 @@
     [primaryKeyValueList enumerateObjectsUsingBlock:^(NSNumber * _Nonnull value, NSUInteger idx, BOOL * _Nonnull stop) {
         NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhereKey%lu", (unsigned long)idx];
         [valueList addObject:valueKey];
-        [bindValueList addBindKey:valueKey bindValue:value columnDescription:self.child.columnInfo[self.child.primaryKeyName]];
+        [bindValueList addBindKey:valueKey bindValue:value];
     }];
 
     NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` WHERE %@ IN (%@);", self.child.tableName, self.child.primaryKeyName, [valueList componentsJoinedByString:@","]];

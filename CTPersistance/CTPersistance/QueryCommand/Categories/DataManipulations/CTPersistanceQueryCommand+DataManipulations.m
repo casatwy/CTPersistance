@@ -34,7 +34,7 @@
             }
             NSString *valueKey = [NSString stringWithFormat:@":%@%lu", columnName, (unsigned long)idx];
             [valueList addObject:valueKey];
-            [bindValueList addBindKey:valueKey bindValue:columnValue columnDescription:columnInfo[columnName]];
+            [bindValueList addBindKey:valueKey bindValue:columnValue];
         }];
         [valueItemList addObject:[NSString stringWithFormat:@"(%@)", [valueList componentsJoinedByString:@","]]];
     }];

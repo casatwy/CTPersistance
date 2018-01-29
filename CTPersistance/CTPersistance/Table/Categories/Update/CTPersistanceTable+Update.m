@@ -43,7 +43,7 @@
 {
     NSMutableArray <NSInvocation *> *bindValueList = [[NSMutableArray alloc] init];
 
-    NSString *valueString = [keyValueList bindToValueList:bindValueList];
+    NSString *valueString = [keyValueList bindToUpdateValueList:bindValueList];
     NSString *whereString = [whereCondition whereStringWithConditionParams:whereConditionParams bindValueList:bindValueList];
 
     [[self.queryCommand updateTable:self.child.tableName valueString:valueString whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
@@ -56,11 +56,12 @@
 
         NSString *whereKey = [NSString stringWithFormat:@":CTPersistanceWhere_%@", self.child.primaryKeyName];
         NSString *whereString = [NSString stringWithFormat:@"%@ = %@", self.child.primaryKeyName, whereKey];
-        [bindValueArray addBindKey:whereKey bindValue:primaryKeyValue columnDescription:self.child.columnInfo[self.child.primaryKeyName]];
+        [bindValueArray addBindKey:whereKey bindValue:primaryKeyValue];
 
         NSString *valueKey = [NSString stringWithFormat:@":%@", key];
-        NSString *valueString = [NSString stringWithFormat:@"%@ = %@", key, valueKey];
-        [bindValueArray addBindKey:valueKey bindValue:value columnDescription:self.child.columnInfo[key]];
+        NSString *valueString = nil;
+        valueString = [NSString stringWithFormat:@"%@ = %@", key, valueKey];
+        [bindValueArray addBindKey:valueKey bindValue:value];
 
         [[self.queryCommand updateTable:self.child.tableName valueString:valueString whereString:whereString bindValueList:bindValueArray error:error] executeWithError:error];
     }
@@ -79,14 +80,17 @@
         NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
         NSString *valueKey = [NSString stringWithFormat:@":%@", key];
-        NSString *valueString = [NSString stringWithFormat:@"%@ = %@", key, valueKey];
-        [bindValueList addBindKey:valueKey bindValue:value columnDescription:self.child.columnInfo[key]];
+        
+        NSString *valueString = nil;
+        valueString = [NSString stringWithFormat:@"%@ = %@", key, valueKey];
+
+        [bindValueList addBindKey:valueKey bindValue:value];
 
         NSMutableArray *valueKeyList = [[NSMutableArray alloc] init];
         [valueList enumerateObjectsUsingBlock:^(id  _Nonnull value, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhere%lu_", (unsigned long)idx];
             [valueKeyList addObject:valueKey];
-            [bindValueList addBindKey:valueKey bindValue:value columnDescription:self.child.columnInfo[wherekey]];
+            [bindValueList addBindKey:valueKey bindValue:value];
         }];
         NSString *whereString = [NSString stringWithFormat:@"%@ IN (%@)", wherekey, [valueKeyList componentsJoinedByString:@","]];
 
@@ -102,11 +106,11 @@
 
     NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
-    NSString *valueString = [keyValueList bindToValueList:bindValueList];
+    NSString *valueString = [keyValueList bindToUpdateValueList:bindValueList];
 
     NSString *whereKey = [NSString stringWithFormat:@":CTPersistanceWhere_%@", self.child.primaryKeyName];
     NSString *whereCondition = [NSString stringWithFormat:@"%@ = %@", self.child.primaryKeyName, whereKey];
-    [bindValueList addBindKey:whereKey bindValue:primaryKeyValue columnDescription:self.child.columnInfo[self.child.primaryKeyName]];
+    [bindValueList addBindKey:whereKey bindValue:primaryKeyValue];
 
     [[self.queryCommand updateTable:self.child.tableName valueString:valueString whereString:whereCondition bindValueList:bindValueList error:error] executeWithError:error];
 }
@@ -115,13 +119,13 @@
 {
     NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
-    NSString *valueString = [keyValueList bindToValueList:bindValueList];
+    NSString *valueString = [keyValueList bindToUpdateValueList:bindValueList];
 
     NSMutableArray *valueKeyList = [[NSMutableArray alloc] init];
     [primaryKeyValueList enumerateObjectsUsingBlock:^(id  _Nonnull value, NSUInteger idx, BOOL * _Nonnull stop) {
         NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhere%lu_", (unsigned long)idx];
         [valueKeyList addObject:valueKey];
-        [bindValueList addBindKey:valueKey bindValue:value columnDescription:self.child.columnInfo[self.child.primaryKeyName]];
+        [bindValueList addBindKey:valueKey bindValue:value];
     }];
     NSString *whereString = [NSString stringWithFormat:@"%@ IN (%@)", self.child.primaryKeyName, [valueKeyList componentsJoinedByString:@","]];
     

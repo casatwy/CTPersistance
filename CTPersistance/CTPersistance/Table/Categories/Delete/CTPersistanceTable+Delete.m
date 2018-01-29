@@ -45,7 +45,7 @@
         NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
         NSString *whereKey = [NSString stringWithFormat:@":CTPersistanceWhere_%@", self.child.primaryKeyName];
-        [bindValueList addBindKey:whereKey bindValue:primaryKeyValue columnDescription:self.child.columnInfo[self.child.primaryKeyName]];
+        [bindValueList addBindKey:whereKey bindValue:primaryKeyValue];
 
         NSString *whereString = [NSString stringWithFormat:@"%@ = %@", self.child.primaryKeyName, whereKey];
         [[self.queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
@@ -61,7 +61,7 @@
         [primaryKeyValueList enumerateObjectsUsingBlock:^(id  _Nonnull value, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhere%lu", (unsigned long)idx];
             [valueKeyList addObject:valueKey];
-            [bindValueList addBindKey:valueKey bindValue:value columnDescription:self.child.columnInfo[self.child.primaryKeyName]];
+            [bindValueList addBindKey:valueKey bindValue:value];
         }];
         NSString *whereString = [NSString stringWithFormat:@"%@ IN (%@)", self.child.primaryKeyName, [valueKeyList componentsJoinedByString:@","]];
 

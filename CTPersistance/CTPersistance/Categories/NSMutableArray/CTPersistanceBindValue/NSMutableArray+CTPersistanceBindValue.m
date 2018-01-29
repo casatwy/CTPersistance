@@ -27,60 +27,55 @@
     NSLog(@"%@", bindInfo);
 }
 
-- (void)addBindKey:(NSString *)bindKey bindValue:(id)bindValue columnDescription:(NSString *)columnDescription
+- (void)addBindKey:(NSString *)bindKey bindValue:(id)bindValue
 {
-    if (bindValue == nil) {
-        bindValue = [NSNull null];
-    }
-
     if (bindKey == nil) {
         return;
     }
-
-    NSInvocation *invocation = nil;
     
-    NSString *valueType = [[[columnDescription componentsSeparatedByString:@" "] firstObject] uppercaseString];
-
-    if (valueType == nil) {
-        if ([bindValue isKindOfClass:[NSNumber class]]) {
-            NSNumber *value = (NSNumber *)bindValue;
-            if (strcmp(value.objCType, @encode(int)) == 0
-                || strcmp(value.objCType, @encode(long)) == 0
-                || strcmp(value.objCType, @encode(long long)) == 0
-                || strcmp(value.objCType, @encode(NSInteger)) == 0
-                || strcmp(value.objCType, @encode(NSUInteger)) == 0
-                || strcmp(value.objCType, @encode(short)) == 0) {
-                
-                valueType = @"INTEGER";
-                
-            } else if (strcmp(value.objCType, @encode(float)) == 0
-                       || strcmp(value.objCType, @encode(double)) == 0
-                       || strcmp(value.objCType, @encode(CGFloat)) == 0) {
-                
-                valueType = @"REAL";
-                
-            } else if (strcmp(value.objCType, @encode(BOOL)) == 0
-                       || strcmp(value.objCType, @encode(Boolean)) == 0
-                       || strcmp(value.objCType, @encode(boolean_t)) == 0
-                       || strcmp(value.objCType, @encode(char)) == 0) {
-                
-                valueType = @"BOOLEAN";
-                
-            }
-        }
-        if ([bindValue isKindOfClass:[NSString class]]) {
-            valueType = @"TEXT";
-        }
-        if ([bindValue isKindOfClass:[NSNull class]]) {
-            valueType = @"NULL";
-        }
-        if ([bindValue isKindOfClass:[NSData class]]) {
-            valueType = @"BLOB";
+    if (bindValue == nil) {
+        bindValue = [NSNull null];
+    }
+    
+    NSString *valueType = nil;
+    if ([bindValue isKindOfClass:[NSNumber class]]) {
+        NSNumber *value = (NSNumber *)bindValue;
+        if (strcmp(value.objCType, @encode(int)) == 0
+            || strcmp(value.objCType, @encode(long)) == 0
+            || strcmp(value.objCType, @encode(long long)) == 0
+            || strcmp(value.objCType, @encode(NSInteger)) == 0
+            || strcmp(value.objCType, @encode(NSUInteger)) == 0
+            || strcmp(value.objCType, @encode(short)) == 0) {
+            
+            valueType = @"INTEGER";
+            
+        } else if (strcmp(value.objCType, @encode(float)) == 0
+                   || strcmp(value.objCType, @encode(double)) == 0
+                   || strcmp(value.objCType, @encode(CGFloat)) == 0) {
+            
+            valueType = @"REAL";
+            
+        } else if (strcmp(value.objCType, @encode(BOOL)) == 0
+                   || strcmp(value.objCType, @encode(Boolean)) == 0
+                   || strcmp(value.objCType, @encode(boolean_t)) == 0
+                   || strcmp(value.objCType, @encode(char)) == 0) {
+            
+            valueType = @"BOOLEAN";
+            
         }
     }
-
+    if ([bindValue isKindOfClass:[NSString class]]) {
+        valueType = @"TEXT";
+    }
+    if ([bindValue isKindOfClass:[NSNull class]]) {
+        valueType = @"NULL";
+    }
+    if ([bindValue isKindOfClass:[NSData class]]) {
+        valueType = @"BLOB";
+    }
+    
     if ([valueType isEqualToString:@"INTEGER"]) {
-        invocation = [NSInvocation invocationWithMethodSignature:[NSMutableArray instanceMethodSignatureForSelector:@selector(bindIntegerWithStatement:value:key:)]];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[NSMutableArray instanceMethodSignatureForSelector:@selector(bindIntegerWithStatement:value:key:)]];
         invocation.target = self;
         invocation.selector = @selector(bindIntegerWithStatement:value:key:);
         [invocation setArgument:&bindValue atIndex:3];
@@ -91,7 +86,7 @@
     }
 
     if ([valueType isEqualToString:@"TEXT"]) {
-        invocation = [NSInvocation invocationWithMethodSignature:[NSMutableArray instanceMethodSignatureForSelector:@selector(bindTextWithStatement:value:key:)]];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[NSMutableArray instanceMethodSignatureForSelector:@selector(bindTextWithStatement:value:key:)]];
         invocation.target = self;
         invocation.selector = @selector(bindTextWithStatement:value:key:);
         [invocation setArgument:&bindValue atIndex:3];
@@ -102,7 +97,7 @@
     }
 
     if ([valueType isEqualToString:@"REAL"]) {
-        invocation = [NSInvocation invocationWithMethodSignature:[NSMutableArray instanceMethodSignatureForSelector:@selector(bindRealWithStatement:value:key:)]];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[NSMutableArray instanceMethodSignatureForSelector:@selector(bindRealWithStatement:value:key:)]];
         invocation.target = self;
         invocation.selector = @selector(bindRealWithStatement:value:key:);
         [invocation setArgument:&bindValue atIndex:3];
@@ -113,7 +108,7 @@
     }
 
     if ([valueType isEqualToString:@"BLOB"]) {
-        invocation = [NSInvocation invocationWithMethodSignature:[NSMutableArray instanceMethodSignatureForSelector:@selector(bindBlobWithStatement:value:key:)]];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[NSMutableArray instanceMethodSignatureForSelector:@selector(bindBlobWithStatement:value:key:)]];
         invocation.target = self;
         invocation.selector = @selector(bindBlobWithStatement:value:key:);
         [invocation setArgument:&bindValue atIndex:3];
@@ -124,7 +119,7 @@
     }
     
     if ([valueType isEqualToString:@"BOOLEAN"]) {
-        invocation = [NSInvocation invocationWithMethodSignature:[NSMutableArray instanceMethodSignatureForSelector:@selector(bindBooleanWithStatement:value:key:)]];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[NSMutableArray instanceMethodSignatureForSelector:@selector(bindBooleanWithStatement:value:key:)]];
         invocation.target = self;
         invocation.selector = @selector(bindBooleanWithStatement:value:key:);
         [invocation setArgument:&bindValue atIndex:3];
@@ -135,7 +130,7 @@
     }
     
     if ([valueType isEqualToString:@"NULL"]) {
-        invocation = [NSInvocation invocationWithMethodSignature:[NSMutableArray instanceMethodSignatureForSelector:@selector(bindNULLWithStatement:key:)]];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[NSMutableArray instanceMethodSignatureForSelector:@selector(bindNULLWithStatement:key:)]];
         invocation.target = self;
         invocation.selector = @selector(bindNULLWithStatement:key:);
         [invocation setArgument:&bindKey atIndex:3];

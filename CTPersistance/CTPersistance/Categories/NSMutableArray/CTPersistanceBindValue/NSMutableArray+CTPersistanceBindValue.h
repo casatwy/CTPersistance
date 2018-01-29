@@ -11,6 +11,6 @@
 @interface NSMutableArray (CTPersistanceBindValue)
 
 - (void)printBindInfo;
-- (void)addBindKey:(NSString *)bindKey bindValue:(id)bindValue columnDescription:(NSString *)columnDescription;
+- (void)addBindKey:(NSString *)bindKey bindValue:(id)bindValue;
 
 @end
