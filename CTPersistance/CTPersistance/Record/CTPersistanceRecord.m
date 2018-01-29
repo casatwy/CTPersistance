@@ -30,6 +30,7 @@
     }
     free(properties);
     
+    // check data and set default value if available
     NSMutableDictionary *dictionaryRepresentation = [[NSMutableDictionary alloc] init];
     [table.columnInfo enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull columnName, NSString * _Nonnull columnDescription, BOOL * _Nonnull stop) {
         if (!propertyList[columnName]) {
@@ -45,8 +46,7 @@
         //setting default value
         if(table.columnDetaultValue) {
             id defaultValue = [table.columnDetaultValue valueForKey:columnName];
-
-            if(defaultValue) {
+            if (defaultValue) {
                 dictionaryRepresentation[columnName] = defaultValue;
             }
         }
