@@ -54,6 +54,24 @@
 - (NSString *)primaryKeyName;
 
 @optional
+
+/**
+ *  column default value with this table.
+ *  suport base type: INTEGER、TEXT、REAL
+ *  For Example:
+
+ return return @{
+            @"defaultInt":@"0",
+            @"defaultStr":@"",
+            @"defaultBool":@"1"
+ };
+
+ This is mean defaultInt = 0、defaultStr = '' and defaultBool = 1
+ *
+ *  @return return the column default value of your table
+ */
+-(NSDictionary *)columnDetaultValue;
+
 /**
  *  to check record before insert
  *

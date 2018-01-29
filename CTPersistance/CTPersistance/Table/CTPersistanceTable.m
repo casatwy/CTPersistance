@@ -68,9 +68,13 @@ NSString * const kCTPersistanceTableIndexIsUniq = @"kCTPersistanceTableIndexIsUn
 - (void)configTable:(CTPersistanceQueryCommand *)queryCommand
 {
     __block NSError *error = nil;
-    
+
     // create table if not exists
-    [[queryCommand createTable:self.child.tableName columnInfo:self.child.columnInfo] executeWithError:&error];
+    if(self.child.columnDetaultValue) {
+        [[queryCommand createTable:self.child.tableName columnInfo:self.child.columnInfo columnDefaultValue:self.child.columnDetaultValue] executeWithError:&error];
+    } else {
+        [[queryCommand createTable:self.child.tableName columnInfo:self.child.columnInfo] executeWithError:&error];
+    }
     
     // create index if not exists
     if (error == nil) {
@@ -102,6 +106,10 @@ NSString * const kCTPersistanceTableIndexIsUniq = @"kCTPersistanceTableIndexIsUn
 }
 
 #pragma mark - method to override
+-(NSDictionary *)columnDetaultValue {
+    return nil;
+}
+
 - (NSArray <NSDictionary *> *)indexList
 {
     return nil;

@@ -34,6 +34,11 @@
         record.progress = @(0.0f);
         record.isCelebrity = @(NO);
         record.nilValue = @"nilValue";
+
+        NSDate *now = [NSDate date];
+        long long millisecond = [now timeIntervalSince1970] * 1000;
+        record.timeStamp = millisecond;
+
         [self.testTable insertRecord:record error:NULL];
         [self.recordList addObject:record];
         [self.primaryKeyList addObject:record.primaryKey];
@@ -177,6 +182,32 @@
     }];
 }
 
+- (void)testUpdateKeyValueListWithLongLongTypeWhereCondition {
+    NSError *error = nil;
+
+    NSDate *now = [NSDate date];
+    long long millisecond = [now timeIntervalSince1970] * 1000;
+
+
+    [self.testTable updateKeyValueList:@{
+                                         @"name":@"testUpdateKeyValueListWhereConditionWhereConditionParams",
+                                         @"avatar":[@"newAvatar" dataUsingEncoding:NSUTF8StringEncoding],
+                                         @"progress":@(0.1f)
+                                         }
+                        whereCondition:@"timeStamp < :timeStamp"
+                  whereConditionParams:@{@":timeStamp":@(millisecond + 1),}
+                                 error:&error];
+    XCTAssertNil(error);
+    NSArray <TestRecord *> *recordListToCheck = (NSArray <TestRecord *> *)[self.testTable findAllWithPrimaryKey:self.primaryKeyList error:NULL];
+    XCTAssertEqual(recordListToCheck.count, self.primaryKeyList.count);
+    [recordListToCheck enumerateObjectsUsingBlock:^(TestRecord * _Nonnull recordToCheck, NSUInteger idx, BOOL * _Nonnull stop) {
+        XCTAssert([recordToCheck.name isEqualToString:@"testUpdateKeyValueListWhereConditionWhereConditionParams"]);
+        NSString *newAvatarString = [[NSString alloc] initWithData:recordToCheck.avatar encoding:NSUTF8StringEncoding];
+        XCTAssert([newAvatarString isEqualToString:@"newAvatar"]);
+        XCTAssertEqual([recordToCheck.progress doubleValue], 0.1f);
+    }];
+}
+
 - (void)testUpdateValueForKeyPrimaryKeyValueList
 {
     NSError *error = nil;
@@ -238,4 +269,33 @@
     }];
 }
 
+- (void)testUpdateWithDefaultValue {
+    NSError *error = nil;
+
+    TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:@(1) error:&error];
+    XCTAssertNil(error);
+
+    // Default String
+    record.defaultStr = nil;
+    [self.testTable updateRecord:record error:&error];
+    XCTAssertNil(error);
+    TestRecord *existRecord = (TestRecord *)[self.testTable findWithPrimaryKey:@(1) error:&error];
+    XCTAssertNil(error);
+    XCTAssert([existRecord.defaultStr isEqualToString:@""]);
+
+    // Default Int
+    [self.testTable updateValue:nil forKey:@"defaultInt" primaryKeyValue:@(1)  error:&error];
+    XCTAssertNil(error);
+    existRecord = (TestRecord *)[self.testTable findWithPrimaryKey:@(1) error:&error];
+    XCTAssertNil(error);
+    XCTAssert(existRecord.defaultInt == 1);
+
+    // Default Int
+    [self.testTable updateValue:nil forKey:@"defaultDouble" primaryKeyValue:@(1)  error:&error];
+    XCTAssertNil(error);
+    existRecord = (TestRecord *)[self.testTable findWithPrimaryKey:@(1) error:&error];
+    XCTAssertNil(error);
+    XCTAssert(existRecord.defaultDouble == 1);
+
+}
 @end

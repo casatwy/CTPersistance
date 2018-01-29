@@ -26,6 +26,15 @@
     
 }
 
+-(NSDictionary *)columnDetaultValue {
+    return @{
+             @"defaultInt":@(1),
+             @"defaultStr":@"",
+             @"defaultBool":@(1),
+             @"defaultDouble":@(1.0)
+             };
+}
+
 - (NSDictionary *)columnInfo
 {
     return @{
@@ -36,6 +45,13 @@
              @"avatar":@"BLOB",
              @"progress":@"REAL",
              @"nilValue":@"TEXT",
+
+             @"timeStamp":@"INTEGER",
+             @"defaultInt":@"INTEGER",
+             @"defaultStr":@"TEXT",
+             @"defaultBool":@"INTEGER",
+             @"defaultDouble":@"REAL",
+             @"defaultBlob":@"BLOB",
              };
 }
 
