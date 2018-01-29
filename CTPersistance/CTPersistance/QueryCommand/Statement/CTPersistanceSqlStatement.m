@@ -131,7 +131,7 @@
                 }
 
                 case SQLITE_NULL:
-                    [result setObject:[NSNull null] forKey:columnName];
+                    // do nothing
                     break;
 
                 default:

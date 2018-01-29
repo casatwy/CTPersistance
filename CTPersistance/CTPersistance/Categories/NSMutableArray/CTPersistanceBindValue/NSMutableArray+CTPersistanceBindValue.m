@@ -72,7 +72,7 @@
             valueType = @"TEXT";
         }
         if ([bindValue isKindOfClass:[NSNull class]]) {
-            valueType = @"INTEGER";
+            valueType = @"NULL";
         }
         if ([bindValue isKindOfClass:[NSData class]]) {
             valueType = @"BLOB";
@@ -133,6 +133,21 @@
         [self addObject:invocation];
         return;
     }
+    
+    if ([valueType isEqualToString:@"NULL"]) {
+        invocation = [NSInvocation invocationWithMethodSignature:[NSMutableArray instanceMethodSignatureForSelector:@selector(bindNULLWithStatement:key:)]];
+        invocation.target = self;
+        invocation.selector = @selector(bindNULLWithStatement:key:);
+        [invocation setArgument:&bindKey atIndex:3];
+        [invocation retainArguments];
+        [self addObject:invocation];
+        return;
+    }
+}
+
+- (void)bindNULLWithStatement:(sqlite3_stmt *)statement key:(NSString *)key
+{
+    sqlite3_bind_null(statement, sqlite3_bind_parameter_index(statement, [key UTF8String]));
 }
 
 - (void)bindBooleanWithStatement:(sqlite3_stmt *)statement value:(id)value key:(NSString *)key

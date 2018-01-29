@@ -50,6 +50,7 @@
     TestRecord *recordToTest = (TestRecord *)[self.testTable findWithPrimaryKey:record.primaryKey error:NULL];
     XCTAssertTrue([recordToTest.isCelebrity boolValue]);
     XCTAssertNotNil(recordToTest);
+    XCTAssertNil(recordToTest.nilValue);
 }
 
 - (void)testInsertNULLTextRecord

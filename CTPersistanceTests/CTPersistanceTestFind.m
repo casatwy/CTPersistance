@@ -137,4 +137,13 @@
     XCTAssertEqual(result, 3);
 }
 
+- (void)testCountWithWhereConditionParamsNilValue
+{
+    NSError *error = nil;
+    NSInteger result = [self.testTable countWithWhereCondition:@"nilValue is :nilValue"
+                                               conditionParams:@{@":nilValue":[NSNull null]}
+                                                         error:&error];
+    XCTAssertEqual(result, [self.testTable countTotalRecord]);
+}
+
 @end

@@ -100,11 +100,13 @@
     XCTAssertNil([self.testTable findWithPrimaryKey:primaryKey error:NULL]);
 }
 
-//- (void)testPerformanceExample {
-//    // This is an example of a performance test case.
-//    [self measureBlock:^{
-//        // Put the code you want to measure the time of here.
-//    }];
-//}
+- (void)testDeleteWithWhereConditionNilValue
+{
+    XCTAssertGreaterThan([self.testTable countTotalRecord], 0);
+    NSError *error = nil;
+    [self.testTable deleteWithWhereCondition:@"nilValue is :nilValue" conditionParams:@{@":nilValue":[NSNull null]} error:&error];
+    XCTAssertNil(error);
+    XCTAssertEqual([self.testTable countTotalRecord], 0);
+}
 
 @end

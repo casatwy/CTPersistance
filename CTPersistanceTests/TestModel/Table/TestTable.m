@@ -34,7 +34,8 @@
              @"age":@"INTEGER",
              @"isCelebrity":@"BOOLEAN",
              @"avatar":@"BLOB",
-             @"progress":@"REAL"
+             @"progress":@"REAL",
+             @"nilValue":@"TEXT",
              };
 }
 

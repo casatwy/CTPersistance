@@ -16,5 +16,6 @@
 @property (nonatomic, strong) NSData *avatar;
 @property (nonatomic, strong) NSNumber *progress;
 @property (nonatomic, strong) NSNumber *isCelebrity;
+@property (nonatomic, strong) NSString *nilValue;
 
 @end
