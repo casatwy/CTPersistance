@@ -65,6 +65,7 @@ static NSString * const kCTPersistanceErrorUserinfoKeyErrorRecord = @"kCTPersist
 
 - (NSNumber *)insertValue:(id)value forKey:(NSString *)key error:(NSError *__autoreleasing *)error
 {
+
     if (value == nil) {
         value = [NSNull null];
     }
@@ -72,7 +73,15 @@ static NSString * const kCTPersistanceErrorUserinfoKeyErrorRecord = @"kCTPersist
     if (key == nil) {
         return nil;
     }
-    
+
+    if(self.child.columnDetaultValue && value == [NSNull null]  ) {
+        id defaultVale = [self.child.columnDetaultValue valueForKey:key];
+
+        if(defaultVale) {
+            value = defaultVale;
+        }
+    }
+
     BOOL result = [[self.queryCommand insertTable:self.child.tableName columnInfo:self.child.columnInfo dataList:@[@{key:value}] error:error] executeWithError:error];
     if (result) {
         return [self.queryCommand lastInsertRowId];

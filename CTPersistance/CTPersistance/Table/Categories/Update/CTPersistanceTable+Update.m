@@ -43,6 +43,9 @@
 {
     NSMutableArray <NSInvocation *> *bindValueList = [[NSMutableArray alloc] init];
 
+    // default value setting
+    keyValueList = [self defaultValueProcessBeforeUpdate:keyValueList];
+
     NSString *valueString = [keyValueList bindToValueList:bindValueList];
     NSString *whereString = [whereCondition whereStringWithConditionParams:whereConditionParams bindValueList:bindValueList];
 
@@ -51,6 +54,19 @@
 
 - (void)updateValue:(id)value forKey:(NSString *)key primaryKeyValue:(NSNumber *)primaryKeyValue error:(NSError **)error
 {
+    // default value setting
+    if (!value) {
+        value = [NSNull null];
+    }
+
+    if(self.child.columnDetaultValue && value == [NSNull null]  ) {
+        id defaultVale = [self.child.columnDetaultValue valueForKey:key];
+
+        if(defaultVale) {
+            value = defaultVale;
+        }
+    }
+
     if (key && primaryKeyValue) {
         NSMutableArray *bindValueArray = [[NSMutableArray alloc] init];
 
@@ -60,6 +76,8 @@
 
         NSString *valueKey = [NSString stringWithFormat:@":%@", key];
         NSString *valueString = [NSString stringWithFormat:@"%@ = %@", key, valueKey];
+
+
         [bindValueArray addBindKey:valueKey bindValue:value columnDescription:self.child.columnInfo[key]];
 
         [[self.queryCommand updateTable:self.child.tableName valueString:valueString whereString:whereString bindValueList:bindValueArray error:error] executeWithError:error];
@@ -75,6 +93,19 @@
 
 - (void)updateValue:(id)value forKey:(NSString *)key whereKey:(NSString *)wherekey inList:(NSArray *)valueList error:(NSError *__autoreleasing *)error
 {
+    // default value setting
+    if (!value) {
+        value = [NSNull null];
+    }
+
+    if(self.child.columnDetaultValue && value == [NSNull null]  ) {
+        id defaultVale = [self.child.columnDetaultValue valueForKey:key];
+
+        if(defaultVale) {
+            value = defaultVale;
+        }
+    }
+
     if (key && wherekey && valueList.count > 0) {
         NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
@@ -102,6 +133,9 @@
 
     NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
+    // default value setting
+    keyValueList = [self defaultValueProcessBeforeUpdate:keyValueList];
+
     NSString *valueString = [keyValueList bindToValueList:bindValueList];
 
     NSString *whereKey = [NSString stringWithFormat:@":CTPersistanceWhere_%@", self.child.primaryKeyName];
@@ -115,6 +149,9 @@
 {
     NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
+    // 默认值设置
+    keyValueList = [self defaultValueProcessBeforeUpdate:keyValueList];
+
     NSString *valueString = [keyValueList bindToValueList:bindValueList];
 
     NSMutableArray *valueKeyList = [[NSMutableArray alloc] init];
@@ -126,6 +163,39 @@
     NSString *whereString = [NSString stringWithFormat:@"%@ IN (%@)", self.child.primaryKeyName, [valueKeyList componentsJoinedByString:@","]];
     
     [[self.queryCommand updateTable:self.child.tableName valueString:valueString whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
+}
+
+- (NSDictionary *)defaultValueProcessBeforeUpdate:(NSDictionary *)keyValueList {
+    if(!self.child.columnDetaultValue) {
+        return keyValueList;
+    }
+
+    NSMutableDictionary *dictionaryRepresentation = [[NSMutableDictionary alloc] init];
+
+    [keyValueList enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull columnName, NSString * _Nonnull columnDescription, BOOL * _Nonnull stop) {
+       
+        if(!keyValueList[columnName]) {
+            dictionaryRepresentation[columnName] = [NSNull null];
+        } else {
+            dictionaryRepresentation[columnName] = keyValueList[columnName];
+        }
+
+
+        if (dictionaryRepresentation[columnName] != [NSNull null]) {
+            return;
+        }
+
+        //setting default value
+        if(self.child.columnDetaultValue) {
+            id defaultValue = [self.child.columnDetaultValue valueForKey:columnName];
+
+            if(defaultValue) {
+                dictionaryRepresentation[columnName] = defaultValue;
+            }
+        }
+    }];
+
+    return dictionaryRepresentation;
 }
 
 @end

@@ -26,6 +26,15 @@
     
 }
 
+-(NSDictionary *)columnDetaultValue {
+    return @{
+             @"defaultInt":@(1),
+             @"defaultStr":@"",
+             @"defaultBool":@(1),
+             @"defaultDouble":@(1.0)
+             };
+}
+
 - (NSDictionary *)columnInfo
 {
     return @{
@@ -34,7 +43,13 @@
              @"age":@"INTEGER",
              @"isCelebrity":@"BOOLEAN",
              @"avatar":@"BLOB",
-             @"progress":@"REAL"
+             @"progress":@"REAL",
+             @"timeStamp":@"INTEGER",
+             @"defaultInt":@"INTEGER",
+             @"defaultStr":@"TEXT",
+             @"defaultBool":@"INTEGER",
+             @"defaultDouble":@"REAL",
+             @"defaultBlob":@"BLOB"
              };
 }
 

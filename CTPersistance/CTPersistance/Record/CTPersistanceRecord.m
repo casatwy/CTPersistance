@@ -32,11 +32,26 @@
     
     NSMutableDictionary *dictionaryRepresentation = [[NSMutableDictionary alloc] init];
     [table.columnInfo enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull columnName, NSString * _Nonnull columnDescription, BOOL * _Nonnull stop) {
-        if (propertyList[columnName]) {
-            dictionaryRepresentation[columnName] = propertyList[columnName];
+        if (!propertyList[columnName]) {
+            return;
+        }
+
+        dictionaryRepresentation[columnName] = propertyList[columnName];
+
+        if (propertyList[columnName] != [NSNull null]) {
+            return;
+        }
+
+        //setting default value
+        if(table.columnDetaultValue) {
+            id defaultValue = [table.columnDetaultValue valueForKey:columnName];
+
+            if(defaultValue) {
+                dictionaryRepresentation[columnName] = defaultValue;
+            }
         }
     }];
-    
+
     return dictionaryRepresentation;
 }
 

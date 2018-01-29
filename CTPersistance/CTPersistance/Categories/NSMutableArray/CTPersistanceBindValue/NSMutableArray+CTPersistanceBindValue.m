@@ -156,7 +156,7 @@
     }
 
     if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]]) {
-        sqlite3_bind_int(statement, sqlite3_bind_parameter_index(statement, [key UTF8String]), [value intValue]);
+        sqlite3_bind_int64(statement, sqlite3_bind_parameter_index(statement, [key UTF8String]), [value longLongValue]);
         return;
     }
 }

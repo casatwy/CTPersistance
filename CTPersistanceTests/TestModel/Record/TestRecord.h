@@ -16,5 +16,9 @@
 @property (nonatomic, strong) NSData *avatar;
 @property (nonatomic, strong) NSNumber *progress;
 @property (nonatomic, strong) NSNumber *isCelebrity;
-
+@property (nonatomic, assign) long long timeStamp;
+@property (nonatomic, assign) NSInteger defaultInt;
+@property (nonatomic, strong) NSString  *defaultStr;
+@property (nonatomic, assign) BOOL      defaultBool;
+@property (nonatomic, assign) double    defaultDouble;
 @end
