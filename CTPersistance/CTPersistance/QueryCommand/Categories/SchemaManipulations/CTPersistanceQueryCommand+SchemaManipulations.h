@@ -21,6 +21,17 @@
 - (CTPersistanceSqlStatement *)createTable:(NSString *)tableName columnInfo:(NSDictionary *)columnInfo;
 
 /**
+ *  create table with column information and defaultVaule
+ *
+ *  @param tableName  name of table
+ *  @param columnInfo colomn information of table
+ *  @param defaultSetting colomn default value information of table
+
+ *  @return return CTPersistanceQueryCommand
+ */
+- (CTPersistanceSqlStatement *)createTable:(NSString *)tableName columnInfo:(NSDictionary *)columnInfo columnDefaultValue:(NSDictionary *)defaultSetting;
+
+/**
  *  drop table with table name
  *
  *  @param tableName name of table

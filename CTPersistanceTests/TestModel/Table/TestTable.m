@@ -26,6 +26,14 @@
     
 }
 
+-(NSDictionary *)columnDetaultValue {
+    return @{
+             @"defaultInt":@"0",
+             @"defaultStr":@"",
+             @"defaultBool":@"1"
+             };
+}
+
 - (NSDictionary *)columnInfo
 {
     return @{
@@ -35,7 +43,10 @@
              @"isCelebrity":@"BOOLEAN",
              @"avatar":@"BLOB",
              @"progress":@"REAL",
-             @"timeStamp":@"INTEGER"
+             @"timeStamp":@"INTEGER",
+             @"defaultInt":@"INTEGER",
+             @"defaultStr":@"TEXT NOT NULL",
+             @"defaultBool":@"INTEGER"
              };
 }
 
