@@ -296,6 +296,6 @@
     existRecord = (TestRecord *)[self.testTable findWithPrimaryKey:@(1) error:&error];
     XCTAssertNil(error);
     XCTAssert(existRecord.defaultDouble == 1);
-
 }
+
 @end

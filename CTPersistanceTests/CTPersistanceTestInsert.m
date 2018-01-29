@@ -21,8 +21,6 @@
 - (void)setUp {
     [super setUp];
     self.testTable = [[TestTable alloc] init];
- 
-
 }
 
 - (void)tearDown {
@@ -162,7 +160,32 @@
     XCTAssertNotNil(existRecord);
 
     XCTAssert([existRecord.defaultStr isEqualToString:@""]);
+}
 
+/*
+ @property (nonatomic, assign) long long timeStamp;
+ @property (nonatomic, assign) NSInteger defaultInt;
+ @property (nonatomic, strong) NSString  *defaultStr;
+ @property (nonatomic, assign) BOOL      defaultBool;
+ @property (nonatomic, assign) double    defaultDouble;
+ */
+- (void)testNonObjectPropertyInsert
+{
+    TestRecord *record = [[TestRecord alloc] init];
+    record.timeStamp = 123456789;
+    record.defaultInt = 123;
+    record.defaultBool = YES;
+    record.defaultDouble = 3.1415926;
+    
+    NSError *error = nil;
+    [self.testTable insertRecord:record error:&error];
+    XCTAssertNil(error);
+    
+    TestRecord *fetchedRecord = (TestRecord *)[self.testTable findWithPrimaryKey:record.primaryKey error:&error];
+    XCTAssertEqual(fetchedRecord.timeStamp, 123456789);
+    XCTAssertEqual(fetchedRecord.defaultInt, 123);
+    XCTAssertEqual(fetchedRecord.defaultBool, YES);
+    XCTAssertEqual(fetchedRecord.defaultDouble, 3.1415926);
 }
 
 //- (void)testInsert_100_Performance
