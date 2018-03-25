@@ -69,6 +69,17 @@
     }
 }
 
+- (void)deleteRecordWhereKey:(NSString *)key value:(id)value error:(NSError *__autoreleasing *)error
+{
+    if (key == nil || value == nil) {
+        return;
+    }
+    NSString *conditionKey = [@":" stringByAppendingString:key];
+    NSString *whereCondition = [NSString stringWithFormat:@"%@ = %@", key, conditionKey];
+    NSDictionary *conditionParams = @{conditionKey:value};
+    [self deleteWithWhereCondition:whereCondition conditionParams:conditionParams error:error];
+}
+
 - (void)truncate
 {
     NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM `%@`;", self.child.tableName];

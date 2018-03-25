@@ -47,9 +47,20 @@
 {
     NSError *error = nil;
     NSNumber *primaryKey = self.recordToDelete.primaryKey;
-    [self.testTable deleteWithPrimaryKey:primaryKey error:NULL];
+    [self.testTable deleteWithPrimaryKey:primaryKey error:&error];
     XCTAssertNil(error);
     XCTAssertNil([self.testTable findWithPrimaryKey:primaryKey error:NULL]);
+}
+
+- (void)testDeleteWithKeyValue
+{
+    NSError *error = nil;
+    TestRecord *record = [[TestRecord alloc] init];
+    record.name = @"a record to be deleted";
+    [self.testTable insertRecord:record error:&error];
+    [self.testTable deleteRecordWhereKey:@"name" value:@"a record to be deleted" error:&error];
+    XCTAssertNil(error);
+    XCTAssertNil([self.testTable findWithPrimaryKey:record.primaryKey error:NULL]);
 }
 
 - (void)testDeleteWithPrimaryKeyList

@@ -62,6 +62,12 @@
  */
 - (void)deleteWithPrimaryKeyList:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error;
 
+/**
+ *  delete a record in table where key = value
+ *  if key or value is nil, do nothing.
+ */
+- (void)deleteRecordWhereKey:(NSString *)key value:(id)value error:(NSError **)error;
+
 - (void)truncate;
 
 @end
