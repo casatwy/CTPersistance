@@ -138,4 +138,15 @@
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithKeyName:(NSString *)keyname value:(id)value error:(NSError **)error;
 
 
+/**
+ *  find all keyname's value equal to value
+ *
+ *  @param keyname      key name
+ *  @param valueList    a list of value
+ *  @param error        error if fails
+ *
+ *  @return return a list of record
+ */
+- (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithKeyName:(NSString *)keyname inValueList:(NSArray *)valueList error:(NSError **)error;
+
 @end

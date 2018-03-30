@@ -134,18 +134,7 @@
 
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithPrimaryKey:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error
 {
-    NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
-    NSMutableArray *valueList = [[NSMutableArray alloc] init];
-
-    [primaryKeyValueList enumerateObjectsUsingBlock:^(NSNumber * _Nonnull value, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhereKey%lu", (unsigned long)idx];
-        [valueList addObject:valueKey];
-        [bindValueList addBindKey:valueKey bindValue:value];
-    }];
-
-    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` WHERE %@ IN (%@);", self.child.tableName, self.child.primaryKeyName, [valueList componentsJoinedByString:@","]];
-
-    return [[[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass];
+    return [self findAllWithKeyName:self.child.primaryKeyName inValueList:primaryKeyValueList error:NULL];
 }
 
 - (NSArray<NSObject<CTPersistanceRecordProtocol> *> *)findAllWithKeyName:(NSString *)keyname value:(id)value error:(NSError *__autoreleasing *)error
@@ -157,6 +146,28 @@
                                          error:error];
     }
     return nil;
+}
+
+- (NSArray<NSObject<CTPersistanceRecordProtocol> *> *)findAllWithKeyName:(NSString *)keyname
+                                                             inValueList:(NSArray *)valueList
+                                                                   error:(NSError *__autoreleasing *)error
+{
+    if (keyname.length == 0 || valueList.count == 0) {
+        return @[];
+    }
+    
+    NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
+    NSMutableArray *valueKeyList = [[NSMutableArray alloc] init];
+    
+    [valueList enumerateObjectsUsingBlock:^(NSNumber * _Nonnull value, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhereKey%lu", (unsigned long)idx];
+        [valueKeyList addObject:valueKey];
+        [bindValueList addBindKey:valueKey bindValue:value];
+    }];
+    
+    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` WHERE %@ IN (%@);", self.child.tableName, keyname, [valueKeyList componentsJoinedByString:@","]];
+    
+    return [[[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass];
 }
 
 @end

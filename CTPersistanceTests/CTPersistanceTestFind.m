@@ -25,11 +25,11 @@
     self.testTable = [[TestTable alloc] init];
     self.recordListToDelete = [[NSMutableArray alloc] init];
 
-    NSInteger count = 3;
+    NSInteger count = 10;
     while (count --> 0) {
         TestRecord *record = [[TestRecord alloc] init];
         record.name = @"casa";
-        record.age = @(count % 2);
+        record.age = @(count % 5);
         [self.testTable insertRecord:record error:NULL];
         [self.recordListToDelete addObject:record];
     }
@@ -39,6 +39,14 @@
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
     [self.testTable truncate];
+}
+
+- (void)testFindKeyNameInValueList
+{
+    NSError *error = nil;
+    NSArray <TestRecord *> *testList = (NSArray <TestRecord *> *)[self.testTable findAllWithKeyName:@"age" inValueList:@[@1,@2] error:&error];
+    XCTAssertNil(error);
+    XCTAssertEqual(testList.count, 4);
 }
 
 - (void)testFindLatestRecord
@@ -125,7 +133,7 @@
 - (void)testCountTotalRecord
 {
     NSInteger result = [self.testTable countTotalRecord];
-    XCTAssertEqual(result, 3);
+    XCTAssertEqual(result, 10);
 }
 
 - (void)testCountWithWhereConditionParams
@@ -134,7 +142,7 @@
     NSInteger result = [self.testTable countWithWhereCondition:@"name = :name"
                                                conditionParams:@{@":name":@"casa"}
                                                          error:&error];
-    XCTAssertEqual(result, 3);
+    XCTAssertEqual(result, 10);
 }
 
 - (void)testCountWithWhereConditionParamsNilValue
