@@ -12,6 +12,7 @@ target 'CTPersistance' do
 
   target 'CTPersistanceTests' do
     inherit! :search_paths
+    pod "SQLCipher"
   end
 
 end

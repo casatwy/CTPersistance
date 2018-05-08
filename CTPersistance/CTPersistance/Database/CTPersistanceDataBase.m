@@ -16,6 +16,7 @@
 
 extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
 
+NSString * const kCTPersistanceConfigurationParamsKeyDatabase = @"kCTPersistanceConfigurationParamsKeyDatabase";
 NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersistanceConfigurationParamsKeyDatabaseName";
 
 @interface CTPersistanceDataBase ()
@@ -78,30 +79,12 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
             [self closeDatabase];
             return nil;
         }
-
-        NSString *secretKey = [[CTMediator sharedInstance] performTarget:self.target
-                                                                  action:@"secretKey"
-                                                                  params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:databaseName}
-                                                       shouldCacheTarget:NO];
-
-        NSString *secretRekey = [[CTMediator sharedInstance] performTarget:self.target
-                                                                  action:@"secretRekey"
-                                                                  params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:databaseName}
-                                                       shouldCacheTarget:NO];
-
-        // encrypt database
-        if (secretKey && secretKey.length > 0 ) {
-            sqlite3_key(_database, [secretKey UTF8String], (int)secretKey.length);
-        }
-
-        // reencrypt database
-        if (secretRekey && secretRekey.length > 0 ) {
-            sqlite3_rekey(_database, [secretRekey UTF8String], (int)secretRekey.length);
-        }
         
+        [self decrypt:isFileExistsBefore];
+
         if (isFileExistsBefore == NO) {
             CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:self];
-            [[queryCommand createTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo]] executeWithError:NULL];
+            [[queryCommand createTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo] error:NULL] executeWithError:NULL];
             [[queryCommand insertTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo] dataList:@[@{@"databaseVersion":kCTPersistanceInitVersion}] error:NULL] executeWithError:NULL];
         }
 
@@ -120,9 +103,63 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
 #pragma mark - public methods
 - (void)closeDatabase
 {
-    sqlite3_close_v2(self.database);
-    self.database = NULL;
-    self.databaseFilePath = nil;
+    sqlite3_close_v2(_database);
+    _database = NULL;
+    _databaseFilePath = nil;
+}
+
+#pragma mark - private methods
+- (void)decrypt:(BOOL)isFileExistsBefore
+{
+    NSArray <NSString *> *secretKey = [[CTMediator sharedInstance] performTarget:self.target
+                                                             action:@"secretKey"
+                                                             params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:self.databaseName}
+                                                  shouldCacheTarget:NO];
+    if ([secretKey isKindOfClass:[NSString class]]) {
+        NSString *keyString = (NSString *)secretKey;
+        if (keyString.length > 0) {
+            sqlite3_key(_database, [keyString UTF8String], (int)keyString.length);
+        }
+        return;
+    }
+    
+    if ([secretKey isKindOfClass:[NSArray class]]) {
+        NSString *newestKeyString = secretKey.lastObject;
+        
+        if (isFileExistsBefore) {
+            // try the newest key first
+            if ([self isKeyAvailable:newestKeyString]) {
+                return;
+            }
+            
+            // enumerate keys for correct key, and rekey with newest key.
+            for (NSString *keyString in secretKey) {
+                if ([self isKeyAvailable:keyString]) {
+                    sqlite3_rekey(_database, [newestKeyString UTF8String], (int)newestKeyString);
+                    return;
+                }
+            }
+            
+        } else {
+            if (newestKeyString.length > 0) {
+                sqlite3_key(_database, [newestKeyString UTF8String], (int)newestKeyString.length);
+                return;
+            }
+        }
+    }
+}
+
+- (BOOL)isKeyAvailable:(NSString *)key
+{
+    sqlite3_key(_database, [key UTF8String], (int)key.length);
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:self];
+    NSError *error = nil;
+    [[queryCommand showTablesWithError:&error] fetchWithError:&error];
+    
+    if (error == nil) {
+        return YES;
+    }
+    return NO;
 }
 
 #pragma mark - getters and setters

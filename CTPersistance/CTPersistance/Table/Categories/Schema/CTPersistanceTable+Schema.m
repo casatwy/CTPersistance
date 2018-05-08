@@ -13,7 +13,7 @@
 
 - (NSArray <NSDictionary *> *)columnInfoList
 {
-    NSArray *columnInfoList = [[self.queryCommand columnInfoWithTableName:self.child.tableName] fetchWithError:NULL];
+    NSArray *columnInfoList = [[self.queryCommand columnInfoWithTableName:self.child.tableName error:NULL] fetchWithError:NULL];
     return columnInfoList;
 }
 

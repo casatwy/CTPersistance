@@ -71,9 +71,9 @@ NSString * const kCTPersistanceTableIndexIsUniq = @"kCTPersistanceTableIndexIsUn
 
     // create table if not exists
     if(self.child.columnDetaultValue) {
-        [[queryCommand createTable:self.child.tableName columnInfo:self.child.columnInfo columnDefaultValue:self.child.columnDetaultValue] executeWithError:&error];
+        [[queryCommand createTable:self.child.tableName columnInfo:self.child.columnInfo columnDefaultValue:self.child.columnDetaultValue error:&error] executeWithError:&error];
     } else {
-        [[queryCommand createTable:self.child.tableName columnInfo:self.child.columnInfo] executeWithError:&error];
+        [[queryCommand createTable:self.child.tableName columnInfo:self.child.columnInfo error:&error] executeWithError:&error];
     }
     
     // create index if not exists
@@ -82,7 +82,9 @@ NSString * const kCTPersistanceTableIndexIsUniq = @"kCTPersistanceTableIndexIsUn
             [[queryCommand createIndex:obj[kCTPersistanceTableIndexName]
                              tableName:self.child.tableName
                      indexedColumnList:obj[kCTPersistanceTableIndexedColumnList]
-                              isUnique:[obj[kCTPersistanceTableIndexIsUniq] boolValue]] executeWithError:&error];
+                              isUnique:[obj[kCTPersistanceTableIndexIsUniq] boolValue]
+                                 error:&error
+              ] executeWithError:&error];
             if (error) {
                 *stop = YES;
             }

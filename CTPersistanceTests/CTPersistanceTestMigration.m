@@ -77,7 +77,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
     [self prepare];
 
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:@"MigrationTestDatabase_version1.sqlite"];
-    NSArray <NSDictionary *> *originColumnInfo = [[queryCommand columnInfoWithTableName:@"migration"] fetchWithError:NULL];
+    NSArray <NSDictionary *> *originColumnInfo = [[queryCommand columnInfoWithTableName:@"migration" error:NULL] fetchWithError:NULL];
     XCTAssertEqual(originColumnInfo.count, 2);
 
     [[CTPersistanceDatabasePool sharedInstance] closeAllDatabase];
@@ -105,7 +105,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
     [self prepare];
 
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:@"MigrationTestDatabase_version1.sqlite"];
-    NSArray <NSDictionary *> *originColumnInfo = [[queryCommand columnInfoWithTableName:@"migration"] fetchWithError:NULL];
+    NSArray <NSDictionary *> *originColumnInfo = [[queryCommand columnInfoWithTableName:@"migration" error:NULL] fetchWithError:NULL];
     XCTAssertEqual(originColumnInfo.count, 2);
 
     [[CTPersistanceDatabasePool sharedInstance] closeAllDatabase];
@@ -133,7 +133,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
     [self prepare];
 
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:@"MigrationTestDatabase_version1.sqlite"];
-    NSArray <NSDictionary *> *originColumnInfo = [[queryCommand columnInfoWithTableName:@"migration"] fetchWithError:NULL];
+    NSArray <NSDictionary *> *originColumnInfo = [[queryCommand columnInfoWithTableName:@"migration" error:NULL] fetchWithError:NULL];
     XCTAssertEqual(originColumnInfo.count, 2);
 
     [[CTPersistanceDatabasePool sharedInstance] closeAllDatabase];
@@ -161,7 +161,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
     [self prepare];
 
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:@"MigrationTestDatabase_version2.sqlite"];
-    NSArray <NSDictionary *> *originColumnInfo = [[queryCommand columnInfoWithTableName:@"migration"] fetchWithError:NULL];
+    NSArray <NSDictionary *> *originColumnInfo = [[queryCommand columnInfoWithTableName:@"migration" error:NULL] fetchWithError:NULL];
     XCTAssertEqual(originColumnInfo.count, 3);
 
     [[CTPersistanceDatabasePool sharedInstance] closeAllDatabase];
@@ -189,7 +189,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
     [self prepare];
 
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:@"MigrationTestDatabase_version2.sqlite"];
-    NSArray <NSDictionary *> *originColumnInfo = [[queryCommand columnInfoWithTableName:@"migration"] fetchWithError:NULL];
+    NSArray <NSDictionary *> *originColumnInfo = [[queryCommand columnInfoWithTableName:@"migration" error:NULL] fetchWithError:NULL];
     XCTAssertEqual(originColumnInfo.count, 3);
 
     [[CTPersistanceDatabasePool sharedInstance] closeAllDatabase];
@@ -217,7 +217,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
     [self prepare];
 
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabaseName:@"MigrationTestDatabase_version3.sqlite"];
-    NSArray <NSDictionary *> *originColumnInfo = [[queryCommand columnInfoWithTableName:@"migration"] fetchWithError:NULL];
+    NSArray <NSDictionary *> *originColumnInfo = [[queryCommand columnInfoWithTableName:@"migration" error:NULL] fetchWithError:NULL];
     XCTAssertEqual(originColumnInfo.count, 4);
     
     [[CTPersistanceDatabasePool sharedInstance] closeAllDatabase];

@@ -12,7 +12,7 @@
 
 - (void)goUpWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError *__autoreleasing *)error
 {
-    [[queryCommand addColumn:@"version3" columnInfo:@"TEXT" tableName:@"migration"] executeWithError:error];;
+    [[queryCommand addColumn:@"version3" columnInfo:@"TEXT" tableName:@"migration" error:error] executeWithError:error];;
 }
 
 - (void)goDownWithQueryCommand:(CTPersistanceQueryCommand *)queryCommand error:(NSError *__autoreleasing *)error

@@ -10,13 +10,15 @@
 
 @implementation Target_TestDatabase
 
-- (NSString *)Action_secretKey:(NSDictionary *)params
+- (NSArray *)Action_secretKey:(NSDictionary *)params
 {
-    return @"secretKey";
-}
-
-- (NSString *)Action_secretRekey:(NSDictionary *)params {
-    return @"secretRekey";
+    return @[
+             @"0",
+             @"1",
+             @"2",
+             @"3",
+             @"4",
+             ];
 }
 
 @end

@@ -11,8 +11,6 @@
 
 @interface Target_TestDatabase : NSObject<CTPersistanceConfigurationTarget>
 
-- (NSString *)Action_secretKey:(NSDictionary *)params;
-
-- (NSString *)Action_secretRekey:(NSDictionary *)params;
+- (NSArray *)Action_secretKey:(NSDictionary *)params;
 
 @end
