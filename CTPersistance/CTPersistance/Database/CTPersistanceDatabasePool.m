@@ -81,6 +81,10 @@
 
 - (void)closeDatabaseWithName:(NSString *)databaseName
 {
+    [self.databaseList.allKeys enumerateObjectsUsingBlock:^(NSString * _Nonnull key, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([key containsString:[NSString stringWithFormat:@" - %@", databaseName]]) {
+        }
+    }];
     CTPersistanceDataBase *database = self.databaseList[databaseName];
     [database closeDatabase];
     [self.databaseList removeObjectForKey:databaseName];
