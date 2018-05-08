@@ -39,6 +39,10 @@ write:
 }];
 ```
 
+see [AsyncTestViewController](https://github.com/casatwy/CTPersistance/blob/master/CTPersistance/Demo/AsyncTestViewController/AsyncTestViewController.m) for demo
+
+run CTPersistance project in Simulator, and `async test` is the live demo for async operation.
+
 Target-Action in CTPersistance
 ==============================
 
