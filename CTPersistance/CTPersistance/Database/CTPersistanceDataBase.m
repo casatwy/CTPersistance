@@ -84,8 +84,19 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
                                                                   params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:databaseName}
                                                        shouldCacheTarget:NO];
 
-        if (secretKey && secretKey.length > 0) {
+        NSString *secretRekey = [[CTMediator sharedInstance] performTarget:self.target
+                                                                  action:@"secretRekey"
+                                                                  params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:databaseName}
+                                                       shouldCacheTarget:NO];
+
+        // encrypt database
+        if (secretKey && secretKey.length > 0 ) {
             sqlite3_key(_database, [secretKey UTF8String], (int)secretKey.length);
+        }
+
+        // reencrypt database
+        if (secretRekey && secretRekey.length > 0 ) {
+            sqlite3_rekey(_database, [secretRekey UTF8String], (int)secretRekey.length);
         }
         
         if (isFileExistsBefore == NO) {
