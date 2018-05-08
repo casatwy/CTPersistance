@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4785E21020A19A4B004D464D /* MultithreadingConnectPoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4785E20F20A19A4B004D464D /* MultithreadingConnectPoolViewController.m */; };
 		47C1D71920A145DE00020AB5 /* Target_TestDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C1D71820A145DE00020AB5 /* Target_TestDatabase.m */; };
 		4A0238721F3F14E800EE91C7 /* AsyncTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0238711F3F14E800EE91C7 /* AsyncTestViewController.m */; };
 		4A0238741F3FFBA800EE91C7 /* TestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00BE1F2CC25A00E6A4DA /* TestTable.m */; };
@@ -95,6 +96,8 @@
 /* Begin PBXFileReference section */
 		0E3659C0BE44F61448420F54 /* Pods-CTPersistance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistance.release.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistance/Pods-CTPersistance.release.xcconfig"; sourceTree = "<group>"; };
 		24975DE09A62B809BFED181C /* libPods-CTPersistance.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CTPersistance.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4785E20E20A19A4B004D464D /* MultithreadingConnectPoolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultithreadingConnectPoolViewController.h; sourceTree = "<group>"; };
+		4785E20F20A19A4B004D464D /* MultithreadingConnectPoolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultithreadingConnectPoolViewController.m; sourceTree = "<group>"; };
 		47C1D71720A145DE00020AB5 /* Target_TestDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Target_TestDatabase.h; sourceTree = "<group>"; };
 		47C1D71820A145DE00020AB5 /* Target_TestDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Target_TestDatabase.m; sourceTree = "<group>"; };
 		4A0238701F3F14E800EE91C7 /* AsyncTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncTestViewController.h; sourceTree = "<group>"; };
@@ -265,9 +268,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4785E20D20A19A12004D464D /* MultithreadingConnectPool */ = {
+			isa = PBXGroup;
+			children = (
+				4785E20E20A19A4B004D464D /* MultithreadingConnectPoolViewController.h */,
+				4785E20F20A19A4B004D464D /* MultithreadingConnectPoolViewController.m */,
+			);
+			path = MultithreadingConnectPool;
+			sourceTree = "<group>";
+		};
 		4A02386E1F3F14C700EE91C7 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				4785E20D20A19A12004D464D /* MultithreadingConnectPool */,
 				4AC74A601FBE7DB30092B636 /* ViewRecordAndMergeDemoViewController */,
 				4A02386F1F3F14C700EE91C7 /* AsyncTestViewController */,
 			);
@@ -1212,6 +1225,7 @@
 				4AC74A701FBE7E7B0092B636 /* ItemTable.m in Sources */,
 				4AC74A7C1FBE87FB0092B636 /* ItemRecord.m in Sources */,
 				4A0E00A91F2CBD6300E6A4DA /* CTPersistanceQueryCommand.m in Sources */,
+				4785E21020A19A4B004D464D /* MultithreadingConnectPoolViewController.m in Sources */,
 				4A0E00AF1F2CBD6300E6A4DA /* CTPersistanceTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
