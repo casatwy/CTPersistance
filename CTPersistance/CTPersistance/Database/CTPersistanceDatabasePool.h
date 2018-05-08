@@ -33,11 +33,11 @@
 - (CTPersistanceDataBase *)databaseWithName:(NSString *)databaseName;
 
 /**
- *  close database by file path of the database.
+ *  close database by file name of the database.
  *
- *  @param databaseFilePath file path of the database
+ *  @param databaseName file name of the database
  */
-- (void)closeDatabaseWithFilePath:(NSString *)databaseFilePath;
+- (void)closeDatabaseWithName:(NSString *)databaseName;
 
 /**
  *  close all database.

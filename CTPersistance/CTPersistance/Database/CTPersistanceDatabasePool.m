@@ -33,38 +33,35 @@
     self = [super init];
     if (self) {
         _databaseList = [[NSMutableDictionary alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNSThreadWillExitNotification:) name:NSThreadWillExitNotification object:nil];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self closeAllDatabase];
 }
 
 - (CTPersistanceDataBase *)databaseWithName:(NSString *)databaseName
 {
-    NSParameterAssert(databaseName);
-    
+    if (databaseName == nil) {
+        return nil;
+    }
+
     @synchronized (self) {
-
-        NSError *error = nil;
-        CTPersistanceDataBase *databaseInstance = [[CTPersistanceDataBase alloc] initWithDatabaseName:databaseName error:&error];
-
-        if (error) {
-            NSLog(@"Error at %s:[%d]:%@", __FILE__, __LINE__, error);
-            return nil;
+        NSString *key = [NSString stringWithFormat:@"%@ - %@", [NSThread currentThread], databaseName];
+        CTPersistanceDataBase *databaseInstance = self.databaseList[key];
+        if (databaseInstance == nil) {
+            NSError *error = nil;
+            databaseInstance = [[CTPersistanceDataBase alloc] initWithDatabaseName:databaseName error:&error];
+            if (error) {
+                NSLog(@"Error at %s:[%d]:%@", __FILE__, __LINE__, error);
+            } else {
+                self.databaseList[key] = databaseInstance;
+            }
         }
-
-        NSString *key = databaseInstance.databaseFilePath;
-
-        CTPersistanceDataBase *existDBInstance = self.databaseList[key];
-
-        if (existDBInstance) {
-            return existDBInstance;
-        }
-
-        self.databaseList[key] = databaseInstance;
         
         return databaseInstance;
     }
@@ -74,7 +71,7 @@
 {
     @synchronized (self) {
         [self.databaseList enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull databaseName, CTPersistanceDataBase * _Nonnull database, BOOL * _Nonnull stop) {
-            if (database) {
+            if ([database isKindOfClass:[CTPersistanceDataBase class]]) {
                 [database closeDatabase];
             }
         }];
@@ -82,18 +79,22 @@
     }
 }
 
-- (void)closeDatabaseWithFilePath:(NSString *)databaseFilePath
+- (void)closeDatabaseWithName:(NSString *)databaseName
 {
-    NSParameterAssert(databaseFilePath);
+    CTPersistanceDataBase *database = self.databaseList[databaseName];
+    [database closeDatabase];
+    [self.databaseList removeObjectForKey:databaseName];
+}
 
-    @synchronized (self) {
-        CTPersistanceDataBase *database = self.databaseList[databaseFilePath];
-
-        if (database) {
+#pragma mark - event response
+- (void)didReceiveNSThreadWillExitNotification:(NSNotification *)notification
+{
+    [self.databaseList enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, CTPersistanceDataBase * _Nonnull database, BOOL * _Nonnull stop) {
+        if ([key containsString:[NSString stringWithFormat:@"%@", [NSThread currentThread]]]) {
             [database closeDatabase];
-            [self.databaseList removeObjectForKey:databaseFilePath];
+            *stop = YES;
         }
-    }
+    }];
 }
 
 @end

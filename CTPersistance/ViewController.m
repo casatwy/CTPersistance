@@ -11,7 +11,6 @@
 
 #import "AsyncTestViewController.h"
 #import "ViewRecordAndMergeDemoViewController.h"
-#import "MultithreadingConnectPoolViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -44,11 +43,6 @@
     }
     if (indexPath.row == 1) {
         ViewRecordAndMergeDemoViewController *viewController = [[ViewRecordAndMergeDemoViewController alloc] init];
-        [self.navigationController pushViewController:viewController animated:YES];
-    }
-    
-    if (indexPath.row == 2) {
-        MultithreadingConnectPoolViewController *viewController = [[MultithreadingConnectPoolViewController alloc] init];
         [self.navigationController pushViewController:viewController animated:YES];
     }
 }
@@ -84,7 +78,7 @@
 - (NSArray *)dataSource
 {
     if (_dataSource == nil) {
-        _dataSource = @[@"async test", @"demo for view record and merge",@"mulit thread databasePool"];
+        _dataSource = @[@"async test", @"demo for view record and merge"];
     }
     return _dataSource;
 }

@@ -11,8 +11,6 @@
 #import "CTPersistanceDataBase.h"
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"
 
-extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
-
 @interface CTPersistanceTestChangeKey : XCTestCase
 
 @property (nonatomic, unsafe_unretained) sqlite3 *database;
@@ -34,11 +32,6 @@ extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     sqlite3_close_v2(_database);
     _database = NULL;
-
-
-    NSFileManager *defaultFileManager = [NSFileManager defaultManager];
-    [defaultFileManager removeItemAtPath:_databaseFilePath error:nil];
-
     _databaseFilePath = nil;
     [super tearDown];
 }
@@ -55,7 +48,7 @@ extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
     NSArray *result = [[queryCommand showTablesWithError:&error] fetchWithError:&error];
     
     XCTAssertGreaterThan(result.count, 0);
-
+    
     [database closeDatabase];
 }
 
@@ -87,7 +80,7 @@ extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
     NSArray *result = [[queryCommand showTablesWithError:&error] fetchWithError:&error];
     
     XCTAssertGreaterThan(result.count, 0);
-
+    
     [database closeDatabase];
 }
 
@@ -115,8 +108,6 @@ extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
     NSArray *result = [[queryCommand showTablesWithError:&error] fetchWithError:&error];
     
     XCTAssertGreaterThan(result.count, 0);
-
-    [database closeDatabase];
 }
 
 #pragma mark - private methods
