@@ -81,23 +81,32 @@
 
 - (void)closeDatabaseWithName:(NSString *)databaseName
 {
-    [self.databaseList.allKeys enumerateObjectsUsingBlock:^(NSString * _Nonnull key, NSUInteger idx, BOOL * _Nonnull stop) {
+    NSArray <NSString *> *allKeys = [self.databaseList.allKeys copy];
+    [allKeys enumerateObjectsUsingBlock:^(NSString * _Nonnull key, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([key containsString:[NSString stringWithFormat:@" - %@", databaseName]]) {
+            CTPersistanceDataBase *database = self.databaseList[key];
+            [database closeDatabase];
+            [self.databaseList removeObjectForKey:databaseName];
         }
     }];
-    CTPersistanceDataBase *database = self.databaseList[databaseName];
-    [database closeDatabase];
-    [self.databaseList removeObjectForKey:databaseName];
 }
 
 #pragma mark - event response
 - (void)didReceiveNSThreadWillExitNotification:(NSNotification *)notification
 {
+    NSMutableArray <CTPersistanceDataBase *> *databaseToClose = [[NSMutableArray alloc] init];
+    NSMutableArray <NSString *> *keyToDelete = [[NSMutableArray alloc] init];
+    
     [self.databaseList enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, CTPersistanceDataBase * _Nonnull database, BOOL * _Nonnull stop) {
         if ([key containsString:[NSString stringWithFormat:@"%@", [NSThread currentThread]]]) {
-            [database closeDatabase];
-            *stop = YES;
+            [databaseToClose addObject:database];
+            [keyToDelete addObject:key];
         }
+    }];
+    
+    [databaseToClose makeObjectsPerformSelector:@selector(closeDatabase)];
+    [keyToDelete enumerateObjectsUsingBlock:^(NSString * _Nonnull key, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.databaseList removeObjectForKey:key];
     }];
 }
 
