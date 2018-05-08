@@ -13,6 +13,7 @@
 #import "CTPersistanceVersionTable.h"
 
 #import <CTMediator/CTMediator.h>
+#import <SQLCipher/sqlite3.h>
 
 extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
 
