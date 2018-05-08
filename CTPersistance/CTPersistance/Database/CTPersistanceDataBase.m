@@ -135,7 +135,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
             // enumerate keys for correct key, and rekey with newest key.
             for (NSString *keyString in secretKey) {
                 if ([self isKeyAvailable:keyString]) {
-                    sqlite3_rekey(_database, [newestKeyString UTF8String], (int)newestKeyString);
+                    sqlite3_rekey(_database, [newestKeyString UTF8String], (int)newestKeyString.length);
                     return;
                 }
             }

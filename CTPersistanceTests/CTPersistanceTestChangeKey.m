@@ -64,6 +64,7 @@
 - (void)testNewDatabase {
 }
 
+#pragma mark - private methods
 - (void)createDatabaseWithKey:(NSString *)key
 {
     sqlite3 *database = NULL;
