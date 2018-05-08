@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47C1D71920A145DE00020AB5 /* Target_TestDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C1D71820A145DE00020AB5 /* Target_TestDatabase.m */; };
 		4A0238721F3F14E800EE91C7 /* AsyncTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0238711F3F14E800EE91C7 /* AsyncTestViewController.m */; };
 		4A0238741F3FFBA800EE91C7 /* TestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00BE1F2CC25A00E6A4DA /* TestTable.m */; };
 		4A0E002A1F2C384E00E6A4DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00291F2C384E00E6A4DA /* main.m */; };
@@ -93,6 +94,8 @@
 /* Begin PBXFileReference section */
 		0E3659C0BE44F61448420F54 /* Pods-CTPersistance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistance.release.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistance/Pods-CTPersistance.release.xcconfig"; sourceTree = "<group>"; };
 		24975DE09A62B809BFED181C /* libPods-CTPersistance.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CTPersistance.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47C1D71720A145DE00020AB5 /* Target_TestDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Target_TestDatabase.h; sourceTree = "<group>"; };
+		47C1D71820A145DE00020AB5 /* Target_TestDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Target_TestDatabase.m; sourceTree = "<group>"; };
 		4A0238701F3F14E800EE91C7 /* AsyncTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncTestViewController.h; sourceTree = "<group>"; };
 		4A0238711F3F14E800EE91C7 /* AsyncTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncTestViewController.m; sourceTree = "<group>"; };
 		4A0E00251F2C384E00E6A4DA /* CTPersistance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CTPersistance.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -749,6 +752,8 @@
 			children = (
 				4A532CAD1F3C59520074BA46 /* Target_MigrationTestDatabase.h */,
 				4A532CAE1F3C59520074BA46 /* Target_MigrationTestDatabase.m */,
+				47C1D71720A145DE00020AB5 /* Target_TestDatabase.h */,
+				47C1D71820A145DE00020AB5 /* Target_TestDatabase.m */,
 			);
 			path = ConfigurationTarget;
 			sourceTree = "<group>";
@@ -1279,6 +1284,7 @@
 				4AC74A8A1FBEAEBD0092B636 /* CTPersistanceTestTableIndex.m in Sources */,
 				4A17A96C1F32D0C0009356D7 /* TestMiagratorVersion_3_to_4.m in Sources */,
 				4A17A9941F32F392009356D7 /* TestTableVersion1.m in Sources */,
+				47C1D71920A145DE00020AB5 /* Target_TestDatabase.m in Sources */,
 				4A17A9951F32F392009356D7 /* TestRecordVersion2.m in Sources */,
 				4AF38F2F1F69068700801322 /* CTPersistanceTestTransaction.m in Sources */,
 				4A17A9661F32D0A7009356D7 /* TestMiagratorVersion_2_to_3.m in Sources */,
