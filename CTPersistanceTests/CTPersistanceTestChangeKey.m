@@ -37,6 +37,19 @@
 }
 
 - (void)testKey0ToKey4 {
+    [self createDatabaseWithKey:@"0"];
+    
+    NSError *error = nil;
+    CTPersistanceDataBase *database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    [database closeDatabase];
+    
+    database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:database];
+    NSArray *result = [[queryCommand showTablesWithError:&error] fetchWithError:&error];
+    
+    XCTAssertGreaterThan(result.count, 0);
+    
+    [database closeDatabase];
 }
 
 - (void)testKey1ToKey4 {
@@ -56,12 +69,45 @@
 }
 
 - (void)testKey2ToKey4 {
+    [self createDatabaseWithKey:@"2"];
+    
+    NSError *error = nil;
+    CTPersistanceDataBase *database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    [database closeDatabase];
+    
+    database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:database];
+    NSArray *result = [[queryCommand showTablesWithError:&error] fetchWithError:&error];
+    
+    XCTAssertGreaterThan(result.count, 0);
+    
+    [database closeDatabase];
 }
 
 - (void)testKey3ToKey4 {
+    [self createDatabaseWithKey:@"3"];
+    
+    NSError *error = nil;
+    CTPersistanceDataBase *database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    [database closeDatabase];
+    
+    database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:database];
+    NSArray *result = [[queryCommand showTablesWithError:&error] fetchWithError:&error];
+    
+    XCTAssertGreaterThan(result.count, 0);
+    
+    [database closeDatabase];
 }
 
 - (void)testNewDatabase {
+    NSError *error = nil;
+    
+    CTPersistanceDataBase *database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:database];
+    NSArray *result = [[queryCommand showTablesWithError:&error] fetchWithError:&error];
+    
+    XCTAssertGreaterThan(result.count, 0);
 }
 
 #pragma mark - private methods
