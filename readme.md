@@ -79,45 +79,24 @@ That means you can handle any object like `UIView`、`UIViewController` with CTP
 
 Though CTPersistance does not require your object to inherit from a specific model, CTPersistance provide you `CTPersistanceRecord` if you do not want to implement the protocol.
 
-Insert
-======
+CRUD Operations
+===============
 
-all insert method are declared in `CTPersistanceTable+Insert.h`, here is some example to insert data:
+Create : [see here](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/CTPersistanceTestInsert.m)
 
-- insert a record
+Read : [see here](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/CTPersistanceTestFind.m)
 
-```
-UIView<CTPersistanceRecordProtocol> *record = [[TestView alloc] init];
-record.nameLabel.text = @"casa";
+Update : [see here](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/CTPersistanceTestUpdate.m)
 
-NSError *error = nil;
-[self.testTable insertRecord:record error:&error];
-```
+Delete : [see here](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/CTPersistanceTestDelete.m)
 
-- insert some value to testTable
+Other Operations
+================
 
-```
-NSNumber *primaryKey = [self.testTable insertValue:@"casa" forKey:@"name" error:&error];
-```
+Database Migration : [see here](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/CTPersistanceTestMigration.m)
 
-- insert a list of record
+Index of Columns : [see here](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/CTPersistanceTestTableIndex.m)
 
-```
-NSInteger recordCount = 10;
-NSMutableArray <TestRecord *> *recordList = [[NSMutableArray alloc] init];
-while (recordCount --> 0) {
-    TestRecord *record = [[TestRecord alloc] init];
-    record.age = @(recordCount);
-    [recordList addObject:record];
-}
-    
-NSError *error = nil;
-[self.testTable insertRecordList:recordList error:&error];
-```
+Transaction : [see here](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/CTPersistanceTestTransaction.m)
 
-`CTPersistanceTestInsert.m` shows more detail in insert action.
-
-Update
-======
-
-I'm still writing this document, you can check test case for usage.
+Change Key of Encryption : [see here](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/CTPersistanceTestChangeKey.m)

@@ -20,10 +20,9 @@
 {
     //you can use like:
     return @"TestDatabase.sqlite";
-    
+
     //Or
     //return @"User/Shopping/testdatabase.sqlite";
-    
 }
 
 -(NSDictionary *)columnDetaultValue {

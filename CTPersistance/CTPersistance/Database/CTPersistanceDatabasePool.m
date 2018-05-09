@@ -8,6 +8,7 @@
 
 #import "CTPersistanceDatabasePool.h"
 #import "CTPersistanceDataBase.h"
+#import <CTMediator/CTMediator.h>
 
 @interface CTPersistanceDatabasePool ()
 
@@ -51,7 +52,7 @@
     }
 
     @synchronized (self) {
-        NSString *key = [NSString stringWithFormat:@"%@ - %@", [NSThread currentThread], databaseName];
+        NSString *key = [NSString stringWithFormat:@"%@ - %@", [NSThread currentThread], [self filePathWithDatabaseName:databaseName]];
         CTPersistanceDataBase *databaseInstance = self.databaseList[key];
         if (databaseInstance == nil) {
             NSError *error = nil;
@@ -70,7 +71,7 @@
 - (void)closeAllDatabase
 {
     @synchronized (self) {
-        [self.databaseList enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull databaseName, CTPersistanceDataBase * _Nonnull database, BOOL * _Nonnull stop) {
+        [self.databaseList enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, CTPersistanceDataBase * _Nonnull database, BOOL * _Nonnull stop) {
             if ([database isKindOfClass:[CTPersistanceDataBase class]]) {
                 [database closeDatabase];
             }
@@ -83,7 +84,7 @@
 {
     NSArray <NSString *> *allKeys = [self.databaseList.allKeys copy];
     [allKeys enumerateObjectsUsingBlock:^(NSString * _Nonnull key, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([key containsString:[NSString stringWithFormat:@" - %@", databaseName]]) {
+        if ([key containsString:[NSString stringWithFormat:@" - %@", [self filePathWithDatabaseName:databaseName]]]) {
             CTPersistanceDataBase *database = self.databaseList[key];
             [database closeDatabase];
             [self.databaseList removeObjectForKey:databaseName];
@@ -108,6 +109,21 @@
     [keyToDelete enumerateObjectsUsingBlock:^(NSString * _Nonnull key, NSUInteger idx, BOOL * _Nonnull stop) {
         [self.databaseList removeObjectForKey:key];
     }];
+}
+
+#pragma mark - private methods
+- (NSString *)filePathWithDatabaseName:(NSString *)databaseName
+{
+    NSString *target = [[[[databaseName componentsSeparatedByString:@"_"] firstObject] componentsSeparatedByString:@"."] firstObject];
+    NSString *databaseFilePath = [[CTMediator sharedInstance] performTarget:target
+                                                                     action:@"filePath"
+                                                                     params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:databaseName}
+                                                          shouldCacheTarget:NO];
+    if (databaseFilePath == nil) {
+        databaseFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:databaseName];
+    }
+    
+    return databaseFilePath;
 }
 
 @end
