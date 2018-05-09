@@ -95,7 +95,7 @@ Other Operations
 
 Database Migration : [see here](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/CTPersistanceTestMigration.m)
 
-Index of Columns : [see here](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/CTPersistanceTestTableIndex.m)
+Index of Columns : [see here](https://github.com/casatwy/CTPersistance/blob/2083a2970c76b5b888b49849eb52cb0183511097/CTPersistanceTests/TestModel/Table/TestTable.m#L67)
 
 Transaction : [see here](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/CTPersistanceTestTransaction.m)
 
