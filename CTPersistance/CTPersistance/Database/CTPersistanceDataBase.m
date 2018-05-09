@@ -116,6 +116,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
                                                              action:@"secretKey"
                                                              params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:self.databaseName}
                                                   shouldCacheTarget:NO];
+    
     if ([secretKey isKindOfClass:[NSString class]]) {
         NSString *keyString = (NSString *)secretKey;
         if (keyString.length > 0) {
@@ -125,6 +126,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
     }
     
     if ([secretKey isKindOfClass:[NSArray class]]) {
+        
         NSString *newestKeyString = secretKey.lastObject;
         
         if (isFileExistsBefore) {
@@ -142,10 +144,12 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
             }
             
         } else {
+            
             if (newestKeyString.length > 0) {
                 sqlite3_key(_database, [newestKeyString UTF8String], (int)newestKeyString.length);
                 return;
             }
+            
         }
     }
 }

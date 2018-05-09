@@ -4,6 +4,45 @@ pod "CTPersistance"
 
 I'm still writing this document, you can check test case for usage.
 
+Async Operation in CTPersistance
+================================
+
+`DO NOT USE GCD DIRECTLY`
+
+`DO NOT USE GCD DIRECTLY`
+
+`DO NOT USE GCD DIRECTLY`
+
+CTPersistance provide `CTPersistanceAsyncExecutor` to do the async staff.
+
+read:
+
+```
+[[CTPersistanceAsyncExecutor sharedInstance] read:^{
+    NSInteger count = COUNT;
+    while (count --> 0) {
+        TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:@(count) error:NULL];
+        NSLog(@"%@", record.primaryKey);
+    }
+}];
+```
+
+write:
+
+```
+[[CTPersistanceAsyncExecutor sharedInstance] write:^{
+    NSInteger count = COUNT;
+    while (count --> 0) {
+        NSNumber *primaryKey = [self.testTable insertValue:@"casa" forKey:@"name" error:NULL];
+        NSLog(@"%@", primaryKey);
+    }
+}];
+```
+
+see [AsyncTestViewController](https://github.com/casatwy/CTPersistance/blob/master/CTPersistance/Demo/AsyncTestViewController/AsyncTestViewController.m) for demo
+
+run CTPersistance project in Simulator, and `async test` is the live demo for async operation.
+
 Target-Action in CTPersistance
 ==============================
 
