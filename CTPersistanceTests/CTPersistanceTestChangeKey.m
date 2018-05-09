@@ -11,8 +11,6 @@
 #import "CTPersistanceDataBase.h"
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"
 
-//extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
-
 @interface CTPersistanceTestChangeKey : XCTestCase
 
 @property (nonatomic, unsafe_unretained) sqlite3 *database;
