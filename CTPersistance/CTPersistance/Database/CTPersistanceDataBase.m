@@ -104,7 +104,12 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
 #pragma mark - public methods
 - (void)closeDatabase
 {
-    sqlite3_close_v2(_database);
+    if (@available(iOS 8.2, *)) {
+        sqlite3_close_v2(_database);
+    } else {
+        sqlite3_close(_database);
+    }
+    
     _database = NULL;
     _databaseFilePath = nil;
 }
