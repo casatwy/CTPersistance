@@ -131,6 +131,10 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
     }
     
     if ([secretKey isKindOfClass:[NSArray class]]) {
+
+        if (secretKey.count < 1) {
+            return;
+        }
         
         NSString *newestKeyString = secretKey.lastObject;
         

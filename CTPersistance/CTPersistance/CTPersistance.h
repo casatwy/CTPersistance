@@ -57,20 +57,7 @@ extern NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName;
  @param params params is a dictionary, with key kCTPersistanceConfigurationParamsKeyDatabaseName to tell you the database name
  @return secret key
  */
-- (NSString *)Action_secretKey:(NSDictionary *)params;
-
-/**
- secret key to reencrypt the database, return nil means no reencryption.
-
- this will reencrypt the database using a new key.
- There is only one possible modes of operation - to encrypt a database
- that is already encrpyted. If the database is not already encrypted
- this should do nothing
-
- @param params params is a dictionary, with key kCTPersistanceConfigurationParamsKeyDatabaseName to tell you the database name
- @return secret key
- */
-- (NSString *)Action_secretRekey:(NSDictionary *)params;
+- ( NSArray<NSString * > *)Action_secretKey:(NSDictionary *)params;
 
 /**
  return file path if you want your database file to lcoate at specific path. return nil means use the default file path.
