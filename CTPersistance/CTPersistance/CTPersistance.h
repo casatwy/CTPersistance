@@ -28,6 +28,7 @@
 #import "CTPersistanceTable+Insert.h"
 #import "CTPersistanceTable+Update.h"
 #import "CTPersistanceTable+Schema.h"
+#import "CTPersistanceTable+Upsert.h"
 
 #import "CTPersistanceQueryCommand.h"
 #import "CTPersistanceQueryCommand+DataManipulations.h"

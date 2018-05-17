@@ -33,8 +33,8 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
 
 - (void)tearDown
 {
-    [super tearDown];
     [self clean];
+    [super tearDown];
 }
 
 - (void)prepare

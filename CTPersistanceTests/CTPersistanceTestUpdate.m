@@ -48,8 +48,8 @@
 }
 
 - (void)tearDown {
-    [super tearDown];
     [self.testTable truncate];
+    [super tearDown];
 }
 
 - (void)testUpdateRecord

@@ -76,6 +76,8 @@
 		4ACE635B1F340E54007F3E6D /* NSDictionary+KeyValueBind.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE635A1F340E54007F3E6D /* NSDictionary+KeyValueBind.m */; };
 		4ACE635F1F341102007F3E6D /* NSString+Where.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE635E1F341102007F3E6D /* NSString+Where.m */; };
 		4ADFAB681F3316A0008EA281 /* CTPersistanceTable+Schema.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFAB671F3316A0008EA281 /* CTPersistanceTable+Schema.m */; };
+		4AE5541220AD1E6F0020BAC7 /* CTPersistanceTable+Upsert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE5541120AD1E6F0020BAC7 /* CTPersistanceTable+Upsert.m */; };
+		4AE5541420AD1F190020BAC7 /* CTPersistanceTestUpsert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE5541320AD1F190020BAC7 /* CTPersistanceTestUpsert.m */; };
 		4AF38F2D1F6905DF00801322 /* TestRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00BA1F2CC25A00E6A4DA /* TestRecord.m */; };
 		4AF38F2F1F69068700801322 /* CTPersistanceTestTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF38F2E1F69068700801322 /* CTPersistanceTestTransaction.m */; };
 		6284DE2109EF43B7A3D56F18 /* libPods-CTPersistance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24975DE09A62B809BFED181C /* libPods-CTPersistance.a */; };
@@ -226,6 +228,9 @@
 		4ACE635E1F341102007F3E6D /* NSString+Where.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Where.m"; sourceTree = "<group>"; };
 		4ADFAB661F3316A0008EA281 /* CTPersistanceTable+Schema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceTable+Schema.h"; sourceTree = "<group>"; };
 		4ADFAB671F3316A0008EA281 /* CTPersistanceTable+Schema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceTable+Schema.m"; sourceTree = "<group>"; };
+		4AE5541020AD1E6F0020BAC7 /* CTPersistanceTable+Upsert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CTPersistanceTable+Upsert.h"; sourceTree = "<group>"; };
+		4AE5541120AD1E6F0020BAC7 /* CTPersistanceTable+Upsert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CTPersistanceTable+Upsert.m"; sourceTree = "<group>"; };
+		4AE5541320AD1F190020BAC7 /* CTPersistanceTestUpsert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestUpsert.m; sourceTree = "<group>"; };
 		4AF38F2E1F69068700801322 /* CTPersistanceTestTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestTransaction.m; sourceTree = "<group>"; };
 		4D31FADFF56BDD50C7FD9C94 /* libPods-CTPersistanceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CTPersistanceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D41C6489863CB58D4966E5 /* Pods-CTPersistance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistance/Pods-CTPersistance.debug.xcconfig"; sourceTree = "<group>"; };
@@ -343,6 +348,7 @@
 				4AF38F2E1F69068700801322 /* CTPersistanceTestTransaction.m */,
 				4AC74A891FBEAEBD0092B636 /* CTPersistanceTestTableIndex.m */,
 				4A76096620A16C82009908A6 /* CTPersistanceTestChangeKey.m */,
+				4AE5541320AD1F190020BAC7 /* CTPersistanceTestUpsert.m */,
 				4A7844C41F32C1F500CF4809 /* MigrationTestModel */,
 				4A0E00441F2C384E00E6A4DA /* Info.plist */,
 			);
@@ -533,6 +539,7 @@
 		4A0E00891F2CBD6300E6A4DA /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				4AE5540F20AD1E570020BAC7 /* Upsert */,
 				4ADFAB651F331685008EA281 /* Schema */,
 				4A0E008A1F2CBD6300E6A4DA /* Delete */,
 				4A0E008D1F2CBD6300E6A4DA /* Find */,
@@ -1030,6 +1037,15 @@
 			path = Schema;
 			sourceTree = "<group>";
 		};
+		4AE5540F20AD1E570020BAC7 /* Upsert */ = {
+			isa = PBXGroup;
+			children = (
+				4AE5541020AD1E6F0020BAC7 /* CTPersistanceTable+Upsert.h */,
+				4AE5541120AD1E6F0020BAC7 /* CTPersistanceTable+Upsert.m */,
+			);
+			path = Upsert;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1081,12 +1097,12 @@
 				TargetAttributes = {
 					4A0E00241F2C384E00E6A4DA = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 6C6JHMW46K;
+						DevelopmentTeam = THS9SRQVES;
 						ProvisioningStyle = Automatic;
 					};
 					4A0E003D1F2C384E00E6A4DA = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = A538N96H5F;
+						DevelopmentTeam = THS9SRQVES;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 4A0E00241F2C384E00E6A4DA;
 					};
@@ -1202,6 +1218,7 @@
 				4A5E3BF11F403A4A00946749 /* CTPersistanceSqlStatement.m in Sources */,
 				4ACE635B1F340E54007F3E6D /* NSDictionary+KeyValueBind.m in Sources */,
 				4A0E00AD1F2CBD6300E6A4DA /* CTPersistanceTable+Insert.m in Sources */,
+				4AE5541220AD1E6F0020BAC7 /* CTPersistanceTable+Upsert.m in Sources */,
 				4AC74A881FBEAA0E0092B636 /* ItemView+DataCenter.m in Sources */,
 				4ADFAB681F3316A0008EA281 /* CTPersistanceTable+Schema.m in Sources */,
 				4AC74A6D1FBE7E670092B636 /* ItemDataCenter.m in Sources */,
@@ -1233,6 +1250,7 @@
 				4A17A9601F32D094009356D7 /* TestMiagratorVersion_1_to_3.m in Sources */,
 				4A17A9971F32F392009356D7 /* TestRecordVersion3.m in Sources */,
 				4A0E00BF1F2CC25A00E6A4DA /* TestRecord.m in Sources */,
+				4AE5541420AD1F190020BAC7 /* CTPersistanceTestUpsert.m in Sources */,
 				4AB165E81F302AA60043E6A2 /* CTPersistanceTestFind.m in Sources */,
 				4A17A9981F32F392009356D7 /* TestTableVersion3.m in Sources */,
 				4A7844C31F32BD6700CF4809 /* CTPersistanceTestMigration.m in Sources */,
@@ -1391,7 +1409,7 @@
 			baseConfigurationReference = 89D41C6489863CB58D4966E5 /* Pods-CTPersistance.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6C6JHMW46K;
+				DEVELOPMENT_TEAM = THS9SRQVES;
 				INFOPLIST_FILE = CTPersistance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1405,7 +1423,7 @@
 			baseConfigurationReference = 0E3659C0BE44F61448420F54 /* Pods-CTPersistance.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6C6JHMW46K;
+				DEVELOPMENT_TEAM = THS9SRQVES;
 				INFOPLIST_FILE = CTPersistance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1419,7 +1437,7 @@
 			baseConfigurationReference = AD102503C09A04454242FAC0 /* Pods-CTPersistanceTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = A538N96H5F;
+				DEVELOPMENT_TEAM = THS9SRQVES;
 				INFOPLIST_FILE = CTPersistanceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistanceTests;
@@ -1433,7 +1451,7 @@
 			baseConfigurationReference = D9D5304E203B48D737D87E6F /* Pods-CTPersistanceTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = A538N96H5F;
+				DEVELOPMENT_TEAM = THS9SRQVES;
 				INFOPLIST_FILE = CTPersistanceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistanceTests;
