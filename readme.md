@@ -90,6 +90,8 @@ Update : [see here](https://github.com/casatwy/CTPersistance/blob/master/CTPersi
 
 Delete : [see here](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/CTPersistanceTestDelete.m)
 
+Upsert : [see here](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/CTPersistanceTestUpsert.m)
+
 Other Operations
 ================
 
