@@ -43,6 +43,26 @@
     [super tearDown];
 }
 
+- (void)testTransaction {
+    [CTPersistanceTransaction performTranscationWithBlock:^(BOOL *shouldRollback) {
+        NSInteger count = [self.testTable countTotalRecord];
+        NSError *error = nil;
+        while (count --> 0) {
+            TestRecord *testRecord = [[TestRecord alloc] init];
+            testRecord.name = @"new casa";
+            testRecord.age = @(count);
+            [self.testTable upsertRecord:testRecord uniqKeyName:@"age" shouldUpdateNilValueToDatabase:YES error:&error];
+            XCTAssertNil(error);
+        }
+    } queryCommand:self.testTable.queryCommand lockType:CTPersistanceTransactionLockTypeDefault];
+    
+    NSArray <TestRecord *> *recordList = (NSArray <TestRecord *> *)[self.testTable findAllWithError:NULL];
+    [recordList enumerateObjectsUsingBlock:^(TestRecord * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        XCTAssertTrue([obj.name isEqualToString:@"new casa"]);
+        XCTAssertNil(obj.progress);
+    }];
+}
+
 - (void)test_No_UpdateNilValueToDatabase {
     NSInteger count = [self.testTable countTotalRecord];
     NSInteger countToAssert = count;
@@ -61,6 +81,7 @@
     
     NSArray <TestRecord *> *recordList = (NSArray <TestRecord *> *)[self.testTable findAllWithError:NULL];
     [recordList enumerateObjectsUsingBlock:^(TestRecord * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        XCTAssertTrue([obj.name isEqualToString:@"casa"]);
         XCTAssertNotNil(obj.progress);
     }];
 }
@@ -83,6 +104,7 @@
     
     NSArray <TestRecord *> *recordList = (NSArray <TestRecord *> *)[self.testTable findAllWithError:NULL];
     [recordList enumerateObjectsUsingBlock:^(TestRecord * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        XCTAssertTrue([obj.name isEqualToString:@"casa"]);
         XCTAssertNil(obj.progress);
     }];
 }
