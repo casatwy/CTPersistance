@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "TestTable.h"
 #import "TestRecord.h"
+#import "CTPersistanceTransaction.h"
 
 @interface CTPersistanceTestUpsert : XCTestCase
 
@@ -21,6 +22,7 @@
 - (void)setUp {
     [super setUp];
     self.testTable = [[TestTable alloc] init];
+    [self.testTable truncate];
     
     NSInteger count = 10;
     while (count --> 0) {
@@ -41,12 +43,56 @@
     [super tearDown];
 }
 
+- (void)test_No_UpdateNilValueToDatabase {
+    NSInteger count = [self.testTable countTotalRecord];
+    NSInteger countToAssert = count;
+    
+    NSError *error = nil;
+    while (count --> 0) {
+        TestRecord *testRecord = [[TestRecord alloc] init];
+        testRecord.name = @"casa";
+        testRecord.age = @(count);
+        [self.testTable upsertRecord:testRecord uniqKeyName:@"age" shouldUpdateNilValueToDatabase:NO error:&error];
+        XCTAssertNil(error);
+    }
+    
+    count = [self.testTable countTotalRecord];
+    XCTAssertEqual(countToAssert, count);
+    
+    NSArray <TestRecord *> *recordList = (NSArray <TestRecord *> *)[self.testTable findAllWithError:NULL];
+    [recordList enumerateObjectsUsingBlock:^(TestRecord * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        XCTAssertNotNil(obj.progress);
+    }];
+}
+
+- (void)test_Should_UpdateNilValueToDatabase {
+    NSInteger count = [self.testTable countTotalRecord];
+    NSInteger countToAssert = count;
+    
+    NSError *error = nil;
+    while (count --> 0) {
+        TestRecord *testRecord = [[TestRecord alloc] init];
+        testRecord.name = @"casa";
+        testRecord.age = @(count);
+        [self.testTable upsertRecord:testRecord uniqKeyName:@"age" shouldUpdateNilValueToDatabase:YES error:&error];
+        XCTAssertNil(error);
+    }
+    
+    count = [self.testTable countTotalRecord];
+    XCTAssertEqual(countToAssert, count);
+    
+    NSArray <TestRecord *> *recordList = (NSArray <TestRecord *> *)[self.testTable findAllWithError:NULL];
+    [recordList enumerateObjectsUsingBlock:^(TestRecord * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        XCTAssertNil(obj.progress);
+    }];
+}
+
 - (void)testUpdate {
     NSError *error = nil;
     TestRecord *testRecord = (TestRecord *)[self.testTable findWithPrimaryKey:@(1) error:NULL];
     testRecord.age = @(123);
     
-    [self.testTable upsertRecord:testRecord uniqKeyName:@"name" error:&error];
+    [self.testTable upsertRecord:testRecord uniqKeyName:@"name" shouldUpdateNilValueToDatabase:NO error:&error];
     XCTAssertNil(error);
     
     testRecord = (TestRecord *)[self.testTable findWithPrimaryKey:@(1) error:&error];
@@ -59,7 +105,7 @@
     TestRecord *testRecord = (TestRecord *)[self.testTable findWithPrimaryKey:@(2) error:NULL];
     testRecord.age = @(456);
     
-    [self.testTable upsertRecord:testRecord uniqKeyName:@"age" error:&error];
+    [self.testTable upsertRecord:testRecord uniqKeyName:@"age" shouldUpdateNilValueToDatabase:NO error:&error];
     XCTAssertNil(error);
     
     testRecord = (TestRecord *)[self.testTable findWithPrimaryKey:@(2) error:&error];
@@ -77,13 +123,33 @@
     testRecord.isCelebrity = @(YES);
     testRecord.nilValue = nil;
     
-    [self.testTable upsertRecord:testRecord uniqKeyName:@"age" error:&error];
+    [self.testTable upsertRecord:testRecord uniqKeyName:@"age" shouldUpdateNilValueToDatabase:YES error:&error];
     XCTAssertNil(error);
     XCTAssertNotNil(testRecord.primaryKey);
     
     testRecord = (TestRecord *)[self.testTable findWithPrimaryKey:testRecord.primaryKey error:&error];
     XCTAssertNil(error);
     XCTAssertEqual(testRecord.age.integerValue, 789);
+}
+
+- (void)testUniqKeyNameIsPrimaryKey {
+    NSError *error = nil;
+    TestRecord *testRecord = [[TestRecord alloc] init];
+    testRecord.age = @(789);
+    testRecord.name = @"casa";
+    testRecord.avatar = [@"casa" dataUsingEncoding:NSUTF8StringEncoding];
+    testRecord.progress = @(100);
+    testRecord.isCelebrity = @(YES);
+    testRecord.nilValue = nil;
+    
+    [self.testTable upsertRecord:testRecord uniqKeyName:self.testTable.primaryKeyName shouldUpdateNilValueToDatabase:YES error:&error];
+    XCTAssertNil(error);
+    XCTAssertNotNil(testRecord.primaryKey);
+    
+    testRecord = (TestRecord *)[self.testTable findWithPrimaryKey:testRecord.primaryKey error:&error];
+    XCTAssertNil(error);
+    XCTAssertEqual(testRecord.age.integerValue, 789);
+    XCTAssertEqual(testRecord.primaryKey.integerValue, 11);
 }
 
 @end

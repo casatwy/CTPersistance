@@ -10,6 +10,6 @@
 
 @interface CTPersistanceTable (Upsert)
 
-- (void)upsertRecord:(NSObject <CTPersistanceRecordProtocol> *)record uniqKeyName:(NSString *)uniqKeyName error:(NSError **)error;
+- (void)upsertRecord:(NSObject <CTPersistanceRecordProtocol> *)record uniqKeyName:(NSString *)uniqKeyName shouldUpdateNilValueToDatabase:(BOOL)shouldUpdateNilValueToDatabase error:(NSError **)error;
 
 @end
