@@ -70,6 +70,38 @@ say you have a database file which name is:
 
 ```
 
+> Available Actions:
+
+- `- (NSString *)Action_filePath:(NSDictionary *)params`
+
+return the absolute file path as you want. The database file name will be send in the params.
+
+If CTPersistance can not call this method, CTPersistance will find database in `[[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:databaseName]` folder, if still not found, CTPersistance will create the database file in this path with the database file name.
+
+- `- (CTPersistanceMigrator *)Action_fetchMigrator:(NSDictionary *)params`
+
+return the class name of migrator manager for database migration.
+
+see [Target_MigrationTestDatabase.m:20](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/ConfigurationTarget/Target_MigrationTestDatabase.m#L20)
+
+- `- (NSArray *)Action_secretKey:(NSDictionary *)params`
+
+return secret key to encrypt the database file.
+
+if you have changed the secret key, keep the old key and append new key in a array and return it.
+
+say you encrypt the database in version 1 (it's the version about your app) by the key `oldkey`, and you changed this key to `newkey` in version 2. Some days later you changed the key to `newkey2` in version3, you should return an array like this:
+
+```
+@[
+    @"oldkey",
+    @"newkey",
+    @"newkey2",
+]
+```
+
+see [Target_TestDatabase.m:13](https://github.com/casatwy/CTPersistance/blob/master/CTPersistanceTests/ConfigurationTarget/Target_TestDatabase.m#L13)
+
 Record
 ======
 
