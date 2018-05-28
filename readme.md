@@ -50,7 +50,7 @@ CTPersistance use [CTMediator](https://github.com/casatwy/CTMediator) to handle 
 
 You should create a target, and just put it into your project, no more code and `CTMediator` will call your target.
 
-the different database name should have different target, and the target should conform to protocol `CTPersistanceConfigurationTarget`. 
+the different database name should have different target, and the target should conform to protocol `CTPersistanceConfigurationTarget`. [see here CTPersistance.h:43](https://github.com/casatwy/CTPersistance/blob/master/CTPersistance/CTPersistance/CTPersistance.h#L43)
 
 the name of the target object is based on the name of your database file.for example:
 
