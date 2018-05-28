@@ -58,7 +58,7 @@ extern NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName;
  @param params params is a dictionary, with key kCTPersistanceConfigurationParamsKeyDatabaseName to tell you the database name
  @return secret key
  */
-- ( NSArray<NSString * > *)Action_secretKey:(NSDictionary *)params;
+- (NSArray <NSString * > *)Action_secretKey:(NSDictionary *)params;
 
 /**
  return file path if you want your database file to lcoate at specific path. return nil means use the default file path.
