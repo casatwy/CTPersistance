@@ -11,7 +11,6 @@
 #import "CTPersistanceConfiguration.h"
 #import "CTPersistanceMigrator.h"
 #import "CTPersistanceVersionTable.h"
-
 #import <CTMediator/CTMediator.h>
 
 extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
@@ -86,7 +85,14 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
         if (isFileExistsBefore == NO) {
             CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:self];
             [[queryCommand createTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo] error:NULL] executeWithError:NULL];
-            [[queryCommand insertTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo] dataList:@[@{@"databaseVersion":kCTPersistanceInitVersion}] error:NULL] executeWithError:NULL];
+            
+            NSString *initVersion = [self.migrator databaseInitVersion];
+
+            if (!initVersion) {
+                initVersion = kCTPersistanceInitVersion;
+            }
+            
+            [[queryCommand insertTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo] dataList:@[@{@"databaseVersion":initVersion}] error:NULL] executeWithError:NULL];
         }
 
         if ([self.migrator databaseShouldMigrate:self]) {
