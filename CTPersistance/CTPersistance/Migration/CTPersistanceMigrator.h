@@ -98,4 +98,13 @@ extern NSString * const kCTPersistanceInitVersion;
  */
 - (void)databasePerformMigrate:(CTPersistanceDataBase *)database;
 
+/**
+ * get the database initVersion
+ *
+ * You should never call this method.
+ *
+ * @warning you should never call this method
+ */
+- (NSString *)databaseInitVersion;
+
 @end
