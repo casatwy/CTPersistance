@@ -29,7 +29,7 @@
 
 - (void)testIndex {
     NSArray <NSDictionary *> *result = [self.testTable fetchWithSQL:@"SELECT * FROM sqlite_master WHERE type='index';" error:NULL];
-    XCTAssertEqual([result count], 1);
+    XCTAssertEqual([result count], 2);
 }
 
 @end
