@@ -242,7 +242,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
 
 - (void)testMiagration_brandNew_v4
 {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kCTPersistanceMigrationTestCaseVersionKey];
+    [[NSUserDefaults standardUserDefaults] setObject:@"TestMiagratorVersion_1_to_4" forKey:kCTPersistanceMigrationTestCaseVersionKey];
     
     NSArray <NSString *> *databaseName = @[
                               @"MigrationTestDatabase_version1.sqlite",
