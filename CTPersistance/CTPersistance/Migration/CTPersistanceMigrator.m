@@ -109,15 +109,4 @@ NSString * const kCTPersistanceInitVersion = @"kCTPersistanceInitVersion";
     }
 }
 
-- (NSString *)databaseInitVersion {
-
-    NSArray *versionList = [self.child migrationVersionList];
-
-    if (!versionList || versionList.count < 1) {
-        return kCTPersistanceInitVersion;
-    }
-
-    return [versionList lastObject];
-}
-
 @end
