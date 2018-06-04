@@ -20,6 +20,9 @@ extern NSString * const kCTPersistanceMigrationTestCaseVersionKey;
 - (CTPersistanceMigrator *)Action_fetchMigrator:(NSDictionary *)params
 {
     NSString *migratorClassName = [[NSUserDefaults standardUserDefaults] stringForKey:kCTPersistanceMigrationTestCaseVersionKey];
+    if (migratorClassName == nil) {
+        migratorClassName = @"TestMiagratorVersion_1_to_4";
+    }
     Class migratorClass = NSClassFromString(migratorClassName);
     return [[migratorClass alloc] init];
 }
