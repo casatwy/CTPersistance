@@ -130,6 +130,23 @@
     XCTAssertEqual(recordList.count, [self.testTable findAllWithPrimaryKey:primaryList error:NULL].count);
 }
 
+- (void)testInsertRecordListShowError
+{
+    [self.testTable truncate];
+    NSInteger recordCount = 10;
+    NSMutableArray <TestRecord *> *recordList = [[NSMutableArray alloc] init];
+    while (recordCount --> 0) {
+        TestRecord *record = [[TestRecord alloc] init];
+        record.age = @(recordCount);
+        record.uniqueString = @"should show error";
+        [recordList addObject:record];
+    }
+    
+    NSError *error = nil;
+    [self.testTable insertRecordList:recordList error:&error];
+    XCTAssertNotNil(error);
+}
+
 - (void)testInsertLongLongTypeRecord {
     NSDate *now = [NSDate date];
     long long millisecond = [now timeIntervalSince1970] * 1000;

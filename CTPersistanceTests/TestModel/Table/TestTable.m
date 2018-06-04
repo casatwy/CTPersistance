@@ -51,6 +51,7 @@
              @"defaultBool":@"INTEGER",
              @"defaultDouble":@"REAL",
              @"defaultBlob":@"BLOB",
+             @"uniqueString":@"TEXT"
              };
 }
 
@@ -72,6 +73,11 @@
                  kCTPersistanceTableIndexedColumnList:@[@"age"],
                  kCTPersistanceTableIndexIsUniq:@(NO),
                  },
+             @{
+                 kCTPersistanceTableIndexName:@"UniqueString",
+                 kCTPersistanceTableIndexedColumnList:@[@"uniqueString"],
+                 kCTPersistanceTableIndexIsUniq:@(YES),
+                 }
             ];
 }
 

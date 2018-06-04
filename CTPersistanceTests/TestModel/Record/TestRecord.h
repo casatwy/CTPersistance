@@ -23,5 +23,6 @@
 @property (nonatomic, strong) NSString  *defaultStr;
 @property (nonatomic, assign) BOOL      defaultBool;
 @property (nonatomic, assign) double    defaultDouble;
+@property (nonatomic, strong) NSString *uniqueString;
 
 @end

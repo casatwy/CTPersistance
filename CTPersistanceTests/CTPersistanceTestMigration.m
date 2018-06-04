@@ -240,4 +240,25 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
     [self clean];
 }
 
+- (void)testMiagration_brandNew_v4
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kCTPersistanceMigrationTestCaseVersionKey];
+    
+    NSArray <NSString *> *databaseName = @[
+                              @"MigrationTestDatabase_version1.sqlite",
+                              @"MigrationTestDatabase_version2.sqlite",
+                              @"MigrationTestDatabase_version3.sqlite",
+                              @"MigrationTestDatabase_version4.sqlite",
+                              ];
+    [databaseName enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *databaseFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:obj];
+        [[NSFileManager defaultManager] removeItemAtPath:databaseFilePath error:NULL];
+    }];
+
+
+    CTPersistanceTable *testTable = [[TestTableVersion4 alloc] init];
+    NSArray <NSDictionary *> *columnInfo = [testTable columnInfoList];
+    XCTAssertEqual(columnInfo.count, 5);
+}
+
 @end
