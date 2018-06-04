@@ -86,13 +86,11 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
             CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:self];
             [[queryCommand createTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo] error:NULL] executeWithError:NULL];
             
-//            NSString *initVersion = [self.migrator databaseInitVersion];
-//
-//            if (!initVersion) {
-//                initVersion = kCTPersistanceInitVersion;
-//            }
+            NSString *initVersion = [self.migrator databaseInitVersion];
 
-            NSString *initVersion = kCTPersistanceInitVersion;
+            if (!initVersion) {
+                initVersion = kCTPersistanceInitVersion;
+            }
             
             [[queryCommand insertTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo] dataList:@[@{@"databaseVersion":initVersion}] error:NULL] executeWithError:NULL];
         }
