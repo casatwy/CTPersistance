@@ -24,13 +24,12 @@
 
 - (void)updateRecordList:(NSArray <NSObject <CTPersistanceRecordProtocol> *> *)recordList error:(NSError * __autoreleasing *)error
 {
-    for (id<CTPersistanceRecordProtocol> record in recordList) {
+    [recordList enumerateObjectsUsingBlock:^(NSObject <CTPersistanceRecordProtocol> * _Nonnull record, NSUInteger idx, BOOL * _Nonnull stop) {
         [self updateRecord:record error:error];
-
         if (error != NULL && *error != nil) {
-            return;
+            *stop = YES;
         }
-    }
+    }];
 }
 
 - (void)updateValue:(id)value forKey:(NSString *)key whereCondition:(NSString *)whereCondition whereConditionParams:(NSDictionary *)whereConditionParams error:(NSError **)error

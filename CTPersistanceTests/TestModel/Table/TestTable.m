@@ -44,6 +44,7 @@
              @"avatar":@"BLOB",
              @"progress":@"REAL",
              @"nilValue":@"TEXT",
+
              @"timeStamp":@"INTEGER",
              @"defaultInt":@"INTEGER",
              @"defaultStr":@"TEXT",
