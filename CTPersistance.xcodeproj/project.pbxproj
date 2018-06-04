@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4795639720C52E570087012C /* CTPersistanceTestMigrationNewCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4795639620C52E570087012C /* CTPersistanceTestMigrationNewCreate.m */; };
 		47C1D71920A145DE00020AB5 /* Target_TestDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C1D71820A145DE00020AB5 /* Target_TestDatabase.m */; };
 		4A0238721F3F14E800EE91C7 /* AsyncTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0238711F3F14E800EE91C7 /* AsyncTestViewController.m */; };
 		4A0238741F3FFBA800EE91C7 /* TestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00BE1F2CC25A00E6A4DA /* TestTable.m */; };
@@ -97,6 +98,7 @@
 /* Begin PBXFileReference section */
 		0E3659C0BE44F61448420F54 /* Pods-CTPersistance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistance.release.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistance/Pods-CTPersistance.release.xcconfig"; sourceTree = "<group>"; };
 		24975DE09A62B809BFED181C /* libPods-CTPersistance.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CTPersistance.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4795639620C52E570087012C /* CTPersistanceTestMigrationNewCreate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestMigrationNewCreate.m; sourceTree = "<group>"; };
 		47C1D71720A145DE00020AB5 /* Target_TestDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Target_TestDatabase.h; sourceTree = "<group>"; };
 		47C1D71820A145DE00020AB5 /* Target_TestDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Target_TestDatabase.m; sourceTree = "<group>"; };
 		4A0238701F3F14E800EE91C7 /* AsyncTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncTestViewController.h; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				4A51505C1F2F2402004BA79C /* CTPersistanceTestDelete.m */,
 				4AB165E71F302AA60043E6A2 /* CTPersistanceTestFind.m */,
 				4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */,
+				4795639620C52E570087012C /* CTPersistanceTestMigrationNewCreate.m */,
 				4AF38F2E1F69068700801322 /* CTPersistanceTestTransaction.m */,
 				4AC74A891FBEAEBD0092B636 /* CTPersistanceTestTableIndex.m */,
 				4A76096620A16C82009908A6 /* CTPersistanceTestChangeKey.m */,
@@ -1260,6 +1263,7 @@
 				4A0E00B41F2CBDBD00E6A4DA /* CTPersistanceTestInsert.m in Sources */,
 				4A0E00C01F2CC25A00E6A4DA /* TestTable.m in Sources */,
 				4A17A9931F32F392009356D7 /* TestRecordVersion1.m in Sources */,
+				4795639720C52E570087012C /* CTPersistanceTestMigrationNewCreate.m in Sources */,
 				4A17A99A1F32F392009356D7 /* TestTableVersion4.m in Sources */,
 				4A532CAF1F3C59520074BA46 /* Target_MigrationTestDatabase.m in Sources */,
 				4A51505D1F2F2402004BA79C /* CTPersistanceTestDelete.m in Sources */,
