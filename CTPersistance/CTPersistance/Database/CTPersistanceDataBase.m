@@ -39,9 +39,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
     if (self) {
         
         self.target = [[[[databaseName componentsSeparatedByString:@"_"] firstObject] componentsSeparatedByString:@"."] firstObject];
-
         self.databaseName = databaseName;
-        
         self.databaseFilePath = [[CTMediator sharedInstance] performTarget:self.target
                                                                     action:@"filePath"
                                                                     params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:databaseName}
@@ -49,7 +47,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
         if (self.databaseFilePath == nil) {
             self.databaseFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:databaseName];
         }
-
+        
         NSString *checkFilePath = [self.databaseFilePath stringByDeletingLastPathComponent];
         NSFileManager *defaultFileManager = [NSFileManager defaultManager];
         if (![defaultFileManager fileExistsAtPath:checkFilePath]) {
@@ -57,7 +55,6 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
         }
         
         BOOL isFileExistsBefore = [defaultFileManager fileExistsAtPath:self.databaseFilePath];
-
         const char *path = [self.databaseFilePath UTF8String];
         int result = sqlite3_open_v2(path, &(_database),
                                      SQLITE_OPEN_CREATE |
@@ -75,7 +72,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
                 errorCode = CTPersistanceErrorCodeCreateError;
                 errorString = [NSString stringWithFormat:@"create database at %@ failed with error:\n %@", self.databaseFilePath, [NSString stringWithCString:sqlite3_errmsg(self.database) encoding:NSUTF8StringEncoding]];
             }
-            
+
             *error = [NSError errorWithDomain:kCTPersistanceErrorDomain code:errorCode userInfo:@{NSLocalizedDescriptionKey:errorString}];
             [self closeDatabase];
             return nil;
@@ -88,7 +85,7 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
             [[queryCommand createTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo] error:NULL] executeWithError:NULL];
             [[queryCommand insertTable:[CTPersistanceVersionTable tableName] columnInfo:[CTPersistanceVersionTable columnInfo] dataList:@[@{@"databaseVersion":kCTPersistanceInitVersion}] error:NULL] executeWithError:NULL];
         }
-
+        
         if ([self.migrator databaseShouldMigrate:self]) {
             [self.migrator databasePerformMigrate:self];
         }
