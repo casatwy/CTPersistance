@@ -7,15 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "TestTableVersion1.h"
-#import "TestTableVersion2.h"
-#import "TestTableVersion3.h"
-#import "TestTableVersion4.h"
 
 #import "CTPersistance.h"
 #import "CTPersistanceDatabasePool.h"
-
-NSString * const kCTPersistanceMigrationTestCaseVersionKeysss = @"kCTPersistanceMigrationTestCaseVersionKey";
+#import "TestNewRecordVersionTable.h"
 
 @interface CTPersistanceTestMigrationNewCreate : XCTestCase
 
@@ -34,9 +29,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKeysss = @"kCTPersistance
 }
 
 - (void)testNewCreate {
-    [[NSUserDefaults standardUserDefaults] setObject:@"TestMiagratorVersion_1_to_2" forKey:kCTPersistanceMigrationTestCaseVersionKeysss];
-
-    CTPersistanceTable *testTable = [[TestTableVersion2 alloc] init];
+    TestNewRecordVersionTable *testTable = [[TestNewRecordVersionTable alloc] init];
 }
 
 @end

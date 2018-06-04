@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4784771520C5671800F434B1 /* TestNewRecordVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4784771420C5671800F434B1 /* TestNewRecordVersion.m */; };
+		4784771820C5677000F434B1 /* TestNewRecordVersionTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4784771720C5677000F434B1 /* TestNewRecordVersionTable.m */; };
+		4784771B20C5685800F434B1 /* Target_MigrationTestDatabaseNewCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4784771A20C5685800F434B1 /* Target_MigrationTestDatabaseNewCreate.m */; };
+		4784771F20C568BB00F434B1 /* TestMigration_NewCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4784771E20C568BB00F434B1 /* TestMigration_NewCreate.m */; };
 		4795639720C52E570087012C /* CTPersistanceTestMigrationNewCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4795639620C52E570087012C /* CTPersistanceTestMigrationNewCreate.m */; };
 		47C1D71920A145DE00020AB5 /* Target_TestDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C1D71820A145DE00020AB5 /* Target_TestDatabase.m */; };
 		4A0238721F3F14E800EE91C7 /* AsyncTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0238711F3F14E800EE91C7 /* AsyncTestViewController.m */; };
@@ -98,6 +102,14 @@
 /* Begin PBXFileReference section */
 		0E3659C0BE44F61448420F54 /* Pods-CTPersistance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistance.release.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistance/Pods-CTPersistance.release.xcconfig"; sourceTree = "<group>"; };
 		24975DE09A62B809BFED181C /* libPods-CTPersistance.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CTPersistance.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4784771320C5671800F434B1 /* TestNewRecordVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestNewRecordVersion.h; sourceTree = "<group>"; };
+		4784771420C5671800F434B1 /* TestNewRecordVersion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestNewRecordVersion.m; sourceTree = "<group>"; };
+		4784771620C5677000F434B1 /* TestNewRecordVersionTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestNewRecordVersionTable.h; sourceTree = "<group>"; };
+		4784771720C5677000F434B1 /* TestNewRecordVersionTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestNewRecordVersionTable.m; sourceTree = "<group>"; };
+		4784771920C5685800F434B1 /* Target_MigrationTestDatabaseNewCreate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Target_MigrationTestDatabaseNewCreate.h; sourceTree = "<group>"; };
+		4784771A20C5685800F434B1 /* Target_MigrationTestDatabaseNewCreate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Target_MigrationTestDatabaseNewCreate.m; sourceTree = "<group>"; };
+		4784771D20C568BB00F434B1 /* TestMigration_NewCreate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestMigration_NewCreate.h; sourceTree = "<group>"; };
+		4784771E20C568BB00F434B1 /* TestMigration_NewCreate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestMigration_NewCreate.m; sourceTree = "<group>"; };
 		4795639620C52E570087012C /* CTPersistanceTestMigrationNewCreate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestMigrationNewCreate.m; sourceTree = "<group>"; };
 		47C1D71720A145DE00020AB5 /* Target_TestDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Target_TestDatabase.h; sourceTree = "<group>"; };
 		47C1D71820A145DE00020AB5 /* Target_TestDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Target_TestDatabase.m; sourceTree = "<group>"; };
@@ -272,6 +284,35 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4784771120C566A900F434B1 /* MigrationTestNewCreate */ = {
+			isa = PBXGroup;
+			children = (
+				4784771C20C5689F00F434B1 /* Migration */,
+				4784771220C566F300F434B1 /* Table&Record */,
+			);
+			path = MigrationTestNewCreate;
+			sourceTree = "<group>";
+		};
+		4784771220C566F300F434B1 /* Table&Record */ = {
+			isa = PBXGroup;
+			children = (
+				4784771320C5671800F434B1 /* TestNewRecordVersion.h */,
+				4784771420C5671800F434B1 /* TestNewRecordVersion.m */,
+				4784771620C5677000F434B1 /* TestNewRecordVersionTable.h */,
+				4784771720C5677000F434B1 /* TestNewRecordVersionTable.m */,
+			);
+			path = "Table&Record";
+			sourceTree = "<group>";
+		};
+		4784771C20C5689F00F434B1 /* Migration */ = {
+			isa = PBXGroup;
+			children = (
+				4784771D20C568BB00F434B1 /* TestMigration_NewCreate.h */,
+				4784771E20C568BB00F434B1 /* TestMigration_NewCreate.m */,
+			);
+			path = Migration;
+			sourceTree = "<group>";
+		};
 		4A02386E1F3F14C700EE91C7 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +380,7 @@
 		4A0E00411F2C384E00E6A4DA /* CTPersistanceTests */ = {
 			isa = PBXGroup;
 			children = (
+				4784771120C566A900F434B1 /* MigrationTestNewCreate */,
 				4A0E00C71F2DAB5000E6A4DA /* TestRecord.png */,
 				4A532CAC1F3C59520074BA46 /* ConfigurationTarget */,
 				4A0E00B71F2CC25A00E6A4DA /* TestModel */,
@@ -767,6 +809,8 @@
 				4A532CAE1F3C59520074BA46 /* Target_MigrationTestDatabase.m */,
 				47C1D71720A145DE00020AB5 /* Target_TestDatabase.h */,
 				47C1D71820A145DE00020AB5 /* Target_TestDatabase.m */,
+				4784771920C5685800F434B1 /* Target_MigrationTestDatabaseNewCreate.h */,
+				4784771A20C5685800F434B1 /* Target_MigrationTestDatabaseNewCreate.m */,
 			);
 			path = ConfigurationTarget;
 			sourceTree = "<group>";
@@ -1240,6 +1284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4784771520C5671800F434B1 /* TestNewRecordVersion.m in Sources */,
 				4AC74A8A1FBEAEBD0092B636 /* CTPersistanceTestTableIndex.m in Sources */,
 				4A17A96C1F32D0C0009356D7 /* TestMiagratorVersion_3_to_4.m in Sources */,
 				4A17A9941F32F392009356D7 /* TestTableVersion1.m in Sources */,
@@ -1250,7 +1295,9 @@
 				4A17A9661F32D0A7009356D7 /* TestMiagratorVersion_2_to_3.m in Sources */,
 				4A17A96F1F32D45A009356D7 /* MigrationStep_2.m in Sources */,
 				4A17A9631F32D09D009356D7 /* TestMiagratorVersion_1_to_4.m in Sources */,
+				4784771B20C5685800F434B1 /* Target_MigrationTestDatabaseNewCreate.m in Sources */,
 				4A17A9601F32D094009356D7 /* TestMiagratorVersion_1_to_3.m in Sources */,
+				4784771F20C568BB00F434B1 /* TestMigration_NewCreate.m in Sources */,
 				4A17A9971F32F392009356D7 /* TestRecordVersion3.m in Sources */,
 				4A0E00BF1F2CC25A00E6A4DA /* TestRecord.m in Sources */,
 				4AE5541420AD1F190020BAC7 /* CTPersistanceTestUpsert.m in Sources */,
@@ -1265,6 +1312,7 @@
 				4A17A9931F32F392009356D7 /* TestRecordVersion1.m in Sources */,
 				4795639720C52E570087012C /* CTPersistanceTestMigrationNewCreate.m in Sources */,
 				4A17A99A1F32F392009356D7 /* TestTableVersion4.m in Sources */,
+				4784771820C5677000F434B1 /* TestNewRecordVersionTable.m in Sources */,
 				4A532CAF1F3C59520074BA46 /* Target_MigrationTestDatabase.m in Sources */,
 				4A51505D1F2F2402004BA79C /* CTPersistanceTestDelete.m in Sources */,
 				4A17A9691F32D0B5009356D7 /* TestMiagratorVersion_2_to_4.m in Sources */,
