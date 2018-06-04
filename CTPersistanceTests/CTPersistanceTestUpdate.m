@@ -90,6 +90,18 @@
     XCTAssertNil(record.nilValue);
 }
 
+- (void)testUpdateRecordListShowError
+{
+    TestRecord *testRecord = [[TestRecord alloc] init];
+    testRecord.uniqueString = @"uniqueString";
+    [self.testTable insertRecord:testRecord error:NULL];
+    
+    self.recordToUpdate.uniqueString = @"uniqueString";
+    NSError *error = nil;
+    [self.testTable updateRecordList:@[self.recordToUpdate] error:&error];
+    XCTAssertNotNil(error);
+}
+
 - (void)testUpdateRecordList_multiRecord
 {
     [self.recordList enumerateObjectsUsingBlock:^(TestRecord * _Nonnull record, NSUInteger idx, BOOL * _Nonnull stop) {
