@@ -24,13 +24,16 @@ static NSString * const kCTPersistanceErrorUserinfoKeyErrorRecord = @"kCTPersist
 
 - (BOOL)insertRecordList:(NSArray<NSObject <CTPersistanceRecordProtocol> *> *)recordList error:(NSError *__autoreleasing *)error
 {
-    __block BOOL result = YES;
-    [recordList enumerateObjectsUsingBlock:^(NSObject<CTPersistanceRecordProtocol> * _Nonnull record, NSUInteger idx, BOOL * _Nonnull stop) {
+    BOOL result = YES;
+
+    for (id<CTPersistanceRecordProtocol> record in recordList) {
         result = [self insertRecord:record error:error];
+
         if (result == NO) {
-            *stop = YES;
+            break;
         }
-    }];
+    }
+
     return result;
 }
 
