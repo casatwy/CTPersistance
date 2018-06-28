@@ -12,7 +12,9 @@
 
 @interface CTPersistanceSqlStatement ()
 
-@property (nonatomic, unsafe_unretained) sqlite3_stmt *statement;
+@property (nonatomic, assign, readwrite) long useCount;
+@property (nonatomic, unsafe_unretained, readwrite) sqlite3_stmt *statement;
+
 @property (nonatomic, weak) CTPersistanceDataBase *database;
 
 @end
@@ -50,11 +52,20 @@
     return self;
 }
 
+- (void)close {
+    sqlite3_finalize(self.statement);
+    self.statement = nil;
+}
+
+- (void)reset {
+    self.useCount += 1;
+    sqlite3_reset(self.statement);
+}
+
 - (BOOL)executeWithError:(NSError *__autoreleasing *)error
 {
     if (error != NULL && *error != nil) {
-        sqlite3_finalize(self.statement);
-        self.statement = nil;
+        [self close];
         return NO;
     }
 
@@ -70,8 +81,7 @@
         return NO;
     }
 
-    sqlite3_finalize(statement);
-    self.statement = nil;
+    [self reset];
 
     return YES;
 }
@@ -79,8 +89,7 @@
 - (NSArray <NSDictionary *> *)fetchWithError:(NSError *__autoreleasing *)error
 {
     if (error != NULL && *error != nil) {
-        sqlite3_finalize(self.statement);
-        self.statement = nil;
+        [self close];
         return nil;
     }
 
@@ -145,8 +154,7 @@
         [resultsArray addObject:result];
     }
 
-    sqlite3_finalize(statement);
-    self.statement = nil;
+    [self reset];
 
     return resultsArray;
 }
