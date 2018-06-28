@@ -31,4 +31,16 @@
  */
 - (NSArray <NSDictionary *> *)fetchWithError:(NSError **)error;
 
+/**
+ close statement
+ */
+- (void)close;
+
+/**
+ reset statement
+ */
+- (void)reset;
+
+@property (nonatomic, assign, readonly) long useCount;
+@property (nonatomic, unsafe_unretained, readonly) sqlite3_stmt *statement;
 @end
