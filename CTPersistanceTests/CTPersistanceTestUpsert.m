@@ -43,6 +43,44 @@
     [super tearDown];
 }
 
+- (void)testUpdateToEmptyTable
+{
+    // clean all data
+    [self.testTable truncate];
+    NSUInteger recordCount = [self.testTable countTotalRecord];
+    XCTAssertEqual(recordCount, 0);
+    
+    TestRecord *testRecord = [[TestRecord alloc] init];
+    testRecord.age = @(999);
+    testRecord.name = @"casa999";
+    testRecord.avatar = [testRecord.name dataUsingEncoding:NSUTF8StringEncoding];
+    testRecord.progress = @(999);
+    testRecord.isCelebrity = @(999 % 2);
+    testRecord.nilValue = nil;
+    testRecord.timeStamp = 123;
+    
+    NSError *error = nil;
+    [self.testTable upsertRecord:testRecord uniqKeyName:@"age" shouldUpdateNilValueToDatabase:YES error:&error];
+    
+    XCTAssertNil(error);
+    recordCount = [self.testTable countTotalRecord];
+    XCTAssertEqual(recordCount, 1);
+
+    // recorver data
+    NSInteger count = 10;
+    while (count --> 0) {
+        TestRecord *testRecord = [[TestRecord alloc] init];
+        testRecord.age = @(count);
+        testRecord.name = [NSString stringWithFormat:@"casa%ld", (long)count];
+        testRecord.avatar = [testRecord.name dataUsingEncoding:NSUTF8StringEncoding];
+        testRecord.progress = @(count);
+        testRecord.isCelebrity = @(count % 2);
+        testRecord.nilValue = nil;
+        testRecord.timeStamp = 123;
+        [self.testTable insertRecord:testRecord error:NULL];
+    }
+}
+
 - (void)testTransaction {
     [CTPersistanceTransaction performTranscationWithBlock:^(BOOL *shouldRollback) {
         NSInteger count = [self.testTable countTotalRecord];
