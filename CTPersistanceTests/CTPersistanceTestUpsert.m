@@ -51,6 +51,7 @@
     XCTAssertEqual(recordCount, 0);
     
     TestRecord *testRecord = [[TestRecord alloc] init];
+    testRecord.primaryKey = @(1);
     testRecord.age = @(999);
     testRecord.name = @"casa999";
     testRecord.avatar = [testRecord.name dataUsingEncoding:NSUTF8StringEncoding];

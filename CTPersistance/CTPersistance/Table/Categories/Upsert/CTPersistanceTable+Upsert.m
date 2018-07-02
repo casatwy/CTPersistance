@@ -84,6 +84,9 @@
                 [weakSelf updateKeyValueList:valueToUpdate
                              primaryKeyValue:[record valueForKey:weakSelf.child.primaryKeyName]
                                        error:error];
+                if (weakSelf.queryCommand.rowsChanged.integerValue == 0) {
+                    [weakSelf insertRecord:record error:error];
+                }
             }
         }
         
