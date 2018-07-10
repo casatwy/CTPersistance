@@ -81,7 +81,7 @@
 		4AF38F2D1F6905DF00801322 /* TestRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E00BA1F2CC25A00E6A4DA /* TestRecord.m */; };
 		4AF38F2F1F69068700801322 /* CTPersistanceTestTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF38F2E1F69068700801322 /* CTPersistanceTestTransaction.m */; };
 		6284DE2109EF43B7A3D56F18 /* libPods-CTPersistance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24975DE09A62B809BFED181C /* libPods-CTPersistance.a */; };
-		78B4B74020E4F16C001836CF /* CTPersistenceTestStatementCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B4B73F20E4F16C001836CF /* CTPersistenceTestStatementCache.m */; };
+		7866EEC620F0ABB300819E75 /* CTPersistanceStatementCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7866EEC520F0ABB300819E75 /* CTPersistanceStatementCacheManager.m */; };
 		DAEEF1BE411F617114764D0F /* libPods-CTPersistanceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D31FADFF56BDD50C7FD9C94 /* libPods-CTPersistanceTests.a */; };
 /* End PBXBuildFile section */
 
@@ -234,7 +234,8 @@
 		4AE5541320AD1F190020BAC7 /* CTPersistanceTestUpsert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestUpsert.m; sourceTree = "<group>"; };
 		4AF38F2E1F69068700801322 /* CTPersistanceTestTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestTransaction.m; sourceTree = "<group>"; };
 		4D31FADFF56BDD50C7FD9C94 /* libPods-CTPersistanceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CTPersistanceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		78B4B73F20E4F16C001836CF /* CTPersistenceTestStatementCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTPersistenceTestStatementCache.m; sourceTree = "<group>"; };
+		7866EEC420F0ABB300819E75 /* CTPersistanceStatementCacheManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPersistanceStatementCacheManager.h; sourceTree = "<group>"; };
+		7866EEC520F0ABB300819E75 /* CTPersistanceStatementCacheManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceStatementCacheManager.m; sourceTree = "<group>"; };
 		89D41C6489863CB58D4966E5 /* Pods-CTPersistance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistance/Pods-CTPersistance.debug.xcconfig"; sourceTree = "<group>"; };
 		AD102503C09A04454242FAC0 /* Pods-CTPersistanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistanceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistanceTests/Pods-CTPersistanceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9D5304E203B48D737D87E6F /* Pods-CTPersistanceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistanceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistanceTests/Pods-CTPersistanceTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -351,7 +352,6 @@
 				4AC74A891FBEAEBD0092B636 /* CTPersistanceTestTableIndex.m */,
 				4A76096620A16C82009908A6 /* CTPersistanceTestChangeKey.m */,
 				4AE5541320AD1F190020BAC7 /* CTPersistanceTestUpsert.m */,
-				78B4B73F20E4F16C001836CF /* CTPersistenceTestStatementCache.m */,
 				4A7844C41F32C1F500CF4809 /* MigrationTestModel */,
 				4A0E00441F2C384E00E6A4DA /* Info.plist */,
 			);
@@ -474,6 +474,8 @@
 		4A0E00741F2CBD6300E6A4DA /* QueryCommand */ = {
 			isa = PBXGroup;
 			children = (
+				7866EEC420F0ABB300819E75 /* CTPersistanceStatementCacheManager.h */,
+				7866EEC520F0ABB300819E75 /* CTPersistanceStatementCacheManager.m */,
 				4A5E3BEE1F403A3200946749 /* Statement */,
 				4A0E00751F2CBD6300E6A4DA /* Categories */,
 				4A0E00821F2CBD6300E6A4DA /* CTPersistanceQueryCommand.h */,
@@ -1060,6 +1062,8 @@
 				4A0E00211F2C384E00E6A4DA /* Sources */,
 				4A0E00221F2C384E00E6A4DA /* Frameworks */,
 				4A0E00231F2C384E00E6A4DA /* Resources */,
+				10751F76ED1BC0072083D1EB /* [CP] Embed Pods Frameworks */,
+				8C4AC309B366006C6CA8BB6A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1078,6 +1082,8 @@
 				4A0E003A1F2C384E00E6A4DA /* Sources */,
 				4A0E003B1F2C384E00E6A4DA /* Frameworks */,
 				4A0E003C1F2C384E00E6A4DA /* Resources */,
+				BCC3FE446475752A1DF7D1B8 /* [CP] Embed Pods Frameworks */,
+				47D5EC83DAF4AF6795D548BD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1152,6 +1158,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		10751F76ED1BC0072083D1EB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CTPersistance/Pods-CTPersistance-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		47D5EC83DAF4AF6795D548BD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CTPersistanceTests/Pods-CTPersistanceTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		810DA35DC562A3E4A0F26373 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1168,6 +1204,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C4AC309B366006C6CA8BB6A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CTPersistance/Pods-CTPersistance-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCC3FE446475752A1DF7D1B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CTPersistanceTests/Pods-CTPersistanceTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DFE4FB2A9CE5F55E85A7BA6A /* [CP] Check Pods Manifest.lock */ = {
@@ -1217,6 +1283,7 @@
 				4A0238741F3FFBA800EE91C7 /* TestTable.m in Sources */,
 				4AC74A631FBE7DC60092B636 /* ViewRecordAndMergeDemoViewController.m in Sources */,
 				4AC74A731FBE7EC90092B636 /* ItemDetailTable.m in Sources */,
+				7866EEC620F0ABB300819E75 /* CTPersistanceStatementCacheManager.m in Sources */,
 				4A0E002A1F2C384E00E6A4DA /* main.m in Sources */,
 				4A5E3BF11F403A4A00946749 /* CTPersistanceSqlStatement.m in Sources */,
 				4ACE635B1F340E54007F3E6D /* NSDictionary+KeyValueBind.m in Sources */,
@@ -1242,7 +1309,6 @@
 			files = (
 				4AC74A8A1FBEAEBD0092B636 /* CTPersistanceTestTableIndex.m in Sources */,
 				4A17A96C1F32D0C0009356D7 /* TestMiagratorVersion_3_to_4.m in Sources */,
-				78B4B74020E4F16C001836CF /* CTPersistenceTestStatementCache.m in Sources */,
 				4A17A9941F32F392009356D7 /* TestTableVersion1.m in Sources */,
 				47C1D71920A145DE00020AB5 /* Target_TestDatabase.m in Sources */,
 				4A17A9951F32F392009356D7 /* TestRecordVersion2.m in Sources */,
