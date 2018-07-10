@@ -10,12 +10,16 @@
 #import <sqlite3.h>
 #import "CTPersistanceConfiguration.h"
 
+#import "CTPersistanceStatementCacheManager.h"
+
 @interface CTPersistanceSqlStatement ()
 
-@property (nonatomic, assign, readwrite) long useCount;
 @property (nonatomic, unsafe_unretained, readwrite) sqlite3_stmt *statement;
 
 @property (nonatomic, weak) CTPersistanceDataBase *database;
+
+@property (nonatomic, copy) NSString *sqlString;
+@property (nonatomic, strong) CTPersistanceStatementCacheManager *statementCacheManager;
 
 @end
 
@@ -26,28 +30,40 @@
     self = [super init];
     if (self) {
         self.database = database;
-#warning todo statement cache
-        sqlite3_stmt *statement = nil;
-        int result = sqlite3_prepare_v2(database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
-
-        if (result != SQLITE_OK) {
-            self.statement = nil;
-            NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(database.database)];
-            NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", sqlString, errorMessage]}];
-            if (error != NULL) {
-                *error = generatedError;
+        self.sqlString = sqlString;
+        sqlite3_stmt *statement = [self.statementCacheManager getCachedStatementWithSQLString:sqlString];
+        
+        if (!statement) {
+            
+            int result = sqlite3_prepare_v2(database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
+            
+            if (result != SQLITE_OK) {
+                self.statement = nil;
+                NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(database.database)];
+                NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", sqlString, errorMessage]}];
+                if (error != NULL) {
+                    *error = generatedError;
+                }
+                NSLog(@"\n\n\n======================\n\n%@\n\n%s\n%s(%d):\n\n\terror is:\n\t\t %@ \n\n\t sqlString is %@\n\n======================\n\n\n", [NSThread currentThread], __FILE__, __FUNCTION__, __LINE__, errorMessage, sqlString);
+                sqlite3_finalize(statement);
+                return nil;
             }
-            NSLog(@"\n\n\n======================\n\n%@\n\n%s\n%s(%d):\n\n\terror is:\n\t\t %@ \n\n\t sqlString is %@\n\n======================\n\n\n", [NSThread currentThread], __FILE__, __FUNCTION__, __LINE__, errorMessage, sqlString);
-            sqlite3_finalize(statement);
-            return nil;
+            
+            self.statement = statement;
+            
+        } else {
+            
+            self.statement = statement;
+        
         }
-        self.statement = statement;
+       
 
         [bindValueList enumerateObjectsUsingBlock:^(NSInvocation * _Nonnull bindInvocation, NSUInteger idx, BOOL * _Nonnull stop) {
             [bindInvocation setArgument:(void *)&statement atIndex:2];
             [bindInvocation invoke];
         }];
         [bindValueList removeAllObjects];
+        
     }
     return self;
 }
@@ -58,7 +74,6 @@
 }
 
 - (void)reset {
-    self.useCount += 1;
     sqlite3_reset(self.statement);
 }
 
@@ -80,9 +95,15 @@
         sqlite3_finalize(statement);
         return NO;
     }
+    
+    [self.statementCacheManager setCachedStatement:self.statement forSQLString:self.sqlString];
 
-    [self reset];
-
+    if (![self.statementCacheManager getCachedStatementWithSQLString:self.sqlString]) {
+        [self close];
+    } else {
+        [self reset];
+    }
+    
     return YES;
 }
 
@@ -153,10 +174,25 @@
         }
         [resultsArray addObject:result];
     }
-
-    [self reset];
+    
+    [self.statementCacheManager setCachedStatement:self.statement forSQLString:self.sqlString];
+    
+    if (![self.statementCacheManager getCachedStatementWithSQLString:self.sqlString]) {
+        [self close];
+    } else {
+        [self reset];
+    }
 
     return resultsArray;
 }
+
+#pragma mark - getter and setter
+- (CTPersistanceStatementCacheManager *)statementCacheManager {
+    if (_statementCacheManager == nil) {
+        _statementCacheManager = [CTPersistanceStatementCacheManager sharedInstance];
+    }
+    return _statementCacheManager;
+}
+
 
 @end
