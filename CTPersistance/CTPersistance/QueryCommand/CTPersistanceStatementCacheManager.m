@@ -2,7 +2,7 @@
 //  CTPersistanceStatementCacheManager.m
 //  CTPersistance
 //
-//  Created by zl on 2018/7/7.
+//  Created by longjianjiang on 2018/7/7.
 //  Copyright © 2018年 casa. All rights reserved.
 //
 
@@ -10,14 +10,90 @@
 
 @interface CTPersistanceStatementCacheManager()
 
-@property (nonatomic, strong) NSMutableDictionary *cachedStatements;
-
-@property (nonatomic, strong) NSMutableDictionary *useCount;
+@property (nonatomic, strong) NSMutableDictionary *cachedTree;
 
 @end
 
 
 @implementation CTPersistanceStatementCacheManager
+
+- (sqlite3_stmt *)getCachedStatementWithSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName
+{
+    if (![self.cachedTree objectForKey:databaseName]) {
+        return NULL;
+    }
+    
+    NSMutableDictionary *cachedStatements = [self.cachedTree objectForKey:databaseName];
+    
+    if (![cachedStatements objectForKey:sqlString]) {
+        return NULL;
+    }
+    
+    @synchronized(self) {
+        sqlite3_stmt *pStmt = [[cachedStatements objectForKey:sqlString] pointerValue];
+        return pStmt;
+    }
+}
+
+- (void)setCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName
+{
+    if (![self.cachedTree objectForKey:databaseName]) {
+        [self.cachedTree setObject:[NSMutableDictionary dictionary] forKey:databaseName];
+    }
+    
+    NSMutableDictionary *cachedStatements = [self.cachedTree objectForKey:databaseName];
+    
+    if ([cachedStatements objectForKey:sqlString]) {
+        return;
+    }
+    
+    @synchronized(self) {
+        [cachedStatements setObject:[NSValue valueWithPointer:pStmt] forKey:sqlString];
+    }
+}
+
+- (void)removeCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName
+{
+    if (![self.cachedTree objectForKey:databaseName]) {
+        return;
+    }
+    
+    NSMutableDictionary *cachedStatements = [self.cachedTree objectForKey:databaseName];
+    
+    if (![cachedStatements objectForKey:sqlString]) {
+        return;
+    }
+    
+    @synchronized(self) {
+        [cachedStatements removeObjectForKey:sqlString];
+    }
+}
+
+- (void)clearDatabaseStatementCache:(NSString *)databaseName
+{
+    if (![self.cachedTree objectForKey:databaseName]) {
+        return;
+    }
+    
+    NSMutableDictionary *cachedStatements = [self.cachedTree objectForKey:databaseName];
+    
+    @synchronized(self) {
+        for (id statement in [cachedStatements objectEnumerator]) {
+            sqlite3_finalize((sqlite3_stmt *)[statement pointerValue]);
+        }
+        
+        [cachedStatements removeAllObjects];
+        [self.cachedTree removeObjectForKey:databaseName];
+    }
+}
+
+- (void)clearAllDatabaseStatementCache
+{
+    for (NSString *databaseName in [self.cachedTree objectEnumerator]) {
+        [self clearDatabaseStatementCache:databaseName];
+    }
+}
+
 
 #pragma mark - public methods
 + (instancetype)sharedInstance
@@ -30,83 +106,19 @@
     return sharedInstance;
 }
 
-- (sqlite3_stmt *)getCachedStatementWithSQLString:(NSString *)sqlString
-{
-    if (![self.cachedStatements objectForKey:sqlString]) {
-        return NULL;
-    }
-    
-    @synchronized(self) {
-        sqlite3_stmt *pStmt = [[self.cachedStatements objectForKey:sqlString] pointerValue];
-
-        NSInteger count = [[self.useCount objectForKey:sqlString] integerValue] + 1;
-        [self.useCount setObject:@(count) forKey:sqlString];
-#ifdef DEBUG
-        NSLog(@" sqlstring %@ , use count is %@", sqlString, [self.useCount objectForKey:sqlString]);
-#endif
-        return pStmt;
-    }
-    
-}
-
-- (void)setCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString
-{
-    if ([self.cachedStatements objectForKey:sqlString]) {
-        return;
-    }
-    
-    NSArray *notCachedSQL = @[@"PRAGMA", @"CREATE"];
-    BOOL shouldCache = YES;
-    for (NSString *sql in notCachedSQL) {
-        if ([[sqlString uppercaseString] rangeOfString:sql].length) {
-            shouldCache = NO;
-            break;
-        }
-    }
-    
-    if (1) {
-        @synchronized(self) {
-            [self.cachedStatements setObject:[NSValue valueWithPointer:pStmt] forKey:sqlString];
-            [self.useCount setObject:@(0) forKey:sqlString];
-        }
-    }
-
-}
-
-- (void)removeCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString {
-    if (![self.cachedStatements objectForKey:sqlString]) {
-        return;
-    }
-    
-    @synchronized(self) {
-        [self.cachedStatements removeObjectForKey:sqlString];
-        [self.useCount removeObjectForKey:sqlString];
-    }
-}
-
-
 #pragma mark - life cycle
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        self.cachedStatements = [NSMutableDictionary dictionary];
-        self.useCount = [NSMutableDictionary dictionary];
+        self.cachedTree = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    @synchronized(self) {
-        for (id statement in [self.cachedStatements objectEnumerator]) {
-            sqlite3_finalize((sqlite3_stmt *)[statement pointerValue]);
-        }
-        
-        [self.cachedStatements removeAllObjects];
-        [self.useCount removeAllObjects];
-    }
-    
+    [self clearAllDatabaseStatementCache];
 }
 
 @end

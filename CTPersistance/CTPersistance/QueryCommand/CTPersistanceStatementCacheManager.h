@@ -13,8 +13,12 @@
 
 + (instancetype)sharedInstance;
 
-- (sqlite3_stmt *)getCachedStatementWithSQLString:(NSString *)sqlString;
-- (void)setCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString;
-- (void)removeCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString;
+
+- (void)setCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName;
+- (sqlite3_stmt *)getCachedStatementWithSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName;
+- (void)removeCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName;
+
+- (void)clearDatabaseStatementCache:(NSString *)databaseName;
+- (void)clearAllDatabaseStatementCache;
 
 @end

@@ -31,14 +31,14 @@
     if (self) {
         self.database = database;
         self.sqlString = sqlString;
-        sqlite3_stmt *statement = [self.statementCacheManager getCachedStatementWithSQLString:sqlString];
+        sqlite3_stmt *statement = [self.statementCacheManager getCachedStatementWithSQLString:sqlString atDatabase:self.database.databaseName];
         
         if (!statement) {
             
             int result = sqlite3_prepare_v2(database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
             
             if (result != SQLITE_OK) {
-                self.statement = nil;
+                
                 NSString *errorMessage = [NSString stringWithUTF8String:sqlite3_errmsg(database.database)];
                 NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", sqlString, errorMessage]}];
                 if (error != NULL) {
@@ -46,7 +46,8 @@
                 }
                 NSLog(@"\n\n\n======================\n\n%@\n\n%s\n%s(%d):\n\n\terror is:\n\t\t %@ \n\n\t sqlString is %@\n\n======================\n\n\n", [NSThread currentThread], __FILE__, __FUNCTION__, __LINE__, errorMessage, sqlString);
                 
-                sqlite3_finalize(statement);
+                [self close];
+                
                 return nil;
             }
             
@@ -70,7 +71,7 @@
 }
 
 - (void)close {
-    [self.statementCacheManager removeCachedStatement:self.statement forSQLString:self.sqlString];
+    [self.statementCacheManager removeCachedStatement:self.statement forSQLString:self.sqlString atDatabase:self.database.databaseName];
     
     sqlite3_finalize(self.statement);
     self.statement = nil;
@@ -93,7 +94,7 @@
 
     if (result != SQLITE_DONE && error) {
         
-        [self.statementCacheManager removeCachedStatement:self.statement forSQLString:self.sqlString];
+        [self.statementCacheManager removeCachedStatement:self.statement forSQLString:self.sqlString atDatabase:self.database.databaseName];
         
         const char *errorMsg = sqlite3_errmsg(self.database.database);
         NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", [NSString stringWithUTF8String:sqlite3_sql(statement)], [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]]}];
@@ -103,11 +104,12 @@
         return NO;
     }
     
-    [self.statementCacheManager setCachedStatement:self.statement forSQLString:self.sqlString];
+    [self.statementCacheManager setCachedStatement:self.statement forSQLString:self.sqlString atDatabase:self.database.databaseName];
     [self reset];
     
     return YES;
 }
+
 
 - (NSArray <NSDictionary *> *)fetchWithError:(NSError *__autoreleasing *)error
 {
@@ -116,15 +118,11 @@
         return nil;
     }
 
-    NSMutableArray *resultsArray = nil;
+    NSMutableArray *resultsArray = [NSMutableArray array];
 
     sqlite3_stmt *statement = self.statement;
     
     while (sqlite3_step(statement) == SQLITE_ROW) {
-        
-        if (!resultsArray) {
-            resultsArray = [NSMutableArray new];
-        }
         
         int columns = sqlite3_column_count(statement);
         NSMutableDictionary *result = [[NSMutableDictionary alloc] initWithCapacity:columns];
@@ -183,12 +181,8 @@
         [resultsArray addObject:result];
     }
     
-    if (resultsArray) {
-        [self.statementCacheManager setCachedStatement:self.statement forSQLString:self.sqlString];
-        [self reset];
-    } else {
-        [self close];
-    }
+    [self.statementCacheManager setCachedStatement:self.statement forSQLString:self.sqlString atDatabase:self.database.databaseName];
+    [self reset];
    
     return resultsArray;
 }

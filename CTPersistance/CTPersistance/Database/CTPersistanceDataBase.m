@@ -13,6 +13,8 @@
 #import "CTPersistanceVersionTable.h"
 #import <CTMediator/CTMediator.h>
 
+#import "CTPersistanceStatementCacheManager.h"
+
 extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
 extern SQLITE_API int sqlite3_rekey(sqlite3 *db, const void *pKey, int nKey);
 
@@ -115,6 +117,8 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
     
     _database = NULL;
     _databaseFilePath = nil;
+    
+    [[CTPersistanceStatementCacheManager sharedInstance] clearDatabaseStatementCache:self.databaseName];
 }
 
 #pragma mark - private methods
