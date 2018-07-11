@@ -15,5 +15,6 @@
 
 - (sqlite3_stmt *)getCachedStatementWithSQLString:(NSString *)sqlString;
 - (void)setCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString;
+- (void)removeCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString;
 
 @end
