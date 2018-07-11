@@ -45,6 +45,7 @@
                     *error = generatedError;
                 }
                 NSLog(@"\n\n\n======================\n\n%@\n\n%s\n%s(%d):\n\n\terror is:\n\t\t %@ \n\n\t sqlString is %@\n\n======================\n\n\n", [NSThread currentThread], __FILE__, __FUNCTION__, __LINE__, errorMessage, sqlString);
+                
                 sqlite3_finalize(statement);
                 return nil;
             }
@@ -69,6 +70,8 @@
 }
 
 - (void)close {
+    [self.statementCacheManager removeCachedStatement:self.statement forSQLString:self.sqlString];
+    
     sqlite3_finalize(self.statement);
     self.statement = nil;
 }
@@ -89,20 +92,19 @@
     int result = sqlite3_step(statement);
 
     if (result != SQLITE_DONE && error) {
+        
+        [self.statementCacheManager removeCachedStatement:self.statement forSQLString:self.sqlString];
+        
         const char *errorMsg = sqlite3_errmsg(self.database.database);
         NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", [NSString stringWithUTF8String:sqlite3_sql(statement)], [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]]}];
         *error = generatedError;
         sqlite3_finalize(statement);
+        
         return NO;
     }
     
     [self.statementCacheManager setCachedStatement:self.statement forSQLString:self.sqlString];
-
-    if (![self.statementCacheManager getCachedStatementWithSQLString:self.sqlString]) {
-        [self close];
-    } else {
-        [self reset];
-    }
+    [self reset];
     
     return YES;
 }
@@ -114,10 +116,16 @@
         return nil;
     }
 
-    NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
+    NSMutableArray *resultsArray = nil;
 
     sqlite3_stmt *statement = self.statement;
+    
     while (sqlite3_step(statement) == SQLITE_ROW) {
+        
+        if (!resultsArray) {
+            resultsArray = [NSMutableArray new];
+        }
+        
         int columns = sqlite3_column_count(statement);
         NSMutableDictionary *result = [[NSMutableDictionary alloc] initWithCapacity:columns];
 
@@ -175,14 +183,13 @@
         [resultsArray addObject:result];
     }
     
-    [self.statementCacheManager setCachedStatement:self.statement forSQLString:self.sqlString];
-    
-    if (![self.statementCacheManager getCachedStatementWithSQLString:self.sqlString]) {
-        [self close];
-    } else {
+    if (resultsArray) {
+        [self.statementCacheManager setCachedStatement:self.statement forSQLString:self.sqlString];
         [self reset];
+    } else {
+        [self close];
     }
-
+   
     return resultsArray;
 }
 

@@ -22,6 +22,7 @@ extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
 
 @implementation CTPersistanceTestChangeKey
 
+
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -143,5 +144,6 @@ extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
     }
     return _databaseFilePath;
 }
+
 
 @end

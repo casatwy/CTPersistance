@@ -44,9 +44,6 @@
 #ifdef DEBUG
         NSLog(@" sqlstring %@ , use count is %@", sqlString, [self.useCount objectForKey:sqlString]);
 #endif
-        if (count >= 55) {
-            return NULL;
-        }
         return pStmt;
     }
     
@@ -58,7 +55,7 @@
         return;
     }
     
-    NSArray *notCachedSQL = @[@"PRAGMA"];
+    NSArray *notCachedSQL = @[@"PRAGMA", @"CREATE"];
     BOOL shouldCache = YES;
     for (NSString *sql in notCachedSQL) {
         if ([[sqlString uppercaseString] rangeOfString:sql].length) {
@@ -75,6 +72,18 @@
     }
 
 }
+
+- (void)removeCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString {
+    if (![self.cachedStatements objectForKey:sqlString]) {
+        return;
+    }
+    
+    @synchronized(self) {
+        [self.cachedStatements removeObjectForKey:sqlString];
+        [self.useCount removeObjectForKey:sqlString];
+    }
+}
+
 
 #pragma mark - life cycle
 - (instancetype)init
