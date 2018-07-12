@@ -26,7 +26,7 @@
         self.database = database;
 #warning todo statement cache
         sqlite3_stmt *statement = nil;
-        int result = sqlite3_prepare_v2(database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
+        int result = sqlite3_prepare_v2(database.database, [sqlString UTF8String], (int)[sqlString lengthOfBytesUsingEncoding:NSUTF8StringEncoding], &statement, NULL);
 
         if (result != SQLITE_OK) {
             self.statement = nil;
