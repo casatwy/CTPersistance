@@ -8,6 +8,7 @@
 
 #import "CTPersistanceStatementCacheManager.h"
 
+
 @interface CTPersistanceStatementCacheManager()
 
 @property (nonatomic, strong) NSMutableDictionary *cachedTree;
@@ -17,55 +18,70 @@
 
 @implementation CTPersistanceStatementCacheManager
 
-- (sqlite3_stmt *)getCachedStatementWithSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName
+- (CTPersistanceStatementCacheItem *)getCachedStatementWithSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName
 {
-    if (![self.cachedTree objectForKey:databaseName]) {
-        return NULL;
-    }
+    @synchronized (self) {
+        if (![self.cachedTree objectForKey:databaseName]) {
+            return NULL;
+        }
+        
+        NSMutableDictionary *cachedStatements = [self.cachedTree objectForKey:databaseName];
+        
+        if (![cachedStatements objectForKey:sqlString]) {
+            return NULL;
+        }
+        
+        NSMutableSet *statements = [cachedStatements objectForKey:sqlString];
     
-    NSMutableDictionary *cachedStatements = [self.cachedTree objectForKey:databaseName];
-    
-    if (![cachedStatements objectForKey:sqlString]) {
-        return NULL;
-    }
-    
-    @synchronized(self) {
-        sqlite3_stmt *pStmt = [[cachedStatements objectForKey:sqlString] pointerValue];
-        return pStmt;
+        for (CTPersistanceStatementCacheItem *item in statements) {
+            if (item.inUse == NO) {
+                return item;
+            }
+        }
+        
+        return nil;
     }
 }
 
-- (void)setCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName
+- (void)setCachedStatement:(CTPersistanceStatementCacheItem *)pStmt forSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName
 {
-    if (![self.cachedTree objectForKey:databaseName]) {
-        [self.cachedTree setObject:[NSMutableDictionary dictionary] forKey:databaseName];
-    }
+    @synchronized (self) {
+        if (![self.cachedTree objectForKey:databaseName]) {
+            [self.cachedTree setObject:[NSMutableDictionary dictionary] forKey:databaseName];
+        }
+        
+        NSMutableDictionary *cachedStatements = [self.cachedTree objectForKey:databaseName];
+        
+        NSMutableSet *statements = [cachedStatements objectForKey:sqlString];
+        if (!statements) {
+            statements = [NSMutableSet set];
+        }
+        
+        if (pStmt.inUse == NO) {
+            [statements addObject:pStmt];
+            [cachedStatements setObject:statements forKey:sqlString];
+        }
     
-    NSMutableDictionary *cachedStatements = [self.cachedTree objectForKey:databaseName];
-    
-    if ([cachedStatements objectForKey:sqlString]) {
-        return;
     }
-    
-    @synchronized(self) {
-        [cachedStatements setObject:[NSValue valueWithPointer:pStmt] forKey:sqlString];
-    }
+   
 }
 
-- (void)removeCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName
+- (void)removeCachedStatement:(CTPersistanceStatementCacheItem *)pStmt forSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName
 {
-    if (![self.cachedTree objectForKey:databaseName]) {
-        return;
-    }
     
-    NSMutableDictionary *cachedStatements = [self.cachedTree objectForKey:databaseName];
-    
-    if (![cachedStatements objectForKey:sqlString]) {
-        return;
-    }
-    
-    @synchronized(self) {
-        [cachedStatements removeObjectForKey:sqlString];
+    @synchronized (self) {
+        if (![self.cachedTree objectForKey:databaseName]) {
+            return;
+        }
+        
+        NSMutableDictionary *cachedStatements = [self.cachedTree objectForKey:databaseName];
+        
+        if (![cachedStatements objectForKey:sqlString]) {
+            return;
+        }
+        
+        NSMutableSet *statements = [cachedStatements objectForKey:sqlString];
+        [statements removeObject:pStmt];
     }
 }
 
@@ -77,23 +93,15 @@
     
     NSMutableDictionary *cachedStatements = [self.cachedTree objectForKey:databaseName];
     
-    @synchronized(self) {
-        for (id statement in [cachedStatements objectEnumerator]) {
-            sqlite3_finalize((sqlite3_stmt *)[statement pointerValue]);
+    for (NSMutableSet *statements in [cachedStatements objectEnumerator]) {
+        for (CTPersistanceStatementCacheItem *item in statements) {
+            [item close];
         }
-        
-        [cachedStatements removeAllObjects];
-        [self.cachedTree removeObjectForKey:databaseName];
     }
+    
+    [cachedStatements removeAllObjects];
+    [self.cachedTree removeObjectForKey:databaseName];
 }
-
-- (void)clearAllDatabaseStatementCache
-{
-    for (NSString *databaseName in [self.cachedTree objectEnumerator]) {
-        [self clearDatabaseStatementCache:databaseName];
-    }
-}
-
 
 #pragma mark - public methods
 + (instancetype)sharedInstance
@@ -114,11 +122,6 @@
         self.cachedTree = [NSMutableDictionary dictionary];
     }
     return self;
-}
-
-- (void)dealloc
-{
-    [self clearAllDatabaseStatementCache];
 }
 
 @end

@@ -7,18 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <sqlite3.h>
+#import "CTPersistanceStatementCacheItem.h"
 
 @interface CTPersistanceStatementCacheManager : NSObject
 
 + (instancetype)sharedInstance;
 
-
-- (void)setCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName;
-- (sqlite3_stmt *)getCachedStatementWithSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName;
-- (void)removeCachedStatement:(sqlite3_stmt *)pStmt forSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName;
+- (void)setCachedStatement:(CTPersistanceStatementCacheItem *)pStmt forSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName;
+- (CTPersistanceStatementCacheItem *)getCachedStatementWithSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName;
+- (void)removeCachedStatement:(CTPersistanceStatementCacheItem *)pStmt forSQLString:(NSString *)sqlString atDatabase:(NSString *)databaseName;
 
 - (void)clearDatabaseStatementCache:(NSString *)databaseName;
-- (void)clearAllDatabaseStatementCache;
 
 @end
