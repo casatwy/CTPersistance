@@ -82,6 +82,7 @@
 		4AF38F2F1F69068700801322 /* CTPersistanceTestTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF38F2E1F69068700801322 /* CTPersistanceTestTransaction.m */; };
 		6284DE2109EF43B7A3D56F18 /* libPods-CTPersistance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24975DE09A62B809BFED181C /* libPods-CTPersistance.a */; };
 		7866EEC620F0ABB300819E75 /* CTPersistanceStatementCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7866EEC520F0ABB300819E75 /* CTPersistanceStatementCacheManager.m */; };
+		786AD97020F88812005B33FB /* CTPersistanceStatementCacheItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 786AD96F20F88812005B33FB /* CTPersistanceStatementCacheItem.m */; };
 		DAEEF1BE411F617114764D0F /* libPods-CTPersistanceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D31FADFF56BDD50C7FD9C94 /* libPods-CTPersistanceTests.a */; };
 /* End PBXBuildFile section */
 
@@ -236,6 +237,8 @@
 		4D31FADFF56BDD50C7FD9C94 /* libPods-CTPersistanceTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CTPersistanceTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7866EEC420F0ABB300819E75 /* CTPersistanceStatementCacheManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPersistanceStatementCacheManager.h; sourceTree = "<group>"; };
 		7866EEC520F0ABB300819E75 /* CTPersistanceStatementCacheManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceStatementCacheManager.m; sourceTree = "<group>"; };
+		786AD96E20F88812005B33FB /* CTPersistanceStatementCacheItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTPersistanceStatementCacheItem.h; sourceTree = "<group>"; };
+		786AD96F20F88812005B33FB /* CTPersistanceStatementCacheItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceStatementCacheItem.m; sourceTree = "<group>"; };
 		89D41C6489863CB58D4966E5 /* Pods-CTPersistance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistance/Pods-CTPersistance.debug.xcconfig"; sourceTree = "<group>"; };
 		AD102503C09A04454242FAC0 /* Pods-CTPersistanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistanceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistanceTests/Pods-CTPersistanceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9D5304E203B48D737D87E6F /* Pods-CTPersistanceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistanceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistanceTests/Pods-CTPersistanceTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -476,6 +479,7 @@
 			children = (
 				7866EEC420F0ABB300819E75 /* CTPersistanceStatementCacheManager.h */,
 				7866EEC520F0ABB300819E75 /* CTPersistanceStatementCacheManager.m */,
+				786AD96D20F88755005B33FB /* StatementCache */,
 				4A5E3BEE1F403A3200946749 /* Statement */,
 				4A0E00751F2CBD6300E6A4DA /* Categories */,
 				4A0E00821F2CBD6300E6A4DA /* CTPersistanceQueryCommand.h */,
@@ -1051,6 +1055,15 @@
 			path = Upsert;
 			sourceTree = "<group>";
 		};
+		786AD96D20F88755005B33FB /* StatementCache */ = {
+			isa = PBXGroup;
+			children = (
+				786AD96E20F88812005B33FB /* CTPersistanceStatementCacheItem.h */,
+				786AD96F20F88812005B33FB /* CTPersistanceStatementCacheItem.m */,
+			);
+			path = StatementCache;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1281,6 +1294,7 @@
 				4A0E002D1F2C384E00E6A4DA /* AppDelegate.m in Sources */,
 				4A0E00A41F2CBD6300E6A4DA /* CTPersistanceVersionRecord.m in Sources */,
 				4A0238741F3FFBA800EE91C7 /* TestTable.m in Sources */,
+				786AD97020F88812005B33FB /* CTPersistanceStatementCacheItem.m in Sources */,
 				4AC74A631FBE7DC60092B636 /* ViewRecordAndMergeDemoViewController.m in Sources */,
 				4AC74A731FBE7EC90092B636 /* ItemDetailTable.m in Sources */,
 				7866EEC620F0ABB300819E75 /* CTPersistanceStatementCacheManager.m in Sources */,

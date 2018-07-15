@@ -14,12 +14,12 @@
 
 @interface CTPersistanceSqlStatement ()
 
-@property (nonatomic, unsafe_unretained, readwrite) sqlite3_stmt *statement;
-
 @property (nonatomic, weak) CTPersistanceDataBase *database;
 
 @property (nonatomic, copy) NSString *sqlString;
+
 @property (nonatomic, strong) CTPersistanceStatementCacheManager *statementCacheManager;
+@property (nonatomic, strong) CTPersistanceStatementCacheItem *statementItem;
 
 @end
 
@@ -28,12 +28,19 @@
 - (instancetype)initWithSqlString:(NSString *)sqlString bindValueList:(NSMutableArray <NSInvocation *> *)bindValueList database:(CTPersistanceDataBase *)database error:(NSError *__autoreleasing *)error
 {
     self = [super init];
+    
     if (self) {
+        
         self.database = database;
         self.sqlString = sqlString;
-        sqlite3_stmt *statement = [self.statementCacheManager getCachedStatementWithSQLString:sqlString atDatabase:self.database.databaseName];
         
-        if (!statement) {
+        self.statementItem = [self.statementCacheManager getCachedStatementWithSQLString:sqlString atDatabase:self.database.databaseName];
+        
+        sqlite3_stmt *statement = self.statementItem.statement;
+        
+        if (!self.statementItem) {
+            
+            self.statementItem = [CTPersistanceStatementCacheItem new];
             
             int result = sqlite3_prepare_v2(database.database, [sqlString UTF8String], (int)sqlString.length, &statement, NULL);
             
@@ -51,15 +58,10 @@
                 return nil;
             }
             
-            self.statement = statement;
-            
-        } else {
-            
-            self.statement = statement;
-        
+            self.statementItem.statement = statement;
+
         }
        
-
         [bindValueList enumerateObjectsUsingBlock:^(NSInvocation * _Nonnull bindInvocation, NSUInteger idx, BOOL * _Nonnull stop) {
             [bindInvocation setArgument:(void *)&statement atIndex:2];
             [bindInvocation invoke];
@@ -70,15 +72,17 @@
     return self;
 }
 
-- (void)close {
-    [self.statementCacheManager removeCachedStatement:self.statement forSQLString:self.sqlString atDatabase:self.database.databaseName];
+- (void)close
+{
+    [self.statementCacheManager removeCachedStatement:self.statementItem forSQLString:self.sqlString atDatabase:self.database.databaseName];
     
-    sqlite3_finalize(self.statement);
-    self.statement = nil;
+    [self.statementItem close];
+    self.statementItem = nil;
 }
 
-- (void)reset {
-    sqlite3_reset(self.statement);
+- (void)reset
+{
+   [self.statementItem reset];
 }
 
 - (BOOL)executeWithError:(NSError *__autoreleasing *)error
@@ -88,13 +92,15 @@
         return NO;
     }
 
-    sqlite3_stmt *statement = self.statement;
+    self.statementItem.inUse = YES;
+    
+    sqlite3_stmt *statement = self.statementItem.statement;
 
     int result = sqlite3_step(statement);
 
     if (result != SQLITE_DONE && error) {
         
-        [self.statementCacheManager removeCachedStatement:self.statement forSQLString:self.sqlString atDatabase:self.database.databaseName];
+        [self.statementCacheManager removeCachedStatement:self.statementItem forSQLString:self.sqlString atDatabase:self.database.databaseName];
         
         const char *errorMsg = sqlite3_errmsg(self.database.database);
         NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", [NSString stringWithUTF8String:sqlite3_sql(statement)], [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]]}];
@@ -104,8 +110,9 @@
         return NO;
     }
     
-    [self.statementCacheManager setCachedStatement:self.statement forSQLString:self.sqlString atDatabase:self.database.databaseName];
     [self reset];
+    
+    [self.statementCacheManager setCachedStatement:self.statementItem forSQLString:self.sqlString atDatabase:self.database.databaseName];
     
     return YES;
 }
@@ -118,9 +125,12 @@
         return nil;
     }
 
+    self.statementItem.inUse = YES;
+    
+    
     NSMutableArray *resultsArray = [NSMutableArray array];
 
-    sqlite3_stmt *statement = self.statement;
+    sqlite3_stmt *statement = self.statementItem.statement;
     
     while (sqlite3_step(statement) == SQLITE_ROW) {
         
@@ -181,14 +191,17 @@
         [resultsArray addObject:result];
     }
     
-    [self.statementCacheManager setCachedStatement:self.statement forSQLString:self.sqlString atDatabase:self.database.databaseName];
     [self reset];
+    
+    [self.statementCacheManager setCachedStatement:self.statementItem forSQLString:self.sqlString atDatabase:self.database.databaseName];
+    
    
     return resultsArray;
 }
 
 #pragma mark - getter and setter
-- (CTPersistanceStatementCacheManager *)statementCacheManager {
+- (CTPersistanceStatementCacheManager *)statementCacheManager
+{
     if (_statementCacheManager == nil) {
         _statementCacheManager = [CTPersistanceStatementCacheManager sharedInstance];
     }

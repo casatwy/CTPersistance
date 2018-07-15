@@ -34,8 +34,6 @@
         record.name = @"casa";
         [self.testTable insertRecord:record error:NULL];
     }
-
-    NSLog(@"%@", self.testTable.queryCommand.database.databaseFilePath);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -46,7 +44,7 @@
         NSInteger count = COUNT;
         while (count --> 0) {
             TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:@(count) error:NULL];
-            NSLog(@"%@", record.primaryKey);
+            NSLog(@"read one %@", record.primaryKey);
         }
     }];
 
@@ -54,7 +52,7 @@
     while (count --> 0) {
         [[CTPersistanceAsyncExecutor sharedInstance] read:^{
             TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:@(count) error:NULL];
-            NSLog(@"%@", record.primaryKey);
+            NSLog(@"read two %@", record.primaryKey);
         }];
     }
 
@@ -62,7 +60,7 @@
         NSInteger count = COUNT;
         while (count --> 0) {
             NSNumber *primaryKey = [self.testTable insertValue:@"casa" forKey:@"name" error:NULL];
-            NSLog(@"%@", primaryKey);
+            NSLog(@"write one %@", primaryKey);
         }
     }];
 
@@ -70,7 +68,7 @@
     while (count --> 0) {
         [[CTPersistanceAsyncExecutor sharedInstance] read:^{
             TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:@(count) error:NULL];
-            NSLog(@"%@", record.primaryKey);
+            NSLog(@"read three %@", record.primaryKey);
         }];
     }
 
@@ -78,7 +76,7 @@
     while (count --> 0) {
         [[CTPersistanceAsyncExecutor sharedInstance] write:^{
             NSNumber *primaryKey = [self.testTable insertValue:@"casa" forKey:@"name" error:NULL];
-            NSLog(@"%@", primaryKey);
+            NSLog(@"write two %@", primaryKey);
         }];
     }
 
@@ -86,7 +84,7 @@
     while (count --> 0) {
         [[CTPersistanceAsyncExecutor sharedInstance] read:^{
             TestRecord *record = (TestRecord *)[self.testTable findWithPrimaryKey:@(count) error:NULL];
-            NSLog(@"%@", record.primaryKey);
+            NSLog(@"read four %@", record.primaryKey);
         }];
     }
 }
