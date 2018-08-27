@@ -15,6 +15,7 @@
 
 @property (nonatomic, weak) CTPersistanceDataBase *database;
 @property (nonatomic, strong) NSString *databaseName;
+@property (nonatomic, strong) NSString *swiftModuleName;
 @property (nonatomic, assign) BOOL shouldKeepDatabase;
 
 @end
@@ -32,12 +33,13 @@
     return self;
 }
 
-- (instancetype)initWithDatabaseName:(NSString *)databaseName
+- (instancetype)initWithDatabaseName:(NSString *)databaseName swiftModuleName:(NSString *)swiftModuleName
 {
     self = [super init];
     if (self) {
         self.shouldKeepDatabase = NO;
         self.databaseName = databaseName;
+        self.swiftModuleName = swiftModuleName;
     }
     return self;
 }
@@ -54,7 +56,7 @@
     if (self.shouldKeepDatabase) {
         return _database;
     }
-    _database = [[CTPersistanceDatabasePool sharedInstance] databaseWithName:self.databaseName];
+    _database = [[CTPersistanceDatabasePool sharedInstance] databaseWithName:self.databaseName swiftModuleName:self.swiftModuleName];
     return _database;
 }
 

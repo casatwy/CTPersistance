@@ -30,14 +30,14 @@
  *
  *  @return return instance of database
  */
-- (CTPersistanceDataBase *)databaseWithName:(NSString *)databaseName;
+- (CTPersistanceDataBase *)databaseWithName:(NSString *)databaseName swiftModuleName:(NSString *)swiftModuleName;
 
 /**
  *  close database by file name of the database.
  *
  *  @param databaseName file name of the database
  */
-- (void)closeDatabaseWithName:(NSString *)databaseName;
+- (void)closeDatabaseWithName:(NSString *)databaseName swiftModuleName:(NSString *)swiftModuleName;
 
 /**
  *  close all database.

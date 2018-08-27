@@ -42,10 +42,10 @@ extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
     [self createDatabaseWithKey:@"0"];
     
     NSError *error = nil;
-    CTPersistanceDataBase *database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    CTPersistanceDataBase *database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" swiftModuleName:nil error:&error];
     [database closeDatabase];
     
-    database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" swiftModuleName:nil error:&error];
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:database];
     NSArray *result = [[queryCommand showTablesWithError:&error] fetchWithError:&error];
     
@@ -58,10 +58,10 @@ extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
     [self createDatabaseWithKey:@"1"];
     
     NSError *error = nil;
-    CTPersistanceDataBase *database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    CTPersistanceDataBase *database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" swiftModuleName:nil error:&error];
     [database closeDatabase];
     
-    database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" swiftModuleName:nil error:&error];
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:database];
     NSArray *result = [[queryCommand showTablesWithError:&error] fetchWithError:&error];
     
@@ -74,10 +74,10 @@ extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
     [self createDatabaseWithKey:@"2"];
     
     NSError *error = nil;
-    CTPersistanceDataBase *database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    CTPersistanceDataBase *database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" swiftModuleName:nil error:&error];
     [database closeDatabase];
     
-    database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" swiftModuleName:nil error:&error];
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:database];
     NSArray *result = [[queryCommand showTablesWithError:&error] fetchWithError:&error];
     
@@ -90,10 +90,10 @@ extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
     [self createDatabaseWithKey:@"3"];
     
     NSError *error = nil;
-    CTPersistanceDataBase *database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    CTPersistanceDataBase *database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" swiftModuleName:nil error:&error];
     [database closeDatabase];
     
-    database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" swiftModuleName:nil error:&error];
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:database];
     NSArray *result = [[queryCommand showTablesWithError:&error] fetchWithError:&error];
     
@@ -105,7 +105,7 @@ extern SQLITE_API int sqlite3_key(sqlite3 *db, const void *pKey, int nKey);
 - (void)testNewDatabase {
     NSError *error = nil;
     
-    CTPersistanceDataBase *database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" error:&error];
+    CTPersistanceDataBase *database = [[CTPersistanceDataBase alloc] initWithDatabaseName:@"TestDatabase.sqlite" swiftModuleName:nil error:&error];
     CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:database];
     NSArray *result = [[queryCommand showTablesWithError:&error] fetchWithError:&error];
     

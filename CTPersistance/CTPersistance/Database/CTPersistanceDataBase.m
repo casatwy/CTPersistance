@@ -26,22 +26,28 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
 @property (nonatomic, copy) NSString *databaseFilePath;
 @property (nonatomic, strong) CTPersistanceMigrator *migrator;
 @property (nonatomic, strong) NSString *target;
+@property (nonatomic, strong) NSString *swiftModuleName;
 
 @end
 
 @implementation CTPersistanceDataBase
 
 #pragma mark - life cycle
-- (instancetype)initWithDatabaseName:(NSString *)databaseName error:(NSError *__autoreleasing *)error
+- (instancetype)initWithDatabaseName:(NSString *)databaseName swiftModuleName:(NSString *)swiftModuleName error:(NSError *__autoreleasing *)error
 {
     self = [super init];
     if (self) {
         
         self.target = [[[[databaseName componentsSeparatedByString:@"_"] firstObject] componentsSeparatedByString:@"."] firstObject];
         self.databaseName = databaseName;
+        self.swiftModuleName = swiftModuleName;
+        
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+        params[kCTPersistanceConfigurationParamsKeyDatabaseName] = databaseName;
+        params[kCTMediatorParamsKeySwiftTargetModuleName] = self.swiftModuleName;
         self.databaseFilePath = [[CTMediator sharedInstance] performTarget:self.target
                                                                     action:@"filePath"
-                                                                    params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:databaseName}
+                                                                    params:params
                                                          shouldCacheTarget:NO];
         if (self.databaseFilePath == nil) {
             self.databaseFilePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:databaseName];
@@ -120,9 +126,12 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
 #pragma mark - private methods
 - (void)decrypt:(BOOL)isFileExistsBefore
 {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    params[kCTPersistanceConfigurationParamsKeyDatabaseName] = self.databaseName;
+    params[kCTMediatorParamsKeySwiftTargetModuleName] = self.swiftModuleName;
     NSArray <NSString *> *secretKey = [[CTMediator sharedInstance] performTarget:self.target
                                                              action:@"secretKey"
-                                                             params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:self.databaseName}
+                                                             params:params
                                                   shouldCacheTarget:NO];
     
     if ([secretKey isKindOfClass:[NSString class]]) {
@@ -183,6 +192,9 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
 - (CTPersistanceMigrator *)migrator
 {
     if (_migrator == nil) {
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+        params[kCTPersistanceConfigurationParamsKeyDatabaseName] = self.databaseName;
+        params[kCTMediatorParamsKeySwiftTargetModuleName] = self.swiftModuleName;
         _migrator = [[CTMediator sharedInstance] performTarget:self.target
                                                         action:@"fetchMigrator"
                                                         params:@{kCTPersistanceConfigurationParamsKeyDatabaseName:self.databaseName}

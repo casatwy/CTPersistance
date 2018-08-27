@@ -9,12 +9,21 @@
 #import "CTPersistanceRecord.h"
 #import "objc/runtime.h"
 #import "CTPersistanceTable.h"
+#import <CTMediator/CTMediator.h>
 
 @implementation CTPersistanceRecord
 
 #pragma mark - CTPersistanceRecordProtocol
 - (NSDictionary *)dictionaryRepresentationWithTable:(CTPersistanceTable<CTPersistanceTableProtocol> *)table
 {
+    if (table.isSwift) {
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+        params[kCTMediatorParamsKeySwiftTargetModuleName] = @"CTPersistance_Swift";
+        params[@"table"] = table;
+        params[@"record"] = self;
+        return [[CTMediator sharedInstance] performTarget:@"" action:@"dictionaryPresentation" params:params shouldCacheTarget:NO];
+    }
+    
     unsigned int count = 0;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
     

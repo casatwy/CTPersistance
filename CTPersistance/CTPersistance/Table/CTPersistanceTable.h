@@ -114,6 +114,8 @@
  @return index definition list
  */
 - (NSArray <NSDictionary *> *)indexList;
+
+- (NSString *)swiftModuleName;
 @end
 
 extern NSString * const kCTPersistanceTableIndexName;
@@ -132,6 +134,7 @@ extern NSString * const kCTPersistanceTableIndexIsUniq;
  *  the child is just the same as self. just to make sure your own CTPersistance table is confirm to <CTPersistanceTableProtocol>
  */
 @property (nonatomic, weak, readonly) CTPersistanceTable <CTPersistanceTableProtocol> *child;
+@property (nonatomic, assign, readonly) BOOL isSwift;
 
 @property (nonatomic, assign, readonly) BOOL isFromMigration;
 @property (nonatomic, strong, readonly) CTPersistanceQueryCommand *queryCommand;

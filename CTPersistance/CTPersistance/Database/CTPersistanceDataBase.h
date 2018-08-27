@@ -45,7 +45,7 @@ extern NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName;
  *
  *  @return return an instance of CTPersistanceDatabase
  */
-- (instancetype)initWithDatabaseName:(NSString *)databaseName error:(NSError **)error;
+- (instancetype)initWithDatabaseName:(NSString *)databaseName swiftModuleName:(NSString *)swiftModuleName error:(NSError **)error;
 
 /**
  *  close the database connection.

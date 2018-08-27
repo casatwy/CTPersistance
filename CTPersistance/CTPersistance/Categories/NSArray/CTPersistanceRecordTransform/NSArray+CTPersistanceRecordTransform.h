@@ -21,6 +21,6 @@
  *
  *  @return return the list of transformed objects
  */
-- (NSArray *)transformSQLItemsToClass:(Class<CTPersistanceRecordProtocol>)classType;
+- (NSArray *)transformSQLItemsToClass:(Class<CTPersistanceRecordProtocol>)classType isSwift:(BOOL)isSwift;
 
 @end
