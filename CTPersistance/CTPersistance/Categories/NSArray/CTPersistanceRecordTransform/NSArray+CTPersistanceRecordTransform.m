@@ -16,7 +16,12 @@
     if (isSwift) {
         NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
         params[kCTMediatorParamsKeySwiftTargetModuleName] = @"CTPersistance_Swift";
-        params[@"class"] = classType;
+        NSMutableArray *recordList = [[NSMutableArray alloc] init];
+        for (id item in self) {
+            [recordList addObject:[[classType alloc] init]];
+        }
+        params[@"recordList"] = recordList;
+        params[@"data"] = self;
         return [[CTMediator sharedInstance] performTarget:@"" action:@"classPresentation" params:params shouldCacheTarget:YES];
     }
     NSMutableArray *recordList = [[NSMutableArray alloc] init];
