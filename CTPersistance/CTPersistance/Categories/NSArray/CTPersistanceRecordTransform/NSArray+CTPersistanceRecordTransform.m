@@ -13,17 +13,6 @@
 
 - (NSArray *)transformSQLItemsToClass:(Class)classType isSwift:(BOOL)isSwift
 {
-    if (isSwift) {
-        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-        params[kCTMediatorParamsKeySwiftTargetModuleName] = @"CTPersistance_Swift";
-        NSMutableArray *recordList = [[NSMutableArray alloc] init];
-        for (id item in self) {
-            [recordList addObject:[[classType alloc] init]];
-        }
-        params[@"recordList"] = recordList;
-        params[@"data"] = self;
-        return [[CTMediator sharedInstance] performTarget:@"" action:@"classPresentation" params:params shouldCacheTarget:YES];
-    }
     NSMutableArray *recordList = [[NSMutableArray alloc] init];
     if ([self count] > 0) {
         [self enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull recordInfo, NSUInteger idx, BOOL * _Nonnull stop) {

@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CTPersistance"
-  s.version      = "188"
+  s.version      = "189"
   s.summary      = "Objective-C Model Layer with SQLite."
 
   s.description  = <<-DESC
