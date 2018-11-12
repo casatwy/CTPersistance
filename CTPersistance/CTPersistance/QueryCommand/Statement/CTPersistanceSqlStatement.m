@@ -75,14 +75,7 @@
 - (void)close
 {
     [self.statementCacheManager removeCachedStatement:self.statementItem forSQLString:self.sqlString atDatabase:self.database.databaseName];
-    
-    [self.statementItem close];
     self.statementItem = nil;
-}
-
-- (void)reset
-{
-   [self.statementItem reset];
 }
 
 - (BOOL)executeWithError:(NSError *__autoreleasing *)error
@@ -100,21 +93,19 @@
 
     if (result != SQLITE_DONE && error) {
         
-        [self.statementCacheManager removeCachedStatement:self.statementItem forSQLString:self.sqlString atDatabase:self.database.databaseName];
+        [self close];
         
         const char *errorMsg = sqlite3_errmsg(self.database.database);
         NSError *generatedError = [NSError errorWithDomain:kCTPersistanceErrorDomain code:CTPersistanceErrorCodeQueryStringError userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"\n======================\nQuery Error: \n Origin Query is : %@\n Error Message is: %@\n======================\n", [NSString stringWithUTF8String:sqlite3_sql(statement)], [NSString stringWithCString:errorMsg encoding:NSUTF8StringEncoding]]}];
         *error = generatedError;
-        sqlite3_finalize(statement);
+       
         
         return NO;
     }
     
-    [self reset];
+   [self.statementCacheManager setCachedStatement:self.statementItem forSQLString:self.sqlString atDatabase:self.database.databaseName];
     
-    [self.statementCacheManager setCachedStatement:self.statementItem forSQLString:self.sqlString atDatabase:self.database.databaseName];
-    
-    return YES;
+   return YES;
 }
 
 
@@ -191,9 +182,7 @@
         [resultsArray addObject:result];
     }
     
-    [self reset];
-    
-    [self.statementCacheManager setCachedStatement:self.statementItem forSQLString:self.sqlString atDatabase:self.database.databaseName];
+   [self.statementCacheManager setCachedStatement:self.statementItem forSQLString:self.sqlString atDatabase:self.database.databaseName];
     
    
     return resultsArray;

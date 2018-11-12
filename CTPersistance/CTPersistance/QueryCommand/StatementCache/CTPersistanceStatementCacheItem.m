@@ -8,9 +8,11 @@
 
 #import "CTPersistanceStatementCacheItem.h"
 #import <libkern/OSAtomic.h>
+#import <pthread.h>
 
 @interface CTPersistanceStatementCacheItem () {
      volatile uint32_t _inUse;
+     pthread_mutex_t _lock;
 }
 
 @end
@@ -19,8 +21,10 @@
 - (void)close
 {
     if (_statement) {
+        pthread_mutex_lock(&_lock);
         sqlite3_finalize(_statement);
         _statement = 0x00;
+        pthread_mutex_unlock(&_lock);
     }
     
     self.inUse = NO;
@@ -29,10 +33,21 @@
 - (void)reset
 {
     if (_statement) {
+        pthread_mutex_lock(&_lock);
         sqlite3_reset(_statement);
+        pthread_mutex_unlock(&_lock);
     }
 
     self.inUse = NO;
+}
+
+#pragma mark - life cycle
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+         pthread_mutex_init(&_lock, NULL);
+    }
+    return self;
 }
 
 #pragma mark getter and setter
