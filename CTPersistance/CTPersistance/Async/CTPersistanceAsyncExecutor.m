@@ -55,4 +55,10 @@
     });
 }
 
+- (void)syncRead:(void (^)(void))readAction {
+    dispatch_sync(self.queue, ^{
+        readAction();
+    });
+}
+
 @end

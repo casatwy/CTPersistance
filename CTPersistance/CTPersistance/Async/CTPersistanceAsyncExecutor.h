@@ -24,4 +24,6 @@
 
 - (void)read:(void (^)(void))readAction;
 
+- (void)syncRead:(void (^)(void))readAction;
+
 @end
