@@ -82,6 +82,10 @@
 		4AF38F2F1F69068700801322 /* CTPersistanceTestTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF38F2E1F69068700801322 /* CTPersistanceTestTransaction.m */; };
 		6284DE2109EF43B7A3D56F18 /* libPods-CTPersistance.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24975DE09A62B809BFED181C /* libPods-CTPersistance.a */; };
 		DAEEF1BE411F617114764D0F /* libPods-CTPersistanceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D31FADFF56BDD50C7FD9C94 /* libPods-CTPersistanceTests.a */; };
+		F51057BA22328E7100C06D8A /* CTPersistanceTestEncrptPlaintextDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F51057B922328E7100C06D8A /* CTPersistanceTestEncrptPlaintextDatabase.m */; };
+		F51057BD2232900000C06D8A /* Target_EncryptPlaintextTestDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F51057BC2232900000C06D8A /* Target_EncryptPlaintextTestDataBase.m */; };
+		F51057C02232932200C06D8A /* EncryptPlaintextDatabaseTestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = F51057BF2232932200C06D8A /* EncryptPlaintextDatabaseTestTable.m */; };
+		F51057C2223293D000C06D8A /* EncryptPlaintextDatabaseTestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = F51057BF2232932200C06D8A /* EncryptPlaintextDatabaseTestTable.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +240,11 @@
 		89D41C6489863CB58D4966E5 /* Pods-CTPersistance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistance/Pods-CTPersistance.debug.xcconfig"; sourceTree = "<group>"; };
 		AD102503C09A04454242FAC0 /* Pods-CTPersistanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistanceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistanceTests/Pods-CTPersistanceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9D5304E203B48D737D87E6F /* Pods-CTPersistanceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTPersistanceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CTPersistanceTests/Pods-CTPersistanceTests.release.xcconfig"; sourceTree = "<group>"; };
+		F51057B922328E7100C06D8A /* CTPersistanceTestEncrptPlaintextDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestEncrptPlaintextDatabase.m; sourceTree = "<group>"; };
+		F51057BB2232900000C06D8A /* Target_EncryptPlaintextTestDataBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Target_EncryptPlaintextTestDataBase.h; sourceTree = "<group>"; };
+		F51057BC2232900000C06D8A /* Target_EncryptPlaintextTestDataBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Target_EncryptPlaintextTestDataBase.m; sourceTree = "<group>"; };
+		F51057BE2232932200C06D8A /* EncryptPlaintextDatabaseTestTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EncryptPlaintextDatabaseTestTable.h; sourceTree = "<group>"; };
+		F51057BF2232932200C06D8A /* EncryptPlaintextDatabaseTestTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EncryptPlaintextDatabaseTestTable.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +358,7 @@
 				4AC74A891FBEAEBD0092B636 /* CTPersistanceTestTableIndex.m */,
 				4A76096620A16C82009908A6 /* CTPersistanceTestChangeKey.m */,
 				4AE5541320AD1F190020BAC7 /* CTPersistanceTestUpsert.m */,
+				F51057B922328E7100C06D8A /* CTPersistanceTestEncrptPlaintextDatabase.m */,
 				4A7844C41F32C1F500CF4809 /* MigrationTestModel */,
 				4A0E00441F2C384E00E6A4DA /* Info.plist */,
 			);
@@ -617,6 +627,8 @@
 			children = (
 				4A0E00BD1F2CC25A00E6A4DA /* TestTable.h */,
 				4A0E00BE1F2CC25A00E6A4DA /* TestTable.m */,
+				F51057BE2232932200C06D8A /* EncryptPlaintextDatabaseTestTable.h */,
+				F51057BF2232932200C06D8A /* EncryptPlaintextDatabaseTestTable.m */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -764,6 +776,8 @@
 				4A532CAE1F3C59520074BA46 /* Target_MigrationTestDatabase.m */,
 				47C1D71720A145DE00020AB5 /* Target_TestDatabase.h */,
 				47C1D71820A145DE00020AB5 /* Target_TestDatabase.m */,
+				F51057BB2232900000C06D8A /* Target_EncryptPlaintextTestDataBase.h */,
+				F51057BC2232900000C06D8A /* Target_EncryptPlaintextTestDataBase.m */,
 			);
 			path = ConfigurationTarget;
 			sourceTree = "<group>";
@@ -1200,6 +1214,7 @@
 				4A0E00301F2C384E00E6A4DA /* ViewController.m in Sources */,
 				4A0E00A81F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.m in Sources */,
 				4A0E00A21F2CBD6300E6A4DA /* CTPersistanceMigrator.m in Sources */,
+				F51057C2223293D000C06D8A /* EncryptPlaintextDatabaseTestTable.m in Sources */,
 				4A0E009C1F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m in Sources */,
 				4ACE635F1F341102007F3E6D /* NSString+Where.m in Sources */,
 				4A0E00AB1F2CBD6300E6A4DA /* CTPersistanceTable+Delete.m in Sources */,
@@ -1241,6 +1256,7 @@
 				4A17A96C1F32D0C0009356D7 /* TestMiagratorVersion_3_to_4.m in Sources */,
 				4A17A9941F32F392009356D7 /* TestTableVersion1.m in Sources */,
 				47C1D71920A145DE00020AB5 /* Target_TestDatabase.m in Sources */,
+				F51057BA22328E7100C06D8A /* CTPersistanceTestEncrptPlaintextDatabase.m in Sources */,
 				4A17A9951F32F392009356D7 /* TestRecordVersion2.m in Sources */,
 				4AF38F2F1F69068700801322 /* CTPersistanceTestTransaction.m in Sources */,
 				4A76096720A16C82009908A6 /* CTPersistanceTestChangeKey.m in Sources */,
@@ -1250,6 +1266,7 @@
 				4A17A9601F32D094009356D7 /* TestMiagratorVersion_1_to_3.m in Sources */,
 				4A17A9971F32F392009356D7 /* TestRecordVersion3.m in Sources */,
 				4A0E00BF1F2CC25A00E6A4DA /* TestRecord.m in Sources */,
+				F51057C02232932200C06D8A /* EncryptPlaintextDatabaseTestTable.m in Sources */,
 				4AE5541420AD1F190020BAC7 /* CTPersistanceTestUpsert.m in Sources */,
 				4AB165E81F302AA60043E6A2 /* CTPersistanceTestFind.m in Sources */,
 				4A17A9981F32F392009356D7 /* TestTableVersion3.m in Sources */,
@@ -1261,6 +1278,7 @@
 				4A0E00C01F2CC25A00E6A4DA /* TestTable.m in Sources */,
 				4A17A9931F32F392009356D7 /* TestRecordVersion1.m in Sources */,
 				4A17A99A1F32F392009356D7 /* TestTableVersion4.m in Sources */,
+				F51057BD2232900000C06D8A /* Target_EncryptPlaintextTestDataBase.m in Sources */,
 				4A532CAF1F3C59520074BA46 /* Target_MigrationTestDatabase.m in Sources */,
 				4A51505D1F2F2402004BA79C /* CTPersistanceTestDelete.m in Sources */,
 				4A17A9691F32D0B5009356D7 /* TestMiagratorVersion_2_to_4.m in Sources */,
