@@ -124,6 +124,33 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
 }
 
 #pragma mark - private methods
+- (void)openDatabase {
+    if (self.databaseFilePath == nil || self.databaseFilePath.length == 0) {
+        return;
+    }
+    
+    const char *path = [self.databaseFilePath UTF8String];
+    int result = sqlite3_open_v2(path, &(_database),
+                                 SQLITE_OPEN_CREATE |
+                                 SQLITE_OPEN_READWRITE |
+                                 SQLITE_OPEN_NOMUTEX |
+                                 SQLITE_OPEN_SHAREDCACHE,
+                                 NULL);
+    if (result != SQLITE_OK) {
+        CTPersistanceErrorCode errorCode = CTPersistanceErrorCodeOpenError;
+        NSString *sqliteErrorString = [NSString stringWithCString:sqlite3_errmsg(self.database) encoding:NSUTF8StringEncoding];
+        NSString *errorString = [NSString stringWithFormat:@"open database at %@ failed with error:\n %@", self.databaseFilePath, sqliteErrorString];
+        NSFileManager *defaultFileManager = [NSFileManager defaultManager];
+        BOOL isFileExists = [defaultFileManager fileExistsAtPath:self.databaseFilePath];
+        if (isFileExists == NO) {
+            errorCode = CTPersistanceErrorCodeCreateError;
+            errorString = [NSString stringWithFormat:@"create database at %@ failed with error:\n %@", self.databaseFilePath, [NSString stringWithCString:sqlite3_errmsg(self.database) encoding:NSUTF8StringEncoding]];
+        }
+        
+        [self closeDatabase];
+    }
+}
+
 - (void)decrypt:(BOOL)isFileExistsBefore
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
@@ -151,26 +178,41 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
         NSString *newestKeyString = secretKey.lastObject;
         
         if (isFileExistsBefore) {
-            // try the newest key first
-            if ([self isKeyAvailable:newestKeyString]) {
-                return;
-            }
-            
-            // enumerate keys for correct key, and rekey with newest key.
-            for (NSString *keyString in secretKey) {
-                if ([self isKeyAvailable:keyString]) {
-                    sqlite3_rekey(_database, [newestKeyString UTF8String], (int)newestKeyString.length);
+            if ((secretKey.count == 1)) {// only one key
+                if ([self isKeyAvailable:newestKeyString]) {// try the only key
+                    return ;
+                } else if ([self isExistingFileNotEncrypted]) {// not encrypted before
+                    if (newestKeyString.length > 0) {
+                        // encrypt plaintext database use the new key
+                        [self encrptExistingPlaintextDatabaseUseKey:newestKeyString];
+                        
+                        // reopen database
+                        [self openDatabase];
+                        
+                        sqlite3_key(_database, [newestKeyString UTF8String], (int)newestKeyString.length);
+                    }
+                } else {
+                    // other error
+                }
+            } else {
+                // try the newest key first
+                if ([self isKeyAvailable:newestKeyString]) {
                     return;
                 }
+                
+                // enumerate keys for correct key, and rekey with newest key.
+                for (NSString *keyString in secretKey) {
+                    if ([self isKeyAvailable:keyString]) {
+                        sqlite3_rekey(_database, [newestKeyString UTF8String], (int)newestKeyString.length);
+                        return;
+                    }
+                }
             }
-            
-        } else {
-            
+        } else {// a brand new database
             if (newestKeyString.length > 0) {
                 sqlite3_key(_database, [newestKeyString UTF8String], (int)newestKeyString.length);
                 return;
             }
-            
         }
     }
 }
@@ -186,6 +228,88 @@ NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName = @"kCTPersist
         return YES;
     }
     return NO;
+}
+
+- (BOOL)isExistingFileNotEncrypted
+{
+    // close and reopen database to remove key set by sqlite3_key
+    // close database but reserve databaseFilePath
+    [self closeDatabaseAndReserveDatabaseFilePath];
+    
+    // reopen
+    [self openDatabase];
+    
+    CTPersistanceQueryCommand *queryCommand = [[CTPersistanceQueryCommand alloc] initWithDatabase:self];
+    NSError *error = nil;
+    [[queryCommand showTablesWithError:&error] fetchWithError:&error];
+    
+    if (error == nil) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)encrptExistingPlaintextDatabaseUseKey:(NSString *)keyString {
+    NSString *tempEncryptedFileName = @"encrypted";
+    NSString *databaseFilePathExtension = [self.databaseFilePath pathExtension];
+    NSString *directoryPath = [self.databaseFilePath stringByDeletingLastPathComponent];
+    NSString *encryptedFilePath = [[directoryPath stringByAppendingPathComponent:tempEncryptedFileName] stringByAppendingPathExtension:databaseFilePathExtension];
+    
+    NSString *attachSqlQuery = [NSString stringWithFormat:@"ATTACH DATABASE '%@' AS encrypted KEY '%@';", encryptedFilePath, keyString];
+    char *errorMsg = NULL;
+    int attachResult = sqlite3_exec(_database, [attachSqlQuery UTF8String], NULL, NULL, &errorMsg);
+    if (attachResult != SQLITE_OK) {
+        printf("%s", errorMsg);
+        return;
+    }
+    
+    NSString *exportSqlQuery = [NSString stringWithFormat:@"SELECT sqlcipher_export('%@');", tempEncryptedFileName];
+    int exportResult = sqlite3_exec(_database, [exportSqlQuery UTF8String], NULL, NULL, &errorMsg);
+    if (exportResult != SQLITE_OK) {
+        printf("%s", errorMsg);
+        return;
+    }
+    
+    NSString *detachSqlQuery = [NSString stringWithFormat:@"DETACH DATABASE %@;", tempEncryptedFileName];
+    int detachResult = sqlite3_exec(_database, [detachSqlQuery UTF8String],NULL, NULL, &errorMsg);
+    if (detachResult != SQLITE_OK) {
+        printf("%s", errorMsg);
+        return;
+    }
+    
+    // close data but not set databaseFilePath to NULL
+    [self closeDatabaseAndReserveDatabaseFilePath];
+    
+    // remove plaintext database
+    NSFileManager *defaultFileManager = [NSFileManager defaultManager];
+    NSError *removeFileError = nil;
+    [defaultFileManager removeItemAtPath:self.databaseFilePath error:&removeFileError];
+    if (removeFileError) {
+        NSLog(@"remove plaintext database failed : %@", removeFileError);
+        return;
+    }
+    
+    // rename encrypted database
+    if ([defaultFileManager fileExistsAtPath:encryptedFilePath]) {
+        NSError *error = nil;
+        BOOL moveResult = [defaultFileManager moveItemAtPath:encryptedFilePath toPath:self.databaseFilePath error:&error];
+        if (moveResult) {
+            NSLog(@"rename encrypted database success");
+        } else {
+            NSLog(@"rename encrypted database failed : %@", error);
+            return;
+        }
+    }
+}
+
+- (void)closeDatabaseAndReserveDatabaseFilePath {
+    if (@available(iOS 8.2, *)) {
+        sqlite3_close_v2(_database);
+    } else {
+        sqlite3_close(_database);
+    }
+    
+    _database = NULL;
 }
 
 #pragma mark - getters and setters
