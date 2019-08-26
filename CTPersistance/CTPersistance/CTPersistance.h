@@ -35,10 +35,10 @@
 #import "CTPersistanceQueryCommand+SchemaManipulations.h"
 #import "CTPersistanceQueryCommand+Status.h"
 
-extern NSString * const kCTPersistanceDataBaseCheckMigrationNotification;
-extern NSString * const kCTPersistanceInitVersion;
+extern NSString * _Nonnull const kCTPersistanceDataBaseCheckMigrationNotification;
+extern NSString * _Nonnull const kCTPersistanceInitVersion;
 
-extern NSString * const kCTPersistanceConfigurationParamsKeyDatabaseName;
+extern NSString * _Nonnull const kCTPersistanceConfigurationParamsKeyDatabaseName;
 
 @protocol CTPersistanceConfigurationTarget <NSObject>
 
