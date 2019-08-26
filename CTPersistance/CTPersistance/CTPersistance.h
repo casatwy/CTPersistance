@@ -49,7 +49,7 @@ extern NSString * _Nonnull const kCTPersistanceConfigurationParamsKeyDatabaseNam
  @param params params is a dictionary, with key kCTPersistanceConfigurationParamsKeyDatabaseName to tell you the database name
  @return migrator
  */
-- (CTPersistanceMigrator * __nullable)Action_fetchMigrator:(NSDictionary *)params;
+- (CTPersistanceMigrator * __nullable)Action_fetchMigrator:(NSDictionary * _Nullable)params;
 
 
 /**
@@ -58,7 +58,7 @@ extern NSString * _Nonnull const kCTPersistanceConfigurationParamsKeyDatabaseNam
  @param params params is a dictionary, with key kCTPersistanceConfigurationParamsKeyDatabaseName to tell you the database name
  @return secret key
  */
-- (NSArray <NSString * > * __nullable)Action_secretKey:(NSDictionary *)params;
+- (NSArray <NSString * > * __nullable)Action_secretKey:(NSDictionary * _Nullable)params;
 
 /**
  return file path if you want your database file to lcoate at specific path. return nil means use the default file path.
@@ -67,7 +67,7 @@ extern NSString * _Nonnull const kCTPersistanceConfigurationParamsKeyDatabaseNam
  @param params params is a dictionary, with key kCTPersistanceConfigurationParamsKeyDatabaseName to tell you the database name
  @return database file path
  */
-- (NSString * __nullable)Action_filePath:(NSDictionary *)params;
+- (NSString * __nullable)Action_filePath:(NSDictionary * _Nullable)params;
 
 @end
 
