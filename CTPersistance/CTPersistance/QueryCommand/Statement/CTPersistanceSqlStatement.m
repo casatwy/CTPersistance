@@ -7,7 +7,7 @@
 //
 
 #import "CTPersistanceSqlStatement.h"
-#import <sqlite3.h>
+#import <SQLCipher/sqlite3.h>
 #import "CTPersistanceConfiguration.h"
 
 @interface CTPersistanceSqlStatement ()

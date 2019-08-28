@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CTPersistanceDataBase.h"
-#import <sqlite3.h>
+#import <SQLCipher/sqlite3.h>
 #import "CTPersistanceSqlStatement.h"
 
 /**

@@ -7,7 +7,7 @@
 //
 
 #import "NSMutableArray+CTPersistanceBindValue.h"
-#import <sqlite3.h>
+#import <SQLCipher/sqlite3.h>
 #import <UIKit/UIKit.h>
 
 @implementation NSMutableArray (CTPersistanceBindValue)

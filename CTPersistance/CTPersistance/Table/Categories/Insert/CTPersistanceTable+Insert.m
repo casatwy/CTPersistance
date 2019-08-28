@@ -16,7 +16,7 @@
 #import "CTPersistanceQueryCommand+Status.h"
 
 #import "objc/runtime.h"
-#import <sqlite3.h>
+#import <SQLCipher/sqlite3.h>
 
 static NSString * const kCTPersistanceErrorUserinfoKeyErrorRecord = @"kCTPersistanceErrorUserinfoKeyErrorRecord";
 
