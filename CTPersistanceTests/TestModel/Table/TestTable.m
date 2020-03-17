@@ -25,7 +25,7 @@
     //return @"User/Shopping/testdatabase.sqlite";
 }
 
--(NSDictionary *)columnDetaultValue {
+-(NSDictionary *)columnDefaultValue {
     return @{
              @"defaultInt":@(1),
              @"defaultStr":@"",

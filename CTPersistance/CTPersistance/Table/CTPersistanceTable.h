@@ -70,7 +70,7 @@
  *
  *  @return return the column default value of your table
  */
--(NSDictionary *)columnDetaultValue;
+-(NSDictionary *)columnDefaultValue;
 
 /**
  *  to check record before insert
