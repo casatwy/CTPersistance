@@ -77,8 +77,8 @@ static NSString * const kCTPersistanceErrorUserinfoKeyErrorRecord = @"kCTPersist
         return nil;
     }
 
-    if(self.child.columnDetaultValue && value == [NSNull null]  ) {
-        id defaultVale = [self.child.columnDetaultValue valueForKey:key];
+    if(self.child.columnDefaultValue && value == [NSNull null]  ) {
+        id defaultVale = [self.child.columnDefaultValue valueForKey:key];
 
         if(defaultVale) {
             value = defaultVale;

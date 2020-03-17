@@ -79,8 +79,8 @@ NSString * const kCTPersistanceTableIndexIsUniq = @"kCTPersistanceTableIndexIsUn
     __block NSError *error = nil;
 
     // create table if not exists
-    if(self.child.columnDetaultValue) {
-        [[queryCommand createTable:self.child.tableName columnInfo:self.child.columnInfo columnDefaultValue:self.child.columnDetaultValue error:&error] executeWithError:&error];
+    if(self.child.columnDefaultValue) {
+        [[queryCommand createTable:self.child.tableName columnInfo:self.child.columnInfo columnDefaultValue:self.child.columnDefaultValue error:&error] executeWithError:&error];
     } else {
         [[queryCommand createTable:self.child.tableName columnInfo:self.child.columnInfo error:&error] executeWithError:&error];
     }
@@ -117,7 +117,7 @@ NSString * const kCTPersistanceTableIndexIsUniq = @"kCTPersistanceTableIndexIsUn
 }
 
 #pragma mark - method to override
--(NSDictionary *)columnDetaultValue {
+-(NSDictionary *)columnDefaultValue {
     return nil;
 }
 

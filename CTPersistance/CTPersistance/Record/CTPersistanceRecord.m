@@ -45,8 +45,8 @@
         }
 
         //setting default value
-        if(table.columnDetaultValue) {
-            id defaultValue = [table.columnDetaultValue valueForKey:columnName];
+        if(table.columnDefaultValue) {
+            id defaultValue = [table.columnDefaultValue valueForKey:columnName];
             if (defaultValue) {
                 dictionaryRepresentation[columnName] = defaultValue;
             }

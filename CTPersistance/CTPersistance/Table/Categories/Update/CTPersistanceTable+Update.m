@@ -59,8 +59,8 @@
         value = [NSNull null];
     }
 
-    if(self.child.columnDetaultValue && value == [NSNull null]  ) {
-        id defaultVale = [self.child.columnDetaultValue valueForKey:key];
+    if(self.child.columnDefaultValue && value == [NSNull null]  ) {
+        id defaultVale = [self.child.columnDefaultValue valueForKey:key];
 
         if(defaultVale) {
             value = defaultVale;
@@ -97,8 +97,8 @@
         value = [NSNull null];
     }
 
-    if(self.child.columnDetaultValue && value == [NSNull null]  ) {
-        id defaultVale = [self.child.columnDetaultValue valueForKey:key];
+    if(self.child.columnDefaultValue && value == [NSNull null]  ) {
+        id defaultVale = [self.child.columnDefaultValue valueForKey:key];
 
         if(defaultVale) {
             value = defaultVale;
@@ -165,7 +165,7 @@
 }
 
 - (NSDictionary *)defaultValueProcessBeforeUpdate:(NSDictionary *)keyValueList {
-    if(!self.child.columnDetaultValue) {
+    if(!self.child.columnDefaultValue) {
         return keyValueList;
     }
 
@@ -185,8 +185,8 @@
         }
 
         //setting default value
-        if(self.child.columnDetaultValue) {
-            id defaultValue = [self.child.columnDetaultValue valueForKey:columnName];
+        if(self.child.columnDefaultValue) {
+            id defaultValue = [self.child.columnDefaultValue valueForKey:columnName];
 
             if(defaultValue) {
                 dictionaryRepresentation[columnName] = defaultValue;
