@@ -98,16 +98,31 @@
 - (void)didReceiveNSThreadWillExitNotification:(NSNotification *)notification
 {
     @synchronized (self) {
+        // 检查ownership计数
+        NSMutableDictionary <NSString *, NSNumber *> *ownershipCount = [[NSMutableDictionary alloc] init];
+        [self.databaseList enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, CTPersistanceDataBase * _Nonnull database, BOOL * _Nonnull stop) {
+            NSNumber *count = ownershipCount[database.databaseName];
+            if (count == nil) {
+                count = @(1);
+            } else {
+                NSInteger intCount = count.integerValue + 1;
+                count = @(intCount);
+            }
+            ownershipCount[database.databaseName] = count;
+        }];
+        
+        // 准备关闭ownershipCount为1且当前操作线程已经退出的数据库
         NSMutableArray <CTPersistanceDataBase *> *databaseToClose = [[NSMutableArray alloc] init];
         NSMutableArray <NSString *> *keyToDelete = [[NSMutableArray alloc] init];
-    
         [self.databaseList enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, CTPersistanceDataBase * _Nonnull database, BOOL * _Nonnull stop) {
-            if ([key containsString:[NSString stringWithFormat:@"%@", [NSThread currentThread]]]) {
+            NSNumber *count = ownershipCount[database.databaseName];
+            if (count.integerValue == 1 && [key containsString:[NSString stringWithFormat:@"%@", [NSThread currentThread]]]) {
                 [databaseToClose addObject:database];
                 [keyToDelete addObject:key];
             }
         }];
     
+        // 关闭数据库
         [databaseToClose makeObjectsPerformSelector:@selector(closeDatabase)];
         [keyToDelete enumerateObjectsUsingBlock:^(NSString * _Nonnull key, NSUInteger idx, BOOL * _Nonnull stop) {
             [self.databaseList removeObjectForKey:key];
