@@ -24,6 +24,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
 
 @implementation CTPersistanceTestMigration
 
+
 - (void)setUp
 {
     [super setUp];
@@ -260,5 +261,7 @@ NSString * const kCTPersistanceMigrationTestCaseVersionKey = @"kCTPersistanceMig
     NSArray <NSDictionary *> *columnInfo = [testTable columnInfoList];
     XCTAssertEqual(columnInfo.count, 5);
 }
+
+
 
 @end

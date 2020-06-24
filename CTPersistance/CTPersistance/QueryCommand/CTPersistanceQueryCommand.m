@@ -46,8 +46,7 @@
 
 - (CTPersistanceSqlStatement *)compileSqlString:(NSString *)sqlString bindValueList:(NSMutableArray <NSInvocation *> *)bindValueList error:(NSError *__autoreleasing *)error
 {
-    CTPersistanceSqlStatement *statement = [[CTPersistanceSqlStatement alloc] initWithSqlString:sqlString bindValueList:bindValueList database:self.database error:error];
-    return statement;
+    return [[CTPersistanceSqlStatement alloc] initWithSqlString:sqlString bindValueList:bindValueList database:self.database error:error];
 }
 
 #pragma mark - getters and setters
