@@ -60,6 +60,7 @@
 		4A51505D1F2F2402004BA79C /* CTPersistanceTestDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A51505C1F2F2402004BA79C /* CTPersistanceTestDelete.m */; };
 		4A532CAF1F3C59520074BA46 /* Target_MigrationTestDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A532CAE1F3C59520074BA46 /* Target_MigrationTestDatabase.m */; };
 		4A5E3BF11F403A4A00946749 /* CTPersistanceSqlStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5E3BF01F403A4A00946749 /* CTPersistanceSqlStatement.m */; };
+		4A74725F25E3C82D009C358D /* CTPersistanceTestConcurrentRead.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A74725E25E3C82D009C358D /* CTPersistanceTestConcurrentRead.m */; };
 		4A76096720A16C82009908A6 /* CTPersistanceTestChangeKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A76096620A16C82009908A6 /* CTPersistanceTestChangeKey.m */; };
 		4A7844C31F32BD6700CF4809 /* CTPersistanceTestMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */; };
 		4A9A9DF41F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DF31F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m */; };
@@ -204,6 +205,7 @@
 		4A532CAE1F3C59520074BA46 /* Target_MigrationTestDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_MigrationTestDatabase.m; sourceTree = "<group>"; };
 		4A5E3BEF1F403A4A00946749 /* CTPersistanceSqlStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceSqlStatement.h; sourceTree = "<group>"; };
 		4A5E3BF01F403A4A00946749 /* CTPersistanceSqlStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceSqlStatement.m; sourceTree = "<group>"; };
+		4A74725E25E3C82D009C358D /* CTPersistanceTestConcurrentRead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestConcurrentRead.m; sourceTree = "<group>"; };
 		4A76096620A16C82009908A6 /* CTPersistanceTestChangeKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestChangeKey.m; sourceTree = "<group>"; };
 		4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestMigration.m; sourceTree = "<group>"; };
 		4A9A9DF21F32D06F00090F73 /* TestMiagratorVersion_1_to_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMiagratorVersion_1_to_2.h; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				4A76096620A16C82009908A6 /* CTPersistanceTestChangeKey.m */,
 				4AE5541320AD1F190020BAC7 /* CTPersistanceTestUpsert.m */,
 				F51057B922328E7100C06D8A /* CTPersistanceTestEncrptPlaintextDatabase.m */,
+				4A74725E25E3C82D009C358D /* CTPersistanceTestConcurrentRead.m */,
 				4A7844C41F32C1F500CF4809 /* MigrationTestModel */,
 				4A0E00441F2C384E00E6A4DA /* Info.plist */,
 			);
@@ -1111,12 +1114,12 @@
 				TargetAttributes = {
 					4A0E00241F2C384E00E6A4DA = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = THS9SRQVES;
+						DevelopmentTeam = EJ552L8U27;
 						ProvisioningStyle = Automatic;
 					};
 					4A0E003D1F2C384E00E6A4DA = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = THS9SRQVES;
+						DevelopmentTeam = EJ552L8U27;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 4A0E00241F2C384E00E6A4DA;
 					};
@@ -1277,6 +1280,7 @@
 				4A0E00B41F2CBDBD00E6A4DA /* CTPersistanceTestInsert.m in Sources */,
 				4A0E00C01F2CC25A00E6A4DA /* TestTable.m in Sources */,
 				4A17A9931F32F392009356D7 /* TestRecordVersion1.m in Sources */,
+				4A74725F25E3C82D009C358D /* CTPersistanceTestConcurrentRead.m in Sources */,
 				4A17A99A1F32F392009356D7 /* TestTableVersion4.m in Sources */,
 				F51057BD2232900000C06D8A /* Target_EncryptPlaintextTestDataBase.m in Sources */,
 				4A532CAF1F3C59520074BA46 /* Target_MigrationTestDatabase.m in Sources */,
@@ -1433,11 +1437,11 @@
 			baseConfigurationReference = 89D41C6489863CB58D4966E5 /* Pods-CTPersistance.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = THS9SRQVES;
+				DEVELOPMENT_TEAM = EJ552L8U27;
 				INFOPLIST_FILE = CTPersistance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistance;
+				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistance.sdf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1447,11 +1451,11 @@
 			baseConfigurationReference = 0E3659C0BE44F61448420F54 /* Pods-CTPersistance.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = THS9SRQVES;
+				DEVELOPMENT_TEAM = EJ552L8U27;
 				INFOPLIST_FILE = CTPersistance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistance;
+				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistance.sdf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1461,7 +1465,7 @@
 			baseConfigurationReference = AD102503C09A04454242FAC0 /* Pods-CTPersistanceTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = THS9SRQVES;
+				DEVELOPMENT_TEAM = EJ552L8U27;
 				INFOPLIST_FILE = CTPersistanceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistanceTests;
@@ -1475,7 +1479,7 @@
 			baseConfigurationReference = D9D5304E203B48D737D87E6F /* Pods-CTPersistanceTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = THS9SRQVES;
+				DEVELOPMENT_TEAM = EJ552L8U27;
 				INFOPLIST_FILE = CTPersistanceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = casa.CTPersistanceTests;
