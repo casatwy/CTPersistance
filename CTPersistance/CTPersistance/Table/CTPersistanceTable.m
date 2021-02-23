@@ -108,12 +108,16 @@ NSString * const kCTPersistanceTableIndexIsUniq = @"kCTPersistanceTableIndexIsUn
 #pragma mark - public methods
 - (BOOL)executeSQL:(NSString *)sqlString error:(NSError *__autoreleasing *)error
 {
-    return [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:error] executeWithError:error];
+    @synchronized (self) {
+        return [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:error] executeWithError:error];
+    }
 }
 
 - (NSArray <NSDictionary *> *)fetchWithSQL:(NSString *)sqlString error:(NSError *__autoreleasing *)error
 {
-    return [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:error] fetchWithError:error];
+    @synchronized (self) {
+        return [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:error] fetchWithError:error];
+    }
 }
 
 #pragma mark - method to override
