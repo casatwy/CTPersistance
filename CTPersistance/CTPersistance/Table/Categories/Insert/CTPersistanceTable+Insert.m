@@ -39,57 +39,61 @@ static NSString * const kCTPersistanceErrorUserinfoKeyErrorRecord = @"kCTPersist
 
 - (BOOL)insertRecord:(NSObject <CTPersistanceRecordProtocol> *)record error:(NSError *__autoreleasing *)error
 {
-    BOOL isSuccessed = YES;
-    
-    if (record) {
-        if ([self.child isCorrectToInsertRecord:record]) {
-            if ([[self.queryCommand insertTable:self.child.tableName columnInfo:self.child.columnInfo dataList:@[[record dictionaryRepresentationWithTable:self.child]] error:error] executeWithError:error]) {
-                if ([[self.queryCommand rowsChanged] integerValue] > 0) {
-                    [record setValue:[self.queryCommand lastInsertRowId] forKey:[self.child primaryKeyName]];
+    @synchronized (self) {
+        BOOL isSuccessed = YES;
+        
+        if (record) {
+            if ([self.child isCorrectToInsertRecord:record]) {
+                if ([[self.queryCommand insertTable:self.child.tableName columnInfo:self.child.columnInfo dataList:@[[record dictionaryRepresentationWithTable:self.child]] error:error] executeWithError:error]) {
+                    if ([[self.queryCommand rowsChanged] integerValue] > 0) {
+                        [record setValue:[self.queryCommand lastInsertRowId] forKey:[self.child primaryKeyName]];
+                    } else {
+                        isSuccessed = NO;
+                        if (error) {
+                            *error = [self errorWithRecord:record];
+                        }
+                    }
                 } else {
                     isSuccessed = NO;
-                    if (error) {
-                        *error = [self errorWithRecord:record];
-                    }
                 }
             } else {
                 isSuccessed = NO;
-            }
-        } else {
-            isSuccessed = NO;
-            if (error) {
-                *error = [self errorWithRecord:record];
+                if (error) {
+                    *error = [self errorWithRecord:record];
+                }
             }
         }
-    }
     
-    return isSuccessed;
+        return isSuccessed;
+    }
 }
 
 - (NSNumber *)insertValue:(id)value forKey:(NSString *)key error:(NSError *__autoreleasing *)error
 {
+    @synchronized (self) {
 
-    if (value == nil) {
-        value = [NSNull null];
-    }
-
-    if (key == nil) {
-        return nil;
-    }
-
-    if(self.child.columnDefaultValue && value == [NSNull null]  ) {
-        id defaultVale = [self.child.columnDefaultValue valueForKey:key];
-
-        if(defaultVale) {
-            value = defaultVale;
+        if (value == nil) {
+            value = [NSNull null];
         }
-    }
 
-    BOOL result = [[self.queryCommand insertTable:self.child.tableName columnInfo:self.child.columnInfo dataList:@[@{key:value}] error:error] executeWithError:error];
-    if (result) {
-        return [self.queryCommand lastInsertRowId];
-    } else {
-        return nil;
+        if (key == nil) {
+            return nil;
+        }
+
+        if(self.child.columnDefaultValue && value == [NSNull null]  ) {
+            id defaultVale = [self.child.columnDefaultValue valueForKey:key];
+
+            if(defaultVale) {
+                value = defaultVale;
+            }
+        }
+
+        BOOL result = [[self.queryCommand insertTable:self.child.tableName columnInfo:self.child.columnInfo dataList:@[@{key:value}] error:error] executeWithError:error];
+        if (result) {
+            return [self.queryCommand lastInsertRowId];
+        } else {
+            return nil;
+        }
     }
 }
 

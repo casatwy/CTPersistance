@@ -21,56 +21,66 @@
 
 - (NSArray <NSObject<CTPersistanceRecordProtocol> *> *)findAllWithError:(NSError *__autoreleasing *)error
 {
-    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@`;", self.child.tableName];
-    return [[[self.queryCommand compileSqlString:sqlString bindValueList:NULL error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass isSwift:self.isSwift];
+    @synchronized (self) {
+        NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@`;", self.child.tableName];
+        return [[[self.queryCommand compileSqlString:sqlString bindValueList:NULL error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass isSwift:self.isSwift];
+    }
 }
 
 - (NSObject<CTPersistanceRecordProtocol> *)findLatestRecordWithError:(NSError *__autoreleasing *)error
 {
-    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` ORDER BY %@ DESC LIMIT 1;", self.child.tableName, self.child.primaryKeyName];
-    return [[[[self.queryCommand compileSqlString:sqlString bindValueList:NULL error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass isSwift:self.isSwift] firstObject];
+    @synchronized (self) {
+        NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` ORDER BY %@ DESC LIMIT 1;", self.child.tableName, self.child.primaryKeyName];
+        return [[[[self.queryCommand compileSqlString:sqlString bindValueList:NULL error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass isSwift:self.isSwift] firstObject];
+    }
 }
 
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithWhereCondition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams isDistinct:(BOOL)isDistinct error:(NSError **)error
 {
-    NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
+    @synchronized (self) {
+        NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
-    NSString *whereString = [condition whereStringWithConditionParams:conditionParams bindValueList:bindValueList];
+        NSString *whereString = [condition whereStringWithConditionParams:conditionParams bindValueList:bindValueList];
 
-    NSString *sqlString = nil;
-    if (isDistinct) {
-        sqlString = [NSString stringWithFormat:@"SELECT DISTINCT * FROM `%@` WHERE %@", self.child.tableName, whereString];
-    } else {
-        sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` WHERE %@", self.child.tableName, whereString];
+        NSString *sqlString = nil;
+        if (isDistinct) {
+            sqlString = [NSString stringWithFormat:@"SELECT DISTINCT * FROM `%@` WHERE %@", self.child.tableName, whereString];
+        } else {
+            sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` WHERE %@", self.child.tableName, whereString];
+        }
+
+        return [[[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass isSwift:self.isSwift];
     }
-
-    return [[[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass isSwift:self.isSwift];
 }
 
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
 {
-    NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
-    [params enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
-        [bindValueList addBindKey:key bindValue:value];
-    }];
+    @synchronized (self) {
+        NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
+        [params enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id  _Nonnull value, BOOL * _Nonnull stop) {
+            [bindValueList addBindKey:key bindValue:value];
+        }];
 
-    return [[[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass isSwift:self.isSwift];
+        return [[[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass isSwift:self.isSwift];
+    }
 }
 
 - (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithWhereCondition:(NSString *)condition conditionParams:(NSDictionary *)conditionParams isDistinct:(BOOL)isDistinct error:(NSError **)error
 {
-    NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
+    @synchronized (self) {
+        NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
-    NSString *whereString = [condition whereStringWithConditionParams:conditionParams bindValueList:bindValueList];
+        NSString *whereString = [condition whereStringWithConditionParams:conditionParams bindValueList:bindValueList];
 
-    NSString *sqlString = nil;
-    if (isDistinct) {
-        sqlString = [NSString stringWithFormat:@"SELECT DISTINCT * FROM `%@` WHERE %@ LIMIT 1;", self.child.tableName, whereString];
-    } else {
-        sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` WHERE %@ LIMIT 1;", self.child.tableName, whereString];
+        NSString *sqlString = nil;
+        if (isDistinct) {
+            sqlString = [NSString stringWithFormat:@"SELECT DISTINCT * FROM `%@` WHERE %@ LIMIT 1;", self.child.tableName, whereString];
+        } else {
+            sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` WHERE %@ LIMIT 1;", self.child.tableName, whereString];
+        }
+
+        return [[[[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass isSwift:self.isSwift] firstObject];
     }
-
-    return [[[[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass isSwift:self.isSwift] firstObject];
 }
 
 - (NSObject <CTPersistanceRecordProtocol> *)findFirstRowWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
@@ -103,33 +113,37 @@
 
 - (NSInteger)countWithSQL:(NSString *)sqlString params:(NSDictionary *)params error:(NSError **)error
 {
-    NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
-    [params enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id _Nonnull value, BOOL * _Nonnull stop) {
-        [bindValueList addBindKey:key bindValue:value];
-    }];
+    @synchronized (self) {
+        NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
+        [params enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, id _Nonnull value, BOOL * _Nonnull stop) {
+            [bindValueList addBindKey:key bindValue:value];
+        }];
 
-    NSArray *result = [[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error];
-    return [[result firstObject][@"count"] integerValue];
+        NSArray *result = [[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error];
+        return [[result firstObject][@"count"] integerValue];
+    }
 }
 
 - (NSObject <CTPersistanceRecordProtocol> *)findWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError **)error
 {
-    if (primaryKeyValue == nil) {
-        if (error) {
-            *error = [NSError errorWithDomain:kCTPersistanceErrorDomain
-                                         code:CTPersistanceErrorCodeQueryStringError
-                                     userInfo:@{NSLocalizedDescriptionKey:@"primaryKeyValue or primaryKeyValue is nil"}];
+    @synchronized (self) {
+        if (primaryKeyValue == nil) {
+            if (error) {
+                *error = [NSError errorWithDomain:kCTPersistanceErrorDomain
+                                             code:CTPersistanceErrorCodeQueryStringError
+                                         userInfo:@{NSLocalizedDescriptionKey:@"primaryKeyValue or primaryKeyValue is nil"}];
+            }
+            return nil;
         }
-        return nil;
+
+        NSString *valueKey = @":primaryValue";
+        NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
+        [bindValueList addBindKey:valueKey bindValue:primaryKeyValue];
+
+        NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` WHERE %@ = %@ LIMIT 1;", self.child.tableName, self.child.primaryKeyName, valueKey];
+
+        return [[[[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass isSwift:self.isSwift] firstObject];
     }
-
-    NSString *valueKey = @":primaryValue";
-    NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
-    [bindValueList addBindKey:valueKey bindValue:primaryKeyValue];
-
-    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` WHERE %@ = %@ LIMIT 1;", self.child.tableName, self.child.primaryKeyName, valueKey];
-
-    return [[[[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass isSwift:self.isSwift] firstObject];
 }
 
 - (NSArray <NSObject <CTPersistanceRecordProtocol> *> *)findAllWithPrimaryKey:(NSArray <NSNumber *> *)primaryKeyValueList error:(NSError **)error
@@ -152,22 +166,24 @@
                                                              inValueList:(NSArray *)valueList
                                                                    error:(NSError *__autoreleasing *)error
 {
-    if (keyname.length == 0 || valueList.count == 0) {
-        return @[];
+    @synchronized (self) {
+        if (keyname.length == 0 || valueList.count == 0) {
+            return @[];
+        }
+        
+        NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
+        NSMutableArray *valueKeyList = [[NSMutableArray alloc] init];
+        
+        [valueList enumerateObjectsUsingBlock:^(NSNumber * _Nonnull value, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhereKey%lu", (unsigned long)idx];
+            [valueKeyList addObject:valueKey];
+            [bindValueList addBindKey:valueKey bindValue:value];
+        }];
+        
+        NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` WHERE %@ IN (%@);", self.child.tableName, keyname, [valueKeyList componentsJoinedByString:@","]];
+        
+        return [[[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass isSwift:self.isSwift];
     }
-    
-    NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
-    NSMutableArray *valueKeyList = [[NSMutableArray alloc] init];
-    
-    [valueList enumerateObjectsUsingBlock:^(NSNumber * _Nonnull value, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhereKey%lu", (unsigned long)idx];
-        [valueKeyList addObject:valueKey];
-        [bindValueList addBindKey:valueKey bindValue:value];
-    }];
-    
-    NSString *sqlString = [NSString stringWithFormat:@"SELECT * FROM `%@` WHERE %@ IN (%@);", self.child.tableName, keyname, [valueKeyList componentsJoinedByString:@","]];
-    
-    return [[[self.queryCommand compileSqlString:sqlString bindValueList:bindValueList error:error] fetchWithError:error] transformSQLItemsToClass:self.child.recordClass isSwift:self.isSwift];
 }
 
 @end

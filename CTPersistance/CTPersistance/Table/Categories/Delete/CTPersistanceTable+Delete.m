@@ -34,38 +34,44 @@
 
 - (void)deleteWithWhereCondition:(NSString *)whereCondition conditionParams:(NSDictionary *)conditionParams error:(NSError *__autoreleasing *)error
 {
-    NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
-    NSString *whereString = [whereCondition whereStringWithConditionParams:conditionParams bindValueList:bindValueList];
-    [[self.queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
+    @synchronized (self) {
+        NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
+        NSString *whereString = [whereCondition whereStringWithConditionParams:conditionParams bindValueList:bindValueList];
+        [[self.queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
+    }
 }
 
 - (void)deleteWithPrimaryKey:(NSNumber *)primaryKeyValue error:(NSError *__autoreleasing *)error
 {
-    if (primaryKeyValue != nil) {
-        NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
+    @synchronized (self) {
+        if (primaryKeyValue != nil) {
+            NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
-        NSString *whereKey = [NSString stringWithFormat:@":CTPersistanceWhere_%@", self.child.primaryKeyName];
-        [bindValueList addBindKey:whereKey bindValue:primaryKeyValue];
+            NSString *whereKey = [NSString stringWithFormat:@":CTPersistanceWhere_%@", self.child.primaryKeyName];
+            [bindValueList addBindKey:whereKey bindValue:primaryKeyValue];
 
-        NSString *whereString = [NSString stringWithFormat:@"%@ = %@", self.child.primaryKeyName, whereKey];
-        [[self.queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
+            NSString *whereString = [NSString stringWithFormat:@"%@ = %@", self.child.primaryKeyName, whereKey];
+            [[self.queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
+        }
     }
 }
 
 - (void)deleteWithPrimaryKeyList:(NSArray<NSNumber *> *)primaryKeyValueList error:(NSError *__autoreleasing *)error
 {
-    if ([primaryKeyValueList count] > 0) {
-        NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
+    @synchronized (self) {
+        if ([primaryKeyValueList count] > 0) {
+            NSMutableArray *bindValueList = [[NSMutableArray alloc] init];
 
-        NSMutableArray *valueKeyList = [[NSMutableArray alloc] init];
-        [primaryKeyValueList enumerateObjectsUsingBlock:^(id  _Nonnull value, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhere%lu", (unsigned long)idx];
-            [valueKeyList addObject:valueKey];
-            [bindValueList addBindKey:valueKey bindValue:value];
-        }];
-        NSString *whereString = [NSString stringWithFormat:@"%@ IN (%@)", self.child.primaryKeyName, [valueKeyList componentsJoinedByString:@","]];
+            NSMutableArray *valueKeyList = [[NSMutableArray alloc] init];
+            [primaryKeyValueList enumerateObjectsUsingBlock:^(id  _Nonnull value, NSUInteger idx, BOOL * _Nonnull stop) {
+                NSString *valueKey = [NSString stringWithFormat:@":CTPersistanceWhere%lu", (unsigned long)idx];
+                [valueKeyList addObject:valueKey];
+                [bindValueList addBindKey:valueKey bindValue:value];
+            }];
+            NSString *whereString = [NSString stringWithFormat:@"%@ IN (%@)", self.child.primaryKeyName, [valueKeyList componentsJoinedByString:@","]];
 
-        [[self.queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
+            [[self.queryCommand deleteTable:self.child.tableName whereString:whereString bindValueList:bindValueList error:error] executeWithError:error];
+        }
     }
 }
 
@@ -82,12 +88,14 @@
 
 - (void)truncate
 {
-    NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM `%@`;", self.child.tableName];
-    [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:NULL] executeWithError:NULL];
-    sqlString = [NSString stringWithFormat:@"UPDATE `sqlite_sequence` SET seq = 0 WHERE name = '%@';", self.child.tableName];
-    [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:NULL] executeWithError:NULL];
-    sqlString = @"VACUUM;";
-    [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:NULL] executeWithError:NULL];
+    @synchronized (self) {
+        NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM `%@`;", self.child.tableName];
+        [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:NULL] executeWithError:NULL];
+        sqlString = [NSString stringWithFormat:@"UPDATE `sqlite_sequence` SET seq = 0 WHERE name = '%@';", self.child.tableName];
+        [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:NULL] executeWithError:NULL];
+        sqlString = @"VACUUM;";
+        [[self.queryCommand compileSqlString:sqlString bindValueList:nil error:NULL] executeWithError:NULL];
+    }
 }
 
 @end
