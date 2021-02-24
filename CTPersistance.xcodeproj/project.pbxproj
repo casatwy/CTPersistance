@@ -61,9 +61,9 @@
 		4A532CAF1F3C59520074BA46 /* Target_MigrationTestDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A532CAE1F3C59520074BA46 /* Target_MigrationTestDatabase.m */; };
 		4A5E3BF11F403A4A00946749 /* CTPersistanceSqlStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5E3BF01F403A4A00946749 /* CTPersistanceSqlStatement.m */; };
 		4A74725F25E3C82D009C358D /* CTPersistanceTestConcurrentRead.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A74725E25E3C82D009C358D /* CTPersistanceTestConcurrentRead.m */; };
-		4A74731025E5F70A009C358D /* DemoTestRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A74730925E5F70A009C358D /* DemoTestRecord.m */; };
-		4A74731125E5F70A009C358D /* DemoTestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A74730D25E5F70A009C358D /* DemoTestTable.m */; };
-		4A74731225E5F70A009C358D /* MultiThreadReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A74730F25E5F70A009C358D /* MultiThreadReadViewController.m */; };
+		4A74733925E6236D009C358D /* DemoTestRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A74733225E6236D009C358D /* DemoTestRecord.m */; };
+		4A74733A25E6236D009C358D /* DemoTestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A74733625E6236D009C358D /* DemoTestTable.m */; };
+		4A74733B25E6236D009C358D /* MultiThreadReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A74733825E6236D009C358D /* MultiThreadReadViewController.m */; };
 		4A76096720A16C82009908A6 /* CTPersistanceTestChangeKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A76096620A16C82009908A6 /* CTPersistanceTestChangeKey.m */; };
 		4A7844C31F32BD6700CF4809 /* CTPersistanceTestMigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */; };
 		4A9A9DF41F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A9DF31F32D06F00090F73 /* TestMiagratorVersion_1_to_2.m */; };
@@ -209,12 +209,12 @@
 		4A5E3BEF1F403A4A00946749 /* CTPersistanceSqlStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPersistanceSqlStatement.h; sourceTree = "<group>"; };
 		4A5E3BF01F403A4A00946749 /* CTPersistanceSqlStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceSqlStatement.m; sourceTree = "<group>"; };
 		4A74725E25E3C82D009C358D /* CTPersistanceTestConcurrentRead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestConcurrentRead.m; sourceTree = "<group>"; };
-		4A74730925E5F70A009C358D /* DemoTestRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTestRecord.m; sourceTree = "<group>"; };
-		4A74730A25E5F70A009C358D /* DemoTestRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTestRecord.h; sourceTree = "<group>"; };
-		4A74730C25E5F70A009C358D /* DemoTestTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTestTable.h; sourceTree = "<group>"; };
-		4A74730D25E5F70A009C358D /* DemoTestTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTestTable.m; sourceTree = "<group>"; };
-		4A74730E25E5F70A009C358D /* MultiThreadReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiThreadReadViewController.h; sourceTree = "<group>"; };
-		4A74730F25E5F70A009C358D /* MultiThreadReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiThreadReadViewController.m; sourceTree = "<group>"; };
+		4A74733225E6236D009C358D /* DemoTestRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTestRecord.m; sourceTree = "<group>"; };
+		4A74733325E6236D009C358D /* DemoTestRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTestRecord.h; sourceTree = "<group>"; };
+		4A74733525E6236D009C358D /* DemoTestTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTestTable.h; sourceTree = "<group>"; };
+		4A74733625E6236D009C358D /* DemoTestTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTestTable.m; sourceTree = "<group>"; };
+		4A74733725E6236D009C358D /* MultiThreadReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiThreadReadViewController.h; sourceTree = "<group>"; };
+		4A74733825E6236D009C358D /* MultiThreadReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiThreadReadViewController.m; sourceTree = "<group>"; };
 		4A76096620A16C82009908A6 /* CTPersistanceTestChangeKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestChangeKey.m; sourceTree = "<group>"; };
 		4A7844C21F32BD6700CF4809 /* CTPersistanceTestMigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPersistanceTestMigration.m; sourceTree = "<group>"; };
 		4A9A9DF21F32D06F00090F73 /* TestMiagratorVersion_1_to_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMiagratorVersion_1_to_2.h; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 		4A02386E1F3F14C700EE91C7 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				4A74730625E5F70A009C358D /* MultiThreadReadViewController */,
+				4A74732F25E6236D009C358D /* MultiThreadReadViewController */,
 				4AC74A601FBE7DB30092B636 /* ViewRecordAndMergeDemoViewController */,
 				4A02386F1F3F14C700EE91C7 /* AsyncTestViewController */,
 			);
@@ -804,40 +804,39 @@
 			path = Statement;
 			sourceTree = "<group>";
 		};
-		4A74730625E5F70A009C358D /* MultiThreadReadViewController */ = {
+		4A74732F25E6236D009C358D /* MultiThreadReadViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4A74730725E5F70A009C358D /* TestModel */,
-				4A74730E25E5F70A009C358D /* MultiThreadReadViewController.h */,
-				4A74730F25E5F70A009C358D /* MultiThreadReadViewController.m */,
+				4A74733025E6236D009C358D /* TestModel */,
+				4A74733725E6236D009C358D /* MultiThreadReadViewController.h */,
+				4A74733825E6236D009C358D /* MultiThreadReadViewController.m */,
 			);
-			name = MultiThreadReadViewController;
-			path = ../../../../../Desktop/MultiThreadReadViewController;
+			path = MultiThreadReadViewController;
 			sourceTree = "<group>";
 		};
-		4A74730725E5F70A009C358D /* TestModel */ = {
+		4A74733025E6236D009C358D /* TestModel */ = {
 			isa = PBXGroup;
 			children = (
-				4A74730825E5F70A009C358D /* Record */,
-				4A74730B25E5F70A009C358D /* Table */,
+				4A74733125E6236D009C358D /* Record */,
+				4A74733425E6236D009C358D /* Table */,
 			);
 			path = TestModel;
 			sourceTree = "<group>";
 		};
-		4A74730825E5F70A009C358D /* Record */ = {
+		4A74733125E6236D009C358D /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				4A74730925E5F70A009C358D /* DemoTestRecord.m */,
-				4A74730A25E5F70A009C358D /* DemoTestRecord.h */,
+				4A74733225E6236D009C358D /* DemoTestRecord.m */,
+				4A74733325E6236D009C358D /* DemoTestRecord.h */,
 			);
 			path = Record;
 			sourceTree = "<group>";
 		};
-		4A74730B25E5F70A009C358D /* Table */ = {
+		4A74733425E6236D009C358D /* Table */ = {
 			isa = PBXGroup;
 			children = (
-				4A74730C25E5F70A009C358D /* DemoTestTable.h */,
-				4A74730D25E5F70A009C358D /* DemoTestTable.m */,
+				4A74733525E6236D009C358D /* DemoTestTable.h */,
+				4A74733625E6236D009C358D /* DemoTestTable.m */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -1257,7 +1256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A74731225E5F70A009C358D /* MultiThreadReadViewController.m in Sources */,
+				4A74733B25E6236D009C358D /* MultiThreadReadViewController.m in Sources */,
 				4A0E00C61F2D84FB00E6A4DA /* NSMutableArray+CTPersistanceBindValue.m in Sources */,
 				4AF38F2D1F6905DF00801322 /* TestRecord.m in Sources */,
 				4A0E00A51F2CBD6300E6A4DA /* CTPersistanceQueryCommand+DataManipulations.m in Sources */,
@@ -1265,7 +1264,7 @@
 				4A0E00AA1F2CBD6300E6A4DA /* CTPersistanceRecord.m in Sources */,
 				4A0E00301F2C384E00E6A4DA /* ViewController.m in Sources */,
 				4A0E00A81F2CBD6300E6A4DA /* CTPersistanceQueryCommand+Status.m in Sources */,
-				4A74731025E5F70A009C358D /* DemoTestRecord.m in Sources */,
+				4A74733925E6236D009C358D /* DemoTestRecord.m in Sources */,
 				4A0E00A21F2CBD6300E6A4DA /* CTPersistanceMigrator.m in Sources */,
 				F51057C2223293D000C06D8A /* EncryptPlaintextDatabaseTestTable.m in Sources */,
 				4A0E009C1F2CBD6300E6A4DA /* NSArray+CTPersistanceRecordTransform.m in Sources */,
@@ -1285,7 +1284,7 @@
 				4A0E002A1F2C384E00E6A4DA /* main.m in Sources */,
 				4A5E3BF11F403A4A00946749 /* CTPersistanceSqlStatement.m in Sources */,
 				4ACE635B1F340E54007F3E6D /* NSDictionary+KeyValueBind.m in Sources */,
-				4A74731125E5F70A009C358D /* DemoTestTable.m in Sources */,
+				4A74733A25E6236D009C358D /* DemoTestTable.m in Sources */,
 				4A0E00AD1F2CBD6300E6A4DA /* CTPersistanceTable+Insert.m in Sources */,
 				4AE5541220AD1E6F0020BAC7 /* CTPersistanceTable+Upsert.m in Sources */,
 				4AC74A881FBEAA0E0092B636 /* ItemView+DataCenter.m in Sources */,
